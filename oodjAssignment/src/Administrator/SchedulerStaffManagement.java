@@ -9,7 +9,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
 
     public SchedulerStaffManagement() {
         initComponents();
-        loadDataFromFile("C:\\APU\\DEGREE (SE)\\YEAR2\\SEM 1\\Object Oriented Development with Java\\Assignment\\oodjAssignment\\src\\database\\Scheduler.txt");
+        loadDataFromFile("C:\\APU\\DEGREE (SE)\\YEAR2\\SEM 1\\Object Oriented Development with Java\\Assignment\\oodjAssignment\\src\\Database\\Scheduler.txt");
     }
     private void loadDataFromFile(String filePath) {
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
