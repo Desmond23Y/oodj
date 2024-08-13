@@ -52,7 +52,7 @@ public class AdministratorHomepage extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton5.setBackground(new java.awt.Color(204, 255, 255));
+        jButton5.setBackground(new java.awt.Color(102, 153, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton5.setText("USER MANAGEMENT");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +61,7 @@ public class AdministratorHomepage extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(204, 255, 255));
+        jButton6.setBackground(new java.awt.Color(102, 153, 255));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton6.setText("BOOKING MANAGEMENT");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +70,7 @@ public class AdministratorHomepage extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(204, 255, 255));
+        jButton7.setBackground(new java.awt.Color(102, 153, 255));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton7.setText("LOGOUT");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class AdministratorHomepage extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(204, 255, 255));
+        jButton8.setBackground(new java.awt.Color(102, 153, 255));
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton8.setText("SCHEDULER MANAGEMENT");
         jButton8.addActionListener(new java.awt.event.ActionListener() {

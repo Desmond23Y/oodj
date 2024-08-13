@@ -57,7 +57,9 @@ public class UserManagement extends javax.swing.JFrame {
         jLabel3.setText("USER MANAGEMENT");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 15, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
+
+        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
 
         jButton2.setBackground(new java.awt.Color(226, 218, 214));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -178,7 +180,7 @@ public class UserManagement extends javax.swing.JFrame {
         jTabbedPane1.addTab("MAINPAGE", jPanel2);
 
         jTable2.setAutoCreateRowSorter(true);
-        jTable2.setBackground(new java.awt.Color(102, 102, 102));
+        jTable2.setBackground(new java.awt.Color(102, 153, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

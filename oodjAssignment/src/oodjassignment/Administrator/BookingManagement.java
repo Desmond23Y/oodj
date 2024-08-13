@@ -46,7 +46,10 @@ public class BookingManagement extends javax.swing.JFrame {
         jLabel3.setText("BOOKING MANAGEMENT");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(97, 15, -1, -1));
 
-        jTable1.setBackground(new java.awt.Color(102, 102, 102));
+        jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
+        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jTable1.setBackground(new java.awt.Color(102, 153, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -63,7 +66,7 @@ public class BookingManagement extends javax.swing.JFrame {
         jTabbedPane1.addTab("Upcoming Booking", jScrollPane1);
 
         jTable2.setAutoCreateRowSorter(true);
-        jTable2.setBackground(new java.awt.Color(102, 102, 102));
+        jTable2.setBackground(new java.awt.Color(102, 153, 255));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
