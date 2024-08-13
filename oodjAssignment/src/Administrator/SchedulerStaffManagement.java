@@ -1,4 +1,4 @@
-package oodjassignment.Administrator;
+package Administrator;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
