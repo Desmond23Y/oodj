@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package oodjassignment.Administrator;
+package oodjassignment.admin;
 
 import oodjassignment.Login;
 
@@ -46,13 +46,13 @@ public class AdministratorHomepage extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ADMINISTRATOR HOMEPAGE");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
+        jPanel1.setBackground(new java.awt.Color(0, 137, 248));
+        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton5.setBackground(new java.awt.Color(204, 255, 255));
+        jButton5.setBackground(new java.awt.Color(235, 235, 235));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton5.setText("USER MANAGEMENT");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +61,7 @@ public class AdministratorHomepage extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(204, 255, 255));
+        jButton6.setBackground(new java.awt.Color(235, 235, 235));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton6.setText("BOOKING MANAGEMENT");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -70,7 +70,7 @@ public class AdministratorHomepage extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(204, 255, 255));
+        jButton7.setBackground(new java.awt.Color(235, 235, 235));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton7.setText("LOGOUT");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -79,7 +79,7 @@ public class AdministratorHomepage extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(204, 255, 255));
+        jButton8.setBackground(new java.awt.Color(235, 235, 235));
         jButton8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton8.setText("SCHEDULER MANAGEMENT");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -93,18 +93,18 @@ public class AdministratorHomepage extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35))
+                .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(40, 40, 40)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,12 +112,12 @@ public class AdministratorHomepage extends javax.swing.JFrame {
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/blue.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         pack();
