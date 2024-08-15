@@ -4,7 +4,7 @@
  */
 package oodjassignment.admin;
 
-import oodjassignment.Login;
+import oodjassignment.Loginpage;
 
 /**
  *
@@ -142,7 +142,7 @@ public class AdministratorHomepage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Login Login = new Login();
+        Loginpage Login = new Loginpage();
         Login.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
