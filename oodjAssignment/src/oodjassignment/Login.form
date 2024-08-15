@@ -49,24 +49,61 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="282" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
                       <Component id="username" min="-2" pref="230" max="-2" attributes="0"/>
                       <Component id="logintype" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                           <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
                           <Component id="password" min="-2" pref="230" max="-2" attributes="0"/>
+=======
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" pref="311" max="-2" attributes="0"/>
+>>>>>>> origin/master
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
+<<<<<<< HEAD
                           <Component id="login" min="-2" pref="102" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="Register" min="-2" pref="110" max="-2" attributes="0"/>
+=======
+                          <Component id="jLabel1" min="-2" pref="502" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel3" alignment="0" min="-2" pref="269" max="-2" attributes="0"/>
+                                      <Component id="password" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                      <Component id="username" alignment="0" min="-2" pref="230" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="login" min="-2" pref="90" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                  <Component id="logintype" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                                  <Component id="Register" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+>>>>>>> origin/master
                       </Group>
                       <Component id="jLabel3" alignment="0" min="-2" pref="269" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="0" min="-2" pref="311" max="-2" attributes="0"/>
                   </Group>
+<<<<<<< HEAD
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jPanel2" pref="0" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="789" max="-2" attributes="0"/>
+=======
+                  <EmptySpace min="-2" pref="301" max="-2" attributes="0"/>
+>>>>>>> origin/master
               </Group>
           </Group>
         </DimensionLayout>
@@ -99,6 +136,11 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
+<<<<<<< HEAD
+=======
+        <Component class="javax.swing.JLabel" name="jLabel1">
+        </Component>
+>>>>>>> origin/master
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
