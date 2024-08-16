@@ -30,46 +30,46 @@ public class homepage extends javax.swing.JFrame {
         booking_details = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         feedback = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         title.setText("Welcome");
-        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 130, 230, 30));
+        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 230, 30));
 
         profile.setBackground(new java.awt.Color(0, 137, 248));
         profile.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         profile.setForeground(new java.awt.Color(255, 255, 255));
         profile.setText("Profile");
-        getContentPane().add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 180, 40));
+        getContentPane().add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 180, 40));
 
         hall_info.setBackground(new java.awt.Color(0, 137, 248));
         hall_info.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         hall_info.setForeground(new java.awt.Color(255, 255, 255));
         hall_info.setText("Hall Infomation");
-        getContentPane().add(hall_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, 180, 40));
+        getContentPane().add(hall_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 180, 40));
 
         booking_details.setBackground(new java.awt.Color(0, 137, 248));
         booking_details.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         booking_details.setForeground(new java.awt.Color(255, 255, 255));
         booking_details.setText("Booking Details");
-        getContentPane().add(booking_details, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 180, 40));
+        getContentPane().add(booking_details, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 180, 40));
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
         logout.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         logout.setForeground(new java.awt.Color(255, 255, 255));
         logout.setText("Logout");
-        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 480, 180, 40));
+        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, 180, 40));
 
         feedback.setBackground(new java.awt.Color(0, 137, 248));
         feedback.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         feedback.setForeground(new java.awt.Color(255, 255, 255));
         feedback.setText("Feedback");
-        getContentPane().add(feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 410, 180, 40));
+        getContentPane().add(feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 180, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -110,10 +110,10 @@ public class homepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
     private javax.swing.JButton booking_details;
     private javax.swing.JButton feedback;
     private javax.swing.JButton hall_info;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton logout;
     private javax.swing.JButton profile;
     private javax.swing.JLabel title;
