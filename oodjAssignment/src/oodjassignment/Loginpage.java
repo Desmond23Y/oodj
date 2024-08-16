@@ -28,23 +28,26 @@ public class Loginpage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        incorrect = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
         login = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        showpassword = new javax.swing.JCheckBox();
         password = new javax.swing.JPasswordField();
         logintype = new javax.swing.JComboBox<>();
         Register = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        Welcome = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel3.setText("Incorrect Username or Password!!!");
+        incorrect.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        incorrect.setForeground(new java.awt.Color(255, 0, 0));
+        incorrect.setText("Incorrect Username or Password!!!");
+        getContentPane().add(incorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 269, 20));
 
-        username.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        username.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        username.setForeground(new java.awt.Color(204, 204, 204));
         username.setText("Please Enter Username Here");
         username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -59,9 +62,10 @@ public class Loginpage extends javax.swing.JFrame {
                 usernameActionPerformed(evt);
             }
         });
+        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 378, -1));
 
-        login.setBackground(new java.awt.Color(204, 204, 255));
-        login.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        login.setBackground(new java.awt.Color(0, 137, 248));
+        login.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         login.setForeground(new java.awt.Color(255, 255, 255));
         login.setText("LOGIN");
         login.addActionListener(new java.awt.event.ActionListener() {
@@ -69,16 +73,20 @@ public class Loginpage extends javax.swing.JFrame {
                 loginActionPerformed(evt);
             }
         });
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 332, -1));
 
-        jCheckBox1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jCheckBox1.setText("Show Password");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        showpassword.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        showpassword.setForeground(new java.awt.Color(255, 255, 255));
+        showpassword.setText("Show Password");
+        showpassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                showpasswordActionPerformed(evt);
             }
         });
+        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, -1));
 
-        password.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        password.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        password.setForeground(new java.awt.Color(204, 204, 204));
         password.setText("Please Enter Password Here");
         password.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -88,89 +96,38 @@ public class Loginpage extends javax.swing.JFrame {
                 passwordFocusLost(evt);
             }
         });
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 378, -1));
 
-        logintype.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        logintype.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         logintype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRATOR", "CUSTOMER", "SCHEDULER", "MANAGER", " " }));
         logintype.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logintypeActionPerformed(evt);
             }
         });
+        getContentPane().add(logintype, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, -1, -1));
 
-        Register.setBackground(new java.awt.Color(204, 204, 255));
-        Register.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        Register.setBackground(new java.awt.Color(0, 137, 248));
+        Register.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         Register.setForeground(new java.awt.Color(255, 255, 255));
         Register.setText("REGISTER");
+        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 332, -1));
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
-        jLabel2.setText("WELCOME TO OUR HALL");
+        Welcome.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        Welcome.setForeground(new java.awt.Color(255, 255, 255));
+        Welcome.setText("WELCOME TO THE HALL SYMPHONY INC.");
+        getContentPane().add(Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/hall (1).jpg"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jCheckBox1)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(password)
-                                    .addComponent(username, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(logintype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(113, 113, 113)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(login, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Register, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(167, 547, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(186, 186, 186)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(logintype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox1)
-                .addGap(18, 18, 18)
-                .addComponent(login)
-                .addGap(18, 18, 18)
-                .addComponent(Register)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
-        );
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
+        background.setText("jLabel1");
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -30, 3050, 2060));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
         // TODO add your handling code here:
-        jLabel3.setVisible(false);
+        incorrect.setVisible(false);
         if(username.getText().equals("Please Enter Username Here"))
         {
             username.setText("");
@@ -180,7 +137,7 @@ public class Loginpage extends javax.swing.JFrame {
 
     private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
         // TODO add your handling code here:
-        jLabel3.setVisible(false);
+        incorrect.setVisible(false);
         if(username.getText().equals(""))
         {
             username.setText("Please Enter Username Here");
@@ -203,7 +160,7 @@ public class Loginpage extends javax.swing.JFrame {
                     setVisible(false);
                     //new AdminHome().setVisible(true);
                 } else {
-                    jLabel3.setVisible(true);
+                    incorrect.setVisible(true);
                 }
             }
             case "SCHEDULER" -> {
@@ -212,7 +169,7 @@ public class Loginpage extends javax.swing.JFrame {
                     setVisible(false);
                     //new SchedulerHome().setVisible(true);
                 } else {
-                    jLabel3.setVisible(true);
+                    incorrect.setVisible(true);
                 }
             }
             case "CUSTOMER" -> {
@@ -228,7 +185,7 @@ public class Loginpage extends javax.swing.JFrame {
                         }
                     }
                 } catch (Exception e) {
-                    jLabel3.setVisible(true);
+                    incorrect.setVisible(true);
                     JOptionPane.showMessageDialog(this, "If you haven't register, pls register account first!!");
                 }
             }
@@ -238,16 +195,16 @@ public class Loginpage extends javax.swing.JFrame {
                     setVisible(false);
                     //new ManagerHome().setVisible(true);
                 } else {
-                    jLabel3.setVisible(true);
+                    incorrect.setVisible(true);
                 }
             }
             default -> JOptionPane.showMessageDialog(this, "Please select a valid user type!");
         }
     }//GEN-LAST:event_loginActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void showpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordActionPerformed
         // TODO add your handling code here:
-        if(jCheckBox1.isSelected())
+        if(showpassword.isSelected())
         {
             password.setEchoChar((char)0);
         }
@@ -255,11 +212,11 @@ public class Loginpage extends javax.swing.JFrame {
         {
             password.setEchoChar('*');
         }
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_showpasswordActionPerformed
 
     private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
         // TODO add your handling code here:
-        jLabel3.setVisible(false);
+        incorrect.setVisible(false);
         if(password.getText().equals("Please Enter Password Here"))
         {
             password.setText("");
@@ -269,7 +226,7 @@ public class Loginpage extends javax.swing.JFrame {
 
     private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
         // TODO add your handling code here:
-        jLabel3.setVisible(false);
+        incorrect.setVisible(false);
         if(password.getText().equals(""))
         {
             password.setText("Please Enter Password Here");
@@ -320,13 +277,13 @@ public class Loginpage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Register;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel Welcome;
+    private javax.swing.JLabel background;
+    private javax.swing.JLabel incorrect;
     private javax.swing.JButton login;
     private javax.swing.JComboBox<String> logintype;
     private javax.swing.JPasswordField password;
+    private javax.swing.JCheckBox showpassword;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 
