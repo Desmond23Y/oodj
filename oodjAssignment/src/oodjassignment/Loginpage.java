@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import javax.swing.JOptionPane;
 import oodjassignment.admin.AdministratorHomepage;
+import oodjassignment.scheduler.schedulerhomepage;
 
 /**
  *
@@ -175,7 +176,7 @@ public class Loginpage extends javax.swing.JFrame {
                 if (username.getText().equals("scheduler") && password.getText().equals("schedulerpassword")) {
                     JOptionPane.showMessageDialog(this, "Welcome scheduler!");
                     setVisible(false);
-                    //new SchedulerHome().setVisible(true);
+                    new schedulerhomepage().setVisible(true);
                 } else {
                     incorrect.setVisible(true);
                 }
