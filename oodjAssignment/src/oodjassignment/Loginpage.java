@@ -36,9 +36,11 @@ public class Loginpage extends javax.swing.JFrame {
         logintype = new javax.swing.JComboBox<>();
         Register = new javax.swing.JButton();
         Welcome = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         incorrect.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -117,6 +119,9 @@ public class Loginpage extends javax.swing.JFrame {
         Welcome.setForeground(new java.awt.Color(255, 255, 255));
         Welcome.setText("WELCOME TO THE HALL SYMPHONY INC.");
         getContentPane().add(Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/hall.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel1");
@@ -280,6 +285,7 @@ public class Loginpage extends javax.swing.JFrame {
     private javax.swing.JLabel Welcome;
     private javax.swing.JLabel background;
     private javax.swing.JLabel incorrect;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton login;
     private javax.swing.JComboBox<String> logintype;
     private javax.swing.JPasswordField password;
