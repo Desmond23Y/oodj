@@ -13,6 +13,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import oodjassignment.Loginpage;
 
 /**
  *
@@ -37,7 +38,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Aschedule = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -51,6 +52,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         Delete = new javax.swing.JButton();
         Reset = new javax.swing.JButton();
         Save = new javax.swing.JButton();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
@@ -59,11 +61,16 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(102, 102, 102));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
-        jButton1.setText("Back");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        logout.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        logout.setForeground(new java.awt.Color(102, 102, 102));
+        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
+        logout.setText("Back");
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
+        jPanel1.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         Aschedule.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Aschedule.setModel(new javax.swing.table.DefaultTableModel(
@@ -216,6 +223,10 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         });
         jPanel1.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, -1, -1));
 
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
+        background.setText("jLabel1");
+        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         pack();
@@ -315,7 +326,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         model.addRow(record);
         BufferedWriter bw;
         try {
-            bw = new BufferedWriter(new FileWriter("",true));
+            bw = new BufferedWriter(new FileWriter("User.txt",true));
             String rec = userID.getText()+"/"+ Event.getText()+"/"+ Date.getText()+"/"+ Time.getText();
             bw.write(rec+"\n");
             bw.close();
@@ -352,7 +363,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         model.removeRow(Aschedule.getSelectedRow());
         int tablelist = model.getRowCount();
         try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("schedule.txt"));
+            BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
             for (int i=0 ; i<tablelist ; i++){
                 String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString();
                 bw.write(rec+"\n");
@@ -378,7 +389,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         model.setValueAt(Time.getText(), Aschedule.getSelectedRow(), 3);
         
         try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter (""));
+            BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
             for (int i=0 ; i<tablelist ; i++){
                 String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString();
                 bw.write(rec+"\n"); 
@@ -388,6 +399,14 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this,"Something Wrong");
         }
     }//GEN-LAST:event_SaveActionPerformed
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to return to the Homepage?", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            setVisible(false);
+            new schedulerhomepage().setVisible(true);
+        }
+    }//GEN-LAST:event_logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -435,10 +454,11 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     private javax.swing.JButton Save;
     private javax.swing.JTextField Time;
     private javax.swing.JButton View;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel background;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton logout;
     private javax.swing.JTextField userID;
     // End of variables declaration//GEN-END:variables
 

@@ -30,13 +30,16 @@ public class schedulerhomepage extends javax.swing.JFrame {
     private void initComponents() {
 
         logout = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        welcome = new javax.swing.JLabel();
+        smallb = new javax.swing.JPanel();
         havailability = new javax.swing.JButton();
         hmaintenance = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
@@ -48,12 +51,12 @@ public class schedulerhomepage extends javax.swing.JFrame {
         });
         getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Welcome back ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        welcome.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        welcome.setForeground(new java.awt.Color(255, 255, 255));
+        welcome.setText("Welcome back ");
+        getContentPane().add(welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(0, 137, 248));
+        smallb.setBackground(new java.awt.Color(0, 137, 248));
 
         havailability.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         havailability.setText("Hall availability schedule");
@@ -61,28 +64,28 @@ public class schedulerhomepage extends javax.swing.JFrame {
         hmaintenance.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         hmaintenance.setText("Hall maintenance schedule");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout smallbLayout = new javax.swing.GroupLayout(smallb);
+        smallb.setLayout(smallbLayout);
+        smallbLayout.setHorizontalGroup(
+            smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(smallbLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(havailability)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(hmaintenance)
                 .addContainerGap(13, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        smallbLayout.setVerticalGroup(
+            smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(smallbLayout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(havailability)
                     .addComponent(hmaintenance))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 460, 180));
+        getContentPane().add(smallb, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 460, 180));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel2");
@@ -138,8 +141,8 @@ public class schedulerhomepage extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JButton havailability;
     private javax.swing.JButton hmaintenance;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logout;
+    private javax.swing.JPanel smallb;
+    private javax.swing.JLabel welcome;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,6 +4,9 @@
  */
 package oodjassignment.scheduler;
 
+import javax.swing.JOptionPane;
+import oodjassignment.Loginpage;
+
 /**
  *
  * @author Acer
@@ -26,24 +29,85 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        logout = new javax.swing.JButton();
+        smallb = new javax.swing.JPanel();
+        start_date = new javax.swing.JTextField();
+        end_date = new javax.swing.JTextField();
+        review = new javax.swing.JTextField();
+        background = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(800, 600));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+        logout.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        logout.setForeground(new java.awt.Color(102, 102, 102));
+        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
+        logout.setText("Back");
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        smallb.setBackground(new java.awt.Color(0, 137, 248));
+
+        start_date.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        start_date.setForeground(new java.awt.Color(204, 204, 204));
+        start_date.setText("Start_date");
+
+        end_date.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        end_date.setForeground(new java.awt.Color(204, 204, 204));
+        end_date.setText("end_date");
+
+        review.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        review.setForeground(new java.awt.Color(204, 204, 204));
+        review.setText("Review");
+
+        javax.swing.GroupLayout smallbLayout = new javax.swing.GroupLayout(smallb);
+        smallb.setLayout(smallbLayout);
+        smallbLayout.setHorizontalGroup(
+            smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(smallbLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(review)
+                    .addGroup(smallbLayout.createSequentialGroup()
+                        .addComponent(start_date, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(end_date, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+        smallbLayout.setVerticalGroup(
+            smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(smallbLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(start_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(end_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(review, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        getContentPane().add(smallb, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 330, 190));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        int a = JOptionPane.showConfirmDialog(null, "Do you want to return to the Homepage?", "Select", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
+            setVisible(false);
+            new schedulerhomepage().setVisible(true);
+        }
+    }//GEN-LAST:event_logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +145,11 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
+    private javax.swing.JTextField end_date;
+    private javax.swing.JButton logout;
+    private javax.swing.JTextField review;
+    private javax.swing.JPanel smallb;
+    private javax.swing.JTextField start_date;
     // End of variables declaration//GEN-END:variables
 }
