@@ -30,7 +30,6 @@ public class Loginpage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        incorrect = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
         login = new javax.swing.JButton();
         showpassword = new javax.swing.JCheckBox();
@@ -47,14 +46,9 @@ public class Loginpage extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        incorrect.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        incorrect.setForeground(new java.awt.Color(255, 0, 0));
-        incorrect.setText("Incorrect Username or Password!!!");
-        getContentPane().add(incorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 269, 20));
-
         username.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         username.setForeground(new java.awt.Color(204, 204, 204));
-        username.setText("Please Enter Username Here");
+        username.setText("Enter Your UserID Here");
         username.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 usernameFocusGained(evt);
@@ -63,12 +57,7 @@ public class Loginpage extends javax.swing.JFrame {
                 usernameFocusLost(evt);
             }
         });
-        username.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameActionPerformed(evt);
-            }
-        });
-        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 378, -1));
+        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 378, 30));
 
         login.setBackground(new java.awt.Color(0, 137, 248));
         login.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -79,7 +68,7 @@ public class Loginpage extends javax.swing.JFrame {
                 loginActionPerformed(evt);
             }
         });
-        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 332, -1));
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 100, 30));
 
         showpassword.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         showpassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -89,7 +78,7 @@ public class Loginpage extends javax.swing.JFrame {
                 showpasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, -1));
+        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, -1, -1));
 
         password.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         password.setForeground(new java.awt.Color(204, 204, 204));
@@ -102,30 +91,30 @@ public class Loginpage extends javax.swing.JFrame {
                 passwordFocusLost(evt);
             }
         });
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, 378, -1));
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 378, 30));
 
         logintype.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        logintype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRATOR", "CUSTOMER", "SCHEDULER", "MANAGER", " " }));
-        logintype.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logintypeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(logintype, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, -1, -1));
+        logintype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRATOR", "CUSTOMER", "SCHEDULER", "MANAGER" }));
+        getContentPane().add(logintype, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, -1, -1));
 
         Register.setBackground(new java.awt.Color(0, 137, 248));
         Register.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         Register.setForeground(new java.awt.Color(255, 255, 255));
-        Register.setText("REGISTER");
-        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 450, 332, -1));
+        Register.setText("Create a New Account");
+        Register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 220, 30));
 
         Welcome.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         Welcome.setForeground(new java.awt.Color(255, 255, 255));
         Welcome.setText("WELCOME TO THE HALL SYMPHONY INC.");
-        getContentPane().add(Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
+        getContentPane().add(Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
 
         picture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/hall.png"))); // NOI18N
-        getContentPane().add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, -1, -1));
+        getContentPane().add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel1");
@@ -136,7 +125,6 @@ public class Loginpage extends javax.swing.JFrame {
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
         // TODO add your handling code here:
-        incorrect.setVisible(false);
         if(username.getText().equals("Please Enter Username Here"))
         {
             username.setText("");
@@ -146,7 +134,6 @@ public class Loginpage extends javax.swing.JFrame {
 
     private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
         // TODO add your handling code here:
-        incorrect.setVisible(false);
         if(username.getText().equals(""))
         {
             username.setText("Please Enter Username Here");
@@ -154,10 +141,6 @@ public class Loginpage extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_usernameFocusLost
-
-    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameActionPerformed
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
@@ -169,7 +152,7 @@ public class Loginpage extends javax.swing.JFrame {
                     setVisible(false);
                     new AdministratorHomepage().setVisible(true);
                 } else {
-                    incorrect.setVisible(true);
+                    JOptionPane.showMessageDialog(this, "Incorrect Username or Password.");
                 }
             }
             case "SCHEDULER" -> {
@@ -178,7 +161,7 @@ public class Loginpage extends javax.swing.JFrame {
                     setVisible(false);
                     new schedulerhomepage().setVisible(true);
                 } else {
-                    incorrect.setVisible(true);
+                    JOptionPane.showMessageDialog(this, "Incorrect Username or Password.");
                 }
             }
             case "CUSTOMER" -> {
@@ -194,8 +177,7 @@ public class Loginpage extends javax.swing.JFrame {
                         }
                     }
                 } catch (Exception e) {
-                    incorrect.setVisible(true);
-                    JOptionPane.showMessageDialog(this, "If you haven't register, pls register account first!!");
+                    JOptionPane.showMessageDialog(this, "Incorrect Username or Password. \nIf you haven't register, please register first.");
                 }
             }
             case "MANAGER" -> {
@@ -204,10 +186,10 @@ public class Loginpage extends javax.swing.JFrame {
                     setVisible(false);
                     //new ManagerHome().setVisible(true);
                 } else {
-                    incorrect.setVisible(true);
+                    JOptionPane.showMessageDialog(this, "Incorrect Username or Password.");
                 }
             }
-            default -> JOptionPane.showMessageDialog(this, "Please select a valid user type!");
+        default -> JOptionPane.showMessageDialog(this, "Please select a valid user type!");
         }
     }//GEN-LAST:event_loginActionPerformed
 
@@ -225,7 +207,6 @@ public class Loginpage extends javax.swing.JFrame {
 
     private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
         // TODO add your handling code here:
-        incorrect.setVisible(false);
         if(password.getText().equals("Please Enter Password Here"))
         {
             password.setText("");
@@ -235,7 +216,6 @@ public class Loginpage extends javax.swing.JFrame {
 
     private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
         // TODO add your handling code here:
-        incorrect.setVisible(false);
         if(password.getText().equals(""))
         {
             password.setText("Please Enter Password Here");
@@ -244,10 +224,10 @@ public class Loginpage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_passwordFocusLost
 
-    private void logintypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logintypeActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_logintypeActionPerformed
+    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
+        setVisible(false);
+        //new Register.setVisible(true);
+    }//GEN-LAST:event_RegisterActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,6 +256,7 @@ public class Loginpage extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -288,7 +269,6 @@ public class Loginpage extends javax.swing.JFrame {
     private javax.swing.JButton Register;
     private javax.swing.JLabel Welcome;
     private javax.swing.JLabel background;
-    private javax.swing.JLabel incorrect;
     private javax.swing.JButton login;
     private javax.swing.JComboBox<String> logintype;
     private javax.swing.JPasswordField password;
