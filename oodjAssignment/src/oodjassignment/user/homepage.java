@@ -69,7 +69,7 @@ public class homepage extends javax.swing.JFrame {
         getContentPane().add(feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 180, 40));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
