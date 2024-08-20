@@ -12,7 +12,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import oodjassignment.Loginpage;
 
 /**
@@ -45,17 +47,23 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         userID = new javax.swing.JTextField();
         Event = new javax.swing.JTextField();
         Date = new javax.swing.JTextField();
-        Time = new javax.swing.JTextField();
+        Price = new javax.swing.JTextField();
         Add = new javax.swing.JButton();
+        Reset = new javax.swing.JButton();
         Edit = new javax.swing.JButton();
         View = new javax.swing.JButton();
-        Delete = new javax.swing.JButton();
-        Reset = new javax.swing.JButton();
         Save = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
+        halltype = new javax.swing.JComboBox<>();
+        ui = new javax.swing.JLabel();
+        ht = new javax.swing.JLabel();
+        p = new javax.swing.JLabel();
+        dt = new javax.swing.JLabel();
+        filter = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -73,42 +81,28 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         jPanel1.add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         Aschedule.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        Aschedule.setForeground(new java.awt.Color(255, 255, 255));
         Aschedule.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "User ID", "Event", "Date", "Time"
+                "User ID", "Hall Type", "Price", "Date & Time", "Event"
             }
         ));
+        Aschedule.setSelectionBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(Aschedule);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 760, 270));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 470, 500));
 
         jPanel2.setBackground(new java.awt.Color(0, 137, 248));
 
         userID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         userID.setForeground(new java.awt.Color(204, 204, 204));
-        userID.setText("User ID");
-        userID.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                userIDFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                userIDFocusLost(evt);
-            }
-        });
-        userID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userIDActionPerformed(evt);
-            }
-        });
 
         Event.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        Event.setForeground(new java.awt.Color(204, 204, 204));
+        Event.setForeground(new java.awt.Color(153, 153, 153));
+        Event.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Event.setText("Event");
         Event.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -121,107 +115,177 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
 
         Date.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Date.setForeground(new java.awt.Color(204, 204, 204));
-        Date.setText("Date");
-        Date.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                DateFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                DateFocusLost(evt);
-            }
-        });
 
-        Time.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        Time.setForeground(new java.awt.Color(204, 204, 204));
-        Time.setText("Time");
-        Time.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                TimeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                TimeFocusLost(evt);
-            }
-        });
+        Price.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        Price.setForeground(new java.awt.Color(204, 204, 204));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Event)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Time)
-                            .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Date, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))
-                .addGap(18, 18, 18))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Time, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Event, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 320, 220));
-
+        Add.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Add.setText("Add");
         Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddActionPerformed(evt);
             }
         });
-        jPanel1.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
 
+        Reset.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        Reset.setText("Clear");
+        Reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResetActionPerformed(evt);
+            }
+        });
+
+        Edit.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Edit.setText("Edit");
         Edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditActionPerformed(evt);
             }
         });
-        jPanel1.add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
 
+        View.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         View.setText("View");
         View.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewActionPerformed(evt);
             }
         });
-        jPanel1.add(View, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, -1, -1));
 
+        Save.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        Save.setText("Update");
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
+
+        Delete.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Delete.setText("Delete");
         Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 70, -1, -1));
 
-        Reset.setText("Reset");
-        Reset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ResetActionPerformed(evt);
+        halltype.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        halltype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auditorium", "Banquet Hall", "Meeting Room" }));
+
+        ui.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        ui.setForeground(new java.awt.Color(255, 255, 255));
+        ui.setText("User ID :");
+
+        ht.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        ht.setForeground(new java.awt.Color(255, 255, 255));
+        ht.setText("Hall Type :");
+
+        p.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        p.setForeground(new java.awt.Color(255, 255, 255));
+        p.setText("Price :");
+
+        dt.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        dt.setForeground(new java.awt.Color(255, 255, 255));
+        dt.setText("Date & Time :");
+
+        filter.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        filter.setForeground(new java.awt.Color(153, 153, 153));
+        filter.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        filter.setText("Filter");
+        filter.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                filterFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                filterFocusLost(evt);
             }
         });
-        jPanel1.add(Reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, -1));
-
-        Save.setText("Save");
-        Save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveActionPerformed(evt);
+        filter.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                filterKeyReleased(evt);
             }
         });
-        jPanel1.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 110, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Search :");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Event, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(Add)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Edit)
+                        .addGap(12, 12, 12)
+                        .addComponent(Save))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ui)
+                            .addComponent(ht)
+                            .addComponent(p)
+                            .addComponent(dt))
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Date, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Price, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(halltype, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(userID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(Delete))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(View)
+                                .addGap(12, 12, 12)
+                                .addComponent(Reset))
+                            .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(userID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ui))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(halltype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ht))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(p))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dt))
+                .addGap(18, 18, 18)
+                .addComponent(Event, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Add)
+                    .addComponent(Edit)
+                    .addComponent(Save))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Delete)
+                    .addComponent(View)
+                    .addComponent(Reset))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 280, 500));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel1");
@@ -232,76 +296,19 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userIDFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userIDFocusGained
-        // TODO add your handling code here:
-        if(userID.getText().equals("User ID"))
-        {
-            userID.setText("");
-            userID.setForeground(newColor(0,118,221));
-        }
-    }//GEN-LAST:event_userIDFocusGained
-
-    private void userIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_userIDFocusLost
-        // TODO add your handling code here:
-        if(userID.getText().equals(""))
-        {
-            userID.setText("User ID");
-            userID.setForeground(newColor(0,118,221));
-
-        }
-    }//GEN-LAST:event_userIDFocusLost
-
-    private void userIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userIDActionPerformed
-
-    private void DateFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DateFocusGained
-        if(userID.getText().equals("Date"))
-        {
-            userID.setText("");
-            userID.setForeground(newColor(0,118,221));
-        }
-    }//GEN-LAST:event_DateFocusGained
-
-    private void DateFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_DateFocusLost
-        if(userID.getText().equals(""))
-        {
-            userID.setText("Date");
-            userID.setForeground(newColor(0,118,221));
-
-        }
-    }//GEN-LAST:event_DateFocusLost
-
-    private void TimeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TimeFocusGained
-        if(userID.getText().equals("Time"))
-        {
-            userID.setText("");
-            userID.setForeground(newColor(0,118,221));
-        }
-    }//GEN-LAST:event_TimeFocusGained
-
-    private void TimeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TimeFocusLost
-        if(userID.getText().equals(""))
-        {
-            userID.setText("Time");
-            userID.setForeground(newColor(0,118,221));
-
-        }
-    }//GEN-LAST:event_TimeFocusLost
-
     private void EventFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EventFocusGained
-       if(userID.getText().equals("Event"))
+       if(Event.getText().equals("Event"))
         {
-            userID.setText("");
-            userID.setForeground(newColor(0,118,221));
+            Event.setText("");
+            Event.setForeground(newColor(0,118,221));
         }
     }//GEN-LAST:event_EventFocusGained
 
     private void EventFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EventFocusLost
-        if(userID.getText().equals(""))
+        if(Event.getText().equals(""))
         {
-            userID.setText("Event");
-            userID.setForeground(newColor(0,118,221));
+            Event.setText("Event");
+            Event.setForeground(newColor(0,118,221));
 
         }
     }//GEN-LAST:event_EventFocusLost
@@ -312,22 +319,22 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         userID.setText(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
         Event.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
         Date.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
-        Time.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
+        Price.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
         System.out.println("Row Selected: " +Aschedule.getSelectedRow());
     }//GEN-LAST:event_EditActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-        if(userID.getText().equals("")|| Event.getText().equals("")||Date.getText().equals("")||Time.getText().equals("")){
+        if(userID.getText().equals("")|| Event.getText().equals("")||Date.getText().equals("")||Price.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please Enter All Data !");
         }else{
-            
+        
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        String[] record = {userID.getText(), Event.getText(), Date.getText(), Date.getText(), Time.getText()};
+        String[] record = {userID.getText(), (String) halltype.getSelectedItem() , Price.getText(), Date.getText(), Event.getText()};
         model.addRow(record);
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("User.txt",true));
-            String rec = userID.getText()+"/"+ Event.getText()+"/"+ Date.getText()+"/"+ Time.getText();
+            String rec = userID.getText() +"/"+ (String) halltype.getSelectedItem() +"/"+ Price.getText() +"/"+ Date.getText() +"/"+ Event.getText();
             bw.write(rec+"\n");
             bw.close();
         } catch (IOException ex){
@@ -337,24 +344,30 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     }//GEN-LAST:event_AddActionPerformed
 
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
-        String filePath = "";
+        String filePath = "User.txt";
         File file = new File(filePath);
-        
+
         try {
+            // Create a BufferedReader to read the file
             BufferedReader br = new BufferedReader(new FileReader(file));
+
+            // Get the table model from the JTable
             DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-            
-            Object[] tableLines = br.lines().toArray();
-            
-            for (Object tableLine : tableLines) {
-                String line = tableLine.toString().trim();
-                String[] dataRow = line.split("/");
+
+            // Clear existing rows in the table model to prevent duplication
+            model.setRowCount(0);
+
+            // Read each line from the file and add it to the table model
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] dataRow = line.split("/"); // Adjust the delimiter if necessary
                 model.addRow(dataRow);
             }
-        } catch (IOException ex) 
-        {
-            JOptionPane.showMessageDialog(this,"Something Wrong");
-        }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
+}
+        
+        
     }//GEN-LAST:event_ViewActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
@@ -365,7 +378,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         try {
             BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
             for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString();
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString();
                 bw.write(rec+"\n");
             }  
             bw.close(); 
@@ -384,14 +397,15 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         int tablelist = model.getRowCount();
         System.out.println("Row Selected: "+ Aschedule.getSelectedRow());
         model.setValueAt(userID.getText(), Aschedule.getSelectedRow(), 0);
-        model.setValueAt(Event.getText(), Aschedule.getSelectedRow(), 1);
-        model.setValueAt(Date.getText(), Aschedule.getSelectedRow(), 2);
-        model.setValueAt(Time.getText(), Aschedule.getSelectedRow(), 3);
+        model.setValueAt((String) halltype.getSelectedItem(), Aschedule.getSelectedRow(), 1);
+        model.setValueAt(Price.getText(), Aschedule.getSelectedRow(), 2);
+        model.setValueAt(Date.getText(), Aschedule.getSelectedRow(), 3);
+        model.setValueAt(Event.getText(), Aschedule.getSelectedRow(), 4);
         
         try {
             BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
             for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString();
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString();
                 bw.write(rec+"\n"); 
             }  
             bw.close(); 
@@ -407,6 +421,30 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
             new schedulerhomepage().setVisible(true);
         }
     }//GEN-LAST:event_logoutActionPerformed
+
+    private void filterFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_filterFocusGained
+        if(filter.getText().equals("Filter"))
+        {
+            filter.setText("");
+            filter.setForeground(newColor(0,118,221));
+        }
+    }//GEN-LAST:event_filterFocusGained
+
+    private void filterFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_filterFocusLost
+        if(filter.getText().equals(""))
+        {
+            filter.setText("Filter");
+            filter.setForeground(newColor(0,118,221));
+
+        }
+    }//GEN-LAST:event_filterFocusLost
+
+    private void filterKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filterKeyReleased
+        DefaultTableModel obj = (DefaultTableModel) Aschedule.getModel();
+        TableRowSorter<DefaultTableModel> obj1=new TableRowSorter<>(obj);
+        Aschedule.setRowSorter(obj1);
+        obj1.setRowFilter(RowFilter.regexFilter(filter.getText()));
+    }//GEN-LAST:event_filterKeyReleased
 
     /**
      * @param args the command line arguments
@@ -450,15 +488,22 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     private javax.swing.JButton Delete;
     private javax.swing.JButton Edit;
     private javax.swing.JTextField Event;
+    private javax.swing.JTextField Price;
     private javax.swing.JButton Reset;
     private javax.swing.JButton Save;
-    private javax.swing.JTextField Time;
     private javax.swing.JButton View;
     private javax.swing.JLabel background;
+    private javax.swing.JLabel dt;
+    private javax.swing.JTextField filter;
+    private javax.swing.JComboBox<String> halltype;
+    private javax.swing.JLabel ht;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logout;
+    private javax.swing.JLabel p;
+    private javax.swing.JLabel ui;
     private javax.swing.JTextField userID;
     // End of variables declaration//GEN-END:variables
 

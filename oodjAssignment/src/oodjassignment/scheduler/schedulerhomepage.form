@@ -86,21 +86,21 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="havailability" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="hmaintenance" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <EmptySpace pref="19" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="havailability" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="hmaintenance" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="havailability" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="hmaintenance" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="76" max="32767" attributes="0"/>
+                  <EmptySpace pref="80" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -113,6 +113,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Hall availability schedule"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="havailabilityActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="hmaintenance">
           <Properties>
@@ -121,6 +124,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Hall maintenance schedule"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hmaintenanceActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

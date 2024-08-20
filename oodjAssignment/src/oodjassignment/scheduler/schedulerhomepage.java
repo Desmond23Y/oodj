@@ -60,9 +60,19 @@ public class schedulerhomepage extends javax.swing.JFrame {
 
         havailability.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         havailability.setText("Hall availability schedule");
+        havailability.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                havailabilityActionPerformed(evt);
+            }
+        });
 
         hmaintenance.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         hmaintenance.setText("Hall maintenance schedule");
+        hmaintenance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hmaintenanceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout smallbLayout = new javax.swing.GroupLayout(smallb);
         smallb.setLayout(smallbLayout);
@@ -71,18 +81,18 @@ public class schedulerhomepage extends javax.swing.JFrame {
             .addGroup(smallbLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(havailability)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hmaintenance)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         smallbLayout.setVerticalGroup(
             smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(smallbLayout.createSequentialGroup()
-                .addGap(78, 78, 78)
+                .addGap(65, 65, 65)
                 .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(havailability)
-                    .addComponent(hmaintenance))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addComponent(havailability, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hmaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         getContentPane().add(smallb, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 460, 180));
@@ -101,6 +111,16 @@ public class schedulerhomepage extends javax.swing.JFrame {
             new Loginpage().setVisible(true);
         }
     }//GEN-LAST:event_logoutActionPerformed
+
+    private void havailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_havailabilityActionPerformed
+        setVisible(false);
+        new Hall_availability_schedule().setVisible(true);
+    }//GEN-LAST:event_havailabilityActionPerformed
+
+    private void hmaintenanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hmaintenanceActionPerformed
+        setVisible(false);
+        new Hall_maintenance_schedule().setVisible(true);
+    }//GEN-LAST:event_hmaintenanceActionPerformed
 
     /**
      * @param args the command line arguments
