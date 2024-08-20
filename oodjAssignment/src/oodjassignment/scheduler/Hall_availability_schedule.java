@@ -93,7 +93,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         Aschedule.setSelectionBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(Aschedule);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 470, 500));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, 470, 520));
 
         jPanel2.setBackground(new java.awt.Color(0, 137, 248));
 
@@ -282,10 +282,10 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 280, 500));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 280, 520));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel1");
@@ -317,9 +317,10 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
          DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
         System.out.println("Row Selected: " +model.getValueAt(Aschedule.getSelectedRow(),3));
         userID.setText(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
-        Event.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
-        Date.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
-        Price.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
+        halltype.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
+        Price.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
+        Date.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
+        Event.setText(model.getValueAt(Aschedule.getSelectedRow(), 4).toString());
         System.out.println("Row Selected: " +Aschedule.getSelectedRow());
     }//GEN-LAST:event_EditActionPerformed
 

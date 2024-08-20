@@ -4,7 +4,14 @@
  */
 package oodjassignment.scheduler;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import oodjassignment.Loginpage;
 
 /**
@@ -34,6 +41,20 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
         start_date = new javax.swing.JTextField();
         end_date = new javax.swing.JTextField();
         review = new javax.swing.JTextField();
+        ht = new javax.swing.JLabel();
+        sd = new javax.swing.JLabel();
+        ed = new javax.swing.JLabel();
+        duration = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        Add = new javax.swing.JButton();
+        Delete = new javax.swing.JButton();
+        Save = new javax.swing.JButton();
+        Edit = new javax.swing.JButton();
+        Reset = new javax.swing.JButton();
+        View = new javax.swing.JButton();
+        halltype = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        maintenance = new javax.swing.JTable();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,43 +78,175 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
 
         start_date.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         start_date.setForeground(new java.awt.Color(204, 204, 204));
-        start_date.setText("Start_date");
 
         end_date.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         end_date.setForeground(new java.awt.Color(204, 204, 204));
-        end_date.setText("end_date");
 
         review.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         review.setForeground(new java.awt.Color(204, 204, 204));
+        review.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         review.setText("Review");
+
+        ht.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        ht.setForeground(new java.awt.Color(255, 255, 255));
+        ht.setText("Hall Type :");
+
+        sd.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        sd.setForeground(new java.awt.Color(255, 255, 255));
+        sd.setText("Start Date :");
+
+        ed.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        ed.setForeground(new java.awt.Color(255, 255, 255));
+        ed.setText("End Date :");
+
+        duration.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        duration.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Duration :");
+
+        Add.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        Add.setText("Add");
+        Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddActionPerformed(evt);
+            }
+        });
+
+        Delete.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        Delete.setText("Delete");
+        Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteActionPerformed(evt);
+            }
+        });
+
+        Save.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        Save.setText("Update");
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
+
+        Edit.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        Edit.setText("Edit");
+        Edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditActionPerformed(evt);
+            }
+        });
+
+        Reset.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        Reset.setText("Clear");
+        Reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ResetActionPerformed(evt);
+            }
+        });
+
+        View.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        View.setText("View");
+        View.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewActionPerformed(evt);
+            }
+        });
+
+        halltype.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        halltype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auditorium", "Bonquet Hall", "Meeting Room" }));
 
         javax.swing.GroupLayout smallbLayout = new javax.swing.GroupLayout(smallb);
         smallb.setLayout(smallbLayout);
         smallbLayout.setHorizontalGroup(
             smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(smallbLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(18, 18, 18)
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(review)
                     .addGroup(smallbLayout.createSequentialGroup()
-                        .addComponent(start_date, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, smallbLayout.createSequentialGroup()
+                                .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(smallbLayout.createSequentialGroup()
+                                .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)))
+                        .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(View, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                            .addComponent(Edit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(end_date, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                        .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Save, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(smallbLayout.createSequentialGroup()
+                        .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, smallbLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(sd))
+                            .addGroup(smallbLayout.createSequentialGroup()
+                                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ed)
+                                    .addComponent(jLabel1)
+                                    .addComponent(ht))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(duration)
+                            .addComponent(end_date, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(start_date, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(halltype, 0, 167, Short.MAX_VALUE))))
+                .addGap(18, 18, 18))
         );
         smallbLayout.setVerticalGroup(
             smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(smallbLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(14, 14, 14)
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ht)
+                    .addComponent(halltype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(start_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(end_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sd))
                 .addGap(18, 18, 18)
-                .addComponent(review, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(end_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ed))
+                .addGap(18, 18, 18)
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addComponent(review, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Edit)
+                    .addComponent(Save)
+                    .addComponent(Add))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Delete)
+                    .addComponent(View)
+                    .addComponent(Reset))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
-        getContentPane().add(smallb, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 330, 190));
+        getContentPane().add(smallb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 300, 430));
+
+        maintenance.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        maintenance.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Start Date", "End Date", "Duration", "Review"
+            }
+        ));
+        jScrollPane1.setViewportView(maintenance);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, -1, 430));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -108,6 +261,107 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
             new schedulerhomepage().setVisible(true);
         }
     }//GEN-LAST:event_logoutActionPerformed
+
+    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+        if(start_date.getText().equals("")||end_date.getText().equals("")||duration.getText().equals("")||review.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Please Enter All Data !");
+        }else{
+
+            DefaultTableModel model = (DefaultTableModel) maintenance.getModel();
+            String[] record = {(String) halltype.getSelectedItem() , start_date.getText(), end_date.getText(), duration.getText(),review.getText()};
+            model.addRow(record);
+            BufferedWriter bw;
+            try {
+                bw = new BufferedWriter(new FileWriter("User.txt",true));
+                String rec = (String) halltype.getSelectedItem() +"/"+ start_date.getText() +"/"+ end_date.getText() +"/"+ duration.getText() +"/"+ review.getText();
+                bw.write(rec+"\n");
+                bw.close();
+            } catch (IOException ex){
+                JOptionPane.showMessageDialog(this,"Something Wrong");
+            }
+        }
+    }//GEN-LAST:event_AddActionPerformed
+
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
+        DefaultTableModel model = (DefaultTableModel) maintenance.getModel();
+        System.out.println("Row Selected: " +model.getValueAt(maintenance.getSelectedRow(),3));
+        halltype.setSelectedItem(model.getValueAt(maintenance.getSelectedRow(), 0).toString());
+        start_date.setText(model.getValueAt(maintenance.getSelectedRow(), 1).toString());
+        end_date.setText(model.getValueAt(maintenance.getSelectedRow(), 2).toString());
+        duration.setText(model.getValueAt(maintenance.getSelectedRow(), 3).toString());
+        review.setText(model.getValueAt(maintenance.getSelectedRow(), 4).toString());
+        System.out.println("Row Selected: " +maintenance.getSelectedRow());
+    }//GEN-LAST:event_EditActionPerformed
+
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+        DefaultTableModel model = (DefaultTableModel) maintenance.getModel();
+        int tablelist = model.getRowCount();
+        System.out.println("Row Selected: "+ maintenance.getSelectedRow());
+        model.setValueAt((String) halltype.getSelectedItem(), maintenance.getSelectedRow(), 0);
+        model.setValueAt(start_date.getText(), maintenance.getSelectedRow(), 1);
+        model.setValueAt(end_date.getText(), maintenance.getSelectedRow(), 2);
+        model.setValueAt(duration.getText(), maintenance.getSelectedRow(), 3);
+        model.setValueAt(review.getText(), maintenance.getSelectedRow(), 4);
+
+        try {
+            BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
+            for (int i=0 ; i<tablelist ; i++){
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString();
+                bw.write(rec+"\n");
+            }
+            bw.close();
+        } catch (IOException ex){
+            JOptionPane.showMessageDialog(this,"Something Wrong");
+        }
+    }//GEN-LAST:event_SaveActionPerformed
+
+    private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
+        DefaultTableModel model = (DefaultTableModel) maintenance.getModel();
+        System.out.println("Row Selected: " + maintenance.getSelectedRow());
+        model.removeRow(maintenance.getSelectedRow());
+        int tablelist = model.getRowCount();
+        try {
+            BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
+            for (int i=0 ; i<tablelist ; i++){
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString();
+                bw.write(rec+"\n");
+            }
+            bw.close();
+        } catch (IOException ex){
+            JOptionPane.showMessageDialog(this,"Something Wrong");
+        }
+    }//GEN-LAST:event_DeleteActionPerformed
+
+    private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
+        String filePath = "User.txt";
+        File file = new File(filePath);
+
+        try {
+            // Create a BufferedReader to read the file
+            BufferedReader br = new BufferedReader(new FileReader(file));
+
+            // Get the table model from the JTable
+            DefaultTableModel model = (DefaultTableModel) maintenance.getModel();
+
+            // Clear existing rows in the table model to prevent duplication
+            model.setRowCount(0);
+
+            // Read each line from the file and add it to the table model
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] dataRow = line.split("/"); // Adjust the delimiter if necessary
+                model.addRow(dataRow);
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
+        }
+
+    }//GEN-LAST:event_ViewActionPerformed
+
+    private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
+        setVisible(false);
+        new Hall_availability_schedule().setVisible(true);
+    }//GEN-LAST:event_ResetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,10 +399,24 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Add;
+    private javax.swing.JButton Delete;
+    private javax.swing.JButton Edit;
+    private javax.swing.JButton Reset;
+    private javax.swing.JButton Save;
+    private javax.swing.JButton View;
     private javax.swing.JLabel background;
+    private javax.swing.JTextField duration;
+    private javax.swing.JLabel ed;
     private javax.swing.JTextField end_date;
+    private javax.swing.JComboBox<String> halltype;
+    private javax.swing.JLabel ht;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logout;
+    private javax.swing.JTable maintenance;
     private javax.swing.JTextField review;
+    private javax.swing.JLabel sd;
     private javax.swing.JPanel smallb;
     private javax.swing.JTextField start_date;
     // End of variables declaration//GEN-END:variables
