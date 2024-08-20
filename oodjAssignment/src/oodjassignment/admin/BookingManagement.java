@@ -4,17 +4,85 @@
  */
 package oodjassignment.admin;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author user
  */
 public class BookingManagement extends javax.swing.JFrame {
 
-    /**
-     * Creates new form BookingManagement
-     */
+    private TableRowSorter<DefaultTableModel> upcomingRowSorter;
+    private TableRowSorter<DefaultTableModel> pastRowSorter;
+
     public BookingManagement() {
         initComponents();
+        showDataFromFile("src\\oodjassignment\\database\\Booking.txt");
+
+        // Initialize the row sorter for tbUpcomingBooking
+        DefaultTableModel upcomingModel = (DefaultTableModel) tbUpcomingBooking.getModel();
+        upcomingRowSorter = new TableRowSorter<>(upcomingModel);
+        tbUpcomingBooking.setRowSorter(upcomingRowSorter);
+
+        // Initialize the row sorter for tbPastBooking
+        DefaultTableModel pastModel = (DefaultTableModel) tbPastBooking.getModel();
+        pastRowSorter = new TableRowSorter<>(pastModel);
+        tbPastBooking.setRowSorter(pastRowSorter);
+    }
+
+    private void showDataFromFile(String filePath) {
+        DefaultTableModel upcomingModel = (DefaultTableModel) tbUpcomingBooking.getModel();
+        DefaultTableModel pastModel = (DefaultTableModel) tbPastBooking.getModel();
+
+        // Date format: 20-Aug-2024
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+        // Time format: 10pm
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("ha");
+
+        // Current date and time
+        LocalDateTime now = LocalDateTime.now();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                // Assuming the file format is: BookingID, Customer Name, Hall type, Date, Time, Event Information
+                String bookingDate = data[3];
+                String bookingTime = data[4];
+
+                try {
+                    // Parse the booking date and time separately
+                    LocalDateTime bookingDateTime = LocalDateTime.of(
+                            LocalDate.parse(bookingDate, dateFormatter),
+                            LocalTime.parse(bookingTime, timeFormatter)
+                    );
+
+                    // Compare the booking date and time with the current date and time
+                    if (bookingDateTime.isAfter(now)) {
+                        // Future booking, add to upcoming bookings table
+                        upcomingModel.addRow(data);
+                    } else {
+                        // Past booking, add to past bookings table
+                        pastModel.addRow(data);
+                    }
+                } catch (DateTimeParseException e) {
+                    System.err.println("Error parsing date/time for booking: " + data[0]);
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -27,11 +95,11 @@ public class BookingManagement extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tabbedPanel1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbUpcomingBooking = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tbPastBooking = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         tfBookingId = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -47,49 +115,74 @@ public class BookingManagement extends javax.swing.JFrame {
         jLabel3.setText("BOOKING MANAGEMENT");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
 
-        jTabbedPane1.setBackground(new java.awt.Color(0, 0, 0));
-        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
+        tabbedPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        tabbedPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setBackground(new java.awt.Color(0, 137, 248));
-        jTable1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbUpcomingBooking.setAutoCreateRowSorter(true);
+        tbUpcomingBooking.setBackground(new java.awt.Color(0, 137, 248));
+        tbUpcomingBooking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
+            },
+            new String [] {
+                "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "EVENT INFORMATION"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tbUpcomingBooking);
+        if (tbUpcomingBooking.getColumnModel().getColumnCount() > 0) {
+            tbUpcomingBooking.getColumnModel().getColumn(0).setPreferredWidth(90);
+            tbUpcomingBooking.getColumnModel().getColumn(0).setMaxWidth(90);
+            tbUpcomingBooking.getColumnModel().getColumn(1).setPreferredWidth(120);
+            tbUpcomingBooking.getColumnModel().getColumn(1).setMaxWidth(120);
+            tbUpcomingBooking.getColumnModel().getColumn(5).setMinWidth(120);
+            tbUpcomingBooking.getColumnModel().getColumn(5).setPreferredWidth(120);
+        }
+
+        tabbedPanel1.addTab("Upcoming Booking", jScrollPane1);
+
+        tbPastBooking.setAutoCreateRowSorter(true);
+        tbPastBooking.setBackground(new java.awt.Color(0, 137, 248));
+        tbPastBooking.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
             },
             new String [] {
                 "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "EVENT INFORMATION"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tbPastBooking);
+        if (tbPastBooking.getColumnModel().getColumnCount() > 0) {
+            tbPastBooking.getColumnModel().getColumn(0).setPreferredWidth(90);
+            tbPastBooking.getColumnModel().getColumn(0).setMaxWidth(90);
+            tbPastBooking.getColumnModel().getColumn(1).setPreferredWidth(120);
+            tbPastBooking.getColumnModel().getColumn(1).setMaxWidth(120);
+            tbPastBooking.getColumnModel().getColumn(5).setMinWidth(120);
+            tbPastBooking.getColumnModel().getColumn(5).setPreferredWidth(120);
+        }
 
-        jTabbedPane1.addTab("Upcoming Booking", jScrollPane1);
+        tabbedPanel1.addTab("Past Booking", jScrollPane2);
 
-        jTable2.setAutoCreateRowSorter(true);
-        jTable2.setBackground(new java.awt.Color(0, 137, 248));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        jTabbedPane1.addTab("Past Booking", jScrollPane2);
-
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 750, 420));
+        getContentPane().add(tabbedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 750, 420));
 
         jPanel2.setBackground(new java.awt.Color(0, 137, 248));
 
         tfBookingId.setText("Booking ID");
+        tfBookingId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfBookingIdKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfBookingIdKeyReleased(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel1.setText("SEARCH:");
@@ -143,6 +236,23 @@ public class BookingManagement extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenu2MouseClicked
 
+    private void tfBookingIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBookingIdKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfBookingIdKeyPressed
+
+    private void tfBookingIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBookingIdKeyReleased
+        String searchText = tfBookingId.getText().trim();
+
+        if (searchText.length() == 0) {
+            upcomingRowSorter.setRowFilter(null); // No filter for upcoming bookings
+            pastRowSorter.setRowFilter(null);     // No filter for past bookings
+        } else {
+            RowFilter<DefaultTableModel, Object> filter = RowFilter.regexFilter("(?i)" + searchText);
+            upcomingRowSorter.setRowFilter(filter); // Apply filter for upcoming bookings
+            pastRowSorter.setRowFilter(filter);     // Apply filter for past bookings
+        }
+    }//GEN-LAST:event_tfBookingIdKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -187,9 +297,9 @@ public class BookingManagement extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTabbedPane tabbedPanel1;
+    private javax.swing.JTable tbPastBooking;
+    private javax.swing.JTable tbUpcomingBooking;
     private javax.swing.JTextField tfBookingId;
     // End of variables declaration//GEN-END:variables
 }
