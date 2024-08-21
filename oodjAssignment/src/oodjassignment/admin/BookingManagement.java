@@ -25,26 +25,7 @@ public class BookingManagement extends javax.swing.JFrame {
         pastRowSorter = new TableRowSorter<>(pastModel);
         tbPastBooking.setRowSorter(pastRowSorter);
     }
-
-    private int getColumnIndex(String selectedColumn) {
-        switch (selectedColumn) {
-            case "BOOKING ID":
-                return 0;
-            case "CUSTOMER NAME":
-                return 1;
-            case "HALL TYPE":
-                return 2;
-            case "DATE":
-                return 3;
-            case "TIME":
-                return 4;
-            case "EVENT INFORMATION":
-                return 5;
-            default:
-                return -1;  // Should not happen
-        }
-    }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
