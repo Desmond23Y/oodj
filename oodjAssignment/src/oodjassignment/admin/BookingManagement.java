@@ -1,26 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package oodjassignment.admin;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.regex.PatternSyntaxException;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author user
- */
 public class BookingManagement extends javax.swing.JFrame {
 
     private TableRowSorter<DefaultTableModel> upcomingRowSorter;
@@ -28,15 +12,16 @@ public class BookingManagement extends javax.swing.JFrame {
 
     public BookingManagement() {
         initComponents();
-        showDataFromFile("src\\oodjassignment\\database\\Booking.txt");
-
-        // Initialize the row sorter for tbUpcomingBooking
         DefaultTableModel upcomingModel = (DefaultTableModel) tbUpcomingBooking.getModel();
+        DefaultTableModel pastModel = (DefaultTableModel) tbPastBooking.getModel();
+
+        // Use adminClass to handle data loading
+        adminClass.showDataFromFile("src\\oodjassignment\\database\\Booking.txt", upcomingModel, pastModel);
+
+        // Initialize the row sorter
         upcomingRowSorter = new TableRowSorter<>(upcomingModel);
         tbUpcomingBooking.setRowSorter(upcomingRowSorter);
 
-        // Initialize the row sorter for tbPastBooking
-        DefaultTableModel pastModel = (DefaultTableModel) tbPastBooking.getModel();
         pastRowSorter = new TableRowSorter<>(pastModel);
         tbPastBooking.setRowSorter(pastRowSorter);
     }
@@ -57,51 +42,6 @@ public class BookingManagement extends javax.swing.JFrame {
                 return 5;
             default:
                 return -1;  // Should not happen
-        }
-    }
-    
-    private void showDataFromFile(String filePath) {
-        DefaultTableModel upcomingModel = (DefaultTableModel) tbUpcomingBooking.getModel();
-        DefaultTableModel pastModel = (DefaultTableModel) tbPastBooking.getModel();
-
-        // Date format: 20-Aug-2024
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
-        // Time format: 10pm
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("ha");
-
-        // Current date and time
-        LocalDateTime now = LocalDateTime.now();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(",");
-                // Assuming the file format is: BookingID, Customer Name, Hall type, Date, Time, Event Information
-                String bookingDate = data[3];
-                String bookingTime = data[4];
-
-                try {
-                    // Parse the booking date and time separately
-                    LocalDateTime bookingDateTime = LocalDateTime.of(
-                            LocalDate.parse(bookingDate, dateFormatter),
-                            LocalTime.parse(bookingTime, timeFormatter)
-                    );
-
-                    // Compare the booking date and time with the current date and time
-                    if (bookingDateTime.isAfter(now)) {
-                        // Future booking, add to upcoming bookings table
-                        upcomingModel.addRow(data);
-                    } else {
-                        // Past booking, add to past bookings table
-                        pastModel.addRow(data);
-                    }
-                } catch (DateTimeParseException e) {
-                    System.err.println("Error parsing date/time for booking: " + data[0]);
-                    e.printStackTrace();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -148,11 +88,11 @@ public class BookingManagement extends javax.swing.JFrame {
 
             },
             new String [] {
-                "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "EVENT INFORMATION"
+                "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "DURATION", "PRICE", "EVENT INFORMATION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -165,8 +105,8 @@ public class BookingManagement extends javax.swing.JFrame {
             tbUpcomingBooking.getColumnModel().getColumn(0).setMaxWidth(90);
             tbUpcomingBooking.getColumnModel().getColumn(1).setPreferredWidth(120);
             tbUpcomingBooking.getColumnModel().getColumn(1).setMaxWidth(120);
-            tbUpcomingBooking.getColumnModel().getColumn(5).setMinWidth(120);
-            tbUpcomingBooking.getColumnModel().getColumn(5).setPreferredWidth(120);
+            tbUpcomingBooking.getColumnModel().getColumn(7).setMinWidth(120);
+            tbUpcomingBooking.getColumnModel().getColumn(7).setPreferredWidth(120);
         }
 
         tabbedPanel1.addTab("Upcoming Booking", jScrollPane1);
@@ -178,17 +118,25 @@ public class BookingManagement extends javax.swing.JFrame {
 
             },
             new String [] {
-                "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "EVENT INFORMATION"
+                "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "DURATION", "PRICE", "EVENT INFORMATION"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tbPastBooking);
         if (tbPastBooking.getColumnModel().getColumnCount() > 0) {
             tbPastBooking.getColumnModel().getColumn(0).setPreferredWidth(90);
             tbPastBooking.getColumnModel().getColumn(0).setMaxWidth(90);
             tbPastBooking.getColumnModel().getColumn(1).setPreferredWidth(120);
             tbPastBooking.getColumnModel().getColumn(1).setMaxWidth(120);
-            tbPastBooking.getColumnModel().getColumn(5).setMinWidth(120);
-            tbPastBooking.getColumnModel().getColumn(5).setPreferredWidth(120);
+            tbPastBooking.getColumnModel().getColumn(7).setMinWidth(120);
+            tbPastBooking.getColumnModel().getColumn(7).setPreferredWidth(120);
         }
 
         tabbedPanel1.addTab("Past Booking", jScrollPane2);
@@ -294,20 +242,9 @@ public class BookingManagement extends javax.swing.JFrame {
     private void tfSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfSearchKeyReleased
         String searchText = tfSearch.getText().trim();
         String selectedColumn = (String) cbSearch.getSelectedItem();
-        int columnIndex = getColumnIndex(selectedColumn);
+        int columnIndex = adminClass.getColumnIndex(selectedColumn);
 
-        if (searchText.length() == 0) {
-            upcomingRowSorter.setRowFilter(null);
-            pastRowSorter.setRowFilter(null);
-        } else if (columnIndex != -1) { // Ensure the selected column is valid
-            try {
-                RowFilter<DefaultTableModel, Object> filter = RowFilter.regexFilter("(?i)" + searchText, columnIndex);
-                upcomingRowSorter.setRowFilter(filter);
-                pastRowSorter.setRowFilter(filter);
-            } catch (PatternSyntaxException e) {
-                System.err.println("Invalid regex pattern: " + searchText);
-            }
-        }
+        adminClass.applyFilter(upcomingRowSorter, pastRowSorter, searchText, columnIndex);
     }//GEN-LAST:event_tfSearchKeyReleased
 
     private void cbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSearchActionPerformed
