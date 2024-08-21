@@ -1,7 +1,5 @@
 package oodjassignment.admin;
 
-import java.util.regex.PatternSyntaxException;
-import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 

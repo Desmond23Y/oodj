@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Locale;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -36,7 +37,7 @@ public class adminClass {
 
     public static void showDataFromFile(String filePath, DefaultTableModel upcomingModel, DefaultTableModel pastModel) {
         // Date format: 01-Jul-2024
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy", Locale.ENGLISH);
         // Time format: 5pm
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("ha");
 
