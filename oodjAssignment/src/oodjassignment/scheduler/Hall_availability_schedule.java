@@ -46,7 +46,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Aschedule = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        userID = new javax.swing.JTextField();
         Remarks = new javax.swing.JTextField();
         Date = new javax.swing.JTextField();
         Price = new javax.swing.JTextField();
@@ -57,7 +56,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         Save = new javax.swing.JButton();
         Delete = new javax.swing.JButton();
         halltype = new javax.swing.JComboBox<>();
-        ui = new javax.swing.JLabel();
         ht = new javax.swing.JLabel();
         p = new javax.swing.JLabel();
         dt = new javax.swing.JLabel();
@@ -92,7 +90,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
 
             },
             new String [] {
-                "User ID", "Hall Type", "Price", "Date", "Time", "Status", "Remarks"
+                "Hall Type", "Price", "Date", "Time", "Status", "Remarks"
             }
         ));
         Aschedule.setSelectionBackground(new java.awt.Color(204, 204, 204));
@@ -102,9 +100,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 137, 248));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        userID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jPanel2.add(userID, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 19, 154, -1));
 
         Remarks.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Remarks.setForeground(new java.awt.Color(153, 153, 153));
@@ -118,10 +113,10 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 RemarksFocusLost(evt);
             }
         });
-        jPanel2.add(Remarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 265, 242, 107));
+        jPanel2.add(Remarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 242, 107));
 
         Date.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jPanel2.add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 142, 154, -1));
+        jPanel2.add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 154, -1));
 
         Price.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Price.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +124,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 PriceActionPerformed(evt);
             }
         });
-        jPanel2.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 101, 154, -1));
+        jPanel2.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 154, -1));
 
         Add.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Add.setText("Add");
@@ -138,7 +133,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 AddActionPerformed(evt);
             }
         });
-        jPanel2.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, -1, -1));
+        jPanel2.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         Reset.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Reset.setText("Clear");
@@ -147,7 +142,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 ResetActionPerformed(evt);
             }
         });
-        jPanel2.add(Reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, -1, -1));
+        jPanel2.add(Reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, -1, -1));
 
         Edit.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Edit.setText("Edit");
@@ -156,7 +151,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 EditActionPerformed(evt);
             }
         });
-        jPanel2.add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, -1, -1));
+        jPanel2.add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 80, -1));
 
         View.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         View.setText("View");
@@ -165,7 +160,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 ViewActionPerformed(evt);
             }
         });
-        jPanel2.add(View, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, -1, -1));
+        jPanel2.add(View, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 80, -1));
 
         Save.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Save.setText("Update");
@@ -174,7 +169,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 SaveActionPerformed(evt);
             }
         });
-        jPanel2.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 390, -1, -1));
+        jPanel2.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
 
         Delete.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Delete.setText("Delete");
@@ -183,7 +178,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 DeleteActionPerformed(evt);
             }
         });
-        jPanel2.add(Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
+        jPanel2.add(Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
         halltype.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         halltype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auditorium", "Banquet Hall", "Meeting Room" }));
@@ -192,27 +187,22 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 halltypeActionPerformed(evt);
             }
         });
-        jPanel2.add(halltype, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 60, 154, -1));
-
-        ui.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        ui.setForeground(new java.awt.Color(255, 255, 255));
-        ui.setText("User ID :");
-        jPanel2.add(ui, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 20, -1, -1));
+        jPanel2.add(halltype, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 154, -1));
 
         ht.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         ht.setForeground(new java.awt.Color(255, 255, 255));
         ht.setText("Hall Type :");
-        jPanel2.add(ht, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 61, -1, -1));
+        jPanel2.add(ht, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         p.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         p.setForeground(new java.awt.Color(255, 255, 255));
         p.setText("Price :");
-        jPanel2.add(p, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 102, -1, -1));
+        jPanel2.add(p, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         dt.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         dt.setForeground(new java.awt.Color(255, 255, 255));
         dt.setText("Date :");
-        jPanel2.add(dt, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 143, -1, -1));
+        jPanel2.add(dt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         filter.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         filter.setForeground(new java.awt.Color(153, 153, 153));
@@ -231,17 +221,17 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 filterKeyReleased(evt);
             }
         });
-        jPanel2.add(filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 470, 115, -1));
+        jPanel2.add(filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 115, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Search :");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 470, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
 
         t.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         t.setForeground(new java.awt.Color(255, 255, 255));
         t.setText("Time :");
-        jPanel2.add(t, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 184, -1, -1));
+        jPanel2.add(t, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         time.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         time.addActionListener(new java.awt.event.ActionListener() {
@@ -249,16 +239,16 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 timeActionPerformed(evt);
             }
         });
-        jPanel2.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 183, 154, -1));
+        jPanel2.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 154, -1));
 
         st.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         st.setForeground(new java.awt.Color(255, 255, 255));
         st.setText("Status :");
-        jPanel2.add(st, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 225, -1, -1));
+        jPanel2.add(st, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         status.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Free", "Already Booking", "Under Maintenance" }));
-        jPanel2.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(103, 224, 154, -1));
+        jPanel2.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 154, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 280, 520));
 
@@ -291,28 +281,27 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
          DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
         System.out.println("Row Selected: " +model.getValueAt(Aschedule.getSelectedRow(),3));
-        userID.setText(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
-        halltype.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
-        Price.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
-        Date.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
-        time.setText(model.getValueAt(Aschedule.getSelectedRow(), 4).toString());
-        status.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 5).toString());
-        Remarks.setText(model.getValueAt(Aschedule.getSelectedRow(), 6).toString());
+        halltype.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
+        Price.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
+        Date.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
+        time.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
+        status.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 4).toString());
+        Remarks.setText(model.getValueAt(Aschedule.getSelectedRow(), 5).toString());
         System.out.println("Row Selected: " +Aschedule.getSelectedRow());
     }//GEN-LAST:event_EditActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-        if(userID.getText().equals("")|| Remarks.getText().equals("")||Date.getText().equals("")||Price.getText().equals("")||time.getText().equals("")){
+        if(Remarks.getText().equals("")||Date.getText().equals("")||Price.getText().equals("")||time.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please Enter All Data !");
         }else{
         
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        String[] record = {userID.getText(), (String) halltype.getSelectedItem() , Price.getText(), Date.getText(), time.getText(),(String) status.getSelectedItem(), Remarks.getText()};
+        String[] record = {(String) halltype.getSelectedItem() , Price.getText(), Date.getText(), time.getText(),(String) status.getSelectedItem(), Remarks.getText()};
         model.addRow(record);
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("User.txt",true));
-            String rec = userID.getText() +"/"+ (String) halltype.getSelectedItem() +"/"+ Price.getText() +"/"+ Date.getText() +"/"+ time.getText() +"/"+ (String) status.getSelectedItem() +"/"+ Remarks.getText();
+            String rec = (String) halltype.getSelectedItem() +"/"+ Price.getText() +"/"+ Date.getText() +"/"+ time.getText() +"/"+ (String) status.getSelectedItem() +"/"+ Remarks.getText();
             bw.write(rec+"\n");
             bw.close();
         } catch (IOException ex){
@@ -356,7 +345,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         try {
             BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
             for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString();
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString();
                 bw.write(rec+"\n");
             }  
             bw.close(); 
@@ -374,18 +363,17 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
         int tablelist = model.getRowCount();
         System.out.println("Row Selected: "+ Aschedule.getSelectedRow());
-        model.setValueAt(userID.getText(), Aschedule.getSelectedRow(), 0);
-        model.setValueAt((String) halltype.getSelectedItem(), Aschedule.getSelectedRow(), 1);
-        model.setValueAt(Price.getText(), Aschedule.getSelectedRow(), 2);
-        model.setValueAt(Date.getText(), Aschedule.getSelectedRow(), 3);
-        model.setValueAt(time.getText(), Aschedule.getSelectedRow(), 4);
-        model.setValueAt((String)status.getSelectedItem(), Aschedule.getSelectedRow(), 5);
-        model.setValueAt(Remarks.getText(), Aschedule.getSelectedRow(), 6);
+        model.setValueAt((String) halltype.getSelectedItem(), Aschedule.getSelectedRow(), 0);
+        model.setValueAt(Price.getText(), Aschedule.getSelectedRow(), 1);
+        model.setValueAt(Date.getText(), Aschedule.getSelectedRow(), 2);
+        model.setValueAt(time.getText(), Aschedule.getSelectedRow(), 3);
+        model.setValueAt((String)status.getSelectedItem(), Aschedule.getSelectedRow(), 4);
+        model.setValueAt(Remarks.getText(), Aschedule.getSelectedRow(), 5);
         
         try {
             BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
             for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString();
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString();
                 bw.write(rec+"\n"); 
             }  
             bw.close(); 
@@ -539,8 +527,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> status;
     private javax.swing.JLabel t;
     private javax.swing.JTextField time;
-    private javax.swing.JLabel ui;
-    private javax.swing.JTextField userID;
     // End of variables declaration//GEN-END:variables
 
     private Color newColor(int i, int i0, int i1) {
