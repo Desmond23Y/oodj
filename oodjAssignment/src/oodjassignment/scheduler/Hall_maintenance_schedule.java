@@ -270,7 +270,7 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
             model.addRow(record);
             BufferedWriter bw;
             try {
-                bw = new BufferedWriter(new FileWriter("User.txt",true));
+                bw = new BufferedWriter(new FileWriter("src\\\\oodjassignment\\\\database\\\\Schedule_maintenance.txt",true));
                 String rec = (String) halltype.getSelectedItem() +"/"+ start_date.getText() +"/"+ end_date.getText() +"/"+ duration.getText() +"/"+ review.getText();
                 bw.write(rec+"\n");
                 bw.close();
@@ -302,7 +302,7 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
         model.setValueAt(review.getText(), maintenance.getSelectedRow(), 4);
 
         try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
+            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule_maintenance.txt"));
             for (int i=0 ; i<tablelist ; i++){
                 String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString();
                 bw.write(rec+"\n");
@@ -319,7 +319,7 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
         model.removeRow(maintenance.getSelectedRow());
         int tablelist = model.getRowCount();
         try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
+            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule_maintenance.txt"));
             for (int i=0 ; i<tablelist ; i++){
                 String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString();
                 bw.write(rec+"\n");

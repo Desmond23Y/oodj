@@ -300,7 +300,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         model.addRow(record);
         BufferedWriter bw;
         try {
-            bw = new BufferedWriter(new FileWriter("User.txt",true));
+            bw = new BufferedWriter(new FileWriter("src\\\\oodjassignment\\\\database\\\\Schedule.txt",true));
             String rec = (String) halltype.getSelectedItem() +"/"+ Price.getText() +"/"+ Date.getText() +"/"+ time.getText() +"/"+ (String) status.getSelectedItem() +"/"+ Remarks.getText();
             bw.write(rec+"\n");
             bw.close();
@@ -311,7 +311,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     }//GEN-LAST:event_AddActionPerformed
 
     private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
-        String filePath = "User.txt";
+        String filePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
         File file = new File(filePath);
 
         try {
@@ -343,7 +343,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         model.removeRow(Aschedule.getSelectedRow());
         int tablelist = model.getRowCount();
         try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
+            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule.txt"));
             for (int i=0 ; i<tablelist ; i++){
                 String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString();
                 bw.write(rec+"\n");
@@ -371,7 +371,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         model.setValueAt(Remarks.getText(), Aschedule.getSelectedRow(), 5);
         
         try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("User.txt"));
+            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule.txt"));
             for (int i=0 ; i<tablelist ; i++){
                 String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString();
                 bw.write(rec+"\n"); 
