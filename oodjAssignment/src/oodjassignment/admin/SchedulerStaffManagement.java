@@ -34,10 +34,10 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btDelete = new javax.swing.JButton();
+        btSearch1 = new javax.swing.JButton();
+        btUpdate = new javax.swing.JButton();
+        btCreate = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         tfPassword = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -49,6 +49,8 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         tfPhone = new javax.swing.JTextField();
         tfEmail1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        btClear = new javax.swing.JButton();
+        SEARCH = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
@@ -63,36 +65,41 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         jLabel3.setText("SCHEDULER MANAGEMENT");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, -1));
 
-        jButton4.setBackground(new java.awt.Color(235, 235, 235));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setText("SEARCH");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 170, 35));
+        btDelete.setBackground(new java.awt.Color(235, 235, 235));
+        btDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btDelete.setForeground(new java.awt.Color(0, 0, 0));
+        btDelete.setText("DELETE");
+        btDelete.setMaximumSize(new java.awt.Dimension(50, 23));
+        btDelete.setMinimumSize(new java.awt.Dimension(50, 23));
+        btDelete.setPreferredSize(new java.awt.Dimension(50, 23));
+        getContentPane().add(btDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 150, 120, 35));
 
-        jButton1.setBackground(new java.awt.Color(235, 235, 235));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("CREATE");
-        jButton1.setMaximumSize(new java.awt.Dimension(72, 30));
-        jButton1.setPreferredSize(new java.awt.Dimension(72, 35));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 170, -1));
+        btSearch1.setBackground(new java.awt.Color(235, 235, 235));
+        btSearch1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btSearch1.setForeground(new java.awt.Color(0, 0, 0));
+        btSearch1.setText("SEARCH");
+        btSearch1.setMaximumSize(new java.awt.Dimension(50, 23));
+        btSearch1.setMinimumSize(new java.awt.Dimension(50, 23));
+        btSearch1.setPreferredSize(new java.awt.Dimension(50, 23));
+        getContentPane().add(btSearch1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 150, 120, 35));
 
-        jButton2.setBackground(new java.awt.Color(235, 235, 235));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("UPDATE");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 170, 35));
+        btUpdate.setBackground(new java.awt.Color(235, 235, 235));
+        btUpdate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btUpdate.setForeground(new java.awt.Color(0, 0, 0));
+        btUpdate.setText("UPDATE");
+        btUpdate.setMaximumSize(new java.awt.Dimension(50, 23));
+        btUpdate.setMinimumSize(new java.awt.Dimension(50, 23));
+        btUpdate.setPreferredSize(new java.awt.Dimension(50, 23));
+        getContentPane().add(btUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 120, 35));
 
-        jButton3.setBackground(new java.awt.Color(235, 235, 235));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setText("DELETE");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 150, 170, 35));
+        btCreate.setBackground(new java.awt.Color(235, 235, 235));
+        btCreate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btCreate.setForeground(new java.awt.Color(0, 0, 0));
+        btCreate.setText("CREATE");
+        btCreate.setMaximumSize(new java.awt.Dimension(50, 23));
+        btCreate.setMinimumSize(new java.awt.Dimension(50, 23));
+        btCreate.setPreferredSize(new java.awt.Dimension(50, 23));
+        getContentPane().add(btCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 150, 120, 35));
 
         jPanel2.setBackground(new java.awt.Color(0, 137, 248));
 
@@ -121,6 +128,22 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("STAFF ID:");
 
+        btClear.setBackground(new java.awt.Color(235, 235, 235));
+        btClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btClear.setForeground(new java.awt.Color(0, 0, 0));
+        btClear.setText("CLEAR FILTER");
+        btClear.setMaximumSize(new java.awt.Dimension(50, 23));
+        btClear.setMinimumSize(new java.awt.Dimension(50, 23));
+        btClear.setPreferredSize(new java.awt.Dimension(50, 23));
+
+        SEARCH.setBackground(new java.awt.Color(235, 235, 235));
+        SEARCH.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        SEARCH.setForeground(new java.awt.Color(0, 0, 0));
+        SEARCH.setText("SEARCH");
+        SEARCH.setMaximumSize(new java.awt.Dimension(50, 23));
+        SEARCH.setMinimumSize(new java.awt.Dimension(50, 23));
+        SEARCH.setPreferredSize(new java.awt.Dimension(50, 23));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -128,27 +151,25 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(tfStaffid, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(tfPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfEmail1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btClear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tfStaffid, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tfName, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(SEARCH, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(85, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfStaffid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,7 +189,11 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(SEARCH, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 250, 580));
@@ -221,10 +246,6 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -240,10 +261,12 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton SEARCH;
+    private javax.swing.JButton btClear;
+    private javax.swing.JButton btCreate;
+    private javax.swing.JButton btDelete;
+    private javax.swing.JButton btSearch1;
+    private javax.swing.JButton btUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
