@@ -97,7 +97,7 @@ public class UserManagement extends javax.swing.JFrame {
         jLabel11.setText("PASSWORD:");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel12.setText("STAFF ID:");
+        jLabel12.setText("USER ID:");
 
         btClear.setBackground(new java.awt.Color(235, 235, 235));
         btClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -173,13 +173,10 @@ public class UserManagement extends javax.swing.JFrame {
         jTable2.setBackground(new java.awt.Color(0, 137, 248));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "USER ID", "NAME", "PHONE NUMBER", "EMAIL", "PASSWORD"
             }
         ));
         jScrollPane2.setViewportView(jTable2);

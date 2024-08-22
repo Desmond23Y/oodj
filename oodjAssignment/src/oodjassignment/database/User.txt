@@ -1,1 +1,8 @@
 U0001,Hong Hao,0123456789,Honghao@mail.com,123
+Here are the entries with all spaces removed:
+
+U0002,Alex Lim,0987654321,alex@mail.com,456
+U0003,Harley,0192837465,khengooi@mail.com,789
+U0004,Sarah Lee,0129384756,sarahlee@mail.com,321
+U0005,Amir Zaki,0145637284,amirzaki@mail.com,654
+U0006,Nur Aisha,0172837465,nuraisha@mail.com,987
