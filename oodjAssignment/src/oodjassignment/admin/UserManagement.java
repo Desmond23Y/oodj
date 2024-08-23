@@ -1,22 +1,22 @@
 package oodjassignment.admin;
 
 import java.util.List;
-import java.io.IOException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import java.io.IOException;
+import java.util.ArrayList;
 
 public class UserManagement extends javax.swing.JFrame {
 
     private DefaultTableModel model;
-    private DataReader dataReader; // DataReader instance
+    private DataHandling dataHandling; // DataHandling instance
 
     public UserManagement() {
         initComponents();
         model = (DefaultTableModel) jTable.getModel();
-        dataReader = new DataReader("src\\oodjassignment\\database\\User.txt"); // Initialize DataReader
+        dataHandling = new DataHandling("src\\oodjassignment\\database\\User.txt"); // Initialize DataHandling
         showDataFromFile();
         jTable.getSelectionModel().addListSelectionListener(event -> {
             if (!event.getValueIsAdjusting() && jTable.getSelectedRow() != -1) {
@@ -57,20 +57,20 @@ public class UserManagement extends javax.swing.JFrame {
         String newRecord = userId + "," + name + "," + phone + "," + email + "," + password + "\n";
 
         try {
-            dataReader.appendData(newRecord);
+            dataHandling.appendData(newRecord);
             JOptionPane.showMessageDialog(this, "Record created successfully.");
-            clearTextFields();
-            showDataFromFile();
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "An error occurred while writing to the file.");
         }
+        clearTextFields();
+        showDataFromFile();
     }
 
     private void updateUser() {
         int selectedRow = jTable.getSelectedRow();
         if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a user to update.");
+            JOptionPane.showMessageDialog(this, "Please select a user to do changes.");
             return;
         }
 
@@ -85,10 +85,8 @@ public class UserManagement extends javax.swing.JFrame {
             return;
         }
 
-        String[] newRecord = {userId, name, phone, email, password};
-
         try {
-            dataReader.updateData(selectedRow, newRecord);
+            dataHandling.updateData(selectedRow, new String[]{userId, name, phone, email, password});
             DefaultTableModel model = (DefaultTableModel) jTable.getModel();
             model.setValueAt(userId, selectedRow, 0);
             model.setValueAt(name, selectedRow, 1);
@@ -113,7 +111,8 @@ public class UserManagement extends javax.swing.JFrame {
         int confirmation = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this user?", "Confirmation", JOptionPane.YES_NO_OPTION);
         if (confirmation == JOptionPane.YES_OPTION) {
             try {
-                dataReader.deleteData(selectedRow);
+                dataHandling.deleteData(selectedRow);
+                // Remove the selected row from the table model
                 DefaultTableModel model = (DefaultTableModel) jTable.getModel();
                 model.removeRow(selectedRow);
                 JOptionPane.showMessageDialog(this, "User record deleted successfully.");
@@ -172,7 +171,7 @@ public class UserManagement extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
         model.setRowCount(0);
         try {
-            List<String[]> data = dataReader.readData();
+            List<String[]> data = dataHandling.readData();
             for (String[] record : data) {
                 model.addRow(record);
             }

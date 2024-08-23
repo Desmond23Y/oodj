@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataReader {
+public class DataHandling {
 
     private String filePath;
 
-    public DataReader(String filePath) {
+    public DataHandling(String filePath) {
         this.filePath = filePath;
     }
 

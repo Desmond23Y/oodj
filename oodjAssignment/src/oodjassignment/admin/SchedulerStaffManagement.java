@@ -1,17 +1,20 @@
 package oodjassignment.admin;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import oodjassignment.admin.BaseManagement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class SchedulerStaffManagement extends javax.swing.JFrame {
 
+    private BaseManagement baseManagement;
+
     public SchedulerStaffManagement() {
         initComponents();
-        showDataFromFile("src\\oodjassignment\\database\\Scheduler.txt");
+        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+        String filePath = "src/oodjassignment/database/Scheduler.txt";
+        baseManagement = new BaseManagement(model, filePath);
+        jTable.setRowSorter(baseManagement.getSorter());
+        baseManagement.showDataFromFile();  // Load data on initialization
         jTable.getSelectionModel().addListSelectionListener(event -> {
             if (!event.getValueIsAdjusting() && jTable.getSelectedRow() != -1) {
                 getSelectedRowText();
@@ -21,15 +24,11 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
 
     private void getSelectedRowText() {
         int selectedRow = jTable.getSelectedRow();
-
-        // Retrieve data from the selected row
         String staffId = (String) jTable.getValueAt(selectedRow, 0);
         String name = (String) jTable.getValueAt(selectedRow, 1);
         String phone = (String) jTable.getValueAt(selectedRow, 2);
         String email = (String) jTable.getValueAt(selectedRow, 3);
         String password = (String) jTable.getValueAt(selectedRow, 4);
-
-        // Set the data into the text fields
         tfStaffid.setText(staffId);
         tfName.setText(name);
         tfPhone.setText(phone);
@@ -37,164 +36,12 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         tfPassword.setText(password);
     }
 
-    private void createStaff() {
-        // Retrieve data from the text fields
-        String staffId = tfStaffid.getText();
-        String name = tfName.getText();
-        String phone = tfPhone.getText();
-        String email = tfEmail.getText();
-        String password = tfPassword.getText();
-
-        // Check if any field is empty (optional validation)
-        if (staffId.isEmpty() || name.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill all fields before creating a record.");
-            return;
-        }
-
-        // Prepare the data to be appended to the file (format as needed)
-        String newRecord = staffId + "," + name + "," + phone + "," + email + "," + password + "\n";
-
-        // Append the data to the file
-        try (FileWriter writer = new FileWriter("src\\oodjassignment\\database\\Scheduler.txt", true)) {
-            writer.write(newRecord);
-            JOptionPane.showMessageDialog(this, "Record created successfully.");
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "An error occurred while writing to the file.");
-        }
-
-        // Optional: Clear the text fields
-        clearTextFields();
-
-        // Optional: Refresh the JTable to show the new data
-        showDataFromFile("src\\oodjassignment\\database\\Scheduler.txt");
-    }
-
-    private void updateStaff() {
-        int selectedRow = jTable.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a staff to do changes.");
-            return;
-        }
-
-        String staffId = tfStaffid.getText();
-        String name = tfName.getText();
-        String phone = tfPhone.getText();
-        String email = tfEmail.getText();
-        String password = tfPassword.getText();
-
-        if (staffId.isEmpty() || name.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill all fields before updating.");
-            return;
-        }
-        String updatedData = updateDataInFile(selectedRow, staffId, name, phone, email, password);
-        // Update the table model with the new data
-        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-        model.setValueAt(staffId, selectedRow, 0);
-        model.setValueAt(name, selectedRow, 1);
-        model.setValueAt(phone, selectedRow, 2);
-        model.setValueAt(email, selectedRow, 3);
-        model.setValueAt(password, selectedRow, 4);
-
-        JOptionPane.showMessageDialog(this, "Staff record updated successfully.");
-    }
-
-    private String updateDataInFile(int selectedRow, String staffId, String name, String phone, String email, String password) {
-        String updatedLine = staffId + "," + name + "," + phone + "," + email + "," + password + "\n";
-        StringBuilder updatedFileContent = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\oodjassignment\\database\\Scheduler.txt"))) {
-            String line;
-            int lineCount = 0;
-            while ((line = br.readLine()) != null) {
-                if (lineCount == selectedRow) {
-                    updatedFileContent.append(updatedLine);
-                } else {
-                    updatedFileContent.append(line).append("\n");
-                }
-                lineCount++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "An error occurred while reading the file.");
-        }
-        try (FileWriter writer = new FileWriter("src\\oodjassignment\\database\\Scheduler.txt")) {
-            writer.write(updatedFileContent.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "An error occurred while writing to the file.");
-        }
-        return updatedLine;
-    }
-
-    private void deleteStaff() {
-        int selectedRow = jTable.getSelectedRow();
-
-        // Check if a row is selected
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a staff to delete.");
-            return;
-        }
-
-        int confirmation = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this staff?", "Confirmation", JOptionPane.YES_NO_OPTION);
-        if (confirmation == JOptionPane.YES_OPTION) {
-            // Remove the selected row from the file
-            String updatedFileContent = removeLineFromFile(selectedRow);
-
-            // Update the table model
-            DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-            model.removeRow(selectedRow);
-
-            JOptionPane.showMessageDialog(this,"Staff record deleted successfully.");
-        }
-    }
-
-    private String removeLineFromFile(int selectedRow) {
-        StringBuilder updatedFileContent = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader("src\\oodjassignment\\database\\Scheduler.txt"))) {
-            String line;
-            int lineCount = 0;
-            while ((line = br.readLine()) != null) {
-                if (lineCount != selectedRow) {
-                    updatedFileContent.append(line).append("\n");
-                }
-                lineCount++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "An error occurred while reading the file.");
-        }
-
-        try (FileWriter writer = new FileWriter("src\\oodjassignment\\database\\Scheduler.txt")) {
-            writer.write(updatedFileContent.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "An error occurred while writing to the file.");
-        }
-
-        return updatedFileContent.toString();
-    }
-
-
     private void clearTextFields() {
         tfStaffid.setText("");
         tfName.setText("");
         tfPhone.setText("");
         tfEmail.setText("");
         tfPassword.setText("");
-    }
-
-    private void showDataFromFile(String filePath) {
-        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-        model.setRowCount(0);
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(",");
-                model.addRow(data);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -236,6 +83,11 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         btSearch.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btSearch.setForeground(new java.awt.Color(0, 0, 0));
         btSearch.setText("SEARCH");
+        btSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSearchActionPerformed(evt);
+            }
+        });
         getContentPane().add(btSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 170, 35));
 
         btCreate.setBackground(new java.awt.Color(235, 235, 235));
@@ -412,16 +264,41 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_btClearActionPerformed
 
     private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
-        createStaff();
+        String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+        baseManagement.createRecord(data);
     }//GEN-LAST:event_btCreateActionPerformed
 
     private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
-        updateStaff();
+        int selectedRow = jTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a staff to update.");
+            return;
+        }
+        String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+        baseManagement.updateRecord(selectedRow, data);
     }//GEN-LAST:event_btUpdateActionPerformed
 
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        deleteStaff();
+        int selectedRow = jTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a staff to delete.");
+            return;
+        }
+        baseManagement.deleteRecord(selectedRow);
     }//GEN-LAST:event_btDeleteActionPerformed
+
+    private void btSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSearchActionPerformed
+        String[] fieldValues = {
+            tfStaffid.getText(),
+            tfName.getText(),
+            tfPhone.getText(),
+            tfEmail.getText(),
+            tfPassword.getText()
+        };
+        int[] columnIndices = {0, 1, 2, 3, 4}; // Column indices corresponding to the fields
+        baseManagement.search(fieldValues, columnIndices);
+
+    }//GEN-LAST:event_btSearchActionPerformed
 
     /**
      * @param args the command line arguments
