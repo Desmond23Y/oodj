@@ -4,10 +4,9 @@
  */
 package oodjassignment.user;
 
-/**
- *
- * @author User
- */
+import oodjassignment.Loginpage;
+
+
 public class homepage extends javax.swing.JFrame {
 
     /**
@@ -42,30 +41,55 @@ public class homepage extends javax.swing.JFrame {
         profile.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         profile.setForeground(new java.awt.Color(255, 255, 255));
         profile.setText("Profile");
+        profile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                profileActionPerformed(evt);
+            }
+        });
         getContentPane().add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 180, 40));
 
         hall_info.setBackground(new java.awt.Color(0, 137, 248));
         hall_info.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         hall_info.setForeground(new java.awt.Color(255, 255, 255));
         hall_info.setText("Hall Infomation");
+        hall_info.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hall_infoActionPerformed(evt);
+            }
+        });
         getContentPane().add(hall_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 180, 40));
 
         booking_details.setBackground(new java.awt.Color(0, 137, 248));
         booking_details.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         booking_details.setForeground(new java.awt.Color(255, 255, 255));
         booking_details.setText("Booking Details");
+        booking_details.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                booking_detailsActionPerformed(evt);
+            }
+        });
         getContentPane().add(booking_details, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 180, 40));
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
         logout.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         logout.setForeground(new java.awt.Color(255, 255, 255));
         logout.setText("Logout");
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
         getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, 180, 40));
 
         feedback.setBackground(new java.awt.Color(0, 137, 248));
         feedback.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         feedback.setForeground(new java.awt.Color(255, 255, 255));
         feedback.setText("Feedback");
+        feedback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                feedbackActionPerformed(evt);
+            }
+        });
         getContentPane().add(feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 180, 40));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
@@ -73,6 +97,34 @@ public class homepage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void profileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profileActionPerformed
+       new
+       profile().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_profileActionPerformed
+
+    private void hall_infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hall_infoActionPerformed
+       new
+       hall().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_hall_infoActionPerformed
+
+    private void booking_detailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_booking_detailsActionPerformed
+       new
+       bookingdetails().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_booking_detailsActionPerformed
+
+    private void feedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_feedbackActionPerformed
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        new
+       Loginpage().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_logoutActionPerformed
 
     /**
      * @param args the command line arguments

@@ -6,8 +6,12 @@ package oodjassignment;
 
 import java.awt.Color;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import oodjassignment.admin.AdministratorHomepage;
 import oodjassignment.scheduler.schedulerhomepage;
 
@@ -41,9 +45,7 @@ public class Loginpage extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         username.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -55,6 +57,11 @@ public class Loginpage extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 usernameFocusLost(evt);
+            }
+        });
+        username.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usernameActionPerformed(evt);
             }
         });
         getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 378, 30));
@@ -225,9 +232,14 @@ public class Loginpage extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFocusLost
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-        setVisible(false);
-        //new Register.setVisible(true);
+       new
+       Registerpage().setVisible(true);
+       dispose();
     }//GEN-LAST:event_RegisterActionPerformed
+
+    private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameActionPerformed
 
     /**
      * @param args the command line arguments

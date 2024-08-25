@@ -4,10 +4,6 @@
  */
 package oodjassignment.user;
 
-/**
- *
- * @author User
- */
 public class profile extends javax.swing.JFrame {
 
     /**
@@ -31,13 +27,13 @@ public class profile extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        first_field = new javax.swing.JTextField();
-        last_field = new javax.swing.JTextField();
-        id_field = new javax.swing.JTextField();
+        phone_field = new javax.swing.JTextField();
+        email_field = new javax.swing.JTextField();
+        username_field = new javax.swing.JTextField();
         update_button = new javax.swing.JButton();
         logout_button = new javax.swing.JButton();
-        pass_field = new javax.swing.JPasswordField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        password_field = new javax.swing.JPasswordField();
+        showpassword = new javax.swing.JCheckBox();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,42 +46,63 @@ public class profile extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("First name");
+        jLabel1.setText("Username");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Last Name");
+        jLabel2.setText("Phone number");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("ID");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, -1, -1));
+        jLabel3.setText("Email");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 110, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Password");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 410, 100, 30));
-        getContentPane().add(first_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 200, 30));
-        getContentPane().add(last_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 200, 30));
-        getContentPane().add(id_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 200, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, 100, 30));
+        getContentPane().add(phone_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, 200, 30));
+        getContentPane().add(email_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 200, 30));
+        getContentPane().add(username_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 200, 30));
 
         update_button.setBackground(new java.awt.Color(0, 137, 248));
         update_button.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         update_button.setForeground(new java.awt.Color(255, 255, 255));
         update_button.setText("Update");
+        update_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                update_buttonActionPerformed(evt);
+            }
+        });
         getContentPane().add(update_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 490, -1, -1));
 
         logout_button.setBackground(new java.awt.Color(0, 137, 248));
         logout_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
+        logout_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logout_buttonActionPerformed(evt);
+            }
+        });
         getContentPane().add(logout_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 60, 40));
-        getContentPane().add(pass_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 200, 30));
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("Show password");
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, -1, 30));
+        password_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                password_fieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(password_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 200, 30));
+
+        showpassword.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        showpassword.setForeground(new java.awt.Color(255, 255, 255));
+        showpassword.setText("Show password");
+        showpassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showpasswordActionPerformed(evt);
+            }
+        });
+        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 410, -1, 30));
 
         background.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
         background.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,6 +111,31 @@ public class profile extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
+        new
+        homepage().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_logout_buttonActionPerformed
+
+    private void showpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordActionPerformed
+          if(showpassword.isSelected())
+        {
+            password_field.setEchoChar((char)0);
+        }
+        else
+        {
+            password_field.setEchoChar('*');
+        }   
+    }//GEN-LAST:event_showpasswordActionPerformed
+
+    private void password_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_password_fieldActionPerformed
+
+    private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
+             
+    }//GEN-LAST:event_update_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,17 +174,17 @@ public class profile extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JTextField first_field;
-    private javax.swing.JTextField id_field;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JTextField email_field;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField last_field;
     private javax.swing.JButton logout_button;
-    private javax.swing.JPasswordField pass_field;
+    private javax.swing.JPasswordField password_field;
+    private javax.swing.JTextField phone_field;
+    private javax.swing.JCheckBox showpassword;
     private javax.swing.JLabel title;
     private javax.swing.JButton update_button;
+    private javax.swing.JTextField username_field;
     // End of variables declaration//GEN-END:variables
 }

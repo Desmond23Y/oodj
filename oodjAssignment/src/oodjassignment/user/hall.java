@@ -91,6 +91,11 @@ public class hall extends javax.swing.JFrame {
 
         logout_button.setBackground(new java.awt.Color(0, 137, 248));
         logout_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
+        logout_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logout_buttonActionPerformed(evt);
+            }
+        });
         getContentPane().add(logout_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 60, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
@@ -102,6 +107,12 @@ public class hall extends javax.swing.JFrame {
     private void selection_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selection_fieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_selection_fieldActionPerformed
+
+    private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
+       new
+       homepage().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_logout_buttonActionPerformed
 
     /**
      * @param args the command line arguments

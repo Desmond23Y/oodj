@@ -78,6 +78,11 @@ public class bookingdetails extends javax.swing.JFrame {
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
         getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 60, -1));
 
         jButton1.setBackground(new java.awt.Color(0, 137, 248));
@@ -91,6 +96,12 @@ public class bookingdetails extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+       new
+       homepage().setVisible(true);
+       dispose();
+    }//GEN-LAST:event_logoutActionPerformed
 
     /**
      * @param args the command line arguments
