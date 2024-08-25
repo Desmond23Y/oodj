@@ -188,11 +188,10 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/oodjassignment/picture/blue.jpg"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="1" y="-30" width="3050" height="2060"/>
+          <AbsoluteConstraints x="0" y="0" width="800" height="600"/>
         </Constraint>
       </Constraints>
     </Component>
