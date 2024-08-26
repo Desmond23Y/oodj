@@ -14,7 +14,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         String filePath = "src/oodjassignment/database/Scheduler.txt";
         baseManagement = new BaseManagement(model, filePath);
         jTable.setRowSorter(baseManagement.getSorter());
-        baseManagement.showDataFromFile();  // Load data on initialization
+        baseManagement.showAccountsFromFile();  // Load data on initialization
         jTable.getSelectionModel().addListSelectionListener(event -> {
             if (!event.getValueIsAdjusting() && jTable.getSelectedRow() != -1) {
                 getSelectedRowText();
@@ -24,16 +24,18 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
 
     private void getSelectedRowText() {
         int selectedRow = jTable.getSelectedRow();
-        String staffId = (String) jTable.getValueAt(selectedRow, 0);
-        String name = (String) jTable.getValueAt(selectedRow, 1);
-        String phone = (String) jTable.getValueAt(selectedRow, 2);
-        String email = (String) jTable.getValueAt(selectedRow, 3);
-        String password = (String) jTable.getValueAt(selectedRow, 4);
-        tfStaffid.setText(staffId);
-        tfName.setText(name);
-        tfPhone.setText(phone);
-        tfEmail.setText(email);
-        tfPassword.setText(password);
+        if (selectedRow >= 0) {
+            String staffId = (String) jTable.getValueAt(selectedRow, 0);
+            String name = (String) jTable.getValueAt(selectedRow, 1);
+            String phone = (String) jTable.getValueAt(selectedRow, 2);
+            String email = (String) jTable.getValueAt(selectedRow, 3);
+            String password = (String) jTable.getValueAt(selectedRow, 4);
+            tfStaffid.setText(staffId);
+            tfName.setText(name);
+            tfPhone.setText(phone);
+            tfEmail.setText(email);
+            tfPassword.setText(password);
+        }
     }
 
     private void clearTextFields() {
@@ -42,6 +44,12 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         tfPhone.setText("");
         tfEmail.setText("");
         tfPassword.setText("");
+    }
+
+    private boolean textFieldsFilled() {
+        return !tfStaffid.getText().isEmpty() && !tfName.getText().isEmpty()
+                && !tfPhone.getText().isEmpty() && !tfEmail.getText().isEmpty()
+                && !tfPassword.getText().isEmpty();
     }
 
     /**
@@ -261,11 +269,17 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
 
     private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
         clearTextFields();
+        baseManagement.getSorter().setRowFilter(null);
     }//GEN-LAST:event_btClearActionPerformed
 
     private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
-        String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
-        baseManagement.createRecord(data);
+        if (textFieldsFilled()) {
+            String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            baseManagement.createAccount(data);
+            clearTextFields();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+        }
     }//GEN-LAST:event_btCreateActionPerformed
 
     private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
@@ -274,8 +288,13 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please select a staff to update.");
             return;
         }
-        String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
-        baseManagement.updateRecord(selectedRow, data);
+        if (textFieldsFilled()) {
+            String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            baseManagement.updateAccount(selectedRow, data);
+            clearTextFields();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+        }
     }//GEN-LAST:event_btUpdateActionPerformed
 
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
@@ -284,7 +303,8 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please select a staff to delete.");
             return;
         }
-        baseManagement.deleteRecord(selectedRow);
+        baseManagement.deleteAccount(selectedRow);
+        clearTextFields();
     }//GEN-LAST:event_btDeleteActionPerformed
 
     private void btSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSearchActionPerformed
@@ -296,7 +316,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
             tfPassword.getText()
         };
         int[] columnIndices = {0, 1, 2, 3, 4}; // Column indices corresponding to the fields
-        baseManagement.search(fieldValues, columnIndices);
+        baseManagement.searchAccounts(fieldValues, columnIndices);
 
     }//GEN-LAST:event_btSearchActionPerformed
 
