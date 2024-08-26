@@ -1,23 +1,20 @@
 package oodjassignment.admin;
 
-import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class UserManagement extends javax.swing.JFrame {
 
-    private DefaultTableModel model;
-    private DataHandling dataHandling; // DataHandling instance
+    private BaseManagement baseManagement;
 
     public UserManagement() {
         initComponents();
-        model = (DefaultTableModel) jTable.getModel();
-        dataHandling = new DataHandling("src\\oodjassignment\\database\\User.txt"); // Initialize DataHandling
-        showDataFromFile();
+        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+        String filePath = "src/oodjassignment/database/User.txt";
+        baseManagement = new BaseManagement(model, filePath);
+        jTable.setRowSorter(baseManagement.getSorter());
+        baseManagement.showAccountsFromFile();
         jTable.getSelectionModel().addListSelectionListener(event -> {
             if (!event.getValueIsAdjusting() && jTable.getSelectedRow() != -1) {
                 getSelectedRowText();
@@ -27,135 +24,18 @@ public class UserManagement extends javax.swing.JFrame {
 
     private void getSelectedRowText() {
         int selectedRow = jTable.getSelectedRow();
+        if (selectedRow >= 0) {
+            String userId = (String) jTable.getValueAt(selectedRow, 0);
+            String name = (String) jTable.getValueAt(selectedRow, 1);
+            String phone = (String) jTable.getValueAt(selectedRow, 2);
+            String email = (String) jTable.getValueAt(selectedRow, 3);
+            String password = (String) jTable.getValueAt(selectedRow, 4);
 
-        // Retrieve data from the selected row
-        String userId = (String) jTable.getValueAt(selectedRow, 0);
-        String name = (String) jTable.getValueAt(selectedRow, 1);
-        String phone = (String) jTable.getValueAt(selectedRow, 2);
-        String email = (String) jTable.getValueAt(selectedRow, 3);
-        String password = (String) jTable.getValueAt(selectedRow, 4);
-
-        tfUserid.setText(userId);
-        tfName.setText(name);
-        tfPhone.setText(phone);
-        tfEmail.setText(email);
-        tfPassword.setText(password);
-    }
-
-    private void createUser() {
-        String userId = tfUserid.getText();
-        String name = tfName.getText();
-        String phone = tfPhone.getText();
-        String email = tfEmail.getText();
-        String password = tfPassword.getText();
-
-        if (userId.isEmpty() || name.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill all fields before creating a record.");
-            return;
-        }
-
-        String newRecord = userId + "," + name + "," + phone + "," + email + "," + password + "\n";
-
-        try {
-            dataHandling.appendData(newRecord);
-            JOptionPane.showMessageDialog(this, "Record created successfully.");
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "An error occurred while writing to the file.");
-        }
-        clearTextFields();
-        showDataFromFile();
-    }
-
-    private void updateUser() {
-        int selectedRow = jTable.getSelectedRow();
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a user to do changes.");
-            return;
-        }
-
-        String userId = tfUserid.getText();
-        String name = tfName.getText();
-        String phone = tfPhone.getText();
-        String email = tfEmail.getText();
-        String password = tfPassword.getText();
-
-        if (userId.isEmpty() || name.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill all fields before updating.");
-            return;
-        }
-
-        try {
-            dataHandling.updateData(selectedRow, new String[]{userId, name, phone, email, password});
-            DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-            model.setValueAt(userId, selectedRow, 0);
-            model.setValueAt(name, selectedRow, 1);
-            model.setValueAt(phone, selectedRow, 2);
-            model.setValueAt(email, selectedRow, 3);
-            model.setValueAt(password, selectedRow, 4);
-            JOptionPane.showMessageDialog(this, "User record updated successfully.");
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "An error occurred while updating the file.");
-        }
-    }
-
-    private void deleteUser() {
-        int selectedRow = jTable.getSelectedRow();
-
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a user to delete.");
-            return;
-        }
-
-        int confirmation = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this user?", "Confirmation", JOptionPane.YES_NO_OPTION);
-        if (confirmation == JOptionPane.YES_OPTION) {
-            try {
-                dataHandling.deleteData(selectedRow);
-                // Remove the selected row from the table model
-                DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-                model.removeRow(selectedRow);
-                JOptionPane.showMessageDialog(this, "User record deleted successfully.");
-            } catch (Exception e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "An error occurred while deleting the file.");
-            }
-        }
-    }
-
-    private void searchUser() {
-        String searchUserId = tfUserid.getText().trim();
-        String searchUserName = tfName.getText().trim();
-        String searchPhone = tfPhone.getText().trim();
-        String searchEmail = tfEmail.getText().trim();
-        String searchPassword = tfPassword.getText().trim();
-
-        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        jTable.setRowSorter(sorter);
-
-        List<RowFilter<Object, Object>> filters = new ArrayList<>();
-        if (!searchUserId.isEmpty()) {
-            filters.add(RowFilter.regexFilter("(?i)" + searchUserId, 0));
-        }
-        if (!searchUserName.isEmpty()) {
-            filters.add(RowFilter.regexFilter("(?i)" + searchUserName, 1));
-        }
-        if (!searchPhone.isEmpty()) {
-            filters.add(RowFilter.regexFilter("(?i)" + searchPhone, 2));
-        }
-        if (!searchEmail.isEmpty()) {
-            filters.add(RowFilter.regexFilter("(?i)" + searchEmail, 3));
-        }
-        if (!searchPassword.isEmpty()) {
-            filters.add(RowFilter.regexFilter("(?i)" + searchPassword, 4));
-        }
-
-        RowFilter<Object, Object> finalFilter = RowFilter.andFilter(filters);
-        sorter.setRowFilter(finalFilter);
-
-        if (model.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(this, "No matching records found.");
+            tfUserid.setText(userId);
+            tfName.setText(name);
+            tfPhone.setText(phone);
+            tfEmail.setText(email);
+            tfPassword.setText(password);
         }
     }
 
@@ -167,18 +47,10 @@ public class UserManagement extends javax.swing.JFrame {
         tfPassword.setText("");
     }
 
-    private void showDataFromFile() {
-        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-        model.setRowCount(0);
-        try {
-            List<String[]> data = dataHandling.readData();
-            for (String[] record : data) {
-                model.addRow(record);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "An error occurred while reading the file.");
-        }
+    private boolean textFieldsFilled() {
+        return !tfUserid.getText().isEmpty() && !tfName.getText().isEmpty()
+                && !tfPhone.getText().isEmpty() && !tfEmail.getText().isEmpty()
+                && !tfPassword.getText().isEmpty();
     }
 
     /**
@@ -389,7 +261,13 @@ public class UserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
-        createUser();
+        if (textFieldsFilled()) {
+            String[] data = {tfUserid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            baseManagement.createAccount(data);
+            clearTextFields();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+        }
     }//GEN-LAST:event_btCreateActionPerformed
 
     private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
@@ -401,15 +279,40 @@ public class UserManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_btClearActionPerformed
 
     private void btSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSearchActionPerformed
-        searchUser();
+        String[] fieldValues = {
+            tfUserid.getText(),
+            tfName.getText(),
+            tfPhone.getText(),
+            tfEmail.getText(),
+            tfPassword.getText()
+        };
+        int[] columnIndices = {0, 1, 2, 3, 4};
+        baseManagement.searchAccounts(fieldValues, columnIndices);
     }//GEN-LAST:event_btSearchActionPerformed
 
     private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
-        updateUser();
+        int selectedRow = jTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a staff to update.");
+            return;
+        }
+        if (textFieldsFilled()) {
+            String[] data = {tfUserid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            baseManagement.updateAccount(selectedRow, data);
+            clearTextFields();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+        }
     }//GEN-LAST:event_btUpdateActionPerformed
 
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
-        deleteUser();
+        int selectedRow = jTable.getSelectedRow();
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a staff to delete.");
+            return;
+        }
+        baseManagement.deleteAccount(selectedRow);
+        clearTextFields();
     }//GEN-LAST:event_btDeleteActionPerformed
 
     /**

@@ -14,7 +14,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         String filePath = "src/oodjassignment/database/Scheduler.txt";
         baseManagement = new BaseManagement(model, filePath);
         jTable.setRowSorter(baseManagement.getSorter());
-        baseManagement.showAccountsFromFile();  // Load data on initialization
+        baseManagement.showAccountsFromFile();
         jTable.getSelectionModel().addListSelectionListener(event -> {
             if (!event.getValueIsAdjusting() && jTable.getSelectedRow() != -1) {
                 getSelectedRowText();
@@ -315,7 +315,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
             tfEmail.getText(),
             tfPassword.getText()
         };
-        int[] columnIndices = {0, 1, 2, 3, 4}; // Column indices corresponding to the fields
+        int[] columnIndices = {0, 1, 2, 3, 4};
         baseManagement.searchAccounts(fieldValues, columnIndices);
 
     }//GEN-LAST:event_btSearchActionPerformed
