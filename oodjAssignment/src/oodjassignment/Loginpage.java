@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import oodjassignment.admin.AdministratorHomepage;
 import oodjassignment.scheduler.schedulerhomepage;
+import oodjassignment.manager.managerHomepage;
+import oodjassignment.user.homepage;
 
 /**
  *
@@ -132,109 +134,112 @@ public class Loginpage extends javax.swing.JFrame {
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
         // TODO add your handling code here:
-        if(username.getText().equals("Please Enter Username Here"))
-        {
+        if (username.getText().equals("Please Enter Username Here")) {
             username.setText("");
-            username.setForeground(newColor(0,118,221));
+            username.setForeground(newColor(0, 118, 221));
         }
     }//GEN-LAST:event_usernameFocusGained
 
     private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
         // TODO add your handling code here:
-        if(username.getText().equals(""))
-        {
+        if (username.getText().equals("")) {
             username.setText("Please Enter Username Here");
-            username.setForeground(newColor(0,118,221));
+            username.setForeground(newColor(0, 118, 221));
 
         }
     }//GEN-LAST:event_usernameFocusLost
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        // TODO add your handling code here:
         String userType = (String) logintype.getSelectedItem();
+        String usernameText = username.getText();  // Assuming this is the ID input
+        String passwordText = password.getText();
+
+        String fileName = "";
         switch (userType) {
-            case "ADMINISTRATOR" -> {
-                if (username.getText().equals("admin") && password.getText().equals("adminpassword")) {
-                    JOptionPane.showMessageDialog(this, "Admin logged in successfully!");
-                    setVisible(false);
-                    new AdministratorHomepage().setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Incorrect Username or Password.");
-                }
+            case "ADMINISTRATOR" ->
+                fileName = "src/oodjassignment/database/administrator.txt";
+            case "SCHEDULER" ->
+                fileName = "src/oodjassignment/database/scheduler.txt";
+            case "CUSTOMER" ->
+                fileName = "src/oodjassignment/database/customer.txt";
+            case "MANAGER" ->
+                fileName = "src/oodjassignment/database/manager.txt";
+            default -> {
+                JOptionPane.showMessageDialog(this, "Please select a valid user type!");
+                return;
             }
-            case "SCHEDULER" -> {
-                if (username.getText().equals("scheduler") && password.getText().equals("schedulerpassword")) {
-                    JOptionPane.showMessageDialog(this, "Welcome scheduler!");
-                    setVisible(false);
-                    new schedulerhomepage().setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Incorrect Username or Password.");
-                }
-            }
-            case "CUSTOMER" -> {
-                try (BufferedReader reader = new BufferedReader(new FileReader("customer.txt"))) {
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        String[] parts = line.split("/");
-                        if (parts.length >= 4 && parts[1].equals(username.getText()) && parts[2].equals(password.getText())) {
-                            //trainer_home name = new trainer_home();
-                            //name.setVisible(true);
-                            //this.setVisible(false);
-                            //name.username(parts[3]);
+        }
+
+        authenticateUser(fileName, usernameText, passwordText, userType);
+    }
+
+    private void authenticateUser(String filename, String id, String password, String userType) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(","); // Assuming comma-separated values
+                if (parts.length >= 5 && parts[0].equals(id) && parts[4].equals(password)) {  // ID at index 0, Password at index 4
+                    // Handle successful login based on the role
+                    switch (userType) {
+                        case "ADMINISTRATOR" -> {
+                            JOptionPane.showMessageDialog(this, "Admin logged in successfully!");
+                            setVisible(false);
+                            new AdministratorHomepage().setVisible(true);
+                        }
+                        case "SCHEDULER" -> {
+                            JOptionPane.showMessageDialog(this, "Welcome scheduler!");
+                            setVisible(false);
+                            new schedulerhomepage().setVisible(true);
+                        }
+                        case "CUSTOMER" -> {
+                            JOptionPane.showMessageDialog(this, "Customer logged in successfully!");
+                            setVisible(false);
+                            new homepage().setVisible(true);
+                        }
+                        case "MANAGER" -> {
+                            JOptionPane.showMessageDialog(this, "Manager logged in successfully!");
+                            setVisible(false);
+                            new managerHomepage().setVisible(true);
                         }
                     }
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(this, "Incorrect Username or Password. \nIf you haven't register, please register first.");
+                    return;
                 }
             }
-            case "MANAGER" -> {
-                if (username.getText().equals("manager") && password.getText().equals("managerpassword")) {
-                    JOptionPane.showMessageDialog(this, "Welcome Manager!");
-                    setVisible(false);
-                    //new ManagerHome().setVisible(true);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Incorrect Username or Password.");
-                }
-            }
-        default -> JOptionPane.showMessageDialog(this, "Please select a valid user type!");
+            JOptionPane.showMessageDialog(this, "Incorrect ID or Password.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error reading file. Please try again later.");
         }
     }//GEN-LAST:event_loginActionPerformed
 
     private void showpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordActionPerformed
         // TODO add your handling code here:
-        if(showpassword.isSelected())
-        {
-            password.setEchoChar((char)0);
-        }
-        else
-        {
+        if (showpassword.isSelected()) {
+            password.setEchoChar((char) 0);
+        } else {
             password.setEchoChar('*');
         }
     }//GEN-LAST:event_showpasswordActionPerformed
 
     private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
         // TODO add your handling code here:
-        if(password.getText().equals("Please Enter Password Here"))
-        {
+        if (password.getText().equals("Please Enter Password Here")) {
             password.setText("");
-            password.setForeground(newColor(0,118,221));
+            password.setForeground(newColor(0, 118, 221));
         }
     }//GEN-LAST:event_passwordFocusGained
 
     private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
         // TODO add your handling code here:
-        if(password.getText().equals(""))
-        {
+        if (password.getText().equals("")) {
             password.setText("Please Enter Password Here");
-            password.setForeground(newColor(0,118,221));
+            password.setForeground(newColor(0, 118, 221));
 
         }
     }//GEN-LAST:event_passwordFocusLost
 
     private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-       new
-       Registerpage().setVisible(true);
-       dispose();
+        new Registerpage().setVisible(true);
+        dispose();
     }//GEN-LAST:event_RegisterActionPerformed
 
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
@@ -268,7 +273,6 @@ public class Loginpage extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
