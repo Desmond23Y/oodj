@@ -47,7 +47,8 @@ public class Loginpage extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(1000, 600));
+        setPreferredSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         username.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -66,7 +67,7 @@ public class Loginpage extends javax.swing.JFrame {
                 usernameActionPerformed(evt);
             }
         });
-        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 378, 30));
+        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 378, 30));
 
         login.setBackground(new java.awt.Color(0, 137, 248));
         login.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -77,7 +78,7 @@ public class Loginpage extends javax.swing.JFrame {
                 loginActionPerformed(evt);
             }
         });
-        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 410, 100, 30));
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 100, 30));
 
         showpassword.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         showpassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,7 +88,7 @@ public class Loginpage extends javax.swing.JFrame {
                 showpasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, -1, -1));
+        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, -1, -1));
 
         password.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         password.setForeground(new java.awt.Color(204, 204, 204));
@@ -100,11 +101,11 @@ public class Loginpage extends javax.swing.JFrame {
                 passwordFocusLost(evt);
             }
         });
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, 378, 30));
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 378, 30));
 
         logintype.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         logintype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRATOR", "CUSTOMER", "SCHEDULER", "MANAGER" }));
-        getContentPane().add(logintype, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, -1, -1));
+        getContentPane().add(logintype, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, -1));
 
         Register.setBackground(new java.awt.Color(0, 137, 248));
         Register.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -115,15 +116,15 @@ public class Loginpage extends javax.swing.JFrame {
                 RegisterActionPerformed(evt);
             }
         });
-        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, 220, 30));
+        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 220, 30));
 
         Welcome.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         Welcome.setForeground(new java.awt.Color(255, 255, 255));
         Welcome.setText("WELCOME TO THE HALL SYMPHONY INC.");
-        getContentPane().add(Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
+        getContentPane().add(Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
 
         picture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/hall.png"))); // NOI18N
-        getContentPane().add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
+        getContentPane().add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel1");
