@@ -329,8 +329,8 @@
                 <Column editable="false" title="STAFF ID" type="java.lang.Object"/>
                 <Column editable="false" title="NAME" type="java.lang.Object"/>
                 <Column editable="false" title="PHONE" type="java.lang.Object"/>
-                <Column editable="true" title="EMAIL" type="java.lang.Object"/>
-                <Column editable="true" title="PASSWORD" type="java.lang.Object"/>
+                <Column editable="false" title="EMAIL" type="java.lang.Object"/>
+                <Column editable="false" title="PASSWORD" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
