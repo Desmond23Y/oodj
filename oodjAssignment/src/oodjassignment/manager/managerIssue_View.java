@@ -8,12 +8,12 @@ package oodjassignment.manager;
  *
  * @author enyis
  */
-public class managerViewIssue extends javax.swing.JFrame {
+public class managerIssue_View extends javax.swing.JFrame {
 
     /**
      * Creates new form managerViewFilterSales
      */
-    public managerViewIssue() {
+    public managerIssue_View() {
         initComponents();
     }
 
@@ -53,6 +53,13 @@ public class managerViewIssue extends javax.swing.JFrame {
         lbl_cusIssue1 = new javax.swing.JLabel();
         lbl_showCustomerIssue1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        rbtn_cancelled = new javax.swing.JRadioButton();
+        rbtn_closed = new javax.swing.JRadioButton();
+        rbtn_done = new javax.swing.JRadioButton();
+        rbtn_inPrograss = new javax.swing.JRadioButton();
+        btn_cancel = new javax.swing.JButton();
+        btn_updateStatus1 = new javax.swing.JButton();
+        btn_response = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Segoe UI Black", 0, 10)); // NOI18N
@@ -66,21 +73,21 @@ public class managerViewIssue extends javax.swing.JFrame {
 
         lbl_enterCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         lbl_enterCaseID.setText("Enter the Case ID:");
-        getContentPane().add(lbl_enterCaseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+        getContentPane().add(lbl_enterCaseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
 
         txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        getContentPane().add(txt_caseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 150, -1));
+        getContentPane().add(txt_caseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 150, -1));
 
         lbl_or.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         lbl_or.setText("OR");
-        getContentPane().add(lbl_or, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
+        getContentPane().add(lbl_or, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
 
         lbl_selectCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         lbl_selectCaseID.setText("Select the Case ID:");
-        getContentPane().add(lbl_selectCaseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, -1, -1));
+        getContentPane().add(lbl_selectCaseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
 
         spn_selectCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        getContentPane().add(spn_selectCaseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 160, -1));
+        getContentPane().add(spn_selectCaseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 160, -1));
 
         btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btn_view.setText("View");
@@ -89,7 +96,7 @@ public class managerViewIssue extends javax.swing.JFrame {
                 btn_viewActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 110, -1, -1));
+        getContentPane().add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -129,11 +136,11 @@ public class managerViewIssue extends javax.swing.JFrame {
         jPanel1.add(lbl_showCustomerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
 
         lbl_showCustomerIssue.setText("Desription");
-        jPanel1.add(lbl_showCustomerIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 400, 80));
+        jPanel1.add(lbl_showCustomerIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 430, 60));
 
         lbl_showCaseStatus.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         lbl_showCaseStatus.setText("Case Status");
-        jPanel1.add(lbl_showCaseStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, -1, -1));
+        jPanel1.add(lbl_showCaseStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 320, -1, -1));
 
         lbl_dateofReport.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         lbl_dateofReport.setText("Data of Report:");
@@ -149,7 +156,7 @@ public class managerViewIssue extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel13.setText("Case Status:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, -1));
 
         lbl_cusIssue1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         lbl_cusIssue1.setText("Customer Issue:");
@@ -158,10 +165,31 @@ public class managerViewIssue extends javax.swing.JFrame {
         lbl_showCustomerIssue1.setText("Customer Issue");
         jPanel1.add(lbl_showCustomerIssue1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, -1));
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, -1));
+        jButton1.setText("Update Status");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, 690, 450));
+        rbtn_cancelled.setText("Cancelled");
+        jPanel1.add(rbtn_cancelled, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, -1, -1));
+
+        rbtn_closed.setText("Closed");
+        jPanel1.add(rbtn_closed, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, -1));
+
+        rbtn_done.setText("Done");
+        jPanel1.add(rbtn_done, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 340, -1, -1));
+
+        rbtn_inPrograss.setText("In prograss");
+        jPanel1.add(rbtn_inPrograss, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, -1));
+
+        btn_cancel.setText("Cancel");
+        jPanel1.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, -1, -1));
+
+        btn_updateStatus1.setText("Update Status");
+        jPanel1.add(btn_updateStatus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 320, -1, -1));
+
+        btn_response.setText("Response");
+        jPanel1.add(btn_response, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 690, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -187,14 +215,18 @@ public class managerViewIssue extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(managerViewIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(managerIssue_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(managerViewIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(managerIssue_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(managerViewIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(managerIssue_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(managerViewIssue.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(managerIssue_View.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -203,12 +235,15 @@ public class managerViewIssue extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new managerViewIssue().setVisible(true);
+                new managerIssue_View().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_cancel;
+    private javax.swing.JButton btn_response;
+    private javax.swing.JButton btn_updateStatus1;
     private javax.swing.JButton btn_view;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel13;
@@ -234,6 +269,10 @@ public class managerViewIssue extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_showDateReport;
     private javax.swing.JLabel lbl_showVenue;
     private javax.swing.JLabel lbl_title;
+    private javax.swing.JRadioButton rbtn_cancelled;
+    private javax.swing.JRadioButton rbtn_closed;
+    private javax.swing.JRadioButton rbtn_done;
+    private javax.swing.JRadioButton rbtn_inPrograss;
     private javax.swing.JSpinner spn_selectCaseID;
     private javax.swing.JTextField txt_caseID;
     // End of variables declaration//GEN-END:variables
