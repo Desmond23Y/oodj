@@ -8,12 +8,12 @@ package oodjassignment.manager;
  *
  * @author enyis
  */
-public class managerIssue_Response extends javax.swing.JFrame {
+public class managerIssue_ChooseStaff extends javax.swing.JFrame {
 
     /**
      * Creates new form managerResponseIssue
      */
-    public managerIssue_Response() {
+    public managerIssue_ChooseStaff() {
         initComponents();
     }
 
@@ -28,17 +28,16 @@ public class managerIssue_Response extends javax.swing.JFrame {
 
         btn_update = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        txt_newMessage = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
         lbl_title = new javax.swing.JLabel();
         lbl_enterCaseID = new javax.swing.JLabel();
         txt_caseID = new javax.swing.JTextField();
         lbl_or = new javax.swing.JLabel();
         lbl_selectCaseID = new javax.swing.JLabel();
         spn_selectCaseID = new javax.swing.JSpinner();
-        btn_view = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lst_availableStaff = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,31 +50,11 @@ public class managerIssue_Response extends javax.swing.JFrame {
                 btn_updateActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 550, -1, -1));
+        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jLabel1.setText("New Message:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, -1, -1));
-        getContentPane().add(txt_newMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, 540, 90));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Case ID", "Date", "Responder", "Subject", "Description"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 640, 190));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jLabel2.setText("History");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, -1, -1));
+        jLabel1.setText("Date of Inspection/ Fixing:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
 
         lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -100,14 +79,21 @@ public class managerIssue_Response extends javax.swing.JFrame {
         spn_selectCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         getContentPane().add(spn_selectCaseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 160, -1));
 
-        btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btn_view.setText("View");
-        btn_view.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewActionPerformed(evt);
-            }
+        lst_availableStaff.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
         });
-        getContentPane().add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
+        jScrollPane2.setViewportView(lst_availableStaff);
+
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, 450, 40));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel2.setText("Available Staff on the Date:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 620, 80));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
@@ -119,10 +105,6 @@ public class managerIssue_Response extends javax.swing.JFrame {
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_updateActionPerformed
-
-    private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_viewActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,39 +123,40 @@ public class managerIssue_Response extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(managerIssue_Response.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(managerIssue_ChooseStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(managerIssue_Response.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(managerIssue_ChooseStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(managerIssue_Response.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(managerIssue_ChooseStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(managerIssue_Response.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(managerIssue_ChooseStaff.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new managerIssue_Response().setVisible(true);
+                new managerIssue_ChooseStaff().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_update;
-    private javax.swing.JButton btn_view;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_enterCaseID;
     private javax.swing.JLabel lbl_or;
     private javax.swing.JLabel lbl_selectCaseID;
     private javax.swing.JLabel lbl_title;
+    private javax.swing.JList<String> lst_availableStaff;
     private javax.swing.JSpinner spn_selectCaseID;
     private javax.swing.JTextField txt_caseID;
-    private javax.swing.JTextField txt_newMessage;
     // End of variables declaration//GEN-END:variables
 }

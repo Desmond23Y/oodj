@@ -60,6 +60,7 @@ public class managerIssue_View extends javax.swing.JFrame {
         btn_cancel = new javax.swing.JButton();
         btn_updateStatus1 = new javax.swing.JButton();
         btn_response = new javax.swing.JButton();
+        lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Segoe UI Black", 0, 10)); // NOI18N
@@ -191,6 +192,10 @@ public class managerIssue_View extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 690, 430));
 
+        lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
+        lbl_background.setText("jLabel4");
+        getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -250,6 +255,7 @@ public class managerIssue_View extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_CusID;
     private javax.swing.JLabel lbl_Venue;
+    private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_caseID;
     private javax.swing.JLabel lbl_cusIssue;
     private javax.swing.JLabel lbl_cusIssue1;
