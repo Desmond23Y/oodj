@@ -26,21 +26,113 @@ public class managerHomepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        btn_viewSales = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btn_viewSales1 = new javax.swing.JButton();
+        btn_viewSales3 = new javax.swing.JButton();
+        btn_viewSales4 = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(3000, 2000));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Welcome to Manager Menu!");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
+
+        btn_viewSales.setText("View All Sales");
+        btn_viewSales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewSalesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_viewSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+
+        jButton2.setText("View Case & Change Status");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, -1, -1));
+
+        jButton1.setText("Reply Customer Issues");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, -1, -1));
+
+        jButton3.setText("Assign Staff to Fix Issues");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, -1, -1));
+
+        jButton4.setText("Reply Customer Issues");
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, -1));
+
+        jLabel2.setText("Sales");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, -1, -1));
+
+        jLabel3.setText("Customer Issues");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, -1, -1));
+
+        btn_viewSales1.setText("View Sales by Date");
+        btn_viewSales1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewSales1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_viewSales1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
+
+        btn_viewSales3.setText("View Sales by Time");
+        btn_viewSales3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewSales3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_viewSales3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
+
+        btn_viewSales4.setText("View Sales by Venue");
+        btn_viewSales4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewSales4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_viewSales4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_viewSalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewSalesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewSalesActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btn_viewSales1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewSales1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewSales1ActionPerformed
+
+    private void btn_viewSales3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewSales3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewSales3ActionPerformed
+
+    private void btn_viewSales4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewSales4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_viewSales4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +171,16 @@ public class managerHomepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_viewSales;
+    private javax.swing.JButton btn_viewSales1;
+    private javax.swing.JButton btn_viewSales3;
+    private javax.swing.JButton btn_viewSales4;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
