@@ -32,7 +32,6 @@ public class AdministratorHomepage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -71,15 +70,6 @@ public class AdministratorHomepage extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(235, 235, 235));
-        jButton7.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButton7.setText("LOGOUT");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
         jButton8.setBackground(new java.awt.Color(235, 235, 235));
         jButton8.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jButton8.setText("SCHEDULER MANAGEMENT");
@@ -106,7 +96,6 @@ public class AdministratorHomepage extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -121,9 +110,7 @@ public class AdministratorHomepage extends javax.swing.JFrame {
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -153,12 +140,6 @@ public class AdministratorHomepage extends javax.swing.JFrame {
         BookingManagement.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Loginpage Login = new Loginpage();
-        Login.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
@@ -202,7 +183,6 @@ public class AdministratorHomepage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
