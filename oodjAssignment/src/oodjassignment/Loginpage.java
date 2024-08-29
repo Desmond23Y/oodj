@@ -25,6 +25,8 @@ public class Loginpage extends javax.swing.JFrame {
 
     public Loginpage() {
         initComponents();
+        createanaccount.setText("<html><u>Create An Account</u></html>");
+        forgotpassowrd.setText("<html><u>Forgot Password?</u></html>");
     }
 
     /**
@@ -41,10 +43,10 @@ public class Loginpage extends javax.swing.JFrame {
         showpassword = new javax.swing.JCheckBox();
         password = new javax.swing.JPasswordField();
         logintype = new javax.swing.JComboBox<>();
-        Register = new javax.swing.JButton();
         Welcome = new javax.swing.JLabel();
         picture = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        forgotpassowrd = new javax.swing.JLabel();
+        createanaccount = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,7 +81,7 @@ public class Loginpage extends javax.swing.JFrame {
                 loginActionPerformed(evt);
             }
         });
-        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 460, 100, 30));
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 380, 30));
 
         showpassword.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         showpassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,17 +110,6 @@ public class Loginpage extends javax.swing.JFrame {
         logintype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRATOR", "CUSTOMER", "SCHEDULER", "MANAGER" }));
         getContentPane().add(logintype, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, -1));
 
-        Register.setBackground(new java.awt.Color(0, 137, 248));
-        Register.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        Register.setForeground(new java.awt.Color(255, 255, 255));
-        Register.setText("Create a New Account");
-        Register.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegisterActionPerformed(evt);
-            }
-        });
-        getContentPane().add(Register, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 460, 220, 30));
-
         Welcome.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         Welcome.setForeground(new java.awt.Color(255, 255, 255));
         Welcome.setText("WELCOME TO THE HALL SYMPHONY INC.");
@@ -127,10 +118,25 @@ public class Loginpage extends javax.swing.JFrame {
         picture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/hall.png"))); // NOI18N
         getContentPane().add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("Forgot Password?");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+        forgotpassowrd.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        forgotpassowrd.setForeground(new java.awt.Color(204, 204, 204));
+        forgotpassowrd.setText("Forgot Password?");
+        forgotpassowrd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                forgotpassowrdMouseClicked(evt);
+            }
+        });
+        getContentPane().add(forgotpassowrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, -1, -1));
+
+        createanaccount.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        createanaccount.setForeground(new java.awt.Color(204, 204, 204));
+        createanaccount.setText("Create an account");
+        createanaccount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                createanaccountMouseClicked(evt);
+            }
+        });
+        getContentPane().add(createanaccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel1");
@@ -244,14 +250,19 @@ public class Loginpage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_passwordFocusLost
 
-    private void RegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterActionPerformed
-        new Registerpage().setVisible(true);
-        dispose();
-    }//GEN-LAST:event_RegisterActionPerformed
-
     private void usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameActionPerformed
+
+    private void forgotpassowrdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpassowrdMouseClicked
+        new AdministratorHomepage().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_forgotpassowrdMouseClicked
+
+    private void createanaccountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_createanaccountMouseClicked
+        new Registerpage().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_createanaccountMouseClicked
 
     /**
      * @param args the command line arguments
@@ -289,10 +300,10 @@ public class Loginpage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Register;
     private javax.swing.JLabel Welcome;
     private javax.swing.JLabel background;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel createanaccount;
+    private javax.swing.JLabel forgotpassowrd;
     private javax.swing.JButton login;
     private javax.swing.JComboBox<String> logintype;
     private javax.swing.JPasswordField password;
