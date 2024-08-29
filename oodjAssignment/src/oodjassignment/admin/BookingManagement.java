@@ -120,7 +120,7 @@ public class BookingManagement extends javax.swing.JFrame {
 
         tabbedPanel1.addTab("Past Booking", jScrollPane2);
 
-        getContentPane().add(tabbedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 750, 420));
+        getContentPane().add(tabbedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 750, 620));
 
         jPanel2.setBackground(new java.awt.Color(0, 137, 248));
 
@@ -137,7 +137,6 @@ public class BookingManagement extends javax.swing.JFrame {
         jLabel1.setText("SEARCH:");
 
         cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "EVENT INFORMATION" }));
-        cbSearch.setPreferredSize(new java.awt.Dimension(151, 22));
         cbSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbSearchActionPerformed(evt);
@@ -183,10 +182,10 @@ public class BookingManagement extends javax.swing.JFrame {
                 .addComponent(tfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btClearFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(402, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 250, 580));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 250, 780));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1000, 600));
