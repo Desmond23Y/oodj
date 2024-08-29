@@ -44,6 +44,7 @@ public class Loginpage extends javax.swing.JFrame {
         Register = new javax.swing.JButton();
         Welcome = new javax.swing.JLabel();
         picture = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -125,6 +126,11 @@ public class Loginpage extends javax.swing.JFrame {
 
         picture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/hall.png"))); // NOI18N
         getContentPane().add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel1.setText("Forgot Password?");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel1");
@@ -286,6 +292,7 @@ public class Loginpage extends javax.swing.JFrame {
     private javax.swing.JButton Register;
     private javax.swing.JLabel Welcome;
     private javax.swing.JLabel background;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JButton login;
     private javax.swing.JComboBox<String> logintype;
     private javax.swing.JPasswordField password;
