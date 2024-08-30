@@ -14,7 +14,7 @@ public class ManagementBooking extends javax.swing.JFrame {
         DefaultTableModel pastModel = (DefaultTableModel) tbPastBooking.getModel();
 
         // Use adminClass to handle data loading
-        adminClass.showDataFromFile("src\\oodjassignment\\database\\Booking.txt", upcomingModel, pastModel);
+        ViewBooking.showDataFromFile("src\\oodjassignment\\database\\Booking.txt", upcomingModel, pastModel);
 
         // Initialize the row sorter
         upcomingRowSorter = new TableRowSorter<>(upcomingModel);
@@ -220,9 +220,9 @@ public class ManagementBooking extends javax.swing.JFrame {
     private void tfSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfSearchKeyReleased
         String searchText = tfSearch.getText().trim();
         String selectedColumn = (String) cbSearch.getSelectedItem();
-        int columnIndex = adminClass.getColumnIndex(selectedColumn);
+        int columnIndex = ViewBooking.getColumnIndex(selectedColumn);
 
-        adminClass.applyFilter(upcomingRowSorter, pastRowSorter, searchText, columnIndex);
+        ViewBooking.applyFilter(upcomingRowSorter, pastRowSorter, searchText, columnIndex);
     }//GEN-LAST:event_tfSearchKeyReleased
 
     private void cbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSearchActionPerformed

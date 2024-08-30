@@ -25,12 +25,12 @@ public class ManagementScheduler extends javax.swing.JFrame {
     private void getSelectedRowText() {
         int selectedRow = jTable.getSelectedRow();
         if (selectedRow >= 0) {
-            String staffId = (String) jTable.getValueAt(selectedRow, 0);
+            String schedulerId = (String) jTable.getValueAt(selectedRow, 0);
             String name = (String) jTable.getValueAt(selectedRow, 1);
             String phone = (String) jTable.getValueAt(selectedRow, 2);
             String email = (String) jTable.getValueAt(selectedRow, 3);
             String password = (String) jTable.getValueAt(selectedRow, 4);
-            tfStaffid.setText(staffId);
+            tfSchedulerid.setText(schedulerId);
             tfName.setText(name);
             tfPhone.setText(phone);
             tfEmail.setText(email);
@@ -39,7 +39,7 @@ public class ManagementScheduler extends javax.swing.JFrame {
     }
 
     private void clearTextFields() {
-        tfStaffid.setText("");
+        tfSchedulerid.setText("");
         tfName.setText("");
         tfPhone.setText("");
         tfEmail.setText("");
@@ -47,7 +47,7 @@ public class ManagementScheduler extends javax.swing.JFrame {
     }
 
     private boolean textFieldsFilled() {
-        return !tfStaffid.getText().isEmpty() && !tfName.getText().isEmpty()
+        return !tfSchedulerid.getText().isEmpty() && !tfName.getText().isEmpty()
                 && !tfPhone.getText().isEmpty() && !tfEmail.getText().isEmpty()
                 && !tfPassword.getText().isEmpty();
     }
@@ -73,7 +73,7 @@ public class ManagementScheduler extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         tfName = new javax.swing.JTextField();
-        tfStaffid = new javax.swing.JTextField();
+        tfSchedulerid = new javax.swing.JTextField();
         tfPhone = new javax.swing.JTextField();
         tfEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -153,7 +153,7 @@ public class ManagementScheduler extends javax.swing.JFrame {
         jLabel4.setText("PASSWORD:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("STAFF ID:");
+        jLabel5.setText("SCHEDULER ID:");
 
         btClear.setBackground(new java.awt.Color(235, 235, 235));
         btClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -184,7 +184,7 @@ public class ManagementScheduler extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tfStaffid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addComponent(tfSchedulerid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(tfName, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -195,7 +195,7 @@ public class ManagementScheduler extends javax.swing.JFrame {
                 .addContainerGap(290, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfStaffid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfSchedulerid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -274,7 +274,7 @@ public class ManagementScheduler extends javax.swing.JFrame {
 
     private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
         if (textFieldsFilled()) {
-            String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            String[] data = {tfSchedulerid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
             baseManagement.createAccount(data);
             clearTextFields();
         } else {
@@ -289,7 +289,7 @@ public class ManagementScheduler extends javax.swing.JFrame {
             return;
         }
         if (textFieldsFilled()) {
-            String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            String[] data = {tfSchedulerid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
             baseManagement.updateAccount(selectedRow, data);
             clearTextFields();
         } else {
@@ -309,7 +309,7 @@ public class ManagementScheduler extends javax.swing.JFrame {
 
     private void btSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSearchActionPerformed
         String[] fieldValues = {
-            tfStaffid.getText(),
+        tfSchedulerid.getText(),
             tfName.getText(),
             tfPhone.getText(),
             tfEmail.getText(),
@@ -356,6 +356,6 @@ public class ManagementScheduler extends javax.swing.JFrame {
     private javax.swing.JTextField tfName;
     private javax.swing.JTextField tfPassword;
     private javax.swing.JTextField tfPhone;
-    private javax.swing.JTextField tfStaffid;
+    private javax.swing.JTextField tfSchedulerid;
     // End of variables declaration//GEN-END:variables
 }

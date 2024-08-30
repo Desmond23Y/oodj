@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import java.util.regex.PatternSyntaxException;
 
-public class adminClass {
+public class ViewBooking {
 
     public static int getColumnIndex(String selectedColumn) {
         switch (selectedColumn) {

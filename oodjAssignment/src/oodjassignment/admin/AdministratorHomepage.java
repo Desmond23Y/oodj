@@ -174,11 +174,15 @@ public class AdministratorHomepage extends javax.swing.JFrame {
     }//GEN-LAST:event_btLogoutActionPerformed
 
     private void btAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdminActionPerformed
-        // TODO add your handling code here:
+        ManagementAdmin ManagementAdmin = new ManagementAdmin();
+        ManagementAdmin.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btAdminActionPerformed
 
     private void btManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btManagerActionPerformed
-        // TODO add your handling code here:
+        ManagementManager ManagementManager = new ManagementManager();
+        ManagementManager.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btManagerActionPerformed
 
     /**

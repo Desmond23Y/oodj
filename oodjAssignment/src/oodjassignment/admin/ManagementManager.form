@@ -63,11 +63,11 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="USER MANAGEMENT"/>
+        <Property name="text" type="java.lang.String" value="MANAGER MANAGEMENT"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="370" y="40" width="-1" height="-1"/>
+          <AbsoluteConstraints x="320" y="40" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -192,7 +192,7 @@
                           <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel12" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfUserid" alignment="0" pref="200" max="32767" attributes="0"/>
+                          <Component id="tfManagerId" alignment="0" pref="200" max="32767" attributes="0"/>
                           <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="tfName" alignment="0" max="32767" attributes="0"/>
                       </Group>
@@ -207,7 +207,7 @@
                   <EmptySpace pref="290" max="32767" attributes="0"/>
                   <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tfUserid" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="tfManagerId" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -268,7 +268,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="tfName">
         </Component>
-        <Component class="javax.swing.JTextField" name="tfUserid">
+        <Component class="javax.swing.JTextField" name="tfManagerId">
         </Component>
         <Component class="javax.swing.JTextField" name="tfPhone">
         </Component>
@@ -279,7 +279,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="USER ID:"/>
+            <Property name="text" type="java.lang.String" value="MANAGER ID:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btClear">

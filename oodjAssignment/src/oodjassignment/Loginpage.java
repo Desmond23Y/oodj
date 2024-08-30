@@ -70,7 +70,7 @@ public class Loginpage extends javax.swing.JFrame {
                 usernameActionPerformed(evt);
             }
         });
-        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 378, 30));
+        getContentPane().add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 378, 30));
 
         login.setBackground(new java.awt.Color(0, 137, 248));
         login.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -81,7 +81,7 @@ public class Loginpage extends javax.swing.JFrame {
                 loginActionPerformed(evt);
             }
         });
-        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, 380, 30));
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 470, 380, 30));
 
         showpassword.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         showpassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -91,7 +91,7 @@ public class Loginpage extends javax.swing.JFrame {
                 showpasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, -1, -1));
+        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, -1, -1));
 
         password.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         password.setForeground(new java.awt.Color(204, 204, 204));
@@ -104,19 +104,19 @@ public class Loginpage extends javax.swing.JFrame {
                 passwordFocusLost(evt);
             }
         });
-        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 378, 30));
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 378, 30));
 
         logintype.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         logintype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRATOR", "CUSTOMER", "SCHEDULER", "MANAGER" }));
-        getContentPane().add(logintype, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, -1));
+        getContentPane().add(logintype, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, -1, -1));
 
         Welcome.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         Welcome.setForeground(new java.awt.Color(255, 255, 255));
         Welcome.setText("WELCOME TO THE HALL SYMPHONY INC.");
-        getContentPane().add(Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
+        getContentPane().add(Welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, -1, -1));
 
         picture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/hall.png"))); // NOI18N
-        getContentPane().add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, -1, -1));
+        getContentPane().add(picture, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, -1));
 
         forgotpassowrd.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         forgotpassowrd.setForeground(new java.awt.Color(204, 204, 204));
@@ -126,7 +126,7 @@ public class Loginpage extends javax.swing.JFrame {
                 forgotpassowrdMouseClicked(evt);
             }
         });
-        getContentPane().add(forgotpassowrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, -1, -1));
+        getContentPane().add(forgotpassowrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 510, -1, -1));
 
         createanaccount.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         createanaccount.setForeground(new java.awt.Color(204, 204, 204));
@@ -136,11 +136,11 @@ public class Loginpage extends javax.swing.JFrame {
                 createanaccountMouseClicked(evt);
             }
         });
-        getContentPane().add(createanaccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, -1, -1));
+        getContentPane().add(createanaccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel1");
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, -30, 3050, 2060));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

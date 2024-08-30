@@ -6,8 +6,8 @@ public class Scheduler extends Person {
     private String password;
 
     // Constructor to initialize all fields
-    public Scheduler(String staffId, String name, String phone, String email, String password) {
-        super(staffId, name, phone, email);
+    public Scheduler(String schedulerId, String name, String phone, String email, String password) {
+        super(schedulerId, name, phone, email);
         this.password = password;
     }
 

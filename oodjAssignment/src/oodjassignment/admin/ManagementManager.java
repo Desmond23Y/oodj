@@ -11,7 +11,7 @@ public class ManagementManager extends javax.swing.JFrame {
     public ManagementManager() {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-        String filePath = "src/oodjassignment/database/User.txt";
+        String filePath = "src/oodjassignment/database/Manager.txt";
         baseManagement = new BaseManagement(model, filePath);
         jTable.setRowSorter(baseManagement.getSorter());
         baseManagement.showAccountsFromFile();
@@ -31,7 +31,7 @@ public class ManagementManager extends javax.swing.JFrame {
             String email = (String) jTable.getValueAt(selectedRow, 3);
             String password = (String) jTable.getValueAt(selectedRow, 4);
 
-            tfUserid.setText(userId);
+            tfManagerId.setText(userId);
             tfName.setText(name);
             tfPhone.setText(phone);
             tfEmail.setText(email);
@@ -40,7 +40,7 @@ public class ManagementManager extends javax.swing.JFrame {
     }
 
     private void clearTextFields() {
-        tfUserid.setText("");
+        tfManagerId.setText("");
         tfName.setText("");
         tfPhone.setText("");
         tfEmail.setText("");
@@ -48,7 +48,7 @@ public class ManagementManager extends javax.swing.JFrame {
     }
 
     private boolean textFieldsFilled() {
-        return !tfUserid.getText().isEmpty() && !tfName.getText().isEmpty()
+        return !tfManagerId.getText().isEmpty() && !tfName.getText().isEmpty()
                 && !tfPhone.getText().isEmpty() && !tfEmail.getText().isEmpty()
                 && !tfPassword.getText().isEmpty();
     }
@@ -74,7 +74,7 @@ public class ManagementManager extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         tfName = new javax.swing.JTextField();
-        tfUserid = new javax.swing.JTextField();
+        tfManagerId = new javax.swing.JTextField();
         tfPhone = new javax.swing.JTextField();
         tfEmail = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -90,8 +90,8 @@ public class ManagementManager extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("USER MANAGEMENT");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, -1, -1));
+        jLabel3.setText("MANAGER MANAGEMENT");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
 
         btSearch.setBackground(new java.awt.Color(235, 235, 235));
         btSearch.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -154,7 +154,7 @@ public class ManagementManager extends javax.swing.JFrame {
         jLabel11.setText("PASSWORD:");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel12.setText("USER ID:");
+        jLabel12.setText("MANAGER ID:");
 
         btClear.setBackground(new java.awt.Color(235, 235, 235));
         btClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -185,7 +185,7 @@ public class ManagementManager extends javax.swing.JFrame {
                         .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tfUserid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addComponent(tfManagerId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                         .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(tfName, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -196,7 +196,7 @@ public class ManagementManager extends javax.swing.JFrame {
                 .addContainerGap(290, Short.MAX_VALUE)
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfUserid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfManagerId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -264,7 +264,7 @@ public class ManagementManager extends javax.swing.JFrame {
 
     private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
         if (textFieldsFilled()) {
-            String[] data = {tfUserid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            String[] data = {tfManagerId.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
             baseManagement.createAccount(data);
             clearTextFields();
         } else {
@@ -282,7 +282,7 @@ public class ManagementManager extends javax.swing.JFrame {
 
     private void btSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSearchActionPerformed
         String[] fieldValues = {
-            tfUserid.getText(),
+            tfManagerId.getText(),
             tfName.getText(),
             tfPhone.getText(),
             tfEmail.getText(),
@@ -299,7 +299,7 @@ public class ManagementManager extends javax.swing.JFrame {
             return;
         }
         if (textFieldsFilled()) {
-            String[] data = {tfUserid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            String[] data = {tfManagerId.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
             baseManagement.updateAccount(selectedRow, data);
             clearTextFields();
         } else {
@@ -374,9 +374,9 @@ public class ManagementManager extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable;
     private javax.swing.JTextField tfEmail;
+    private javax.swing.JTextField tfManagerId;
     private javax.swing.JTextField tfName;
     private javax.swing.JTextField tfPassword;
     private javax.swing.JTextField tfPhone;
-    private javax.swing.JTextField tfUserid;
     // End of variables declaration//GEN-END:variables
 }
