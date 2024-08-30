@@ -4,6 +4,8 @@
  */
 package oodjassignment.admin;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import oodjassignment.Loginpage;
 
 /**
@@ -17,6 +19,35 @@ public class AdministratorHomepage extends javax.swing.JFrame {
      */
     public AdministratorHomepage() {
         initComponents();
+        updateWelcomeMessage();
+    }
+
+    private void updateWelcomeMessage() {
+        String[] userInfo = readUserInfo();
+        if (userInfo[0] != null && userInfo[1] != null) {
+            welcomeMessage.setText("Welcome " + userInfo[0] + " " + userInfo[1]);
+        } else {
+            welcomeMessage.setText("Welcome User");
+        }
+    }
+
+    private String[] readUserInfo() {
+        String filePath = "src/oodjassignment/database/cookie.txt";
+        String[] userInfo = new String[2]; // userInfo[0] = userId, userInfo[1] = userName
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line = br.readLine(); // Read the single line from the file
+            if (line != null) {
+                String[] parts = line.split(","); // Split the line by commas
+                if (parts.length >= 2) {
+                    userInfo[0] = parts[0]; // User ID
+                    userInfo[1] = parts[1]; // User Name
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userInfo;
     }
 
     /**
@@ -28,6 +59,7 @@ public class AdministratorHomepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        welcomeMessage = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btUser = new javax.swing.JButton();
@@ -44,11 +76,16 @@ public class AdministratorHomepage extends javax.swing.JFrame {
         setIconImages(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        welcomeMessage.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        welcomeMessage.setForeground(new java.awt.Color(255, 255, 255));
+        welcomeMessage.setText("WELCOME");
+        getContentPane().add(welcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 390, -1));
+
         title.setBackground(new java.awt.Color(255, 255, 255));
         title.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         title.setForeground(new java.awt.Color(255, 255, 255));
         title.setText("ADMINISTRATOR HOMEPAGE");
-        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
+        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(0, 137, 248));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -230,5 +267,6 @@ public class AdministratorHomepage extends javax.swing.JFrame {
     private javax.swing.JButton btUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel title;
+    private javax.swing.JLabel welcomeMessage;
     // End of variables declaration//GEN-END:variables
 }
