@@ -11,7 +11,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import oodjassignment.admin.AdministratorHomepage;
 import oodjassignment.scheduler.schedulerhomepage;
 import oodjassignment.manager.managerHomepage;
@@ -65,6 +64,11 @@ public class Loginpage extends javax.swing.JFrame {
                 usernameFocusLost(evt);
             }
         });
+        username.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                usernameMouseClicked(evt);
+            }
+        });
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
@@ -102,6 +106,11 @@ public class Loginpage extends javax.swing.JFrame {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 passwordFocusLost(evt);
+            }
+        });
+        password.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                passwordMouseClicked(evt);
             }
         });
         getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 378, 30));
@@ -170,13 +179,13 @@ public class Loginpage extends javax.swing.JFrame {
         String fileName = "";
         switch (userType) {
             case "ADMINISTRATOR" ->
-                fileName = "src/oodjassignment/database/administrator.txt";
-            case "SCHEDULER" ->
-                fileName = "src/oodjassignment/database/scheduler.txt";
+                fileName = "src/oodjassignment/database/Administrator.txt";
             case "CUSTOMER" ->
-                fileName = "src/oodjassignment/database/customer.txt";
+                fileName = "src/oodjassignment/database/User.txt";
+            case "SCHEDULER" ->
+                fileName = "src/oodjassignment/database/Scheduler.txt";
             case "MANAGER" ->
-                fileName = "src/oodjassignment/database/manager.txt";
+                fileName = "src/oodjassignment/database/Manager.txt";
             default -> {
                 JOptionPane.showMessageDialog(this, "Please select a valid user type!");
                 return;
@@ -190,8 +199,14 @@ public class Loginpage extends javax.swing.JFrame {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(","); // Assuming comma-separated values
-                if (parts.length >= 5 && parts[0].equals(id) && parts[4].equals(password)) {  // ID at index 0, Password at index 4
+                String[] parts = line.split(",");  // Assuming comma-separated values
+
+                // Ensure the line has the expected number of parts (ID, Name, Phone, Email, Password)
+                if (parts.length >= 5 && parts[0].equals(id) && parts[4].equals(password)) {
+                    // Store full user details along with the role in the cookie
+                    String userDetailsWithRole = String.join(",", parts) + "," + userType;
+                    cookie(userDetailsWithRole);
+
                     // Handle successful login based on the role
                     switch (userType) {
                         case "ADMINISTRATOR" -> {
@@ -199,15 +214,15 @@ public class Loginpage extends javax.swing.JFrame {
                             setVisible(false);
                             new AdministratorHomepage().setVisible(true);
                         }
-                        case "SCHEDULER" -> {
-                            JOptionPane.showMessageDialog(this, "Welcome scheduler!");
-                            setVisible(false);
-                            new schedulerhomepage().setVisible(true);
-                        }
                         case "CUSTOMER" -> {
                             JOptionPane.showMessageDialog(this, "Customer logged in successfully!");
                             setVisible(false);
                             new homepage().setVisible(true);
+                        }
+                        case "SCHEDULER" -> {
+                            JOptionPane.showMessageDialog(this, "Welcome scheduler!");
+                            setVisible(false);
+                            new schedulerhomepage().setVisible(true);
                         }
                         case "MANAGER" -> {
                             JOptionPane.showMessageDialog(this, "Manager logged in successfully!");
@@ -218,11 +233,21 @@ public class Loginpage extends javax.swing.JFrame {
                     return;
                 }
             }
+            // If no matching credentials are found, show an error message
             JOptionPane.showMessageDialog(this, "Incorrect ID or Password.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error reading file. Please try again later.");
         }
     }//GEN-LAST:event_loginActionPerformed
+
+private void cookie(String userDetailsWithRole) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/oodjassignment/database/cookie.txt"))) {
+            writer.write(userDetailsWithRole);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error saving login details.");
+        }
+    }
+
 
     private void showpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordActionPerformed
         // TODO add your handling code here:
@@ -264,6 +289,14 @@ public class Loginpage extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_createanaccountMouseClicked
 
+    private void usernameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usernameMouseClicked
+        username.setText("");
+    }//GEN-LAST:event_usernameMouseClicked
+
+    private void passwordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordMouseClicked
+        password.setText("");
+    }//GEN-LAST:event_passwordMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -278,16 +311,28 @@ public class Loginpage extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Loginpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Loginpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Loginpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Loginpage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Loginpage.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Loginpage.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Loginpage.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Loginpage.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
