@@ -1,17 +1,17 @@
 package oodjassignment.admin;
 
-import oodjassignment.admin.BaseManagement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
-public class SchedulerStaffManagement extends javax.swing.JFrame {
+public class ManagementAdmin extends javax.swing.JFrame {
 
     private BaseManagement baseManagement;
 
-    public SchedulerStaffManagement() {
+    public ManagementAdmin() {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
-        String filePath = "src/oodjassignment/database/Scheduler.txt";
+        String filePath = "src/oodjassignment/database/User.txt";
         baseManagement = new BaseManagement(model, filePath);
         jTable.setRowSorter(baseManagement.getSorter());
         baseManagement.showAccountsFromFile();
@@ -25,12 +25,13 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
     private void getSelectedRowText() {
         int selectedRow = jTable.getSelectedRow();
         if (selectedRow >= 0) {
-            String staffId = (String) jTable.getValueAt(selectedRow, 0);
+            String userId = (String) jTable.getValueAt(selectedRow, 0);
             String name = (String) jTable.getValueAt(selectedRow, 1);
             String phone = (String) jTable.getValueAt(selectedRow, 2);
             String email = (String) jTable.getValueAt(selectedRow, 3);
             String password = (String) jTable.getValueAt(selectedRow, 4);
-            tfStaffid.setText(staffId);
+
+            tfUserid.setText(userId);
             tfName.setText(name);
             tfPhone.setText(phone);
             tfEmail.setText(email);
@@ -39,7 +40,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
     }
 
     private void clearTextFields() {
-        tfStaffid.setText("");
+        tfUserid.setText("");
         tfName.setText("");
         tfPhone.setText("");
         tfEmail.setText("");
@@ -47,7 +48,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
     }
 
     private boolean textFieldsFilled() {
-        return !tfStaffid.getText().isEmpty() && !tfName.getText().isEmpty()
+        return !tfUserid.getText().isEmpty() && !tfName.getText().isEmpty()
                 && !tfPhone.getText().isEmpty() && !tfEmail.getText().isEmpty()
                 && !tfPassword.getText().isEmpty();
     }
@@ -61,22 +62,22 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         btSearch = new javax.swing.JButton();
+        btDelete = new javax.swing.JButton();
         btCreate = new javax.swing.JButton();
         btUpdate = new javax.swing.JButton();
-        btDelete = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         tfPassword = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         tfName = new javax.swing.JTextField();
-        tfStaffid = new javax.swing.JTextField();
+        tfUserid = new javax.swing.JTextField();
         tfPhone = new javax.swing.JTextField();
         tfEmail = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         btClear = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable = new javax.swing.JTable();
@@ -86,6 +87,11 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("USER MANAGEMENT");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, -1, -1));
 
         btSearch.setBackground(new java.awt.Color(235, 235, 235));
         btSearch.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -97,6 +103,17 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 170, 35));
+
+        btDelete.setBackground(new java.awt.Color(235, 235, 235));
+        btDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btDelete.setForeground(new java.awt.Color(0, 0, 0));
+        btDelete.setText("DELETE");
+        btDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 150, 170, 35));
 
         btCreate.setBackground(new java.awt.Color(235, 235, 235));
         btCreate.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -122,38 +139,22 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         });
         getContentPane().add(btUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 170, 35));
 
-        btDelete.setBackground(new java.awt.Color(235, 235, 235));
-        btDelete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btDelete.setForeground(new java.awt.Color(0, 0, 0));
-        btDelete.setText("DELETE");
-        btDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDeleteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 150, 170, 35));
+        jPanel3.setBackground(new java.awt.Color(0, 137, 248));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("SCHEDULER MANAGEMENT");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setText("EMAIL:");
 
-        jPanel2.setBackground(new java.awt.Color(0, 137, 248));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setText("NAME:");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("EMAIL:");
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setText("PHONE:");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("NAME:");
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setText("PASSWORD:");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("PHONE:");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("PASSWORD:");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("STAFF ID:");
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel12.setText("USER ID:");
 
         btClear.setBackground(new java.awt.Color(235, 235, 235));
         btClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -168,48 +169,48 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tfPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
+                    .addComponent(jLabel11)
                     .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(btClear, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tfStaffid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(tfUserid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(tfName, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(290, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfStaffid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfUserid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel6)
+                .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -217,7 +218,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
                 .addGap(90, 90, 90))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 250, 780));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 250, 780));
 
         jTable.setAutoCreateRowSorter(true);
         jTable.setBackground(new java.awt.Color(0, 137, 248));
@@ -226,26 +227,20 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
 
             },
             new String [] {
-                "STAFF ID", "NAME", "PHONE", "EMAIL", "PASSWORD"
+                "USER ID", "NAME", "PHONE NUMBER", "EMAIL", "PASSWORD"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         jScrollPane2.setViewportView(jTable);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 750, 590));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1000, 600));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1000, 800));
 
         jMenuBar1.setBackground(new java.awt.Color(226, 218, 214));
         jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));
+        jMenuBar1.setFocusable(false);
+        jMenuBar1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
 
         jMenu2.setText("HOME");
         jMenu2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -267,20 +262,35 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
-        clearTextFields();
-        baseManagement.getSorter().setRowFilter(null);
-    }//GEN-LAST:event_btClearActionPerformed
-
     private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
         if (textFieldsFilled()) {
-            String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            String[] data = {tfUserid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
             baseManagement.createAccount(data);
             clearTextFields();
         } else {
             JOptionPane.showMessageDialog(this, "Please fill in all fields.");
         }
     }//GEN-LAST:event_btCreateActionPerformed
+
+    private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
+        clearTextFields();
+        TableRowSorter<DefaultTableModel> sorter = (TableRowSorter<DefaultTableModel>) jTable.getRowSorter();
+        if (sorter != null) {
+            sorter.setRowFilter(null);
+        }
+    }//GEN-LAST:event_btClearActionPerformed
+
+    private void btSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSearchActionPerformed
+        String[] fieldValues = {
+            tfUserid.getText(),
+            tfName.getText(),
+            tfPhone.getText(),
+            tfEmail.getText(),
+            tfPassword.getText()
+        };
+        int[] columnIndices = {0, 1, 2, 3, 4};
+        baseManagement.searchAccounts(fieldValues, columnIndices);
+    }//GEN-LAST:event_btSearchActionPerformed
 
     private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
         int selectedRow = jTable.getSelectedRow();
@@ -289,7 +299,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
             return;
         }
         if (textFieldsFilled()) {
-            String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            String[] data = {tfUserid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
             baseManagement.updateAccount(selectedRow, data);
             clearTextFields();
         } else {
@@ -307,29 +317,40 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         clearTextFields();
     }//GEN-LAST:event_btDeleteActionPerformed
 
-    private void btSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSearchActionPerformed
-        String[] fieldValues = {
-            tfStaffid.getText(),
-            tfName.getText(),
-            tfPhone.getText(),
-            tfEmail.getText(),
-            tfPassword.getText()
-        };
-        int[] columnIndices = {0, 1, 2, 3, 4};
-        baseManagement.searchAccounts(fieldValues, columnIndices);
-
-    }//GEN-LAST:event_btSearchActionPerformed
-
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ManagementAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ManagementAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ManagementAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ManagementAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SchedulerStaffManagement().setVisible(true);
+                new ManagementAdmin().setVisible(true);
             }
         });
     }
@@ -340,22 +361,22 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
     private javax.swing.JButton btDelete;
     private javax.swing.JButton btSearch;
     private javax.swing.JButton btUpdate;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfName;
     private javax.swing.JTextField tfPassword;
     private javax.swing.JTextField tfPhone;
-    private javax.swing.JTextField tfStaffid;
+    private javax.swing.JTextField tfUserid;
     // End of variables declaration//GEN-END:variables
 }

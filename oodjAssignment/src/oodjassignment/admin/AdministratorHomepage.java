@@ -28,13 +28,15 @@ public class AdministratorHomepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        title = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        btUser = new javax.swing.JButton();
+        btBooking = new javax.swing.JButton();
+        btScheduler = new javax.swing.JButton();
+        btLogout = new javax.swing.JButton();
+        btAdmin = new javax.swing.JButton();
+        btManager = new javax.swing.JButton();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
@@ -42,49 +44,67 @@ public class AdministratorHomepage extends javax.swing.JFrame {
         setIconImages(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("ADMINISTRATOR HOMEPAGE");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, -1));
+        title.setBackground(new java.awt.Color(255, 255, 255));
+        title.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
+        title.setForeground(new java.awt.Color(255, 255, 255));
+        title.setText("ADMINISTRATOR HOMEPAGE");
+        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(0, 137, 248));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton5.setBackground(new java.awt.Color(235, 235, 235));
-        jButton5.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButton5.setText("USER MANAGEMENT");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btUser.setBackground(new java.awt.Color(235, 235, 235));
+        btUser.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btUser.setText("USER MANAGEMENT");
+        btUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btUserActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(235, 235, 235));
-        jButton6.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButton6.setText("BOOKING MANAGEMENT");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btBooking.setBackground(new java.awt.Color(235, 235, 235));
+        btBooking.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btBooking.setText("BOOKING MANAGEMENT");
+        btBooking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btBookingActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(235, 235, 235));
-        jButton8.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButton8.setText("SCHEDULER MANAGEMENT");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btScheduler.setBackground(new java.awt.Color(235, 235, 235));
+        btScheduler.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btScheduler.setText("SCHEDULER MANAGEMENT");
+        btScheduler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btSchedulerActionPerformed(evt);
             }
         });
 
-        jButton9.setBackground(new java.awt.Color(235, 235, 235));
-        jButton9.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jButton9.setText("LOGOUT");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btLogout.setBackground(new java.awt.Color(235, 235, 235));
+        btLogout.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btLogout.setText("LOGOUT");
+        btLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btLogoutActionPerformed(evt);
+            }
+        });
+
+        btAdmin.setBackground(new java.awt.Color(235, 235, 235));
+        btAdmin.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btAdmin.setText("ADMIN MANAGEMENT");
+        btAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAdminActionPerformed(evt);
+            }
+        });
+
+        btManager.setBackground(new java.awt.Color(235, 235, 235));
+        btManager.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btManager.setText("MANAGR MANAGEMENT");
+        btManager.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btManagerActionPerformed(evt);
             }
         });
 
@@ -93,59 +113,73 @@ public class AdministratorHomepage extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                    .addComponent(btBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btScheduler, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btManager, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btUser, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(btUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btScheduler, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
-                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+                .addComponent(btAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btManager, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, 350));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 260, 400));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        UserManagement UserManagement = new UserManagement();
+    private void btUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUserActionPerformed
+        ManagementUser UserManagement = new ManagementUser();
         UserManagement.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btUserActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        SchedulerStaffManagement SchedulerStaffManagement = new SchedulerStaffManagement();
+    private void btSchedulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSchedulerActionPerformed
+        ManagementScheduler SchedulerStaffManagement = new ManagementScheduler();
         SchedulerStaffManagement.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btSchedulerActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        BookingManagement BookingManagement = new BookingManagement();
+    private void btBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBookingActionPerformed
+        ManagementBooking BookingManagement = new ManagementBooking();
         BookingManagement.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btBookingActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void btLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogoutActionPerformed
         Loginpage Loginpage = new Loginpage();
         Loginpage.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_btLogoutActionPerformed
+
+    private void btAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdminActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btAdminActionPerformed
+
+    private void btManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btManagerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btManagerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,12 +217,14 @@ public class AdministratorHomepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel background;
+    private javax.swing.JButton btAdmin;
+    private javax.swing.JButton btBooking;
+    private javax.swing.JButton btLogout;
+    private javax.swing.JButton btManager;
+    private javax.swing.JButton btScheduler;
+    private javax.swing.JButton btUser;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,12 +3,12 @@ package oodjassignment.admin;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-public class BookingManagement extends javax.swing.JFrame {
+public class ManagementBooking extends javax.swing.JFrame {
 
     private TableRowSorter<DefaultTableModel> upcomingRowSorter;
     private TableRowSorter<DefaultTableModel> pastRowSorter;
 
-    public BookingManagement() {
+    public ManagementBooking() {
         initComponents();
         DefaultTableModel upcomingModel = (DefaultTableModel) tbUpcomingBooking.getModel();
         DefaultTableModel pastModel = (DefaultTableModel) tbPastBooking.getModel();
@@ -253,20 +253,21 @@ public class BookingManagement extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BookingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagementBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BookingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagementBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BookingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagementBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BookingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagementBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BookingManagement().setVisible(true);
+                new ManagementBooking().setVisible(true);
             }
         });
     }
