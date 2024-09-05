@@ -23,31 +23,29 @@ public class AdministratorHomepage extends javax.swing.JFrame {
     }
 
     private void updateWelcomeMessage() {
-        String[] userInfo = readUserInfo();
-        if (userInfo[0] != null && userInfo[1] != null) {
-            welcomeMessage.setText("Welcome " + userInfo[0] + " " + userInfo[1]);
+        String userName = readUserInfo(); // Now a single String, not an array
+        if (userName != null) {
+            welcomeMessage.setText("Welcome " + userName);
         } else {
             welcomeMessage.setText("Welcome User");
         }
     }
 
-    private String[] readUserInfo() {
+    private String readUserInfo() {
         String filePath = "src/oodjassignment/database/cookie.txt";
-        String[] userInfo = new String[2]; // userInfo[0] = userId, userInfo[1] = userName
-
+        String userName = null;
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line = br.readLine(); // Read the single line from the file
             if (line != null) {
                 String[] parts = line.split(","); // Split the line by commas
                 if (parts.length >= 2) {
-                    userInfo[0] = parts[0]; // User ID
-                    userInfo[1] = parts[1]; // User Name
+                    userName = parts[1]; // Extract User Name (second element)
                 }
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return userInfo;
+        return userName;
     }
 
     /**
@@ -236,16 +234,24 @@ public class AdministratorHomepage extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdministratorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdministratorHomepage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdministratorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdministratorHomepage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdministratorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdministratorHomepage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdministratorHomepage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdministratorHomepage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
