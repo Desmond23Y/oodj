@@ -148,7 +148,6 @@ public class Loginpage extends javax.swing.JFrame {
         getContentPane().add(createanaccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 510, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        background.setText("jLabel1");
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
 
         pack();
