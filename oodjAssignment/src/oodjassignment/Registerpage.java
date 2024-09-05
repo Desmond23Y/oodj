@@ -6,9 +6,11 @@ package oodjassignment;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -104,14 +106,45 @@ public class Registerpage extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public String generateID(int id) 
+    {
+    return String.format("U%04d", id);
+    }
+    
+    public int getNextID() {
+    int nextID = 1;
+    try (BufferedReader br = new BufferedReader(new FileReader("src/oodjassignment/database/User.txt"))) {
+        String lastLine = "", currentLine;
+        while ((currentLine = br.readLine()) != null) {
+            lastLine = currentLine;
+        }
+        if (!lastLine.isEmpty()) {
+            String[] fields = lastLine.split(",");
+            String lastID = fields[0].substring(1);  // Get the numeric part of the ID
+            nextID = Integer.parseInt(lastID) + 1;   // Increment the ID
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return nextID;
+}
+
+    
     private void register_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_register_buttonActionPerformed
-       try (BufferedWriter bw = new BufferedWriter(new FileWriter("User.txt", true))) {
-        if (!username_field.getText().isEmpty() && !phone_field.getText().isEmpty() &&
-            !email_field.getText().isEmpty() && !password_field.getText().isEmpty()) {
+       try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/User.txt", true))) {
+        if (!username_field.getText().isEmpty() 
+            && !phone_field.getText().isEmpty() 
+            && !email_field.getText().isEmpty() 
+            && !password_field.getText().isEmpty()) {
             
-            String rec = username_field.getText() + "," + phone_field.getText() + "," +
+            String id = generateID(getNextID());
+            
+            String rec = id + "," + username_field.getText() + "," + phone_field.getText() + "," +
                          email_field.getText() + "," + password_field.getText();
             bw.write(rec + "\n");
+            JOptionPane.showMessageDialog(this, "Register Succesfully!!");
+            setVisible(false);
+            new Loginpage().setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Please fill in all fields.");
         }
