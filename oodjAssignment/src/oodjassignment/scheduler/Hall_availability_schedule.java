@@ -30,6 +30,28 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
      */
     public Hall_availability_schedule() {
         initComponents();
+        String filePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
+        File file = new File(filePath);
+
+        try {
+            // Create a BufferedReader to read the file
+            BufferedReader br = new BufferedReader(new FileReader(file));
+
+            // Get the table model from the JTable
+            DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+
+            // Clear existing rows in the table model to prevent duplication
+            model.setRowCount(0);
+
+            // Read each line from the file and add it to the table model
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] dataRow = line.split("/"); // Adjust the delimiter if necessary
+                model.addRow(dataRow);
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
+}
     }
     
     /**
@@ -52,7 +74,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         Add = new javax.swing.JButton();
         Reset = new javax.swing.JButton();
         Edit = new javax.swing.JButton();
-        View = new javax.swing.JButton();
         Save = new javax.swing.JButton();
         Delete = new javax.swing.JButton();
         halltype = new javax.swing.JComboBox<>();
@@ -65,9 +86,14 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         time = new javax.swing.JTextField();
         st = new javax.swing.JLabel();
         status = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        duration = new javax.swing.JTextField();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1000, 800));
+        setMinimumSize(new java.awt.Dimension(1000, 800));
+        setPreferredSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -90,16 +116,23 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Hall Type", "Price", "Date", "Time", "Status", "Remarks"
+                "Hall Type", "Price", "Date", "Time", "Duration", "Status", "Remarks"
             }
         ));
         Aschedule.setSelectionBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(Aschedule);
+        if (Aschedule.getColumnModel().getColumnCount() > 0) {
+            Aschedule.getColumnModel().getColumn(1).setMinWidth(80);
+            Aschedule.getColumnModel().getColumn(1).setPreferredWidth(80);
+            Aschedule.getColumnModel().getColumn(1).setMaxWidth(80);
+            Aschedule.getColumnModel().getColumn(4).setMinWidth(85);
+            Aschedule.getColumnModel().getColumn(4).setPreferredWidth(85);
+            Aschedule.getColumnModel().getColumn(4).setMaxWidth(85);
+        }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 490, 520));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 680, 520));
 
         jPanel2.setBackground(new java.awt.Color(0, 137, 248));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Remarks.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Remarks.setForeground(new java.awt.Color(153, 153, 153));
@@ -113,10 +146,8 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 RemarksFocusLost(evt);
             }
         });
-        jPanel2.add(Remarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 242, 107));
 
         Date.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jPanel2.add(Date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 154, -1));
 
         Price.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Price.addActionListener(new java.awt.event.ActionListener() {
@@ -124,7 +155,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 PriceActionPerformed(evt);
             }
         });
-        jPanel2.add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 154, -1));
 
         Add.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Add.setText("Add");
@@ -133,7 +163,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 AddActionPerformed(evt);
             }
         });
-        jPanel2.add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
 
         Reset.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Reset.setText("Clear");
@@ -142,7 +171,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 ResetActionPerformed(evt);
             }
         });
-        jPanel2.add(Reset, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, -1, -1));
 
         Edit.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Edit.setText("Edit");
@@ -151,16 +179,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 EditActionPerformed(evt);
             }
         });
-        jPanel2.add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 80, -1));
-
-        View.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        View.setText("View");
-        View.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewActionPerformed(evt);
-            }
-        });
-        jPanel2.add(View, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 80, -1));
 
         Save.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Save.setText("Update");
@@ -169,7 +187,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 SaveActionPerformed(evt);
             }
         });
-        jPanel2.add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 340, -1, -1));
 
         Delete.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Delete.setText("Delete");
@@ -178,7 +195,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 DeleteActionPerformed(evt);
             }
         });
-        jPanel2.add(Delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, -1, -1));
 
         halltype.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         halltype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auditorium", "Banquet Hall", "Meeting Room" }));
@@ -187,22 +203,18 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 halltypeActionPerformed(evt);
             }
         });
-        jPanel2.add(halltype, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 154, -1));
 
         ht.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         ht.setForeground(new java.awt.Color(255, 255, 255));
         ht.setText("Hall Type :");
-        jPanel2.add(ht, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         p.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         p.setForeground(new java.awt.Color(255, 255, 255));
         p.setText("Price :");
-        jPanel2.add(p, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         dt.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         dt.setForeground(new java.awt.Color(255, 255, 255));
         dt.setText("Date :");
-        jPanel2.add(dt, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
         filter.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         filter.setForeground(new java.awt.Color(153, 153, 153));
@@ -221,42 +233,147 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                 filterKeyReleased(evt);
             }
         });
-        jPanel2.add(filter, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 440, 115, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Search :");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, -1, -1));
 
         t.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         t.setForeground(new java.awt.Color(255, 255, 255));
         t.setText("Time :");
-        jPanel2.add(t, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         time.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        time.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                timeActionPerformed(evt);
-            }
-        });
-        jPanel2.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 154, -1));
 
         st.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         st.setForeground(new java.awt.Color(255, 255, 255));
         st.setText("Status :");
-        jPanel2.add(st, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
         status.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Free", "Already Booking", "Under Maintenance" }));
-        jPanel2.add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 154, -1));
+        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Already Booking", "Under Maintenance" }));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 280, 520));
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Duration :");
+
+        duration.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        duration.setPreferredSize(new java.awt.Dimension(122, 23));
+        duration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                durationActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(ht)
+                        .addGap(7, 7, 7)
+                        .addComponent(halltype, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(p)
+                        .addGap(37, 37, 37)
+                        .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(dt)
+                        .addGap(39, 39, 39)
+                        .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(t)
+                        .addGap(37, 37, 37)
+                        .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(Remarks, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel1)
+                        .addGap(16, 16, 16)
+                        .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(11, 11, 11)
+                                .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(st)
+                                .addGap(28, 28, 28)
+                                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(Delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(10, 10, 10)
+                                .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(Add)
+                                .addGap(8, 8, 8)
+                                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(Save)))))
+                .addGap(17, 17, 17))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ht)
+                    .addComponent(halltype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(p)
+                    .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dt)
+                    .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(t)
+                    .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(st)
+                    .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(Remarks, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Add)
+                    .addComponent(Edit)
+                    .addComponent(Save))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Delete)
+                    .addComponent(Reset))
+                .addGap(36, 36, 36)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 280, 580));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel1");
         jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -285,23 +402,24 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         Price.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
         Date.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
         time.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
-        status.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 4).toString());
-        Remarks.setText(model.getValueAt(Aschedule.getSelectedRow(), 5).toString());
+        duration.setText(model.getValueAt(Aschedule.getSelectedRow(), 4).toString());
+        status.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 5).toString());
+        Remarks.setText(model.getValueAt(Aschedule.getSelectedRow(), 6).toString());
         System.out.println("Row Selected: " +Aschedule.getSelectedRow());
     }//GEN-LAST:event_EditActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-        if(Remarks.getText().equals("")||Date.getText().equals("")||Price.getText().equals("")||time.getText().equals("")){
+        if(Remarks.getText().equals("")||Date.getText().equals("")||Price.getText().equals("")||time.getText().equals("")||duration.getText().equals("")){
             JOptionPane.showMessageDialog(this,"Please Enter All Data !");
         }else{
         
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        String[] record = {(String) halltype.getSelectedItem() , Price.getText(), Date.getText(), time.getText(),(String) status.getSelectedItem(), Remarks.getText()};
+        String[] record = {(String) halltype.getSelectedItem() , Price.getText(), Date.getText(), time.getText(), duration.getText(),(String) status.getSelectedItem(), Remarks.getText()};
         model.addRow(record);
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("src\\\\oodjassignment\\\\database\\\\Schedule.txt",true));
-            String rec = (String) halltype.getSelectedItem() +"/"+ Price.getText() +"/"+ Date.getText() +"/"+ time.getText() +"/"+ (String) status.getSelectedItem() +"/"+ Remarks.getText();
+            String rec = (String) halltype.getSelectedItem() +"/"+ Price.getText() +"/"+ Date.getText() +"/"+ time.getText() +"/"+ duration.getText() +"/"+ (String) status.getSelectedItem() +"/"+ Remarks.getText();
             bw.write(rec+"\n");
             bw.close();
         } catch (IOException ex){
@@ -309,33 +427,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
                     }
         }
     }//GEN-LAST:event_AddActionPerformed
-
-    private void ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewActionPerformed
-        String filePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
-        File file = new File(filePath);
-
-        try {
-            // Create a BufferedReader to read the file
-            BufferedReader br = new BufferedReader(new FileReader(file));
-
-            // Get the table model from the JTable
-            DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-
-            // Clear existing rows in the table model to prevent duplication
-            model.setRowCount(0);
-
-            // Read each line from the file and add it to the table model
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] dataRow = line.split("/"); // Adjust the delimiter if necessary
-                model.addRow(dataRow);
-            }
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
-}
-        
-        
-    }//GEN-LAST:event_ViewActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
@@ -345,7 +436,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         try {
             BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule.txt"));
             for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString();
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString();
                 bw.write(rec+"\n");
             }  
             bw.close(); 
@@ -367,13 +458,14 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         model.setValueAt(Price.getText(), Aschedule.getSelectedRow(), 1);
         model.setValueAt(Date.getText(), Aschedule.getSelectedRow(), 2);
         model.setValueAt(time.getText(), Aschedule.getSelectedRow(), 3);
-        model.setValueAt((String)status.getSelectedItem(), Aschedule.getSelectedRow(), 4);
-        model.setValueAt(Remarks.getText(), Aschedule.getSelectedRow(), 5);
+        model.setValueAt(duration.getText(), Aschedule.getSelectedRow(), 4);
+        model.setValueAt((String)status.getSelectedItem(), Aschedule.getSelectedRow(), 5);
+        model.setValueAt(Remarks.getText(), Aschedule.getSelectedRow(), 6);
         
         try {
             BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule.txt"));
             for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString();
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString();
                 bw.write(rec+"\n"); 
             }  
             bw.close(); 
@@ -418,18 +510,18 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         calculatePrice();
     }//GEN-LAST:event_halltypeActionPerformed
 
-    private void timeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeActionPerformed
-        calculatePrice();
-    }//GEN-LAST:event_timeActionPerformed
-
     private void PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceActionPerformed
         Price.setEditable(false);
     }//GEN-LAST:event_PriceActionPerformed
 
+    private void durationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_durationActionPerformed
+        calculatePrice();
+    }//GEN-LAST:event_durationActionPerformed
+
     
      private void calculatePrice() {
         String hallType = (String) halltype.getSelectedItem();
-        String timeText = time.getText().trim();
+        String timeText = duration.getText().trim();
         int hours = extractHours(timeText);
 
         if (hours == -1) {
@@ -511,13 +603,14 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     private javax.swing.JTextField Remarks;
     private javax.swing.JButton Reset;
     private javax.swing.JButton Save;
-    private javax.swing.JButton View;
     private javax.swing.JLabel background;
     private javax.swing.JLabel dt;
+    private javax.swing.JTextField duration;
     private javax.swing.JTextField filter;
     private javax.swing.JComboBox<String> halltype;
     private javax.swing.JLabel ht;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

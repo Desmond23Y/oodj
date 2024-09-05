@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import java.util.regex.PatternSyntaxException;
 
-public class adminClass {
+public class ViewBooking {
 
     public static int getColumnIndex(String selectedColumn) {
         switch (selectedColumn) {
@@ -37,7 +37,7 @@ public class adminClass {
 
     public static void showDataFromFile(String filePath, DefaultTableModel upcomingModel, DefaultTableModel pastModel) {
         // Date format: 01-Jul-2024
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy", Locale.ENGLISH);
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH);
         // Time format: 5pm
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("ha");
 
@@ -48,7 +48,6 @@ public class adminClass {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                // Assuming the file format is: BookingID, Customer Name, Hall type, Date, Time, Duration, Price, Event Information
                 String bookingDate = data[3];
                 String bookingTime = data[4];
 

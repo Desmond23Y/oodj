@@ -28,35 +28,43 @@ public class DataHandling {
         return data;
     }
 
-    public void writeData(List<String[]> data, boolean append) {
+    public boolean writeData(String[] record) {
+        try (FileWriter writer = new FileWriter(filePath, true)) { // Append mode
+            writer.write(String.join(",", record) + "\n");
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateData(int rowIndex, String[] newRecord) {
+        List<String[]> data = readData();
+        if (rowIndex >= 0 && rowIndex < data.size()) {
+            data.set(rowIndex, newRecord);
+            return writeData(data, false); // Overwrite the file
+        }
+        return false;
+    }
+
+    public boolean deleteData(int rowIndex) {
+        List<String[]> data = readData();
+        if (rowIndex >= 0 && rowIndex < data.size()) {
+            data.remove(rowIndex);
+            return writeData(data, false); // Overwrite the file
+        }
+        return false;
+    }
+
+    private boolean writeData(List<String[]> data, boolean append) {
         try (FileWriter writer = new FileWriter(filePath, append)) {
             for (String[] record : data) {
                 writer.write(String.join(",", record) + "\n");
             }
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    public void updateData(int rowIndex, String[] newRecord) {
-        List<String[]> data = readData();
-        if (rowIndex >= 0 && rowIndex < data.size()) {
-            data.set(rowIndex, newRecord);
-            writeData(data, false); // Overwrite the file
-        }
-    }
-
-    public void deleteData(int rowIndex) {
-        List<String[]> data = readData();
-        if (rowIndex >= 0 && rowIndex < data.size()) {
-            data.remove(rowIndex);
-            writeData(data, false); // Overwrite the file
-        }
-    }
-
-    public void appendData(String newRecord) throws IOException {
-        try (FileWriter writer = new FileWriter(filePath, true)) {
-            writer.write(newRecord);
+            return false;
         }
     }
 }

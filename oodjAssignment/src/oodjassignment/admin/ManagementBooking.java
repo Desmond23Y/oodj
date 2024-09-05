@@ -3,18 +3,18 @@ package oodjassignment.admin;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-public class BookingManagement extends javax.swing.JFrame {
+public class ManagementBooking extends javax.swing.JFrame {
 
     private TableRowSorter<DefaultTableModel> upcomingRowSorter;
     private TableRowSorter<DefaultTableModel> pastRowSorter;
 
-    public BookingManagement() {
+    public ManagementBooking() {
         initComponents();
         DefaultTableModel upcomingModel = (DefaultTableModel) tbUpcomingBooking.getModel();
         DefaultTableModel pastModel = (DefaultTableModel) tbPastBooking.getModel();
 
         // Use adminClass to handle data loading
-        adminClass.showDataFromFile("src\\oodjassignment\\database\\Booking.txt", upcomingModel, pastModel);
+        ViewBooking.showDataFromFile("src\\oodjassignment\\database\\Booking.txt", upcomingModel, pastModel);
 
         // Initialize the row sorter
         upcomingRowSorter = new TableRowSorter<>(upcomingModel);
@@ -120,7 +120,7 @@ public class BookingManagement extends javax.swing.JFrame {
 
         tabbedPanel1.addTab("Past Booking", jScrollPane2);
 
-        getContentPane().add(tabbedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 750, 420));
+        getContentPane().add(tabbedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 750, 620));
 
         jPanel2.setBackground(new java.awt.Color(0, 137, 248));
 
@@ -137,7 +137,6 @@ public class BookingManagement extends javax.swing.JFrame {
         jLabel1.setText("SEARCH:");
 
         cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "EVENT INFORMATION" }));
-        cbSearch.setPreferredSize(new java.awt.Dimension(151, 22));
         cbSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbSearchActionPerformed(evt);
@@ -183,10 +182,10 @@ public class BookingManagement extends javax.swing.JFrame {
                 .addComponent(tfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btClearFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(402, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 250, 580));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 250, 780));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1000, 600));
@@ -221,9 +220,9 @@ public class BookingManagement extends javax.swing.JFrame {
     private void tfSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfSearchKeyReleased
         String searchText = tfSearch.getText().trim();
         String selectedColumn = (String) cbSearch.getSelectedItem();
-        int columnIndex = adminClass.getColumnIndex(selectedColumn);
+        int columnIndex = ViewBooking.getColumnIndex(selectedColumn);
 
-        adminClass.applyFilter(upcomingRowSorter, pastRowSorter, searchText, columnIndex);
+        ViewBooking.applyFilter(upcomingRowSorter, pastRowSorter, searchText, columnIndex);
     }//GEN-LAST:event_tfSearchKeyReleased
 
     private void cbSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSearchActionPerformed
@@ -254,20 +253,21 @@ public class BookingManagement extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BookingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagementBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BookingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagementBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BookingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagementBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BookingManagement.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ManagementBooking.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BookingManagement().setVisible(true);
+                new ManagementBooking().setVisible(true);
             }
         });
     }

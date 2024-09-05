@@ -4,17 +4,17 @@ import oodjassignment.admin.BaseManagement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class SchedulerStaffManagement extends javax.swing.JFrame {
+public class ManagementScheduler extends javax.swing.JFrame {
 
     private BaseManagement baseManagement;
 
-    public SchedulerStaffManagement() {
+    public ManagementScheduler() {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
         String filePath = "src/oodjassignment/database/Scheduler.txt";
         baseManagement = new BaseManagement(model, filePath);
         jTable.setRowSorter(baseManagement.getSorter());
-        baseManagement.showDataFromFile();  // Load data on initialization
+        baseManagement.showAccountsFromFile();
         jTable.getSelectionModel().addListSelectionListener(event -> {
             if (!event.getValueIsAdjusting() && jTable.getSelectedRow() != -1) {
                 getSelectedRowText();
@@ -24,24 +24,32 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
 
     private void getSelectedRowText() {
         int selectedRow = jTable.getSelectedRow();
-        String staffId = (String) jTable.getValueAt(selectedRow, 0);
-        String name = (String) jTable.getValueAt(selectedRow, 1);
-        String phone = (String) jTable.getValueAt(selectedRow, 2);
-        String email = (String) jTable.getValueAt(selectedRow, 3);
-        String password = (String) jTable.getValueAt(selectedRow, 4);
-        tfStaffid.setText(staffId);
-        tfName.setText(name);
-        tfPhone.setText(phone);
-        tfEmail.setText(email);
-        tfPassword.setText(password);
+        if (selectedRow >= 0) {
+            String schedulerId = (String) jTable.getValueAt(selectedRow, 0);
+            String name = (String) jTable.getValueAt(selectedRow, 1);
+            String phone = (String) jTable.getValueAt(selectedRow, 2);
+            String email = (String) jTable.getValueAt(selectedRow, 3);
+            String password = (String) jTable.getValueAt(selectedRow, 4);
+            tfSchedulerid.setText(schedulerId);
+            tfName.setText(name);
+            tfPhone.setText(phone);
+            tfEmail.setText(email);
+            tfPassword.setText(password);
+        }
     }
 
     private void clearTextFields() {
-        tfStaffid.setText("");
+        tfSchedulerid.setText("");
         tfName.setText("");
         tfPhone.setText("");
         tfEmail.setText("");
         tfPassword.setText("");
+    }
+
+    private boolean textFieldsFilled() {
+        return !tfSchedulerid.getText().isEmpty() && !tfName.getText().isEmpty()
+                && !tfPhone.getText().isEmpty() && !tfEmail.getText().isEmpty()
+                && !tfPassword.getText().isEmpty();
     }
 
     /**
@@ -65,7 +73,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         tfName = new javax.swing.JTextField();
-        tfStaffid = new javax.swing.JTextField();
+        tfSchedulerid = new javax.swing.JTextField();
         tfPhone = new javax.swing.JTextField();
         tfEmail = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -145,7 +153,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         jLabel4.setText("PASSWORD:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("STAFF ID:");
+        jLabel5.setText("SCHEDULER ID:");
 
         btClear.setBackground(new java.awt.Color(235, 235, 235));
         btClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -176,7 +184,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(tfStaffid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                        .addComponent(tfSchedulerid, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(tfName, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -184,10 +192,10 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(90, Short.MAX_VALUE)
+                .addContainerGap(290, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfStaffid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfSchedulerid, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -209,7 +217,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
                 .addGap(90, 90, 90))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 250, 580));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 250, 780));
 
         jTable.setAutoCreateRowSorter(true);
         jTable.setBackground(new java.awt.Color(0, 137, 248));
@@ -222,7 +230,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -231,7 +239,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 750, 390));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 750, 590));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1000, 600));
@@ -261,11 +269,17 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
 
     private void btClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearActionPerformed
         clearTextFields();
+        baseManagement.getSorter().setRowFilter(null);
     }//GEN-LAST:event_btClearActionPerformed
 
     private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
-        String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
-        baseManagement.createRecord(data);
+        if (textFieldsFilled()) {
+            String[] data = {tfSchedulerid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            baseManagement.createAccount(data);
+            clearTextFields();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+        }
     }//GEN-LAST:event_btCreateActionPerformed
 
     private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
@@ -274,8 +288,13 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please select a staff to update.");
             return;
         }
-        String[] data = {tfStaffid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
-        baseManagement.updateRecord(selectedRow, data);
+        if (textFieldsFilled()) {
+            String[] data = {tfSchedulerid.getText(), tfName.getText(), tfPhone.getText(), tfEmail.getText(), tfPassword.getText()};
+            baseManagement.updateAccount(selectedRow, data);
+            clearTextFields();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+        }
     }//GEN-LAST:event_btUpdateActionPerformed
 
     private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
@@ -284,19 +303,20 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please select a staff to delete.");
             return;
         }
-        baseManagement.deleteRecord(selectedRow);
+        baseManagement.deleteAccount(selectedRow);
+        clearTextFields();
     }//GEN-LAST:event_btDeleteActionPerformed
 
     private void btSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSearchActionPerformed
         String[] fieldValues = {
-            tfStaffid.getText(),
+        tfSchedulerid.getText(),
             tfName.getText(),
             tfPhone.getText(),
             tfEmail.getText(),
             tfPassword.getText()
         };
-        int[] columnIndices = {0, 1, 2, 3, 4}; // Column indices corresponding to the fields
-        baseManagement.search(fieldValues, columnIndices);
+        int[] columnIndices = {0, 1, 2, 3, 4};
+        baseManagement.searchAccounts(fieldValues, columnIndices);
 
     }//GEN-LAST:event_btSearchActionPerformed
 
@@ -309,7 +329,7 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SchedulerStaffManagement().setVisible(true);
+                new ManagementScheduler().setVisible(true);
             }
         });
     }
@@ -336,6 +356,6 @@ public class SchedulerStaffManagement extends javax.swing.JFrame {
     private javax.swing.JTextField tfName;
     private javax.swing.JTextField tfPassword;
     private javax.swing.JTextField tfPhone;
-    private javax.swing.JTextField tfStaffid;
+    private javax.swing.JTextField tfSchedulerid;
     // End of variables declaration//GEN-END:variables
 }
