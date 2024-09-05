@@ -6,3 +6,4 @@ U0005,Amir Zaki,0145637284,amirzaki@mail.com,654
 U0006,Nur Aisha,0172837465,nuraisha@mail.com,987
 U0007,Kenny,0123456789,Kenny01@mail.com,123
 U0009,Eson,0126666666,666@mail.com,P@ssword
+U0010,DesmondYong,123456789,desmond@gmail.com,handsomeboy
