@@ -1,1 +1,1 @@
-U0010,DesmondYong,123456789,desmond@gmail.com,handsomeboy,CUSTOMER
+U0001,Hong Hao,0123456789,Honghao@mail.com,123,ACTIVE,USER

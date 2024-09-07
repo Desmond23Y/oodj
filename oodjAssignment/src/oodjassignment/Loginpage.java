@@ -50,7 +50,6 @@ public class Loginpage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 600));
-        setPreferredSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         username.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -116,7 +115,7 @@ public class Loginpage extends javax.swing.JFrame {
         getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 378, 30));
 
         logintype.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        logintype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ADMINISTRATOR", "CUSTOMER", "SCHEDULER", "MANAGER" }));
+        logintype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "USER", "SCHEDULER", "ADMINISTRATOR", "MANAGER" }));
         getContentPane().add(logintype, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, -1, -1));
 
         Welcome.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
@@ -179,7 +178,7 @@ public class Loginpage extends javax.swing.JFrame {
         switch (userType) {
             case "ADMINISTRATOR" ->
                 fileName = "src/oodjassignment/database/Administrator.txt";
-            case "CUSTOMER" ->
+            case "USER" ->
                 fileName = "src/oodjassignment/database/User.txt";
             case "SCHEDULER" ->
                 fileName = "src/oodjassignment/database/Scheduler.txt";
@@ -197,49 +196,73 @@ public class Loginpage extends javax.swing.JFrame {
     private void authenticateUser(String filename, String id, String password, String userType) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
+            boolean userFound = false;
+
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(",");  // Assuming comma-separated values
+                String[] parts = line.split(",");  // Split the line into parts based on comma
 
-                // Ensure the line has the expected number of parts (ID, Name, Phone, Email, Password)
-                if (parts.length >= 5 && parts[1].equals(id) && parts[4].equals(password)) {
-                    // Store full user details along with the role in the cookie
-                    String userDetailsWithRole = String.join(",", parts) + "," + userType;
-                    cookie(userDetailsWithRole);
+                // Check if the current line has enough parts and if the ID matches
+                if (parts.length >= 5 && parts[0].trim().equals(id.trim())) {
+                    userFound = true;
 
-                    // Handle successful login based on the role
-                    switch (userType) {
-                        case "ADMINISTRATOR" -> {
-                            JOptionPane.showMessageDialog(this, "Admin logged in successfully!");
-                            setVisible(false);
-                            new AdministratorHomepage().setVisible(true);
+                    // Check if the password matches
+                    if (parts[4].trim().equals(password.trim())) {
+
+                        // For CUSTOMER role, check the status field if present
+                        if (userType.equals("CUSTOMER") && parts.length >= 6) {
+                            if ("BLOCKED".equals(parts[5].trim())) {
+                                JOptionPane.showMessageDialog(this, "This account is blocked. Please contact admin.");
+                                return;
+                            }
                         }
-                        case "CUSTOMER" -> {
-                            JOptionPane.showMessageDialog(this, "Customer logged in successfully!");
-                            setVisible(false);
-                            new homepage().setVisible(true);
+
+                        // Save the user details along with the role in a cookie file
+                        String userDetailsWithRole = String.join(",", parts) + "," + userType;
+                        cookie(userDetailsWithRole);
+
+                        // Redirect to the appropriate homepage based on the role
+                        switch (userType) {
+                            case "ADMINISTRATOR" -> {
+                                JOptionPane.showMessageDialog(this, "Admin logged in successfully!");
+                                setVisible(false);
+                                new AdministratorHomepage().setVisible(true);
+                            }
+                            case "USER" -> {
+                                JOptionPane.showMessageDialog(this, "Customer logged in successfully!");
+                                setVisible(false);
+                                new homepage().setVisible(true);
+                            }
+                            case "SCHEDULER" -> {
+                                JOptionPane.showMessageDialog(this, "Welcome scheduler!");
+                                setVisible(false);
+                                new schedulerhomepage().setVisible(true);
+                            }
+                            case "MANAGER" -> {
+                                JOptionPane.showMessageDialog(this, "Manager logged in successfully!");
+                                setVisible(false);
+                                new managerHomepage().setVisible(true);
+                            }
                         }
-                        case "SCHEDULER" -> {
-                            JOptionPane.showMessageDialog(this, "Welcome scheduler!");
-                            setVisible(false);
-                            new schedulerhomepage().setVisible(true);
-                        }
-                        case "MANAGER" -> {
-                            JOptionPane.showMessageDialog(this, "Manager logged in successfully!");
-                            setVisible(false);
-                            new managerHomepage().setVisible(true);
-                        }
+                        return;
+                    } else {
+                        // Incorrect password
+                        JOptionPane.showMessageDialog(this, "Incorrect Password");
+                        return;
                     }
-                    return;
                 }
             }
-            // If no matching credentials are found, show an error message
-            JOptionPane.showMessageDialog(this, "Incorrect ID or Password.");
+
+            // If no matching credentials are found
+            if (!userFound) {
+                JOptionPane.showMessageDialog(this, "Incorrect ID or Password.");
+            }
         } catch (Exception e) {
+            // Handle any exceptions, such as file reading errors
             JOptionPane.showMessageDialog(this, "Error reading file. Please try again later.");
         }
     }//GEN-LAST:event_loginActionPerformed
 
-private void cookie(String userDetailsWithRole) {
+    private void cookie(String userDetailsWithRole) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/oodjassignment/database/cookie.txt"))) {
             writer.write(userDetailsWithRole);
         } catch (IOException e) {
@@ -311,27 +334,23 @@ private void cookie(String userDetailsWithRole) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Loginpage.class  
+            java.util.logging.Logger.getLogger(Loginpage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Loginpage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Loginpage.class  
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Loginpage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Loginpage.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Loginpage.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Loginpage.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -355,8 +374,7 @@ private void cookie(String userDetailsWithRole) {
     private javax.swing.JCheckBox showpassword;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
-
-    private Color newColor(int i, int i0, int i1) {
+private Color newColor(int i, int i0, int i1) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
