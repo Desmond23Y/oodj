@@ -1,14 +1,1 @@
-Auditorium/RM 600/22 May 2024/8am - 10am/2 hours/Available/-
-Auditorium/RM 600/22 May 2024/10am - 12pm/2 hours/Available/-
-Auditorium/RM 600/22 May 2024/12pm - 2pm/2 hours/Available/-
-Auditorium/RM 600/22 May 2024/2pm - 4pm/2 hours/Available/-
-Auditorium/RM 600/22 May 2024/4pm - 6pm/2 hours/Available/-
-Banquet Hall/RM 300/22 May 2024/8am - 11am/3 hours/Available/-
-Banquet Hall/RM 300/22 May 2024/11am - 2pm/3 hours/Available/-
-Banquet Hall/RM 300/22 May 2024/2pm - 5pm/3 hours/Available/-
-Banquet Hall/RM 100/22 May 2024/5pm - 6pm/1 hours/Available/-
-Meeting Room/RM 100/22 May 2024/8am - 10am/2 hours/Available/-
-Meeting Room/RM 100/22 May 2024/10am - 12pm/2 hours/Available/-
-Meeting Room/RM 50/22 May 2024/12pm - 1pm/1 hours/Available/-
-Meeting Room/RM 150/22 May 2024/1pm - 4pm/3 hours/Available/-
-Meeting Room/RM 100/22 May 2024/4pm - 6pm/2 hours/Available/-
+Auditorium/HALL 1/RM 600/23 May 2024/10 a.m. - 12p.m./2 hours/Available/Remarks

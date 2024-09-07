@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import oodjassignment.Loginpage;
 
 /**
  *
@@ -88,12 +87,13 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         status = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         duration = new javax.swing.JTextField();
+        hallsno = new javax.swing.JLabel();
+        hall_no = new javax.swing.JComboBox<>();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1000, 800));
         setMinimumSize(new java.awt.Dimension(1000, 800));
-        setPreferredSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -116,21 +116,36 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Hall Type", "Price", "Date", "Time", "Duration", "Status", "Remarks"
+                "Hall Type", "Hall's No", "Price", "Date", "Time", "Duration", "Status", "Remarks"
             }
         ));
         Aschedule.setSelectionBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(Aschedule);
         if (Aschedule.getColumnModel().getColumnCount() > 0) {
-            Aschedule.getColumnModel().getColumn(1).setMinWidth(80);
-            Aschedule.getColumnModel().getColumn(1).setPreferredWidth(80);
-            Aschedule.getColumnModel().getColumn(1).setMaxWidth(80);
-            Aschedule.getColumnModel().getColumn(4).setMinWidth(85);
-            Aschedule.getColumnModel().getColumn(4).setPreferredWidth(85);
-            Aschedule.getColumnModel().getColumn(4).setMaxWidth(85);
+            Aschedule.getColumnModel().getColumn(0).setMinWidth(90);
+            Aschedule.getColumnModel().getColumn(0).setPreferredWidth(90);
+            Aschedule.getColumnModel().getColumn(0).setMaxWidth(90);
+            Aschedule.getColumnModel().getColumn(1).setMinWidth(85);
+            Aschedule.getColumnModel().getColumn(1).setPreferredWidth(85);
+            Aschedule.getColumnModel().getColumn(1).setMaxWidth(85);
+            Aschedule.getColumnModel().getColumn(2).setMinWidth(83);
+            Aschedule.getColumnModel().getColumn(2).setPreferredWidth(83);
+            Aschedule.getColumnModel().getColumn(2).setMaxWidth(83);
+            Aschedule.getColumnModel().getColumn(3).setMinWidth(100);
+            Aschedule.getColumnModel().getColumn(3).setPreferredWidth(100);
+            Aschedule.getColumnModel().getColumn(3).setMaxWidth(100);
+            Aschedule.getColumnModel().getColumn(4).setMinWidth(120);
+            Aschedule.getColumnModel().getColumn(4).setPreferredWidth(120);
+            Aschedule.getColumnModel().getColumn(4).setMaxWidth(120);
+            Aschedule.getColumnModel().getColumn(5).setMinWidth(90);
+            Aschedule.getColumnModel().getColumn(5).setPreferredWidth(90);
+            Aschedule.getColumnModel().getColumn(5).setMaxWidth(90);
+            Aschedule.getColumnModel().getColumn(6).setMinWidth(90);
+            Aschedule.getColumnModel().getColumn(6).setPreferredWidth(90);
+            Aschedule.getColumnModel().getColumn(6).setMaxWidth(90);
         }
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 680, 520));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 880, 600));
 
         jPanel2.setBackground(new java.awt.Color(0, 137, 248));
 
@@ -198,6 +213,9 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
 
         halltype.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         halltype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Auditorium", "Banquet Hall", "Meeting Room" }));
+        halltype.setMaximumSize(new java.awt.Dimension(80, 23));
+        halltype.setMinimumSize(new java.awt.Dimension(80, 23));
+        halltype.setPreferredSize(new java.awt.Dimension(80, 23));
         halltype.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 halltypeActionPerformed(evt);
@@ -263,117 +281,134 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
             }
         });
 
+        hallsno.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        hallsno.setForeground(new java.awt.Color(255, 255, 255));
+        hallsno.setText("Hall's No :");
+
+        hall_no.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        hall_no.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HALL 1", "HALL 2", "HALL 3" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(ht)
-                        .addGap(7, 7, 7)
-                        .addComponent(halltype, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(p)
-                        .addGap(37, 37, 37)
-                        .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(dt)
-                        .addGap(39, 39, 39)
-                        .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(t)
-                        .addGap(37, 37, 37)
-                        .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(Remarks, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel1)
-                        .addGap(16, 16, 16)
-                        .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Save, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(Remarks, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGap(17, 17, 17))
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(ht)
+                            .addGap(14, 14, 14)
+                            .addComponent(halltype, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
-                                .addGap(11, 11, 11)
-                                .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(st)
-                                .addGap(28, 28, 28)
-                                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(Delete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(10, 10, 10)
-                                .addComponent(Reset, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(Add)
-                                .addGap(8, 8, 8)
-                                .addComponent(Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(Save)))))
-                .addGap(17, 17, 17))
+                                .addComponent(st))
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(hallsno)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(p)
+                                    .addComponent(t)
+                                    .addComponent(dt, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGap(12, 12, 12)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(hall_no, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(19, 19, 19)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ht)
                     .addComponent(halltype, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(p)
-                    .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dt)
-                    .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(t)
-                    .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(st)
-                    .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(hall_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hallsno))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(p))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dt))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(time, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(t))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(duration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(st))
+                .addGap(18, 18, 18)
                 .addComponent(Remarks, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Add)
                     .addComponent(Edit)
                     .addComponent(Save))
-                .addGap(16, 16, 16)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Delete)
-                    .addComponent(Reset))
-                .addGap(36, 36, 36)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Reset)
+                    .addComponent(Delete))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(filter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap())
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 280, 580));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 280, 600));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel1");
-        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        background.setMaximumSize(new java.awt.Dimension(1200, 1000));
+        background.setMinimumSize(new java.awt.Dimension(1200, 1000));
+        background.setPreferredSize(new java.awt.Dimension(1200, 1000));
+        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 800));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -396,16 +431,15 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     }//GEN-LAST:event_RemarksFocusLost
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        System.out.println("Row Selected: " +model.getValueAt(Aschedule.getSelectedRow(),3));
+        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
         halltype.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
-        Price.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
-        Date.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
-        time.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
-        duration.setText(model.getValueAt(Aschedule.getSelectedRow(), 4).toString());
-        status.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 5).toString());
-        Remarks.setText(model.getValueAt(Aschedule.getSelectedRow(), 6).toString());
-        System.out.println("Row Selected: " +Aschedule.getSelectedRow());
+        hall_no.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
+        Price.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
+        Date.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
+        time.setText(model.getValueAt(Aschedule.getSelectedRow(), 4).toString());
+        duration.setText(model.getValueAt(Aschedule.getSelectedRow(), 5).toString());
+        status.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 6).toString());
+        Remarks.setText(model.getValueAt(Aschedule.getSelectedRow(), 7).toString());
     }//GEN-LAST:event_EditActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
@@ -414,12 +448,12 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         }else{
         
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        String[] record = {(String) halltype.getSelectedItem() , Price.getText(), Date.getText(), time.getText(), duration.getText(),(String) status.getSelectedItem(), Remarks.getText()};
+        String[] record = {(String) halltype.getSelectedItem() , (String) hall_no.getSelectedItem(), Price.getText(), Date.getText(), time.getText(), duration.getText(),(String) status.getSelectedItem(), Remarks.getText()};
         model.addRow(record);
         BufferedWriter bw;
         try {
             bw = new BufferedWriter(new FileWriter("src\\\\oodjassignment\\\\database\\\\Schedule.txt",true));
-            String rec = (String) halltype.getSelectedItem() +"/"+ Price.getText() +"/"+ Date.getText() +"/"+ time.getText() +"/"+ duration.getText() +"/"+ (String) status.getSelectedItem() +"/"+ Remarks.getText();
+            String rec = (String) halltype.getSelectedItem() +"/"+ (String) hall_no.getSelectedItem() +"/"+ Price.getText() +"/"+ Date.getText() +"/"+ time.getText() +"/"+ duration.getText() +"/"+ (String) status.getSelectedItem() +"/"+ Remarks.getText();
             bw.write(rec+"\n");
             bw.close();
         } catch (IOException ex){
@@ -430,13 +464,12 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        System.out.println("Row Selected: " + Aschedule.getSelectedRow());
         model.removeRow(Aschedule.getSelectedRow());
         int tablelist = model.getRowCount();
         try {
             BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule.txt"));
             for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString();
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString()+"/"+model.getValueAt(i, 7).toString();
                 bw.write(rec+"\n");
             }  
             bw.close(); 
@@ -453,19 +486,19 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
         int tablelist = model.getRowCount();
-        System.out.println("Row Selected: "+ Aschedule.getSelectedRow());
         model.setValueAt((String) halltype.getSelectedItem(), Aschedule.getSelectedRow(), 0);
-        model.setValueAt(Price.getText(), Aschedule.getSelectedRow(), 1);
-        model.setValueAt(Date.getText(), Aschedule.getSelectedRow(), 2);
-        model.setValueAt(time.getText(), Aschedule.getSelectedRow(), 3);
-        model.setValueAt(duration.getText(), Aschedule.getSelectedRow(), 4);
-        model.setValueAt((String)status.getSelectedItem(), Aschedule.getSelectedRow(), 5);
-        model.setValueAt(Remarks.getText(), Aschedule.getSelectedRow(), 6);
+        model.setValueAt((String) hall_no.getSelectedItem(), Aschedule.getSelectedRow(), 1);
+        model.setValueAt(Price.getText(), Aschedule.getSelectedRow(), 2);
+        model.setValueAt(Date.getText(), Aschedule.getSelectedRow(), 3);
+        model.setValueAt(time.getText(), Aschedule.getSelectedRow(), 4);
+        model.setValueAt(duration.getText(), Aschedule.getSelectedRow(), 5);
+        model.setValueAt((String)status.getSelectedItem(), Aschedule.getSelectedRow(), 6);
+        model.setValueAt(Remarks.getText(), Aschedule.getSelectedRow(), 7);
         
         try {
             BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule.txt"));
             for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString();
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString()+"/"+model.getValueAt(i, 7).toString();
                 bw.write(rec+"\n"); 
             }  
             bw.close(); 
@@ -607,6 +640,8 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     private javax.swing.JLabel dt;
     private javax.swing.JTextField duration;
     private javax.swing.JTextField filter;
+    private javax.swing.JComboBox<String> hall_no;
+    private javax.swing.JLabel hallsno;
     private javax.swing.JComboBox<String> halltype;
     private javax.swing.JLabel ht;
     private javax.swing.JLabel jLabel1;
