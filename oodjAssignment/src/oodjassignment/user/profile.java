@@ -160,35 +160,7 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_password_fieldActionPerformed
 
     private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
-         try {
-            File file = new File("src/oodjassignment/database/User.txt");
-            List<String> lines = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line;
-        while ((line = reader.readLine()) != null) {
-                String[] userDetails = line.split(",");
-                if (userDetails[0].equals(id)) {
-                    // Update only the username, email, phone, and password
-                    line = id + "," + username + "," +  + "," + phone + "," + password;
-                }
-                lines.add(line);
-            }
-            reader.close();
-
-            // Write updated data back to the file
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-            for (String updatedLine : lines) {
-                writer.write(updatedLine);
-                writer.newLine();
-            }
-            writer.close();
-
-            JOptionPane.showMessageDialog(frame, "Data updated successfully!");
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(frame, "Error updating data.");
-        }
+         
     }//GEN-LAST:event_update_buttonActionPerformed
 
     private void search_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_buttonActionPerformed
