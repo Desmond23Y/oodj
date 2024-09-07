@@ -4,6 +4,8 @@
  */
 package oodjassignment.user;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import oodjassignment.Loginpage;
 
 
@@ -12,18 +14,45 @@ public class homepage extends javax.swing.JFrame {
     /**
      * Creates new form homepage
      */
-    public homepage() {
+    public homepage(int ID) {
         initComponents();
+        updatewelcome(ID);
     }
     
-    void username(String user){
-        title.setText(user);
+    private void updatewelcome(int ID) {
+        String userName = readUserInfo(ID);
+        if (userName != null) {
+            welcome.setText("Welcome " + userName);
+        } else {
+            welcome.setText("Welcome User");
+        }
+    }
+    
+    private String readUserInfo(int ID) {
+        String filePath = "src/oodjassignment/database/User.txt";
+        String userName = null;
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+             while ((line = br.readLine()) != null) {  // Read every line in the file
+            String[] parts = line.split(",");
+            if (parts.length >= 2) {
+                int parsedId = Integer.parseInt(parts[0]);  // Parse ID from parts[0]
+                if (parsedId == ID) {  // If parsed ID matches the given id
+                    userName = parts[1];  // Get the name
+                    break;  // Exit the loop once the correct user is found
+                }
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+        return userName;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        title = new javax.swing.JLabel();
+        welcome = new javax.swing.JLabel();
         profile = new javax.swing.JButton();
         hall_info = new javax.swing.JButton();
         booking_details = new javax.swing.JButton();
@@ -34,8 +63,10 @@ public class homepage extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        title.setText("Welcome");
-        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 230, 30));
+        welcome.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        welcome.setForeground(new java.awt.Color(255, 255, 255));
+        welcome.setText("Welcome");
+        getContentPane().add(welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 490, 70));
 
         profile.setBackground(new java.awt.Color(0, 137, 248));
         profile.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -168,6 +199,6 @@ public class homepage extends javax.swing.JFrame {
     private javax.swing.JButton hall_info;
     private javax.swing.JButton logout;
     private javax.swing.JButton profile;
-    private javax.swing.JLabel title;
+    private javax.swing.JLabel welcome;
     // End of variables declaration//GEN-END:variables
 }

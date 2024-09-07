@@ -1,1 +1,1 @@
-A0001,Desmond,0123456789,des@mail.com,123,ADMINISTRATOR
+U0010,DesmondYong,123456789,desmond@gmail.com,handsomeboy,CUSTOMER
