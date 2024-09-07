@@ -1,1 +1,1 @@
-U0002,Alex Lim,0987654321,alex@mail.com,456,CUSTOMER
+U0010,DesmondYong,123456789,desmond@gmail.com,handsomeboy,CUSTOMER

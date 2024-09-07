@@ -98,8 +98,8 @@ public class bookingdetails extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-       homepage myHomepage = new homepage(0);
-       myHomepage.setVisible(true);
+       new 
+       homepage().setVisible(true);
        dispose();
     }//GEN-LAST:event_logoutActionPerformed
 

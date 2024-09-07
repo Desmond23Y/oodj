@@ -108,8 +108,9 @@ public class hall extends javax.swing.JFrame {
     }//GEN-LAST:event_selection_fieldActionPerformed
 
     private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
-    homepage myHomepage = new homepage(0);
-    myHomepage.setVisible(true);
+     new 
+     homepage().setVisible(true);
+     dispose();
     }//GEN-LAST:event_logout_buttonActionPerformed
 
     /**

@@ -14,40 +14,38 @@ public class homepage extends javax.swing.JFrame {
     /**
      * Creates new form homepage
      */
-    public homepage(int ID) {
-        initComponents();
-        updatewelcome(ID);
+public homepage() {
+    initComponents();
+    updatewelcome();
+}
+
+private void updatewelcome() {
+    String userName = readUserInfo();
+    if (userName != null) {
+        welcome.setText("Welcome " + userName);
+    } else {
+        welcome.setText("Welcome User");
     }
-    
-    private void updatewelcome(int ID) {
-        String userName = readUserInfo(ID);
-        if (userName != null) {
-            welcome.setText("Welcome " + userName);
-        } else {
-            welcome.setText("Welcome User");
-        }
-    }
-    
-    private String readUserInfo(int ID) {
-        String filePath = "src/oodjassignment/database/User.txt";
-        String userName = null;
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {  // Read every line in the file
+}
+
+private String readUserInfo() {
+    String filePath = "src/oodjassignment/database/User.txt";
+    String userName = null;
+    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        String line;
+        // Assume we're reading the first user or the last user from the file
+        while ((line = br.readLine()) != null) {
             String[] parts = line.split(",");
             if (parts.length >= 2) {
-                int parsedId = Integer.parseInt(parts[0]);  // Parse ID from parts[0]
-                if (parsedId == ID) {  // If parsed ID matches the given id
-                    userName = parts[1];  // Get the name
-                    break;  // Exit the loop once the correct user is found
-                }
+                userName = parts[1];  // Get the username from parts[1]
+                break;  // Exit the loop after finding the first user
             }
         }
     } catch (Exception e) {
         e.printStackTrace();
     }
-        return userName;
-    }
+    return userName;
+}
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -152,7 +150,7 @@ public class homepage extends javax.swing.JFrame {
     }//GEN-LAST:event_feedbackActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        new
+       new
        Loginpage().setVisible(true);
        dispose();
     }//GEN-LAST:event_logoutActionPerformed
@@ -187,7 +185,7 @@ public class homepage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new homepage(0).setVisible(true);
+            new homepage().setVisible(true);
             }
         });
     }

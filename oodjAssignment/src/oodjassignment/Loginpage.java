@@ -216,8 +216,7 @@ public class Loginpage extends javax.swing.JFrame {
                         case "CUSTOMER" -> {
                             JOptionPane.showMessageDialog(this, "Customer logged in successfully!");
                             setVisible(false);
-                            homepage myHomepage = new homepage(0);
-                            myHomepage.setVisible(true);
+                            new homepage().setVisible(true);
                         }
                         case "SCHEDULER" -> {
                             JOptionPane.showMessageDialog(this, "Welcome scheduler!");
