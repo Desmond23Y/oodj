@@ -45,6 +45,7 @@ public class Registerpage extends javax.swing.JFrame {
         password_field = new javax.swing.JPasswordField();
         showpassword = new javax.swing.JCheckBox();
         register_button = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,31 +54,31 @@ public class Registerpage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Register Form");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Username");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Phone number");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Email");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Password");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, -1, -1));
-        getContentPane().add(email_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 320, 170, 30));
-        getContentPane().add(username_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 170, 30));
-        getContentPane().add(phone_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 170, 30));
-        getContentPane().add(password_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, 170, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, -1, -1));
+        getContentPane().add(email_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 170, 30));
+        getContentPane().add(username_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 170, 30));
+        getContentPane().add(phone_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 170, 30));
+        getContentPane().add(password_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 170, 30));
 
         showpassword.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         showpassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -87,7 +88,7 @@ public class Registerpage extends javax.swing.JFrame {
                 showpasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 440, -1, -1));
+        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, -1, -1));
 
         register_button.setBackground(new java.awt.Color(0, 137, 248));
         register_button.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -98,17 +99,21 @@ public class Registerpage extends javax.swing.JFrame {
                 register_buttonActionPerformed(evt);
             }
         });
-        getContentPane().add(register_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 490, 100, 40));
+        getContentPane().add(register_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 560, 100, 40));
+
+        jButton1.setBackground(new java.awt.Color(0, 137, 248));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 50, 40));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public String generateID(int id) 
+    public String generateID(int ID) 
     {
-    return String.format("U%04d", id);
+    return String.format("U%04d", ID);
     }
     
     public int getNextID() {
@@ -137,9 +142,9 @@ public class Registerpage extends javax.swing.JFrame {
             && !email_field.getText().isEmpty() 
             && !password_field.getText().isEmpty()) {
             
-            String id = generateID(getNextID());
+            String ID = generateID(getNextID());
             
-            String rec = id + "," + username_field.getText() + "," + phone_field.getText() + "," +
+            String rec = ID + "," + username_field.getText() + "," + phone_field.getText() + "," +
                          email_field.getText() + "," + password_field.getText();
             bw.write(rec + "\n");
             JOptionPane.showMessageDialog(this, "Register Succesfully!!");
@@ -203,6 +208,7 @@ public class Registerpage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JTextField email_field;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

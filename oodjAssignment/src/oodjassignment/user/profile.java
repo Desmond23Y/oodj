@@ -113,9 +113,9 @@ public class profile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
-        new
-        homepage().setVisible(true);
-        dispose();
+    new 
+    homepage().setVisible(true);
+    dispose();
     }//GEN-LAST:event_logout_buttonActionPerformed
 
     private void showpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordActionPerformed

@@ -34,12 +34,11 @@ public class schedulerhomepage extends javax.swing.JFrame {
         smallb = new javax.swing.JPanel();
         havailability = new javax.swing.JButton();
         hmaintenance = new javax.swing.JButton();
+        notification = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
@@ -74,25 +73,41 @@ public class schedulerhomepage extends javax.swing.JFrame {
             }
         });
 
+        notification.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        notification.setText("Admin Message");
+        notification.setPreferredSize(new java.awt.Dimension(213, 26));
+        notification.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                notificationActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout smallbLayout = new javax.swing.GroupLayout(smallb);
         smallb.setLayout(smallbLayout);
         smallbLayout.setHorizontalGroup(
             smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(smallbLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(havailability)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(hmaintenance)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(smallbLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(havailability)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(hmaintenance))
+                    .addGroup(smallbLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(notification, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
         smallbLayout.setVerticalGroup(
             smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(smallbLayout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(43, 43, 43)
                 .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(havailability, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hmaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(notification, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         getContentPane().add(smallb, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 460, 180));
@@ -121,6 +136,11 @@ public class schedulerhomepage extends javax.swing.JFrame {
         setVisible(false);
         new Hall_maintenance_schedule().setVisible(true);
     }//GEN-LAST:event_hmaintenanceActionPerformed
+
+    private void notificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notificationActionPerformed
+        setVisible(false);
+        new Admin_message().setVisible(true);
+    }//GEN-LAST:event_notificationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,6 +182,7 @@ public class schedulerhomepage extends javax.swing.JFrame {
     private javax.swing.JButton havailability;
     private javax.swing.JButton hmaintenance;
     private javax.swing.JButton logout;
+    private javax.swing.JButton notification;
     private javax.swing.JPanel smallb;
     private javax.swing.JLabel welcome;
     // End of variables declaration//GEN-END:variables

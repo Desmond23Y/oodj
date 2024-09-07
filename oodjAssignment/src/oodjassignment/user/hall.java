@@ -45,7 +45,6 @@ public class hall extends javax.swing.JFrame {
         hall.setText("Hall information");
         getContentPane().add(hall, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 330, 70));
 
-        jTable1.setBackground(new java.awt.Color(0, 137, 248));
         jTable1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -64,7 +63,7 @@ public class hall extends javax.swing.JFrame {
         view_button.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         view_button.setForeground(new java.awt.Color(255, 255, 255));
         view_button.setText("View");
-        getContentPane().add(view_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, 80, 30));
+        getContentPane().add(view_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 80, 30));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,9 +108,9 @@ public class hall extends javax.swing.JFrame {
     }//GEN-LAST:event_selection_fieldActionPerformed
 
     private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
-       new
-       homepage().setVisible(true);
-       dispose();
+     new 
+     homepage().setVisible(true);
+     dispose();
     }//GEN-LAST:event_logout_buttonActionPerformed
 
     /**

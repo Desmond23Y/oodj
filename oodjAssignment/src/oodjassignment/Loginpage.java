@@ -201,7 +201,7 @@ public class Loginpage extends javax.swing.JFrame {
                 String[] parts = line.split(",");  // Assuming comma-separated values
 
                 // Ensure the line has the expected number of parts (ID, Name, Phone, Email, Password)
-                if (parts.length >= 5 && parts[0].equals(id) && parts[4].equals(password)) {
+                if (parts.length >= 5 && parts[1].equals(id) && parts[4].equals(password)) {
                     // Store full user details along with the role in the cookie
                     String userDetailsWithRole = String.join(",", parts) + "," + userType;
                     cookie(userDetailsWithRole);
