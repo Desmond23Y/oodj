@@ -33,7 +33,7 @@ public class homepage extends javax.swing.JFrame {
         String userName = null;
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
-             while ((line = br.readLine()) != null) {  // Read every line in the file
+            while ((line = br.readLine()) != null) {  // Read every line in the file
             String[] parts = line.split(",");
             if (parts.length >= 2) {
                 int parsedId = Integer.parseInt(parts[0]);  // Parse ID from parts[0]
@@ -187,7 +187,7 @@ public class homepage extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new homepage().setVisible(true);
+                new homepage(0).setVisible(true);
             }
         });
     }
