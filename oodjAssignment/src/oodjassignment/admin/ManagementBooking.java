@@ -55,13 +55,12 @@ public class ManagementBooking extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("BOOKING MANAGEMENT");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 40, -1, -1));
 
         tabbedPanel1.setBackground(new java.awt.Color(0, 0, 0));
         tabbedPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         tbUpcomingBooking.setAutoCreateRowSorter(true);
-        tbUpcomingBooking.setBackground(new java.awt.Color(0, 137, 248));
         tbUpcomingBooking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -78,6 +77,8 @@ public class ManagementBooking extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbUpcomingBooking.setRowHeight(25);
+        tbUpcomingBooking.setShowHorizontalLines(true);
         jScrollPane1.setViewportView(tbUpcomingBooking);
         if (tbUpcomingBooking.getColumnModel().getColumnCount() > 0) {
             tbUpcomingBooking.getColumnModel().getColumn(0).setPreferredWidth(90);
@@ -91,7 +92,6 @@ public class ManagementBooking extends javax.swing.JFrame {
         tabbedPanel1.addTab("Upcoming Booking", jScrollPane1);
 
         tbPastBooking.setAutoCreateRowSorter(true);
-        tbPastBooking.setBackground(new java.awt.Color(0, 137, 248));
         tbPastBooking.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -108,6 +108,8 @@ public class ManagementBooking extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbPastBooking.setRowHeight(25);
+        tbPastBooking.setShowHorizontalLines(true);
         jScrollPane2.setViewportView(tbPastBooking);
         if (tbPastBooking.getColumnModel().getColumnCount() > 0) {
             tbPastBooking.getColumnModel().getColumn(0).setPreferredWidth(90);
@@ -120,7 +122,7 @@ public class ManagementBooking extends javax.swing.JFrame {
 
         tabbedPanel1.addTab("Past Booking", jScrollPane2);
 
-        getContentPane().add(tabbedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 750, 620));
+        getContentPane().add(tabbedPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 950, 620));
 
         jPanel2.setBackground(new java.awt.Color(0, 137, 248));
 
@@ -133,10 +135,13 @@ public class ManagementBooking extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel1.setText("SEARCH:");
 
         cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "EVENT INFORMATION" }));
+        cbSearch.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        cbSearch.setMinimumSize(new java.awt.Dimension(64, 22));
+        cbSearch.setPreferredSize(new java.awt.Dimension(64, 22));
         cbSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbSearchActionPerformed(evt);
@@ -151,23 +156,22 @@ public class ManagementBooking extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel2.setText("FILTER:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(tfSearch)
-                        .addComponent(cbSearch, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btClearFilter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(49, 49, 49))
+                    .addComponent(jLabel2)
+                    .addComponent(cbSearch, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tfSearch)
+                    .addComponent(btClearFilter, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,19 +180,19 @@ public class ManagementBooking extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tfSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btClearFilter, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addContainerGap(378, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 250, 780));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1000, 600));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1200, 800));
 
         jMenuBar1.setBackground(new java.awt.Color(226, 218, 214));
         jMenuBar1.setForeground(new java.awt.Color(0, 0, 0));

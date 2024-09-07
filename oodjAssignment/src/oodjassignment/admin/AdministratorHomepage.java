@@ -25,9 +25,9 @@ public class AdministratorHomepage extends javax.swing.JFrame {
     private void updateWelcomeMessage() {
         String userName = readUserInfo(); // Now a single String, not an array
         if (userName != null) {
-            welcomeMessage.setText("Welcome " + userName);
+            welcomeMessage.setText("" + userName);
         } else {
-            welcomeMessage.setText("Welcome User");
+            welcomeMessage.setText("Welcome back!");
         }
     }
 
@@ -57,15 +57,13 @@ public class AdministratorHomepage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        title1 = new javax.swing.JLabel();
         welcomeMessage = new javax.swing.JLabel();
         title = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btUser = new javax.swing.JButton();
         btBooking = new javax.swing.JButton();
-        btScheduler = new javax.swing.JButton();
         btLogout = new javax.swing.JButton();
-        btAdmin = new javax.swing.JButton();
-        btManager = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,10 +72,15 @@ public class AdministratorHomepage extends javax.swing.JFrame {
         setIconImages(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        title1.setBackground(new java.awt.Color(255, 255, 255));
+        title1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        title1.setForeground(new java.awt.Color(255, 255, 255));
+        title1.setText("Welcome Back");
+        getContentPane().add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
+
         welcomeMessage.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         welcomeMessage.setForeground(new java.awt.Color(255, 255, 255));
-        welcomeMessage.setText("WELCOME");
-        getContentPane().add(welcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, 390, -1));
+        getContentPane().add(welcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 250, 40));
 
         title.setBackground(new java.awt.Color(255, 255, 255));
         title.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
@@ -91,7 +94,7 @@ public class AdministratorHomepage extends javax.swing.JFrame {
 
         btUser.setBackground(new java.awt.Color(235, 235, 235));
         btUser.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btUser.setText("USER MANAGEMENT");
+        btUser.setText("ACCOUNT MANAGEMENT");
         btUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btUserActionPerformed(evt);
@@ -107,15 +110,6 @@ public class AdministratorHomepage extends javax.swing.JFrame {
             }
         });
 
-        btScheduler.setBackground(new java.awt.Color(235, 235, 235));
-        btScheduler.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btScheduler.setText("SCHEDULER MANAGEMENT");
-        btScheduler.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSchedulerActionPerformed(evt);
-            }
-        });
-
         btLogout.setBackground(new java.awt.Color(235, 235, 235));
         btLogout.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btLogout.setText("LOGOUT");
@@ -125,35 +119,14 @@ public class AdministratorHomepage extends javax.swing.JFrame {
             }
         });
 
-        btAdmin.setBackground(new java.awt.Color(235, 235, 235));
-        btAdmin.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btAdmin.setText("ADMIN MANAGEMENT");
-        btAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btAdminActionPerformed(evt);
-            }
-        });
-
-        btManager.setBackground(new java.awt.Color(235, 235, 235));
-        btManager.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btManager.setText("MANAGR MANAGEMENT");
-        btManager.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btManagerActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btScheduler, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btManager, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btUser, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
@@ -163,20 +136,14 @@ public class AdministratorHomepage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(btUser, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btScheduler, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btManager, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(btLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 260, 400));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 260, 280));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
@@ -185,16 +152,10 @@ public class AdministratorHomepage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUserActionPerformed
-        ManagementUser UserManagement = new ManagementUser();
-        UserManagement.setVisible(true);
+        AccountManagement AccountManagement = new AccountManagement();
+        AccountManagement.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btUserActionPerformed
-
-    private void btSchedulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSchedulerActionPerformed
-        ManagementScheduler SchedulerStaffManagement = new ManagementScheduler();
-        SchedulerStaffManagement.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btSchedulerActionPerformed
 
     private void btBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBookingActionPerformed
         ManagementBooking BookingManagement = new ManagementBooking();
@@ -207,18 +168,6 @@ public class AdministratorHomepage extends javax.swing.JFrame {
         Loginpage.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btLogoutActionPerformed
-
-    private void btAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdminActionPerformed
-        ManagementAdmin ManagementAdmin = new ManagementAdmin();
-        ManagementAdmin.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btAdminActionPerformed
-
-    private void btManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btManagerActionPerformed
-        ManagementManager ManagementManager = new ManagementManager();
-        ManagementManager.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btManagerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,14 +214,12 @@ public class AdministratorHomepage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JButton btAdmin;
     private javax.swing.JButton btBooking;
     private javax.swing.JButton btLogout;
-    private javax.swing.JButton btManager;
-    private javax.swing.JButton btScheduler;
     private javax.swing.JButton btUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel title;
+    private javax.swing.JLabel title1;
     private javax.swing.JLabel welcomeMessage;
     // End of variables declaration//GEN-END:variables
 }
