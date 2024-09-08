@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 
 public class profile extends javax.swing.JFrame {
@@ -160,7 +161,66 @@ public class profile extends javax.swing.JFrame {
     }//GEN-LAST:event_password_fieldActionPerformed
 
     private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
-         
+    String filePath = "src/oodjassignment/database/User.txt";
+    File inputFile = new File(filePath);
+    File tempFile = new File("src/oodjassignment/database/tempFile.txt");
+
+    try (
+        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))
+    ) {
+        String currentLine;
+        boolean isUpdated = false;
+
+        // Read file line by line
+        while ((currentLine = reader.readLine()) != null) {
+            String[] details = currentLine.split(",");
+            
+            // Check if the line contains the matching user ID
+            if (details[0].equals(ID)) {
+                // Update the user data
+                if (!username_field.getText().isEmpty() 
+                    && !phone_field.getText().isEmpty() 
+                    && !email_field.getText().isEmpty() 
+                    && !password_field.getText().isEmpty()) {
+
+                    // Create the updated record
+                    String updatedRecord = details[0] + "," + username_field.getText() + "," +
+                                           phone_field.getText() + "," + email_field.getText() + "," +
+                                           password_field.getText();
+                    
+                    // Write the updated record
+                    writer.write(updatedRecord);
+                    writer.newLine();
+                    isUpdated = true;
+                } else {
+                    JOptionPane.showMessageDialog(this, "Please fill in all fields.");
+                    return;
+                }
+            } else {
+                // Write the existing record
+                writer.write(currentLine);
+                writer.newLine();
+            }
+        }
+
+        // If update was successful, show success message
+        if (isUpdated) {
+            JOptionPane.showMessageDialog(this, "Update Successfully!!");
+            setVisible(false);
+            new profile().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "User ID not found.");
+        }
+
+        // Replace original file with updated temp file
+        inputFile.delete();
+        tempFile.renameTo(inputFile);
+
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
+        ex.printStackTrace();
+    }
     }//GEN-LAST:event_update_buttonActionPerformed
 
     private void search_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_buttonActionPerformed
@@ -176,7 +236,7 @@ public class profile extends javax.swing.JFrame {
 
             while ((line = reader.readLine()) != null) {
                 String[] userData = line.split(",");
-                if (userData.length == 5 && (userData[1].equals(searchTerm))) {
+                if (userData.length == 6 && (userData[1].equals(searchTerm))) {
                     // User found, load the data into text fields
                     id_field.setText(userData[0]);
                     username_field.setText(userData[1]);
