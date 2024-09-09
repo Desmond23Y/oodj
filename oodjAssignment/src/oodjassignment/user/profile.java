@@ -19,6 +19,7 @@ public class profile extends javax.swing.JFrame {
     public profile() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -160,25 +161,24 @@ public class profile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_password_fieldActionPerformed
 
+    
     private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
     String filePath = "src/oodjassignment/database/User.txt";
     File inputFile = new File(filePath);
-    File tempFile = new File("src/oodjassignment/database/tempFile.txt");
 
     try (
-        BufferedReader reader = new BufferedReader(new FileReader(inputFile));
-        BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))
+        BufferedReader reader = new BufferedReader(new FileReader(inputFile))
     ) {
+        StringBuilder fileContent = new StringBuilder();
         String currentLine;
         boolean isUpdated = false;
 
-        // Read file line by line
+        // Read the file content and update if necessary
         while ((currentLine = reader.readLine()) != null) {
             String[] details = currentLine.split(",");
-            
-            // Check if the line contains the matching user ID
-            if (details[0].equals(ID)) {
-                // Update the user data
+
+            if (details[0].equals(id_field.getText())) { // Compare with locked ID field
+                // Ensure all required fields are filled before updating
                 if (!username_field.getText().isEmpty() 
                     && !phone_field.getText().isEmpty() 
                     && !email_field.getText().isEmpty() 
@@ -188,24 +188,25 @@ public class profile extends javax.swing.JFrame {
                     String updatedRecord = details[0] + "," + username_field.getText() + "," +
                                            phone_field.getText() + "," + email_field.getText() + "," +
                                            password_field.getText();
-                    
-                    // Write the updated record
-                    writer.write(updatedRecord);
-                    writer.newLine();
+
+                    // Append the updated record to the file content
+                    fileContent.append(updatedRecord).append(System.lineSeparator());
                     isUpdated = true;
                 } else {
                     JOptionPane.showMessageDialog(this, "Please fill in all fields.");
                     return;
                 }
             } else {
-                // Write the existing record
-                writer.write(currentLine);
-                writer.newLine();
+                // Append the existing record to the file content
+                fileContent.append(currentLine).append(System.lineSeparator());
             }
         }
 
-        // If update was successful, show success message
+        // If update was successful, write the new content back to the file
         if (isUpdated) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile))) {
+                writer.write(fileContent.toString());
+            }
             JOptionPane.showMessageDialog(this, "Update Successfully!!");
             setVisible(false);
             new profile().setVisible(true);
@@ -213,49 +214,47 @@ public class profile extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "User ID not found.");
         }
 
-        // Replace original file with updated temp file
-        inputFile.delete();
-        tempFile.renameTo(inputFile);
-
     } catch (IOException ex) {
         JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
         ex.printStackTrace();
     }
     }//GEN-LAST:event_update_buttonActionPerformed
 
+    
     private void search_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_buttonActionPerformed
         String searchTerm = username_field.getText();
-        if (searchTerm.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter your username");
-            return;
+    if (searchTerm.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Please enter your username");
+        return;
+    }
+
+    try (BufferedReader reader = new BufferedReader(new FileReader("src/oodjassignment/database/User.txt"))) {
+        String line;
+        boolean userFound = false;
+
+        while ((line = reader.readLine()) != null) {
+            String[] userData = line.split(",");
+            if (userData.length == 6 && (userData[1].equals(searchTerm))) {
+                // User found, load the data into text fields
+                id_field.setText(userData[0]);
+                id_field.setEditable(false);  // Lock the User ID field
+                username_field.setText(userData[1]);
+                phone_field.setText(userData[2]);
+                email_field.setText(userData[3]);
+                password_field.setText(userData[4]);
+                userFound = true;
+                break;
+            }
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/oodjassignment/database/User.txt"))) {
-            String line;
-            boolean userFound = false;
-
-            while ((line = reader.readLine()) != null) {
-                String[] userData = line.split(",");
-                if (userData.length == 6 && (userData[1].equals(searchTerm))) {
-                    // User found, load the data into text fields
-                    id_field.setText(userData[0]);
-                    username_field.setText(userData[1]);
-                    phone_field.setText(userData[2]);
-                    email_field.setText(userData[3]);
-                    password_field.setText(userData[4]);
-                    userFound = true;
-                    break;
-                }
-            }
-
-            if (!userFound) {
-                JOptionPane.showMessageDialog(null, "User not found.");
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error loading user data.");
+        if (!userFound) {
+            JOptionPane.showMessageDialog(null, "User not found.");
         }
+
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error loading user data.");
+    }
     }//GEN-LAST:event_search_buttonActionPerformed
 
     
