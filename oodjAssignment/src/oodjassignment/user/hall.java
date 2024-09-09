@@ -29,8 +29,6 @@ public class hall extends javax.swing.JFrame {
         hall = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        view_button = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         selection_field = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         select_button = new javax.swing.JButton();
@@ -57,36 +55,25 @@ public class hall extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 390, 330));
-
-        view_button.setBackground(new java.awt.Color(0, 137, 248));
-        view_button.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        view_button.setForeground(new java.awt.Color(255, 255, 255));
-        view_button.setText("View");
-        getContentPane().add(view_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 500, 80, 30));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Please select your preferred hall:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 320, 50));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 700, 520));
 
         selection_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selection_fieldActionPerformed(evt);
             }
         });
-        getContentPane().add(selection_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 140, 40));
+        getContentPane().add(selection_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 140, 40));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Hall ID");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
 
         select_button.setBackground(new java.awt.Color(0, 137, 248));
         select_button.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         select_button.setForeground(new java.awt.Color(255, 255, 255));
         select_button.setText("Select");
-        getContentPane().add(select_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 80, 30));
+        getContentPane().add(select_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 80, 30));
 
         logout_button.setBackground(new java.awt.Color(0, 137, 248));
         logout_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
@@ -98,7 +85,7 @@ public class hall extends javax.swing.JFrame {
         getContentPane().add(logout_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 10, 60, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,13 +138,11 @@ public class hall extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JLabel hall;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton logout_button;
     private javax.swing.JButton select_button;
     private javax.swing.JTextField selection_field;
-    private javax.swing.JButton view_button;
     // End of variables declaration//GEN-END:variables
 }

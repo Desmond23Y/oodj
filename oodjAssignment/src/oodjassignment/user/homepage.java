@@ -19,15 +19,6 @@ public homepage() {
     updatewelcome();
 }
 
-private void updatewelcome() {
-    String userName = readUserInfo();
-    if (userName != null) {
-        welcome.setText("Welcome " + userName);
-    } else {
-        welcome.setText("Welcome User");
-    }
-}
-
 private String readUserInfo() {
     String filePath = "src/oodjassignment/database/User.txt";
     String userName = null;
@@ -45,6 +36,15 @@ private String readUserInfo() {
         e.printStackTrace();
     }
     return userName;
+}
+
+    private void updatewelcome() {
+    String userName = readUserInfo();
+    if (userName != null) {
+        welcome.setText("Welcome " + userName);
+    } else {
+        welcome.setText("Welcome User");
+    }
 }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -64,7 +64,7 @@ private String readUserInfo() {
         welcome.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         welcome.setForeground(new java.awt.Color(255, 255, 255));
         welcome.setText("Welcome");
-        getContentPane().add(welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 490, 70));
+        getContentPane().add(welcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 490, 70));
 
         profile.setBackground(new java.awt.Color(0, 137, 248));
         profile.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -75,7 +75,7 @@ private String readUserInfo() {
                 profileActionPerformed(evt);
             }
         });
-        getContentPane().add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 180, 40));
+        getContentPane().add(profile, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 180, 40));
 
         hall_info.setBackground(new java.awt.Color(0, 137, 248));
         hall_info.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -86,7 +86,7 @@ private String readUserInfo() {
                 hall_infoActionPerformed(evt);
             }
         });
-        getContentPane().add(hall_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 270, 180, 40));
+        getContentPane().add(hall_info, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 180, 40));
 
         booking_details.setBackground(new java.awt.Color(0, 137, 248));
         booking_details.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -97,7 +97,7 @@ private String readUserInfo() {
                 booking_detailsActionPerformed(evt);
             }
         });
-        getContentPane().add(booking_details, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 340, 180, 40));
+        getContentPane().add(booking_details, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 180, 40));
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
         logout.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -108,7 +108,7 @@ private String readUserInfo() {
                 logoutActionPerformed(evt);
             }
         });
-        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 480, 180, 40));
+        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 540, 180, 40));
 
         feedback.setBackground(new java.awt.Color(0, 137, 248));
         feedback.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -119,10 +119,10 @@ private String readUserInfo() {
                 feedbackActionPerformed(evt);
             }
         });
-        getContentPane().add(feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 180, 40));
+        getContentPane().add(feedback, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 180, 40));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 810));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

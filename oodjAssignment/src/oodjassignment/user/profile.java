@@ -45,6 +45,7 @@ public class profile extends javax.swing.JFrame {
         search_button = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         username_field = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -131,6 +132,11 @@ public class profile extends javax.swing.JFrame {
         jLabel5.setText("ID");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
         getContentPane().add(username_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 200, 30));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel6.setText("Account blocked!!");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, 230, 30));
 
         background.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
         background.setForeground(new java.awt.Color(255, 255, 255));
@@ -302,6 +308,7 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JButton logout_button;
     private javax.swing.JPasswordField password_field;
     private javax.swing.JTextField phone_field;

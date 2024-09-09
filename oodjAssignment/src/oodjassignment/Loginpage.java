@@ -202,14 +202,14 @@ public class Loginpage extends javax.swing.JFrame {
                 String[] parts = line.split(",");  // Split the line into parts based on comma
 
                 // Check if the current line has enough parts and if the ID matches
-                if (parts.length >= 5 && parts[0].trim().equals(id.trim())) {
+                if (parts.length >= 6 && parts[0].trim().equals(id.trim())) {
                     userFound = true;
 
                     // Check if the password matches
                     if (parts[4].trim().equals(password.trim())) {
 
                         // For CUSTOMER role, check the status field if present
-                        if (userType.equals("CUSTOMER") && parts.length >= 6) {
+                        if (userType.equals("USER") && parts.length >= 6) {
                             if ("BLOCKED".equals(parts[5].trim())) {
                                 JOptionPane.showMessageDialog(this, "This account is blocked. Please contact admin.");
                                 return;
