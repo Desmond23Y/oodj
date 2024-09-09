@@ -18,6 +18,7 @@ public class profile extends javax.swing.JFrame {
 
     public profile() {
         initComponents();
+        autofillUserData();
     }
     
 
@@ -36,16 +37,16 @@ public class profile extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         phone_field = new javax.swing.JTextField();
-        email_field = new javax.swing.JTextField();
+        acc_status = new javax.swing.JTextField();
         update_button = new javax.swing.JButton();
         logout_button = new javax.swing.JButton();
-        password_field = new javax.swing.JPasswordField();
         showpassword = new javax.swing.JCheckBox();
         id_field = new javax.swing.JTextField();
-        search_button = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         username_field = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        password_field = new javax.swing.JPasswordField();
+        email_field = new javax.swing.JTextField();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,7 +77,7 @@ public class profile extends javax.swing.JFrame {
         jLabel4.setText("Password");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 470, 100, 30));
         getContentPane().add(phone_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 200, 30));
-        getContentPane().add(email_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, 200, 30));
+        getContentPane().add(acc_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 540, 200, 30));
 
         update_button.setBackground(new java.awt.Color(0, 137, 248));
         update_button.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
@@ -98,13 +99,7 @@ public class profile extends javax.swing.JFrame {
         });
         getContentPane().add(logout_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 60, 40));
 
-        password_field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                password_fieldActionPerformed(evt);
-            }
-        });
-        getContentPane().add(password_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, 200, 30));
-
+        showpassword.setBackground(new java.awt.Color(0, 137, 248));
         showpassword.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         showpassword.setForeground(new java.awt.Color(255, 255, 255));
         showpassword.setText("Show password");
@@ -116,27 +111,24 @@ public class profile extends javax.swing.JFrame {
         getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 470, -1, 30));
         getContentPane().add(id_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, 200, 30));
 
-        search_button.setBackground(new java.awt.Color(0, 137, 248));
-        search_button.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        search_button.setForeground(new java.awt.Color(255, 255, 255));
-        search_button.setText("Search");
-        search_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                search_buttonActionPerformed(evt);
-            }
-        });
-        getContentPane().add(search_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, 100, 30));
-
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("ID");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
         getContentPane().add(username_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 200, 30));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel6.setText("Account blocked!!");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 540, 230, 30));
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Account Status");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 540, -1, -1));
+
+        password_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                password_fieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(password_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, 200, 30));
+        getContentPane().add(email_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, 200, 30));
 
         background.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
         background.setForeground(new java.awt.Color(255, 255, 255));
@@ -162,10 +154,6 @@ public class profile extends javax.swing.JFrame {
             password_field.setEchoChar('*');
         }   
     }//GEN-LAST:event_showpasswordActionPerformed
-
-    private void password_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_fieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_password_fieldActionPerformed
 
     
     private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
@@ -193,7 +181,7 @@ public class profile extends javax.swing.JFrame {
                     // Create the updated record
                     String updatedRecord = details[0] + "," + username_field.getText() + "," +
                                            phone_field.getText() + "," + email_field.getText() + "," +
-                                           password_field.getText();
+                                           password_field.getText() + ",ACTIVE";
 
                     // Append the updated record to the file content
                     fileContent.append(updatedRecord).append(System.lineSeparator());
@@ -226,71 +214,48 @@ public class profile extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_update_buttonActionPerformed
 
-    
-    private void search_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_search_buttonActionPerformed
-        String searchTerm = username_field.getText();
-    if (searchTerm.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Please enter your username");
-        return;
-    }
+    private void password_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_password_fieldActionPerformed
 
-    try (BufferedReader reader = new BufferedReader(new FileReader("src/oodjassignment/database/User.txt"))) {
-        String line;
-        boolean userFound = false;
+    private void autofillUserData() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/oodjassignment/database/cookie.txt"))) {
+            String line;
+            
+            // Read the first line from the file
+            if ((line = reader.readLine()) != null) {
+                // Split the line to extract user data
+                String[] userData = line.split(",");
 
-        while ((line = reader.readLine()) != null) {
-            String[] userData = line.split(",");
-            if (userData.length == 6 && (userData[1].equals(searchTerm))) {
-                // User found, load the data into text fields
-                id_field.setText(userData[0]);
-                id_field.setEditable(false);  // Lock the User ID field
-                username_field.setText(userData[1]);
-                phone_field.setText(userData[2]);
-                email_field.setText(userData[3]);
-                password_field.setText(userData[4]);
-                userFound = true;
-                break;
-            }
-        }
+                // Check if the file has the correct format
+                if (userData.length == 7) {
+                    // Auto-fill the text fields with user data
+                    id_field.setText(userData[0]);
+                    username_field.setText(userData[1]);
+                    phone_field.setText(userData[2]);
+                    email_field.setText(userData[3]);
+                    password_field.setText(userData[4]);
+                    acc_status.setText(userData[5]);
+                    
 
-        if (!userFound) {
-            JOptionPane.showMessageDialog(null, "User not found.");
-        }
-
-    } catch (IOException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error loading user data.");
-    }
-    }//GEN-LAST:event_search_buttonActionPerformed
-
-    
-
-
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+                    // Lock the User ID field to prevent editing
+                    id_field.setEditable(false);
+                    acc_status.setEditable(false);
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(profile.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error loading user data.");
+        }
+    }
+
+    
+
+    public static void main(String args[]) {
+            java.awt.EventQueue.invokeLater(() -> {
+            new profile().setVisible(true);  // Open the JFrame
+        });
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -300,6 +265,7 @@ public class profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField acc_status;
     private javax.swing.JLabel background;
     private javax.swing.JTextField email_field;
     private javax.swing.JTextField id_field;
@@ -312,7 +278,6 @@ public class profile extends javax.swing.JFrame {
     private javax.swing.JButton logout_button;
     private javax.swing.JPasswordField password_field;
     private javax.swing.JTextField phone_field;
-    private javax.swing.JButton search_button;
     private javax.swing.JCheckBox showpassword;
     private javax.swing.JLabel title;
     private javax.swing.JButton update_button;
