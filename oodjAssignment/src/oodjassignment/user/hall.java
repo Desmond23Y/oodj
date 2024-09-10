@@ -251,13 +251,13 @@ public class hall extends javax.swing.JFrame {
     }//GEN-LAST:event_timeActionPerformed
 
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
-        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        type.setText(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
-        no.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
-        price.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
-        date.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
-        time.setText(model.getValueAt(Aschedule.getSelectedRow(), 4).toString());
-        duration.setText(model.getValueAt(Aschedule.getSelectedRow(), 5).toString());
+    DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+    type.setText(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
+    no.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
+    price.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
+    date.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
+    time.setText(model.getValueAt(Aschedule.getSelectedRow(), 4).toString());
+    duration.setText(model.getValueAt(Aschedule.getSelectedRow(), 5).toString());
     }//GEN-LAST:event_selectActionPerformed
 
     private void PayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayActionPerformed
