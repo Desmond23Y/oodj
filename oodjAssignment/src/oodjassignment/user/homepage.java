@@ -16,35 +16,33 @@ public class homepage extends javax.swing.JFrame {
      */
 public homepage() {
     initComponents();
-    updatewelcome();
+    updateWelcome();
 }
 
-private String readUserInfo() {
-    String filePath = "src/oodjassignment/database/User.txt";
-    String userName = null;
-    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-        String line;
-        // Assume we're reading the first user or the last user from the file
-        while ((line = br.readLine()) != null) {
-            String[] parts = line.split(",");
-            if (parts.length >= 2) {
-                userName = parts[1];  // Get the username from parts[1]
-                break;  // Exit the loop after finding the first user
-            }
+    private void updateWelcome() {
+        String userName = readUserInfo(); // Now a single String, not an array
+        if (userName != null) {
+            welcome.setText("Welcome " + userName);
+        } else {
+            welcome.setText("Welcome back!");
         }
-    } catch (Exception e) {
-        e.printStackTrace();
     }
-    return userName;
-}
 
-    private void updatewelcome() {
-    String userName = readUserInfo();
-    if (userName != null) {
-        welcome.setText("Welcome " + userName);
-    } else {
-        welcome.setText("Welcome User");
-    }
+    private String readUserInfo() {
+        String filePath = "src/oodjassignment/database/cookie.txt";
+        String userName = null;
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line = br.readLine(); // Read the single line from the file
+            if (line != null) {
+                String[] parts = line.split(","); // Split the line by commas
+                if (parts.length >= 2) {
+                    userName = parts[1]; // Extract User Name (second element)
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userName;
 }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

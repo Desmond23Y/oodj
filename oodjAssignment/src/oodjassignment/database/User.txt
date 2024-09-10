@@ -1,6 +1,6 @@
 U0001,Hong Hao,01110727318,Honghao@mail.com,123,ACTIVE
-U0002,Alex Lim,0987654321,alex@mail.com,456,ACTIVE
-U0003,Harley,0192837465,harley@mail.com,789,ACTIVE
+U0002,Alex Lim,0987654321,alex@mail.com,456,BLOCKED
+U0003,Harley,0192837465,harley@mail.com,123456,ACTIVE
 U0004,Sarah Lee,0129384756,sarahlee@mail.com,321,BLOCKED
 U0005,Amir Zaki,0145637284,amirzaki@mail.com,654,BLOCKED
 U0006,Nur Aisha,0172837465,nuraisha@mail.com,987,ACTIVE
