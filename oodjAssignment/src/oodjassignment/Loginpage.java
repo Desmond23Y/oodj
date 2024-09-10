@@ -189,7 +189,6 @@ public class Loginpage extends javax.swing.JFrame {
                 return;
             }
         }
-
         authenticateUser(fileName, usernameText, passwordText, userType);
     }
 
@@ -202,45 +201,51 @@ public class Loginpage extends javax.swing.JFrame {
                 String[] parts = line.split(",");  // Split the line into parts based on comma
 
                 // Check if the current line has enough parts and if the ID matches
-                if (parts.length >= 6 && parts[0].trim().equals(id.trim())) {
+                if (parts.length >= 4 && parts[0].trim().equals(id.trim())) {  // Adjust based on file structure
                     userFound = true;
 
                     // Check if the password matches
                     if (parts[4].trim().equals(password.trim())) {
-
-                        // For CUSTOMER role, check the status field if present
-                        if (userType.equals("USER") && parts.length >= 6) {
-                            if ("BLOCKED".equals(parts[5].trim())) {
-                                JOptionPane.showMessageDialog(this, "This account is blocked. Please contact admin.");
-                                return;
-                            }
-                        }
-
-                        // Save the user details along with the role in a cookie file
+                        // Save user details with role in a cookie
                         String userDetailsWithRole = String.join(",", parts) + "," + userType;
                         cookie(userDetailsWithRole);
 
-                        // Redirect to the appropriate homepage based on the role
+                        // Adding a small delay to ensure the cookie is saved
+                        Thread.sleep(200); // 200 milliseconds delay
+
+                        // Handle the different roles
                         switch (userType) {
-                            case "ADMINISTRATOR" -> {
-                                JOptionPane.showMessageDialog(this, "Admin logged in successfully!");
-                                setVisible(false);
-                                new AdministratorHomepage().setVisible(true);
-                            }
                             case "USER" -> {
+                                // Check if the user is blocked
+                                if (parts.length >= 6 && "BLOCKED".equals(parts[5].trim())) {
+                                    JOptionPane.showMessageDialog(this, "This account is blocked. Please contact admin.");
+                                    return;
+                                }
                                 JOptionPane.showMessageDialog(this, "Customer logged in successfully!");
                                 setVisible(false);
                                 new homepage().setVisible(true);
                             }
                             case "SCHEDULER" -> {
+                                // Scheduler-specific actions
                                 JOptionPane.showMessageDialog(this, "Welcome scheduler!");
                                 setVisible(false);
                                 new schedulerhomepage().setVisible(true);
                             }
+                            case "ADMINISTRATOR" -> {
+                                // Admin-specific actions
+                                JOptionPane.showMessageDialog(this, "Admin logged in successfully!");
+                                setVisible(false);
+                                new AdministratorHomepage().setVisible(true);
+                            }
                             case "MANAGER" -> {
+                                // Manager-specific actions
                                 JOptionPane.showMessageDialog(this, "Manager logged in successfully!");
                                 setVisible(false);
                                 new managerHomepage().setVisible(true);
+                            }
+                            default -> {
+                                JOptionPane.showMessageDialog(this, "Invalid user type.");
+                                return;
                             }
                         }
                         return;
@@ -265,6 +270,7 @@ public class Loginpage extends javax.swing.JFrame {
     private void cookie(String userDetailsWithRole) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/oodjassignment/database/cookie.txt"))) {
             writer.write(userDetailsWithRole);
+            writer.flush();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(this, "Error saving login details.");
         }
