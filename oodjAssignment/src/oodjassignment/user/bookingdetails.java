@@ -4,6 +4,13 @@
  */
 package oodjassignment.user;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author User
@@ -15,6 +22,28 @@ public class bookingdetails extends javax.swing.JFrame {
      */
     public bookingdetails() {
         initComponents();
+        String filePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
+        File file = new File(filePath);
+
+        try {
+            // Create a BufferedReader to read the file
+            BufferedReader br = new BufferedReader(new FileReader(file));
+
+            // Get the table model from the JTable
+            DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+
+            // Clear existing rows in the table model to prevent duplication
+            model.setRowCount(0);
+
+            // Read each line from the file and add it to the table model
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] dataRow = line.split("/"); // Adjust the delimiter if necessary
+                model.addRow(dataRow);
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
+}
     }
 
     /**
@@ -27,13 +56,18 @@ public class bookingdetails extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        hall_id = new javax.swing.JTextField();
+        type = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         logout = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        select = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        reason_field = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Aschedule = new javax.swing.JTable();
+        request = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        no = new javax.swing.JTextField();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,32 +75,19 @@ public class bookingdetails extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Booking Details");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 300, -1));
-
-        jTable1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 600, 480));
+        jLabel1.setText("Hall Status");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 230, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Cancel Schedule");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
-        getContentPane().add(hall_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, 110, 30));
+        jLabel2.setText("Request for cancel");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+        getContentPane().add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 140, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Hall ID");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+        jLabel3.setText("Reason:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
@@ -75,16 +96,64 @@ public class bookingdetails extends javax.swing.JFrame {
                 logoutActionPerformed(evt);
             }
         });
-        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 10, 60, -1));
+        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 10, 60, -1));
 
-        jButton1.setBackground(new java.awt.Color(0, 137, 248));
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cancel");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, -1));
+        select.setBackground(new java.awt.Color(0, 137, 248));
+        select.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        select.setForeground(new java.awt.Color(255, 255, 255));
+        select.setText("Select");
+        select.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectActionPerformed(evt);
+            }
+        });
+        getContentPane().add(select, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 750, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Hall Type:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        reason_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reason_fieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(reason_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 140, 120));
+
+        Aschedule.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        Aschedule.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Hall Type", "Hall's No", "Price", "Date", "Time", "Duration", "Status", "Remarks"
+            }
+        ));
+        Aschedule.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane1.setViewportView(Aschedule);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 880, 600));
+
+        request.setBackground(new java.awt.Color(0, 137, 248));
+        request.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        request.setForeground(new java.awt.Color(255, 255, 255));
+        request.setText("Request");
+        request.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestActionPerformed(evt);
+            }
+        });
+        getContentPane().add(request, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 530, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Hall No:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        getContentPane().add(no, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 140, 30));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,6 +163,35 @@ public class bookingdetails extends javax.swing.JFrame {
        homepage().setVisible(true);
        dispose();
     }//GEN-LAST:event_logoutActionPerformed
+
+    private void reason_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reason_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_reason_fieldActionPerformed
+
+    private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
+    DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+    type.setText(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
+    no.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString()); 
+    }//GEN-LAST:event_selectActionPerformed
+
+    private void requestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestActionPerformed
+    DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+
+    // Check if a row is selected
+    int selectedRow = Aschedule.getSelectedRow();
+    if (selectedRow != -1) {
+        String reason = reason_field.getText();
+        model.setValueAt(reason, selectedRow, 7); 
+
+        // Update the "Status" column to "Request for cancel"
+        model.setValueAt("Request for cancel", selectedRow, 6); // Assuming "Status" is in column 6
+
+        // Optionally, save the changes back to the file (not shown in this example)
+        JOptionPane.showMessageDialog(this, "Request submitted successfully!");
+    } else {
+        JOptionPane.showMessageDialog(this, "Please select a row first.");
+    }
+    }//GEN-LAST:event_requestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,14 +229,19 @@ public class bookingdetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Aschedule;
     private javax.swing.JLabel background;
-    private javax.swing.JTextField hall_id;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton logout;
+    private javax.swing.JTextField no;
+    private javax.swing.JTextField reason_field;
+    private javax.swing.JButton request;
+    private javax.swing.JButton select;
+    private javax.swing.JTextField type;
     // End of variables declaration//GEN-END:variables
 }
