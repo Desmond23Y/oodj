@@ -144,7 +144,9 @@ public homepage() {
     }//GEN-LAST:event_booking_detailsActionPerformed
 
     private void feedbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_feedbackActionPerformed
-        // TODO add your handling code here:
+       new
+       feedback().setVisible(true);
+       dispose();
     }//GEN-LAST:event_feedbackActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed

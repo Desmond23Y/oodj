@@ -19,18 +19,17 @@ import javax.swing.table.DefaultTableModel;
  */
 public class hall extends javax.swing.JFrame {
 
-    /**
-     * Creates new form hall
-     */
     public hall() {
         initComponents();
+        loadSchedule();
+    }
+
+    // Load the schedule from the file and display it in the table
+    private void loadSchedule() {
         String filePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
         File file = new File(filePath);
 
-        try {
-            // Create a BufferedReader to read the file
-            BufferedReader br = new BufferedReader(new FileReader(file));
-
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             // Get the table model from the JTable
             DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
 
@@ -45,18 +44,60 @@ public class hall extends javax.swing.JFrame {
             }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
-}
+        }
+    }
+
+    // Method to generate a booking ID
+    public String generateBookingID(int ID) {
+        return String.format("HB%04d", ID);
     }
     
+    public int getNextBookingID() {
+        int nextID = 1;
+        String filePath = "src/oodjassignment/database/Booking.txt"; // Path to your booking file
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String lastLine = "", currentLine;
+            while ((currentLine = br.readLine()) != null) {
+                lastLine = currentLine;
+            }
+            if (!lastLine.isEmpty()) {
+                String[] fields = lastLine.split("/"); // Assuming the data is delimited by "/"
+                String lastID = fields[0].substring(1);  // Get the numeric part of the Booking ID
+                nextID = Integer.parseInt(lastID) + 1;   // Increment the ID
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return nextID;
+    }
+
+    // Get the customer ID from cookie file
+    private String getCustomerIdFromCookie() {
+        String filePath = "src/oodjassignment/database/cookie.txt";  // Path to your cookie file
+        String userId = null;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line = br.readLine(); // Read the first line from the file
+            if (line != null) {
+                String[] parts = line.split(","); // Split the line by commas
+                if (parts.length >= 1) {
+                    userId = parts[0]; // Extract the User ID (assuming it's the first element)
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();  // Print error stack trace if any exception occurs
+        }
+        return userId;
+    }
+
+
     
-
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         hall = new javax.swing.JLabel();
-        duration = new javax.swing.JTextField();
+        price = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Pay = new javax.swing.JButton();
         logout_button = new javax.swing.JButton();
@@ -68,11 +109,11 @@ public class hall extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         no = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        price = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
         date = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         time = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        duration = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         remark = new javax.swing.JTextField();
         select = new javax.swing.JButton();
@@ -86,16 +127,16 @@ public class hall extends javax.swing.JFrame {
         hall.setText("Hall information");
         getContentPane().add(hall, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 330, 70));
 
-        duration.addActionListener(new java.awt.event.ActionListener() {
+        price.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                durationActionPerformed(evt);
+                priceActionPerformed(evt);
             }
         });
-        getContentPane().add(duration, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, 140, 30));
+        getContentPane().add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, 140, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Price:");
+        jLabel2.setText("Date:");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 100, -1));
 
         Pay.setBackground(new java.awt.Color(0, 137, 248));
@@ -166,40 +207,40 @@ public class hall extends javax.swing.JFrame {
         jLabel5.setText("Hall Type:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 100, -1));
 
-        price.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                priceActionPerformed(evt);
-            }
-        });
-        getContentPane().add(price, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 140, 30));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Date:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 70, -1));
-
         date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dateActionPerformed(evt);
             }
         });
-        getContentPane().add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 140, 30));
+        getContentPane().add(date, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 140, 30));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Time:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 70, -1));
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Time:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 70, -1));
 
         time.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 timeActionPerformed(evt);
             }
         });
-        getContentPane().add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 140, 30));
+        getContentPane().add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 140, 30));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Duration:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 100, -1));
+
+        duration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                durationActionPerformed(evt);
+            }
+        });
+        getContentPane().add(duration, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 140, 30));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Duration:");
+        jLabel8.setText("Price:");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 100, -1));
         getContentPane().add(remark, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 570, 160, 120));
 
@@ -220,9 +261,9 @@ public class hall extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void durationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_durationActionPerformed
+    private void priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_durationActionPerformed
+    }//GEN-LAST:event_priceActionPerformed
 
     private void logout_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_buttonActionPerformed
      new 
@@ -238,10 +279,6 @@ public class hall extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_noActionPerformed
 
-    private void priceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_priceActionPerformed
-
     private void dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dateActionPerformed
@@ -249,6 +286,10 @@ public class hall extends javax.swing.JFrame {
     private void timeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_timeActionPerformed
+
+    private void durationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_durationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_durationActionPerformed
 
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
     DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
@@ -261,45 +302,45 @@ public class hall extends javax.swing.JFrame {
     }//GEN-LAST:event_selectActionPerformed
 
     private void PayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayActionPerformed
-    DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-    int tablelist = model.getRowCount();
-    int selectedRow = Aschedule.getSelectedRow(); // Get the selected row
+        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+        int selectedRow = Aschedule.getSelectedRow(); // Get the selected row
 
-    // Check if the selected row is valid and status is available
-    if (selectedRow != -1) {
-    String currentStatus = (String) model.getValueAt(selectedRow, 6);
-    if (currentStatus.equals("Available")) {
-        model.setValueAt("Already booking", selectedRow, 6);
-    }
-    
-    model.setValueAt(remark.getText(), selectedRow, 7);
-    
-    // Save all the data to the text file
-    try {
-        BufferedWriter bw = new BufferedWriter(new FileWriter("src\\\\oodjassignment\\\\database\\\\Schedule.txt"));
-        for (int i = 0; i < tablelist; i++) {
-            String rec = model.getValueAt(i, 0).toString() + "/" + 
-                         model.getValueAt(i, 1).toString() + "/" + 
-                         model.getValueAt(i, 2).toString() + "/" + 
-                         model.getValueAt(i, 3).toString() + "/" + 
-                         model.getValueAt(i, 4).toString() + "/" + 
-                         model.getValueAt(i, 5).toString() + "/" + 
-                         model.getValueAt(i, 6).toString() + "/" + 
-                         model.getValueAt(i, 7).toString();
-            bw.write(rec + "\n");
+        // Check if a row is selected
+        if (selectedRow != -1) {
+            model.setValueAt("Booked", selectedRow, 6);
+            model.setValueAt(remark.getText(), selectedRow, 7);
+            
+
+            // Get the Customer ID from cookie.txt
+            String customerId = getCustomerIdFromCookie();
+
+            // Generate a new Booking ID
+            int nextID = getNextBookingID();
+            String bookingId = generateBookingID(nextID);
+
+            // Save all the data to the booking.txt file
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/Booking.txt", true))) { // Append mode
+                String rec = bookingId + "/" + customerId + "/" +
+                             model.getValueAt(selectedRow, 0).toString() + "/" +
+                             model.getValueAt(selectedRow, 1).toString() + "/" +
+                             model.getValueAt(selectedRow, 2).toString() + "/" +
+                             model.getValueAt(selectedRow, 3).toString() + "/" +
+                             model.getValueAt(selectedRow, 4).toString() + "/" +
+                             model.getValueAt(selectedRow, 5).toString() + "/" +
+                             model.getValueAt(selectedRow, 6).toString() + "/" +
+                             model.getValueAt(selectedRow, 7).toString();
+                bw.write(rec + "\n");
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Something went wrong while saving booking data.");
+            }
+
+            // Navigate to the payment page
+            Payment paymentPage = new Payment();
+            paymentPage.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a row to proceed with payment.");
         }
-        bw.close();
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(this, "Something went wrong");
-    }
-
-    // Navigate to the payment page
-    Payment paymentPage = new Payment();
-    paymentPage.setVisible(true);
-    this.dispose();
-    } else {
-        JOptionPane.showMessageDialog(this, "Please select a row to proceed with payment");
-    }
     }//GEN-LAST:event_PayActionPerformed
 
     /**

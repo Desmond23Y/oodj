@@ -5,9 +5,13 @@
 package oodjassignment.user;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,12 +21,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class bookingdetails extends javax.swing.JFrame {
 
-    /**
-     * Creates new form bookingdetails
-     */
     public bookingdetails() {
         initComponents();
-        String filePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
+        String filePath = "src\\\\oodjassignment\\\\database\\\\Booking.txt";
         File file = new File(filePath);
 
         try {
@@ -44,6 +45,11 @@ public class bookingdetails extends javax.swing.JFrame {
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
 }
+        
+    booking.setEditable(false);
+    customer.setEditable(false);; 
+    type.setEditable(false);;
+    no.setEditable(false);; 
     }
 
     /**
@@ -57,16 +63,20 @@ public class bookingdetails extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        type = new javax.swing.JTextField();
+        booking = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         logout = new javax.swing.JButton();
         select = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         reason_field = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Aschedule = new javax.swing.JTable();
         request = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        customer = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Aschedule = new javax.swing.JTable();
+        jLabel6 = new javax.swing.JLabel();
+        type = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         no = new javax.swing.JTextField();
         background = new javax.swing.JLabel();
 
@@ -75,19 +85,19 @@ public class bookingdetails extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Hall Status");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 230, -1));
+        jLabel1.setText("Booking Details");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 310, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Request for cancel");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
-        getContentPane().add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 140, 30));
+        getContentPane().add(booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 140, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Reason:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, -1, -1));
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
@@ -109,31 +119,17 @@ public class bookingdetails extends javax.swing.JFrame {
         });
         getContentPane().add(select, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 750, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Hall Type:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        jLabel4.setText("Booking ID:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
         reason_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reason_fieldActionPerformed(evt);
             }
         });
-        getContentPane().add(reason_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, 140, 120));
-
-        Aschedule.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        Aschedule.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Hall Type", "Hall's No", "Price", "Date", "Time", "Duration", "Status", "Remarks"
-            }
-        ));
-        Aschedule.setSelectionBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane1.setViewportView(Aschedule);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 880, 600));
+        getContentPane().add(reason_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 490, 140, 120));
 
         request.setBackground(new java.awt.Color(0, 137, 248));
         request.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -144,13 +140,39 @@ public class bookingdetails extends javax.swing.JFrame {
                 requestActionPerformed(evt);
             }
         });
-        getContentPane().add(request, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 530, -1, -1));
+        getContentPane().add(request, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 660, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Hall No:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
-        getContentPane().add(no, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 140, 30));
+        jLabel5.setText("Customer ID:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        getContentPane().add(customer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 140, 30));
+
+        Aschedule.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        Aschedule.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Booking ID", "Customer ID", "Hall Type", "Hall No.", "Prices", "Date", "Time", "Duration", "Status", "Remarks"
+            }
+        ));
+        Aschedule.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane1.setViewportView(Aschedule);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 880, 600));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Hall Type:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
+        getContentPane().add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 140, 30));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Hall No:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
+        getContentPane().add(no, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 402, 140, 30));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
@@ -170,27 +192,70 @@ public class bookingdetails extends javax.swing.JFrame {
 
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
     DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-    type.setText(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
-    no.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString()); 
+    booking.setText(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
+    customer.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString()); 
+    type.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
+    no.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString()); 
     }//GEN-LAST:event_selectActionPerformed
 
     private void requestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestActionPerformed
-    DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+       DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+        int selectedRow = Aschedule.getSelectedRow(); // Get the selected row
 
-    // Check if a row is selected
-    int selectedRow = Aschedule.getSelectedRow();
-    if (selectedRow != -1) {
-        String reason = reason_field.getText();
-        model.setValueAt(reason, selectedRow, 7); 
+        // Check if a row is selected
+        if (selectedRow != -1) {
+            // Update table model with cancellation request
+            model.setValueAt("Request for cancel", selectedRow, 8);
+            model.setValueAt(reason_field.getText(), selectedRow, 9);
 
-        // Update the "Status" column to "Request for cancel"
-        model.setValueAt("Request for cancel", selectedRow, 6); // Assuming "Status" is in column 6
+            // Read data from booking.txt and remove the selected row
+            List<String> lines = new ArrayList<>();
+            try (BufferedReader br = new BufferedReader(new FileReader("src/oodjassignment/database/Booking.txt"))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    if (!line.startsWith(model.getValueAt(selectedRow, 0).toString())) {
+                        lines.add(line);
+                    }
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Something went wrong while reading booking data.");
+                return;
+            }
 
-        // Optionally, save the changes back to the file (not shown in this example)
-        JOptionPane.showMessageDialog(this, "Request submitted successfully!");
-    } else {
-        JOptionPane.showMessageDialog(this, "Please select a row first.");
-    }
+            // Write updated data back to booking.txt
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/Booking.txt"))) {
+                for (String line : lines) {
+                    bw.write(line + "\n");
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Something went wrong while saving booking data.");
+                return;
+            }
+
+            // Save new data to cancel.txt
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/cancel.txt", true))) { // Append mode
+                String rec = model.getValueAt(selectedRow, 0).toString() + "/" +
+                             model.getValueAt(selectedRow, 1).toString() + "/" +
+                             model.getValueAt(selectedRow, 2).toString() + "/" +
+                             model.getValueAt(selectedRow, 3).toString() + "/" +
+                             model.getValueAt(selectedRow, 4).toString() + "/" +
+                             model.getValueAt(selectedRow, 5).toString() + "/" +
+                             model.getValueAt(selectedRow, 6).toString() + "/" +
+                             model.getValueAt(selectedRow, 7).toString() + "/" +
+                             model.getValueAt(selectedRow, 8).toString() + "/" +
+                             model.getValueAt(selectedRow, 9).toString();
+                             
+                bw.write(rec + "\n");
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Something went wrong while saving cancellation data.");
+            }
+
+            // Navigate to the payment page
+            new bookingdetails().setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a row to request for cancel");
+        }
     }//GEN-LAST:event_requestActionPerformed
 
     /**
@@ -231,11 +296,15 @@ public class bookingdetails extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Aschedule;
     private javax.swing.JLabel background;
+    private javax.swing.JTextField booking;
+    private javax.swing.JTextField customer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton logout;
     private javax.swing.JTextField no;
