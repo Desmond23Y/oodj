@@ -102,10 +102,11 @@
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="8" rowCount="0">
+                  <Table columnCount="9" rowCount="0">
                     <Column editable="false" title="BOOKING ID" type="java.lang.Object"/>
                     <Column editable="false" title="CUSTOMER NAME" type="java.lang.Object"/>
                     <Column editable="false" title="HALL TYPE" type="java.lang.Object"/>
+                    <Column editable="false" title="HALL NO" type="java.lang.Object"/>
                     <Column editable="false" title="DATE" type="java.lang.Object"/>
                     <Column editable="false" title="TIME" type="java.lang.Object"/>
                     <Column editable="false" title="DURATION" type="java.lang.Object"/>
@@ -121,6 +122,11 @@
                       <Renderer/>
                     </Column>
                     <Column maxWidth="120" minWidth="-1" prefWidth="120" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -184,10 +190,11 @@
               <Properties>
                 <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="8" rowCount="0">
+                  <Table columnCount="9" rowCount="0">
                     <Column editable="false" title="BOOKING ID" type="java.lang.Object"/>
                     <Column editable="false" title="CUSTOMER NAME" type="java.lang.Object"/>
                     <Column editable="false" title="HALL TYPE" type="java.lang.Object"/>
+                    <Column editable="false" title="HALL NO" type="java.lang.Object"/>
                     <Column editable="false" title="DATE" type="java.lang.Object"/>
                     <Column editable="false" title="TIME" type="java.lang.Object"/>
                     <Column editable="false" title="DURATION" type="java.lang.Object"/>
@@ -203,6 +210,11 @@
                       <Renderer/>
                     </Column>
                     <Column maxWidth="120" minWidth="-1" prefWidth="120" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>
@@ -314,13 +326,14 @@
         <Component class="javax.swing.JComboBox" name="cbSearch">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
+              <StringArray count="7">
                 <StringItem index="0" value="BOOKING ID"/>
                 <StringItem index="1" value="CUSTOMER NAME"/>
                 <StringItem index="2" value="HALL TYPE"/>
-                <StringItem index="3" value="DATE"/>
-                <StringItem index="4" value="TIME"/>
-                <StringItem index="5" value="EVENT INFORMATION"/>
+                <StringItem index="3" value="HALL NO"/>
+                <StringItem index="4" value="DATE"/>
+                <StringItem index="5" value="TIME"/>
+                <StringItem index="6" value="EVENT INFORMATION"/>
               </StringArray>
             </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

@@ -24,12 +24,14 @@ public class ViewBooking {
                 return 1;
             case "HALL TYPE":
                 return 2;
-            case "DATE":
+            case "HALL NO":
                 return 3;
-            case "TIME":
+            case "DATE":
                 return 4;
-            case "EVENT INFORMATION":
+            case "TIME":
                 return 5;
+            case "EVENT INFORMATION":
+                return 6;
             default:
                 return -1;  // Should not happen
         }
@@ -48,8 +50,8 @@ public class ViewBooking {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                String bookingDate = data[3];
-                String bookingTime = data[4];
+                String bookingDate = data[4];
+                String bookingTime = data[5];
 
                 try {
                     // Split the time range and use the start time

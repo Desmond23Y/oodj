@@ -1,4 +1,4 @@
-U0001,Hong Hao,0147889155,alex@mail.com,@Password1,ACTIVE
+U0001,Hong Hao,0147889155,HongHao@mail.com,@Password1,ACTIVE
 U0002,Alex Lim,0987654321,alex@mail.com,456,BLOCKED
 U0003,Harley,0192837465,harley@mail.com,123456,ACTIVE
 U0004,Sarah Lee,0129384756,sarahlee@mail.com,321,BLOCKED
