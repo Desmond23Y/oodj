@@ -1,4 +1,4 @@
-U0001,Hong Hao,01110727318,Honghao@mail.com,12345,ACTIVE
+U0001,Hong Hao,0147889155,alex@mail.com,@Password1,ACTIVE
 U0002,Alex Lim,0987654321,alex@mail.com,456,BLOCKED
 U0003,Harley,0192837465,harley@mail.com,123456,ACTIVE
 U0004,Sarah Lee,0129384756,sarahlee@mail.com,321,BLOCKED
@@ -7,4 +7,4 @@ U0006,Nur Aisha,0172837465,nuraisha@mail.com,987,ACTIVE
 U0007,Kenny,0123456789,Kenny01@mail.com,123,BLOCKED
 U0008,Eson,0126666666,666@mail.com,P@ssword,ACTIVE
 U0009,Desmond Yong,123456789,desmond@gmail.com,desmond,BLOCKED
-U0010,Kimberly,01123333,666@mail.com,P@ssword,ACTIVE
+U0010,Kimberly,0112333300,666@mail.com,P@ssword1,ACTIVE

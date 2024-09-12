@@ -1,5 +1,7 @@
 package oodjassignment.admin;
 
+import oodjassignment.DataValidation;
+
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -406,6 +408,37 @@ public class AccountManagement extends javax.swing.JFrame {
 
     private void btCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCreateActionPerformed
         if (textFieldsFilled()) {
+            String userId = tfId.getText();
+            String name = tfName.getText();
+            String phoneNumber = tfPhone.getText();
+            String email = tfEmail.getText();
+            String password = tfPassword.getText();
+
+            // Validate input using the Validator class
+            if (!DataValidation.isValidUserId(userId)) {
+                JOptionPane.showMessageDialog(this, "Invalid User ID. It must be 1 letter followed by 4 digits.");
+                return;
+            }
+
+            if (!DataValidation.isValidPhoneNumber(phoneNumber)) {
+                JOptionPane.showMessageDialog(this, "Invalid Phone Number. It must contain 10-11 digits.");
+                return;
+            }
+
+            if (!DataValidation.isValidEmail(email)) {
+                JOptionPane.showMessageDialog(this, "Invalid Email Address. It must contain '@' and end with '.com'.");
+                return;
+            }
+
+            if (!DataValidation.isValidPassword(password)) {
+                JOptionPane.showMessageDialog(this, "Invalid Password. It must contain at least 1 uppercase letter, 1 symbol, 1 digit, and be at least 8 characters long.");
+                return;
+            }
+            if (DataValidation.isDuplicate(userId, name, phoneNumber, email)) {
+                JOptionPane.showMessageDialog(this, "Duplicate record found. Please check the User ID, Name, Phone Number, or Email.");
+                return;
+            }
+
             javax.swing.JTable selectedTable = getSelectedTable();
             if (selectedTable != null) {
                 String[] data;
@@ -463,14 +496,48 @@ public class AccountManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_btSearchActionPerformed
 
     private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
-        javax.swing.JTable selectedTable = getSelectedTable();
-        if (selectedTable != null) {
-            int selectedRow = selectedTable.getSelectedRow();
-            if (selectedRow == -1) {
-                JOptionPane.showMessageDialog(this, "Please select a row to update.");
+        if (textFieldsFilled()) {
+            String userId = tfId.getText();
+            String name = tfName.getText();
+            String phoneNumber = tfPhone.getText();
+            String email = tfEmail.getText();
+            String password = tfPassword.getText();
+
+            // Validate input using the Validator class
+            if (!DataValidation.isValidUserId(userId)) {
+                JOptionPane.showMessageDialog(this, "Invalid User ID. It must be 1 letter followed by 4 digits.");
                 return;
             }
-            if (textFieldsFilled()) {
+
+            if (!DataValidation.isValidPhoneNumber(phoneNumber)) {
+                JOptionPane.showMessageDialog(this, "Invalid Phone Number. It must contain 10-11 digits.");
+                return;
+            }
+
+            if (!DataValidation.isValidEmail(email)) {
+                JOptionPane.showMessageDialog(this, "Invalid Email Address. It must contain '@' and end with '.com'.");
+                return;
+            }
+
+            if (!DataValidation.isValidPassword(password)) {
+                JOptionPane.showMessageDialog(this, "Invalid Password. It must contain at least 1 uppercase letter, 1 symbol, 1 digit, and be at least 8 characters long.");
+                return;
+            }
+
+            // Check for duplicates, excluding the current record
+            javax.swing.JTable selectedTable = getSelectedTable();
+            if (selectedTable != null) {
+                int selectedRow = selectedTable.getSelectedRow();
+                if (selectedRow == -1) {
+                    JOptionPane.showMessageDialog(this, "Please select a row to update.");
+                    return;
+                }
+
+                if (DataValidation.isDuplicateForUpdate(userId, name, phoneNumber, email, selectedRow)) {
+                    JOptionPane.showMessageDialog(this, "Duplicate record found. Please check the User ID, Name, Phone Number, or Email.");
+                    return;
+                }
+
                 String[] data;
                 if (selectedTable == tbUser) {
                     data = new String[]{
@@ -490,11 +557,12 @@ public class AccountManagement extends javax.swing.JFrame {
                         tfPassword.getText()
                     };
                 }
+
                 baseManagement.updateAccount(selectedTable, selectedRow, data);
                 clearTextFields();
-            } else {
-                JOptionPane.showMessageDialog(this, "Please fill in all fields.");
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields.");
         }
     }//GEN-LAST:event_btUpdateActionPerformed
 
