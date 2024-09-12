@@ -50,27 +50,38 @@ public class hall extends javax.swing.JFrame {
     }
 
     // Method to generate a booking ID
-    public String generateBookingID(int ID) {
-        return String.format("HB%04d", ID);
+    public String generateBookingID(int nextID) {
+        return "HB" + String.format("%04d", nextID);
     }
     
     public int getNextBookingID() {
-        int nextID = 1;
-        String filePath = "src/oodjassignment/database/Booking.txt"; // Path to your booking file
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String lastLine = "", currentLine;
-            while ((currentLine = br.readLine()) != null) {
-                lastLine = currentLine;
-            }
-            if (!lastLine.isEmpty()) {
-                String[] fields = lastLine.split("/"); // Assuming the data is delimited by "/"
-                String lastID = fields[0].substring(1);  // Get the numeric part of the Booking ID
-                nextID = Integer.parseInt(lastID) + 1;   // Increment the ID
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    int nextID = 1; // Default starting ID
+    String filePath = "src/oodjassignment/database/Booking.txt"; // Path to your booking file
+
+    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        String lastLine = "", currentLine;
+        
+        // Read the file line by line to get the last one
+        while ((currentLine = br.readLine()) != null) {
+            lastLine = currentLine.trim(); // Remove any leading/trailing whitespace
         }
-        return nextID;
+
+        // Process the last line to get the last booking ID
+        if (!lastLine.isEmpty()) {
+            String[] fields = lastLine.split("/"); // Assuming the data is delimited by "/"
+            String lastID = fields[0]; // First field is the booking ID, e.g., "HB0001"
+            
+            if (lastID.startsWith("HB")) { // Ensure the ID has the expected "HB" prefix
+                String numericPart = lastID.substring(2);  // Get the numeric part after "HB"
+                nextID = Integer.parseInt(numericPart) + 1;   // Increment the numeric part
+            }
+        }
+    } catch (IOException | NumberFormatException e) {
+        // Handle exceptions (file not found, invalid format, etc.)
+        e.printStackTrace();
+    }
+    
+    return nextID; // Return the next available ID
     }
 
     // Get the customer ID from cookie file

@@ -36,7 +36,7 @@ public class Payment extends javax.swing.JFrame {
                 String[] userData = line.split("/");
 
                 // Check if the file has the correct format
-                if (userData.length == 9) {
+                if (userData.length == 10) {
                     // Auto-fill the text fields with user data
                     id.setText(userData[1]);
                     type.setText(userData[2]);
