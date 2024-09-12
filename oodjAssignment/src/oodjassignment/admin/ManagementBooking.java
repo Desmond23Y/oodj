@@ -66,11 +66,11 @@ public class ManagementBooking extends javax.swing.JFrame {
 
             },
             new String [] {
-                "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "DURATION", "PRICE", "EVENT INFORMATION"
+                "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "HALL NO", "DATE", "TIME", "DURATION", "PRICE", "EVENT INFORMATION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -85,8 +85,8 @@ public class ManagementBooking extends javax.swing.JFrame {
             tbUpcomingBooking.getColumnModel().getColumn(0).setMaxWidth(90);
             tbUpcomingBooking.getColumnModel().getColumn(1).setPreferredWidth(120);
             tbUpcomingBooking.getColumnModel().getColumn(1).setMaxWidth(120);
-            tbUpcomingBooking.getColumnModel().getColumn(7).setMinWidth(120);
-            tbUpcomingBooking.getColumnModel().getColumn(7).setPreferredWidth(120);
+            tbUpcomingBooking.getColumnModel().getColumn(8).setMinWidth(120);
+            tbUpcomingBooking.getColumnModel().getColumn(8).setPreferredWidth(120);
         }
 
         tabbedPanel1.addTab("Upcoming Booking", jScrollPane1);
@@ -97,11 +97,11 @@ public class ManagementBooking extends javax.swing.JFrame {
 
             },
             new String [] {
-                "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "DURATION", "PRICE", "EVENT INFORMATION"
+                "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "HALL NO", "DATE", "TIME", "DURATION", "PRICE", "EVENT INFORMATION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -116,8 +116,8 @@ public class ManagementBooking extends javax.swing.JFrame {
             tbPastBooking.getColumnModel().getColumn(0).setMaxWidth(90);
             tbPastBooking.getColumnModel().getColumn(1).setPreferredWidth(120);
             tbPastBooking.getColumnModel().getColumn(1).setMaxWidth(120);
-            tbPastBooking.getColumnModel().getColumn(7).setMinWidth(120);
-            tbPastBooking.getColumnModel().getColumn(7).setPreferredWidth(120);
+            tbPastBooking.getColumnModel().getColumn(8).setMinWidth(120);
+            tbPastBooking.getColumnModel().getColumn(8).setPreferredWidth(120);
         }
 
         tabbedPanel1.addTab("Past Booking", jScrollPane2);
@@ -138,7 +138,7 @@ public class ManagementBooking extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel1.setText("SEARCH:");
 
-        cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "DATE", "TIME", "EVENT INFORMATION" }));
+        cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "HALL NO", "DATE", "TIME", "EVENT INFORMATION" }));
         cbSearch.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         cbSearch.setMinimumSize(new java.awt.Dimension(64, 22));
         cbSearch.setPreferredSize(new java.awt.Dimension(64, 22));

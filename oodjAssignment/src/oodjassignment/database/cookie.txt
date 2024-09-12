@@ -1,1 +1,1 @@
-U0002,Alex Lim,0987654321,alex@mail.com,456,BLOCKED,USER
+U0001,Hong Hao,0147889155,HongHao@mail.com,@Password1,ACTIVE,USER

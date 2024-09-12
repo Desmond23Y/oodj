@@ -1,10 +1,10 @@
-HB0001,Jeslyn,Auditorium,01 Jul 2024,5pm - 6pm,1 hour,300.00,Merdeka Fiesta Talk
-HB0002,John,Banquet Hall,12 Jul 2024,10am - 12pm,2 hours,200.00,Business Conference
-HB0003,Alice,Meeting Room,19 Jul 2024,2pm - 4pm,2 hours,100.00,Team Meeting
-HB0004,Mike,Auditorium,05 Aug 2024,3pm - 5pm,2 hours,600.00,Tech Seminar
-HB0005,Sarah,Banquet Hall,18 Aug 2024,11am - 2pm,3 hours,300.00,Wedding Reception
-HB0006,Chris,Meeting Room,30 Aug 2024,9am - 10am,1 hour,50.00,Client Briefing
-HB0007,Emma,Auditorium,01 Sep 2024,7pm - 8pm,1 hour,300.00,Product Launch
-HB0008,Oliver,Banquet Hall,15 Sep 2024,6pm - 9pm,3 hours,300.00,Charity Dinner
-HB0009,Mia,Meeting Room,20 Sep 2024,11am - 1pm,2 hours,100.00,Strategy Session
-HB0010,Lucas,Auditorium,05 Oct 2024,4pm - 7pm,3 hours,900.00,Corporate Event
+HB0001,Jeslyn,Auditorium,Hall 1,01 Jul 2024,5pm - 6pm,1 hour,300.00,Merdeka Fiesta Talk
+HB0002,John,Banquet Hall,Hall 2,12 Jul 2024,10am - 12pm,2 hours,200.00,Business Conference
+HB0003,Alice,Meeting Room,Hall 3,19 Jul 2024,2pm - 4pm,2 hours,100.00,Team Meeting
+HB0004,Mike,Auditorium,Hall 1,05 Aug 2024,3pm - 5pm,2 hours,600.00,Tech Seminar
+HB0005,Sarah,Banquet Hall,Hall 2,18 Aug 2024,11am - 2pm,3 hours,300.00,Wedding Reception
+HB0006,Chris,Meeting Room,Hall 3,30 Aug 2024,9am - 10am,1 hour,50.00,Client Briefing
+HB0007,Emma,Auditorium,Hall 1,01 Sep 2024,7pm - 8pm,1 hour,300.00,Product Launch
+HB0008,Oliver,Banquet Hall,Hall 2,15 Sep 2024,6pm - 9pm,3 hours,300.00,Charity Dinner
+HB0009,Mia,Meeting Room,Hall 3,20 Sep 2024,11am - 1pm,2 hours,100.00,Strategy Session
+HB0010,Lucas,Auditorium,Hall 1,05 Oct 2024,4pm - 7pm,3 hours,900.00,Corporate Event
