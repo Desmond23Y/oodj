@@ -199,7 +199,7 @@ public class bookingdetails extends javax.swing.JFrame {
     }//GEN-LAST:event_selectActionPerformed
 
     private void requestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestActionPerformed
-       DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
         int selectedRow = Aschedule.getSelectedRow(); // Get the selected row
 
         // Check if a row is selected
@@ -208,14 +208,20 @@ public class bookingdetails extends javax.swing.JFrame {
             model.setValueAt("Request for cancel", selectedRow, 8);
             model.setValueAt(reason_field.getText(), selectedRow, 9);
 
-            // Read data from booking.txt and remove the selected row
+            // Read data from booking.txt and modify the selected row
             List<String> lines = new ArrayList<>();
             try (BufferedReader br = new BufferedReader(new FileReader("src/oodjassignment/database/Booking.txt"))) {
                 String line;
                 while ((line = br.readLine()) != null) {
-                    if (!line.startsWith(model.getValueAt(selectedRow, 0).toString())) {
-                        lines.add(line);
+                    // Modify the line if it matches the selected row's unique identifier
+                    String[] columns = line.split("/"); // Assumes '/' as delimiter
+                    if (columns[0].equals(model.getValueAt(selectedRow, 0).toString())) {
+                        // Update status and remark for the selected row
+                        columns[8] = "Request for cancel";
+                        columns[9] = reason_field.getText();
+                        line = String.join("/", columns);
                     }
+                    lines.add(line);
                 }
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(this, "Something went wrong while reading booking data.");
@@ -229,25 +235,6 @@ public class bookingdetails extends javax.swing.JFrame {
                 }
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(this, "Something went wrong while saving booking data.");
-                return;
-            }
-
-            // Save new data to cancel.txt
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/cancel.txt", true))) { // Append mode
-                String rec = model.getValueAt(selectedRow, 0).toString() + "/" +
-                             model.getValueAt(selectedRow, 1).toString() + "/" +
-                             model.getValueAt(selectedRow, 2).toString() + "/" +
-                             model.getValueAt(selectedRow, 3).toString() + "/" +
-                             model.getValueAt(selectedRow, 4).toString() + "/" +
-                             model.getValueAt(selectedRow, 5).toString() + "/" +
-                             model.getValueAt(selectedRow, 6).toString() + "/" +
-                             model.getValueAt(selectedRow, 7).toString() + "/" +
-                             model.getValueAt(selectedRow, 8).toString() + "/" +
-                             model.getValueAt(selectedRow, 9).toString();
-                             
-                bw.write(rec + "\n");
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, "Something went wrong while saving cancellation data.");
             }
 
             // Navigate to the payment page

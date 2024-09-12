@@ -92,7 +92,6 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1000, 800));
         setMinimumSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -406,7 +405,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         background.setMaximumSize(new java.awt.Dimension(1200, 1000));
         background.setMinimumSize(new java.awt.Dimension(1200, 1000));
         background.setPreferredSize(new java.awt.Dimension(1200, 1000));
-        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 800));
+        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
 

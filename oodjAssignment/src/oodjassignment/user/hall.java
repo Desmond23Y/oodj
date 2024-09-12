@@ -335,8 +335,8 @@ public class hall extends javax.swing.JFrame {
             }
 
             // Navigate to the payment page
-            Payment paymentPage = new Payment();
-            paymentPage.setVisible(true);
+            new
+            Payment().setVisible(true);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Please select a row to proceed with payment.");

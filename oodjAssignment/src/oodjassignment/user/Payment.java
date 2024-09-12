@@ -7,6 +7,8 @@ package oodjassignment.user;
 import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,14 +43,14 @@ public class Payment extends javax.swing.JFrame {
     
     // Load hall data from the text file
     private void loadHallData() {
-        String filePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
+        String filePath = "src\\\\oodjassignment\\\\database\\\\Booking.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split("/");
-                if (data.length >= 8) {
-                    String key = data[0].trim() + "," + data[1].trim(); // HallType,Hall
-                    String price = data[2].trim(); // Price
+                if (data.length >= 5) {
+                    String key = data[2].trim() + "," + data[3].trim(); // HallType,Hall
+                    String price = data[4].trim(); // Price
                     hallData.put(key, price); // Store in the map
                 }
             }
@@ -196,25 +198,50 @@ public class Payment extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutActionPerformed
 
     private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
-    String selectedHallType = hallType.getSelectedItem().toString();
-    String selectedHall = hall.getSelectedItem().toString();
-    String selectedPrice = Price.getText();
+        String selectedHallType = hallType.getSelectedItem().toString();
+        String selectedHall = hall.getSelectedItem().toString();
+        String selectedPrice = Price.getText();
 
-    // Construct the string to save to the file
-    String paymentData = "Hall Type: " + selectedHallType + ", Hall: " + selectedHall + ", Price: " + selectedPrice;
+        // Construct the string to save to the file
+        String paymentData = "Hall Type: " + selectedHallType + ", Hall: " + selectedHall + ", Price: " + selectedPrice;
 
-    // Save the data to payment.txt
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\oodjassignment\\database\\payment.txt", true))) {
-        writer.write(paymentData);
-        writer.newLine();  // Write a new line after the payment data
-        JOptionPane.showMessageDialog(null, "Payment successful!");
+        // Save the data to payment.txt
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\oodjassignment\\database\\payment.txt", true))) {
+            writer.write(paymentData);
+            writer.newLine();  // Write a new line after the payment data
+            JOptionPane.showMessageDialog(null, "Payment successful! Please Review your receipt");
+
+            // Call the method to generate the receipt
+            generateReceipt(selectedHallType, selectedHall, selectedPrice);
+
+            new homepage().setVisible(true);
+            dispose();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error saving payment data.");
+            e.printStackTrace();
+        }
+    }
+
+    // Method to generate and display a receipt
+    private void generateReceipt(String hallType, String hall, String price) {
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+        // Create receipt details
+        String receipt = "----------- Receipt -----------\n" +
+                         "Date: " + dtf.format(now) + "\n" +
+                         "Hall Type: " + hallType + "\n" +
+                         "Hall: " + hall + "\n" +
+                         "Price: " + price + "\n" +
+                         "-------------------\n" +
+                         "Thank you for your payment!";
+
+        // Option 1: Display the receipt in a dialog box
+        JOptionPane.showMessageDialog(null, receipt, "Payment Receipt", JOptionPane.INFORMATION_MESSAGE);
         new
         homepage().setVisible(true);
         dispose();
-    } catch (IOException e) {
-        JOptionPane.showMessageDialog(null, "Error saving payment data.");
-        e.printStackTrace();
-    }
     }//GEN-LAST:event_payActionPerformed
 
 
