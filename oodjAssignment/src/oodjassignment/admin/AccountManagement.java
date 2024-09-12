@@ -269,9 +269,9 @@ public class AccountManagement extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(62, 62, 62)
                 .addComponent(btClear, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
+                .addGap(31, 31, 31))
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -1, 250, 780));
@@ -483,15 +483,19 @@ public class AccountManagement extends javax.swing.JFrame {
     private void btSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSearchActionPerformed
         javax.swing.JTable selectedTable = getSelectedTable();
         if (selectedTable != null) {
+            String status = cbStatus.getSelectedItem() != null ? cbStatus.getSelectedItem().toString(): "";
             String[] fieldValues = {
                 tfId.getText(),
                 tfName.getText(),
                 tfPhone.getText(),
                 tfEmail.getText(),
-                tfPassword.getText()
+                tfPassword.getText(),
+                status
             };
-            int[] columnIndices = {0, 1, 2, 3, 4}; // Adjust based on the table's columns
+            int[] columnIndices = {0, 1, 2, 3, 4, 5}; // Adjust based on the table's columns
             baseManagement.searchAccounts(selectedTable, fieldValues, columnIndices);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a table to perform search");
         }
     }//GEN-LAST:event_btSearchActionPerformed
 
@@ -533,7 +537,7 @@ public class AccountManagement extends javax.swing.JFrame {
                     return;
                 }
 
-                if (DataValidation.isDuplicateForUpdate(userId, name, phoneNumber, email, selectedRow)) {
+                if (DataValidation.isDuplicateForUpdate(userId, name, phoneNumber, email, selectedRow, selectedTable)) {
                     JOptionPane.showMessageDialog(this, "Duplicate record found. Please check the User ID, Name, Phone Number, or Email.");
                     return;
                 }

@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class DataValidation {
 
@@ -31,20 +33,71 @@ public class DataValidation {
         String passwordPattern = "^(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).{8,}$";
         return password.matches(passwordPattern);
     }
-
+    
     public static boolean isDuplicate(String userId, String name, String phoneNumber, String email) {
         // List of files to check
-        String[] files = {"user.txt", "administrator.txt", "scheduler.txt", "manager.txt"};
+        String[] files = {"src/oodjassignment/database/User.txt", "src/oodjassignment/database/Administrator.txt", "src/oodjassignment/database/Scheduler.txt", "src/oodjassignment/database/Manager.txt"};
 
         for (String file : files) {
-            if (checkFileForDuplicate(file, userId, name, phoneNumber, email)) {
+            if (checkDuplicate(file, userId, name, phoneNumber, email)) {
                 return true; // Duplicate found in any file
             }
         }
-        return false;
+        return false; // No duplicates found
+    }
+    
+    private static boolean checkDuplicate(String fileName, String userId, String name, String phoneNumber, String email) {
+    try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String[] parts = line.split(","); // Adjust based on your file format
+            if (parts.length > 4) {
+                String existingUserId = parts[0].trim();
+                String existingName = parts[1].trim();
+                String existingPhoneNumber = parts[2].trim();
+                String existingEmail = parts[3].trim();
+
+                // Check for duplicates in all fields
+                if (userId.equals(existingUserId) || name.equals(existingName) || phoneNumber.equals(existingPhoneNumber) || email.equals(existingEmail)) {
+                    return true; // Duplicate found
+                }
+            }
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return false; // No duplicates found
+}
+
+    // Method to check for duplicates across files, excluding the current record
+    public static boolean isDuplicateForUpdate(String userId, String name, String phoneNumber, String email, int selectedRow, JTable table) {
+        // Check for duplicates in JTable
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        for (int row = 0; row < model.getRowCount(); row++) {
+            if (row == selectedRow) {
+                continue;  // Skip the row being updated
+            }
+            String existingUserId = model.getValueAt(row, 0).toString();
+            String existingName = model.getValueAt(row, 1).toString();
+            String existingPhone = model.getValueAt(row, 2).toString();
+            String existingEmail = model.getValueAt(row, 3).toString();
+
+            if (existingUserId.equals(userId) || existingName.equals(name) || existingPhone.equals(phoneNumber) || existingEmail.equals(email)) {
+                return true;  // Duplicate found
+            }
+        }
+        // Check for duplicates in files, excluding the current userId
+        String[] files = {"src/oodjassignment/database/User.txt", "src/oodjassignment/database/Administrator.txt", "src/oodjassignment/database/Scheduler.txt", "src/oodjassignment/database/Manager.txt"};
+        for (String file : files) {
+            if (checkDuplicateUpdate(file, userId, name, phoneNumber, email)) {
+                return true; // Duplicate found in files
+            }
+        }
+        return false;  // No duplicates found
     }
 
-    public static boolean checkFileForDuplicate(String fileName, String userId, String name, String phoneNumber, String email) {
+    // Method to check for duplicates in files, excluding the current record based on userId
+    private static boolean checkDuplicateUpdate(String fileName, String userId, String name, String phoneNumber, String email) {
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -55,53 +108,15 @@ public class DataValidation {
                     String existingPhoneNumber = parts[2].trim();
                     String existingEmail = parts[3].trim();
 
-                    if (userId.equals(existingUserId) || name.equals(existingName) || phoneNumber.equals(existingPhoneNumber) || email.equals(existingEmail)) {
-                        return true; // Duplicate found
+                    // Skip the row being updated based on userId
+                    if (!userId.equals(existingUserId) && (name.equals(existingName) || phoneNumber.equals(existingPhoneNumber) || email.equals(existingEmail))) {
+                        return true;  // Duplicate found
                     }
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
-    }
-
-    public static boolean isDuplicateForUpdate(String userId, String name, String phoneNumber, String email, int excludeRow) {
-        // List of files to check
-        String[] files = {"src/oodjassignment/database/User.txt", "src/oodjassignment/database/Administrator.txt", "src/oodjassignment/database/Scheduler.txt", "src/oodjassignment/database/Manager.txt"};
-
-        for (String file : files) {
-            if (checkFileForDuplicateExcludingRow(file, userId, name, phoneNumber, email, excludeRow)) {
-                return true; // Duplicate found in any file
-            }
-        }
         return false; // No duplicates found
     }
-
-    private static boolean checkFileForDuplicateExcludingRow(String fileName, String userId, String name, String phoneNumber, String email, int excludeRow) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))) {
-            String line;
-            int row = 0;
-            while ((line = reader.readLine()) != null) {
-                if (row != excludeRow) { // Skip the row to exclude
-                    String[] parts = line.split(","); // Adjust based on your file format
-                    if (parts.length > 4) {
-                        String existingUserId = parts[0].trim();
-                        String existingName = parts[1].trim();
-                        String existingPhoneNumber = parts[2].trim();
-                        String existingEmail = parts[3].trim();
-
-                        if (userId.equals(existingUserId) || name.equals(existingName) || phoneNumber.equals(existingPhoneNumber) || email.equals(existingEmail)) {
-                            return true; // Duplicate found
-                        }
-                    }
-                }
-                row++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false; // No duplicates found
-    }
-
 }
