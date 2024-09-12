@@ -41,7 +41,7 @@ public class ViewBooking {
         // Date format: 01-Jul-2024
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH);
         // Time format: 5pm
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("ha");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("h a ");
 
         // Current date and time
         LocalDateTime now = LocalDateTime.now();
@@ -49,13 +49,13 @@ public class ViewBooking {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] data = line.split(",");
+                String[] data = line.split("/");
                 String bookingDate = data[4];
                 String bookingTime = data[5];
 
                 try {
                     // Split the time range and use the start time
-                    String startTime = bookingTime.split("-")[0].trim();
+                    String startTime = bookingTime.split(" - ")[0].trim();
 
                     // Parse the booking date and start time separately
                     LocalDateTime bookingDateTime = LocalDateTime.of(
