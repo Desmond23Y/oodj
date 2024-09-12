@@ -1,1 +1,2 @@
 C0001,U0002,Auditorium,HALL 1,2024-09-12,Hall much expensive
+C0002,U0001,Auditorium,HALL 1,2024-09-12,Expensive
