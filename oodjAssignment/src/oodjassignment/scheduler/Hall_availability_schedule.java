@@ -139,9 +139,9 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
             Aschedule.getColumnModel().getColumn(5).setMinWidth(90);
             Aschedule.getColumnModel().getColumn(5).setPreferredWidth(90);
             Aschedule.getColumnModel().getColumn(5).setMaxWidth(90);
-            Aschedule.getColumnModel().getColumn(6).setMinWidth(90);
-            Aschedule.getColumnModel().getColumn(6).setPreferredWidth(90);
-            Aschedule.getColumnModel().getColumn(6).setMaxWidth(90);
+            Aschedule.getColumnModel().getColumn(6).setMinWidth(100);
+            Aschedule.getColumnModel().getColumn(6).setPreferredWidth(100);
+            Aschedule.getColumnModel().getColumn(6).setMaxWidth(100);
         }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, 880, 600));
@@ -266,14 +266,14 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         st.setText("Status :");
 
         status.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Already Booking", "Under Maintenance" }));
+        status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Booked" }));
+        status.setPreferredSize(new java.awt.Dimension(80, 23));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Duration :");
 
         duration.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        duration.setPreferredSize(new java.awt.Dimension(122, 23));
         duration.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 durationActionPerformed(evt);
@@ -557,7 +557,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         int hours = extractHours(timeText);
 
         if (hours == -1) {
-            Price.setText("Invalid input");
+            Price.setText("Invalid hours");
             return;
         }
 
