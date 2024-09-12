@@ -13,49 +13,41 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Payment extends javax.swing.JFrame {
-    private HashMap<String, String> hallData = new HashMap<>();
    
     public Payment() {
     initComponents();
-
-    hallType.setModel(new DefaultComboBoxModel<>(new String[] {"Auditorium", "Banquet Hall", "Meeting Room"}));
-    hall.setModel(new DefaultComboBoxModel<>()); // Empty initially
-    
-    loadHallData();
-
-    hallType.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            hallTypeActionPerformed(evt);
-        }
-    });
-
-    hall.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent evt) {
-            updatePrice(); // Call updatePrice when a hall is selected
-        }
-    });
-    
+    autofillUserData();
+    id.setEditable(false);
+    type.setEditable(false);
+    hall.setEditable(false);
     Price.setEditable(false);
     cfPrice.setEditable(false);
     }
     
-    // Load hall data from the text file
-    private void loadHallData() {
-        String filePath = "src\\\\oodjassignment\\\\database\\\\Booking.txt";
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+
+    
+    private void autofillUserData() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/oodjassignment/database/Booking.txt"))) {
             String line;
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split("/");
-                if (data.length >= 5) {
-                    String key = data[2].trim() + "," + data[3].trim(); // HallType,Hall
-                    String price = data[4].trim(); // Price
-                    hallData.put(key, price); // Store in the map
+            
+            // Read the first line from the file
+            if ((line = reader.readLine()) != null) {
+                // Split the line to extract user data
+                String[] userData = line.split("/");
+
+                // Check if the file has the correct format
+                if (userData.length == 9) {
+                    // Auto-fill the text fields with user data
+                    id.setText(userData[1]);
+                    type.setText(userData[2]);
+                    hall.setText(userData[3]);
+                    Price.setText(userData[4]);
+                    cfPrice.setText(userData[4]);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error loading user data.");
         }
     }
         /**
@@ -75,9 +67,11 @@ public class Payment extends javax.swing.JFrame {
         pay = new javax.swing.JButton();
         logout = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        hall = new javax.swing.JComboBox<>();
-        hallType = new javax.swing.JComboBox<>();
         Price = new javax.swing.JTextField();
+        type = new javax.swing.JTextField();
+        hall = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        id = new javax.swing.JTextField();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,23 +80,23 @@ public class Payment extends javax.swing.JFrame {
         title.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         title.setForeground(new java.awt.Color(255, 255, 255));
         title.setText("Payment");
-        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, -1, -1));
+        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Hall Type:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 100, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 100, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Hall:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Confirm Price:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, -1, -1));
-        getContentPane().add(cfPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 420, 180, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, -1, -1));
+        getContentPane().add(cfPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 180, 30));
 
         pay.setBackground(new java.awt.Color(0, 137, 248));
         pay.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -113,7 +107,7 @@ public class Payment extends javax.swing.JFrame {
                 payActionPerformed(evt);
             }
         });
-        getContentPane().add(pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 500, 80, 30));
+        getContentPane().add(pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, 80, 30));
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
@@ -127,24 +121,22 @@ public class Payment extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Price:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
+        getContentPane().add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 180, 30));
+        getContentPane().add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 180, 30));
 
-        hall.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         hall.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hallActionPerformed(evt);
             }
         });
-        getContentPane().add(hall, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 180, 30));
+        getContentPane().add(hall, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 180, 30));
 
-        hallType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        hallType.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hallTypeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(hallType, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 212, 180, 30));
-        getContentPane().add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 180, 30));
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Customer ID:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 180, 30));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
@@ -152,43 +144,6 @@ public class Payment extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void hallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hallActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hallActionPerformed
-
-    private void hallTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hallTypeActionPerformed
-    String selectedHallType = hallType.getSelectedItem().toString();  // Use the correct component
-    switch (selectedHallType) {
-        case "Auditorium":
-            hall.setModel(new DefaultComboBoxModel<>(new String[] {"HALL 1", "HALL 2", "HALL 3"}));
-            break;
-        case "Banquet Hall":
-            hall.setModel(new DefaultComboBoxModel<>(new String[] {"HALL 1", "HALL 2", "HALL 3"}));
-            break;
-        case "Meeting Room":
-            hall.setModel(new DefaultComboBoxModel<>(new String[] {"ROOM 1", "ROOM 2", "ROOM 3"}));
-            break;
-    }
-    cfPrice.setText("");  // Clear the price field when hall type changes
-    cfPrice.setText("");
-    }//GEN-LAST:event_hallTypeActionPerformed
-
-    
-    private void updatePrice() {
-        String selectedHallType = hallType.getSelectedItem().toString();
-        String selectedHall = hall.getSelectedItem().toString();
-        String key = selectedHallType + "," + selectedHall;
-
-        // Check if the key exists in the hallData map and update the price fields
-        if (hallData.containsKey(key)) {
-            String selectedPrice = hallData.get(key);
-            Price.setText(selectedPrice);
-            cfPrice.setText(selectedPrice);  // Auto-fill Confirm Price with the same value
-        } else {
-            Price.setText("");   // Clear the price field if no match is found
-            cfPrice.setText(""); // Clear the confirm price field if no match is found
-        }
-    }
      
      
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
@@ -198,12 +153,8 @@ public class Payment extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutActionPerformed
 
     private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
-        String selectedHallType = hallType.getSelectedItem().toString();
-        String selectedHall = hall.getSelectedItem().toString();
-        String selectedPrice = Price.getText();
-
-        // Construct the string to save to the file
-        String paymentData = "Hall Type: " + selectedHallType + ", Hall: " + selectedHall + ", Price: " + selectedPrice;
+    // Construct the string to save to the file
+        String paymentData = "Hall Type: " + type.getText()+ ", Hall: " + hall.getText() + ", Price: " + Price.getText();
 
         // Save the data to payment.txt
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\oodjassignment\\database\\payment.txt", true))) {
@@ -212,7 +163,7 @@ public class Payment extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Payment successful! Please Review your receipt");
 
             // Call the method to generate the receipt
-            generateReceipt(selectedHallType, selectedHall, selectedPrice);
+            generateReceipt(type.getText(), hall.getText(), Price.getText());
 
             new homepage().setVisible(true);
             dispose();
@@ -243,6 +194,10 @@ public class Payment extends javax.swing.JFrame {
         homepage().setVisible(true);
         dispose();
     }//GEN-LAST:event_payActionPerformed
+
+    private void hallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hallActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hallActionPerformed
 
 
     /**
@@ -284,15 +239,17 @@ public class Payment extends javax.swing.JFrame {
     private javax.swing.JTextField Price;
     private javax.swing.JLabel background;
     private javax.swing.JTextField cfPrice;
-    private javax.swing.JComboBox<String> hall;
-    private javax.swing.JComboBox<String> hallType;
+    private javax.swing.JTextField hall;
+    private javax.swing.JTextField id;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JButton logout;
     private javax.swing.JButton pay;
     private javax.swing.JLabel title;
+    private javax.swing.JTextField type;
     // End of variables declaration//GEN-END:variables
 
 
