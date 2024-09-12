@@ -10,6 +10,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -307,9 +309,8 @@ public class hall extends javax.swing.JFrame {
 
         // Check if a row is selected
         if (selectedRow != -1) {
-            model.setValueAt("Booked", selectedRow, 6);
-            model.setValueAt(remark.getText(), selectedRow, 7);
-            
+            model.setValueAt("Booked", selectedRow, 6); // Update status to 'Booked'
+            model.setValueAt(remark.getText(), selectedRow, 7); // Update remark
 
             // Get the Customer ID from cookie.txt
             String customerId = getCustomerIdFromCookie();
@@ -318,8 +319,8 @@ public class hall extends javax.swing.JFrame {
             int nextID = getNextBookingID();
             String bookingId = generateBookingID(nextID);
 
-            // Save all the data to the booking.txt file
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/Booking.txt", true))) { // Append mode
+            // Save booking data to the Booking.txt file
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/Booking.txt", true))) {
                 String rec = bookingId + "/" + customerId + "/" +
                              model.getValueAt(selectedRow, 0).toString() + "/" +
                              model.getValueAt(selectedRow, 1).toString() + "/" +
@@ -334,9 +335,44 @@ public class hall extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Something went wrong while saving booking data.");
             }
 
+            // Now update the Schedule.txt file
+            String scheduleFilePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
+            List<String> scheduleLines = new ArrayList<>();
+
+            // Read all lines from Schedule.txt into a list
+            try (BufferedReader br = new BufferedReader(new FileReader(scheduleFilePath))) {
+                String line;
+                while ((line = br.readLine()) != null) {
+                    scheduleLines.add(line);
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Something went wrong while reading schedule data.");
+            }
+
+            // Find and update the corresponding line in scheduleLines
+            String updatedRecord = model.getValueAt(selectedRow, 0).toString() + "/" +
+                                   model.getValueAt(selectedRow, 1).toString() + "/" +
+                                   model.getValueAt(selectedRow, 2).toString() + "/" +
+                                   model.getValueAt(selectedRow, 3).toString() + "/" +
+                                   model.getValueAt(selectedRow, 4).toString() + "/" +
+                                   model.getValueAt(selectedRow, 5).toString() + "/" +
+                                   "Booked" + "/" + // Update status
+                                   remark.getText(); // Update remark
+
+            // Replace the corresponding line in the list
+            scheduleLines.set(selectedRow, updatedRecord);
+
+            // Write the updated scheduleLines back to Schedule.txt
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(scheduleFilePath))) {
+                for (String scheduleLine : scheduleLines) {
+                    bw.write(scheduleLine + "\n");
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, "Something went wrong while saving schedule data.");
+            }
+
             // Navigate to the payment page
-            new
-            Payment().setVisible(true);
+            new Payment().setVisible(true);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Please select a row to proceed with payment.");
