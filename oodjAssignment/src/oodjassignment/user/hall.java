@@ -305,13 +305,27 @@ public class hall extends javax.swing.JFrame {
     }//GEN-LAST:event_durationActionPerformed
 
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
-    DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-    type.setText(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
-    no.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
-    price.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
-    date.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
-    time.setText(model.getValueAt(Aschedule.getSelectedRow(), 4).toString());
-    duration.setText(model.getValueAt(Aschedule.getSelectedRow(), 5).toString());
+        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+        int selectedRow = Aschedule.getSelectedRow();
+
+        if (selectedRow != -1) {
+            String status = model.getValueAt(selectedRow, 6).toString(); 
+
+            
+            if (status.equalsIgnoreCase("Available")) {
+                // If available, proceed with setting the text fields
+                type.setText(model.getValueAt(selectedRow, 0).toString());
+                no.setText(model.getValueAt(selectedRow, 1).toString());
+                price.setText(model.getValueAt(selectedRow, 2).toString());
+                date.setText(model.getValueAt(selectedRow, 3).toString());
+                time.setText(model.getValueAt(selectedRow, 4).toString());
+                duration.setText(model.getValueAt(selectedRow, 5).toString());
+            } else {
+                JOptionPane.showMessageDialog(null, "This schedule is not available for selection.", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a schedule first.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_selectActionPerformed
 
     private void PayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayActionPerformed
