@@ -53,19 +53,19 @@ public class managerHomepage extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(76, 76, 76)
                 .addComponent(lbl_title)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addComponent(lbl_title)
-                .addGap(21, 21, 21))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 480, 80));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 490, 80));
 
         btn_all.setText("All (Daily, Weekly, Monthly)");
         btn_all.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +73,7 @@ public class managerHomepage extends javax.swing.JFrame {
                 btn_allActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_all, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
+        getContentPane().add(btn_all, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, -1));
 
         btn_viewCaseChangeStatus.setText("View Case & Change Status");
         btn_viewCaseChangeStatus.addActionListener(new java.awt.event.ActionListener() {
@@ -81,10 +81,10 @@ public class managerHomepage extends javax.swing.JFrame {
                 btn_viewCaseChangeStatusActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_viewCaseChangeStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, -1, -1));
+        getContentPane().add(btn_viewCaseChangeStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, -1, -1));
 
         btn_replyCusIssue.setText("Reply Customer Issues");
-        getContentPane().add(btn_replyCusIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, -1, -1));
+        getContentPane().add(btn_replyCusIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, -1, -1));
 
         btn_assignStaff.setText("Assign Staff to Fix Issues");
         btn_assignStaff.addActionListener(new java.awt.event.ActionListener() {
@@ -92,10 +92,10 @@ public class managerHomepage extends javax.swing.JFrame {
                 btn_assignStaffActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_assignStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 250, -1, -1));
+        getContentPane().add(btn_assignStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, -1, -1));
 
         jButton4.setText("Reply Customer Issues");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, -1, -1));
 
         lbl_viewSales.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         lbl_viewSales.setText("View Sales by:");
@@ -111,7 +111,7 @@ public class managerHomepage extends javax.swing.JFrame {
                 btn_dateActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, -1));
+        getContentPane().add(btn_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, -1, -1));
 
         btn_time.setText("Time");
         btn_time.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +119,7 @@ public class managerHomepage extends javax.swing.JFrame {
                 btn_timeActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 250, -1, -1));
+        getContentPane().add(btn_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 270, -1, -1));
 
         btn_venue.setText("Venue");
         btn_venue.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +127,7 @@ public class managerHomepage extends javax.swing.JFrame {
                 btn_venueActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_venue, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 330, -1, -1));
+        getContentPane().add(btn_venue, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
