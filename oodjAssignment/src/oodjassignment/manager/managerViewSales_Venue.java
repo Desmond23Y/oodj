@@ -37,6 +37,7 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         lbl_venueCode1 = new javax.swing.JLabel();
         lbl_title = new javax.swing.JLabel();
+        lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -86,6 +87,10 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_title.setText("View Sales by Venue");
         getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+
+        lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
+        lbl_background.setText("jLabel4");
+        getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -389,6 +394,7 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_title;
     private javax.swing.JLabel lbl_venueCode;
     private javax.swing.JLabel lbl_venueCode1;

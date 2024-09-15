@@ -34,6 +34,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         spn_end = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
         btn_View = new javax.swing.JButton();
+        lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -73,6 +74,10 @@ public class managerViewSales_Date extends javax.swing.JFrame {
 
         btn_View.setText("View");
         getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, -1, -1));
+
+        lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
+        lbl_background.setText("jLabel4");
+        getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -150,6 +155,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbl_background;
     private javax.swing.JSpinner spn_end;
     private javax.swing.JSpinner spn_start;
     // End of variables declaration//GEN-END:variables

@@ -26,6 +26,13 @@ public class managerIssue_Response extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        lbl_enterCaseID = new javax.swing.JLabel();
+        txt_caseID = new javax.swing.JTextField();
+        lbl_or = new javax.swing.JLabel();
+        lbl_selectCaseID = new javax.swing.JLabel();
+        spn_selectCaseID = new javax.swing.JSpinner();
+        btn_view = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txt_newMessage = new javax.swing.JTextField();
@@ -33,16 +40,70 @@ public class managerIssue_Response extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         lbl_title = new javax.swing.JLabel();
-        lbl_enterCaseID = new javax.swing.JLabel();
-        txt_caseID = new javax.swing.JTextField();
-        lbl_or = new javax.swing.JLabel();
-        lbl_selectCaseID = new javax.swing.JLabel();
-        spn_selectCaseID = new javax.swing.JSpinner();
-        btn_view = new javax.swing.JButton();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_enterCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        lbl_enterCaseID.setText("Enter the Case ID:");
+
+        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+
+        lbl_or.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        lbl_or.setText("OR");
+
+        lbl_selectCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        lbl_selectCaseID.setText("Select the Case ID:");
+
+        spn_selectCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+
+        btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_view.setText("View");
+        btn_view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(lbl_enterCaseID)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_caseID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_or)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbl_selectCaseID)
+                        .addGap(18, 18, 18)
+                        .addComponent(spn_selectCaseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(235, 235, 235)
+                        .addComponent(btn_view)))
+                .addGap(157, 157, 157))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_enterCaseID)
+                    .addComponent(txt_caseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_or)
+                    .addComponent(lbl_selectCaseID)
+                    .addComponent(spn_selectCaseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btn_view)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 640, 80));
 
         btn_update.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         btn_update.setText("Update");
@@ -80,34 +141,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
         lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_title.setText("Response to Customer Issue");
-        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
-
-        lbl_enterCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        lbl_enterCaseID.setText("Enter the Case ID:");
-        getContentPane().add(lbl_enterCaseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, -1, -1));
-
-        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        getContentPane().add(txt_caseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 150, -1));
-
-        lbl_or.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        lbl_or.setText("OR");
-        getContentPane().add(lbl_or, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
-
-        lbl_selectCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        lbl_selectCaseID.setText("Select the Case ID:");
-        getContentPane().add(lbl_selectCaseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 90, -1, -1));
-
-        spn_selectCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        getContentPane().add(spn_selectCaseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 160, -1));
-
-        btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        btn_view.setText("View");
-        btn_view.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_viewActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, -1));
+        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
@@ -165,6 +199,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
     private javax.swing.JButton btn_view;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_background;
