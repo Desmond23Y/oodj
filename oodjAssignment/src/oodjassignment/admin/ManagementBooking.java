@@ -66,7 +66,7 @@ public class ManagementBooking extends javax.swing.JFrame {
 
             },
             new String [] {
-                "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "HALL NO", "DATE", "TIME", "DURATION", "PRICE", "EVENT INFORMATION"
+                "BOOKING ID", "CUSTOMER NO", "HALL TYPE", "HALL NO", "PRICE", "DATE", "TIME", "DURATION", "EVENT INFORMATION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -97,7 +97,7 @@ public class ManagementBooking extends javax.swing.JFrame {
 
             },
             new String [] {
-                "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "HALL NO", "DATE", "TIME", "DURATION", "PRICE", "EVENT INFORMATION"
+                "BOOKING ID", "CUSTOMER NO", "HALL TYPE", "HALL NO", "PRICE", "DATE", "TIME", "DURATION", "EVENT INFORMATION"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -138,7 +138,7 @@ public class ManagementBooking extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel1.setText("SEARCH:");
 
-        cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "HALL NO", "DATE", "TIME", "EVENT INFORMATION" }));
+        cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOOKING ID", "CUSTOMER NAME", "HALL TYPE", "HALL NO", "PRICE", "DATE", "TIME", "DURATION", "EVENT INFORMATION" }));
         cbSearch.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         cbSearch.setMinimumSize(new java.awt.Dimension(64, 22));
         cbSearch.setPreferredSize(new java.awt.Dimension(64, 22));
