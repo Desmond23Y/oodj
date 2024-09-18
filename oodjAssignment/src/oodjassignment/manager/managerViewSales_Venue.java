@@ -26,6 +26,8 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btn_back = new javax.swing.JButton();
+        lbl_title = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
@@ -36,25 +38,37 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         lbl_venueCode = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         lbl_venueCode1 = new javax.swing.JLabel();
-        lbl_title = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        jLabel2.setText("Venue Type:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
+        btn_back.setText("BACK");
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_title.setText("View Sales by Venue");
+        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 40, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        jLabel2.setText("VENUE TYPE");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
         jCheckBox1.setText("Auditorium");
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
 
         jCheckBox2.setText("Meeting Room");
-        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
+        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
 
         jCheckBox3.setText("Banquet Hall");
-        getContentPane().add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
+        getContentPane().add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,31 +83,33 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 620, 350));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 800, 400));
 
         btn_View.setText("View");
-        getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 100, -1, -1));
+        getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, -1, -1));
 
-        lbl_venueCode.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        lbl_venueCode.setText("Sales");
-        getContentPane().add(lbl_venueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
-        getContentPane().add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 190, -1));
+        lbl_venueCode.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        lbl_venueCode.setText("SALES");
+        getContentPane().add(lbl_venueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
+        getContentPane().add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 190, -1));
 
-        lbl_venueCode1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        lbl_venueCode1.setText("Available Venue Code:");
-        getContentPane().add(lbl_venueCode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, -1));
-
-        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_title.setText("View Sales by Venue");
-        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, -1));
+        lbl_venueCode1.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        lbl_venueCode1.setText("AVAILABLE VENUE");
+        getContentPane().add(lbl_venueCode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
+        lbl_background.setPreferredSize(new java.awt.Dimension(1000, 800));
         getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        managerHomepage managerHomepage = new managerHomepage();
+        managerHomepage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_backActionPerformed
 
     /**
      * @param args the command line arguments
@@ -387,6 +403,7 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_View;
+    private javax.swing.JButton btn_back;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;

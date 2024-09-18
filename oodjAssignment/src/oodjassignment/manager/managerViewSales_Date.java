@@ -26,24 +26,109 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        spn_start = new javax.swing.JSpinner();
-        jLabel2 = new javax.swing.JLabel();
-        spn_end = new javax.swing.JSpinner();
-        jLabel3 = new javax.swing.JLabel();
+        btn_back = new javax.swing.JButton();
+        lbl_title = new javax.swing.JLabel();
+        lbl_viewBy = new javax.swing.JLabel();
+        rbtn_daily = new javax.swing.JRadioButton();
+        rbtn_Weekly = new javax.swing.JRadioButton();
+        rbtn_monthly = new javax.swing.JRadioButton();
+        rbtn_yearly = new javax.swing.JRadioButton();
+        lbl_start = new javax.swing.JLabel();
+        lbl_end = new javax.swing.JLabel();
+        bbx_startday = new javax.swing.JComboBox<>();
+        bbx_enday = new javax.swing.JComboBox<>();
+        bbx_startmonth = new javax.swing.JComboBox<>();
+        bbx_endyear = new javax.swing.JComboBox<>();
+        bbx_endmonth = new javax.swing.JComboBox<>();
+        bbx_startyear = new javax.swing.JComboBox<>();
         btn_View = new javax.swing.JButton();
+        table_sales = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         lbl_background = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("View Sales by Date");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
+        btn_back.setText("BACK");
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_title.setText("View Sales by Date");
+        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 40, -1, -1));
+
+        lbl_viewBy.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbl_viewBy.setText("VIEW BY");
+        getContentPane().add(lbl_viewBy, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+
+        rbtn_daily.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        rbtn_daily.setText("Daily");
+        getContentPane().add(rbtn_daily, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, -1, -1));
+
+        rbtn_Weekly.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        rbtn_Weekly.setText("Weekly");
+        getContentPane().add(rbtn_Weekly, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 130, -1, -1));
+
+        rbtn_monthly.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        rbtn_monthly.setText("Monthly");
+        getContentPane().add(rbtn_monthly, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
+
+        rbtn_yearly.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        rbtn_yearly.setText("Yearly");
+        getContentPane().add(rbtn_yearly, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, -1, -1));
+
+        lbl_start.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbl_start.setText("STARTS FROM");
+        getContentPane().add(lbl_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+
+        lbl_end.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lbl_end.setText("ENDS AT");
+        getContentPane().add(lbl_end, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, -1, -1));
+
+        bbx_startday.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bbx_startday.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(bbx_startday, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
+        bbx_startday.getAccessibleContext().setAccessibleName("1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31");
+
+        bbx_enday.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bbx_enday.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(bbx_enday, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, -1, -1));
+
+        bbx_startmonth.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bbx_startmonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(bbx_startmonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
+        bbx_startmonth.getAccessibleContext().setAccessibleName("JAN\nFEB\nMAR\nAPR\nMAY\nJUN\nJUL\nAUG\nSEP\nOCT\nNOV\nDEC");
+
+        bbx_endyear.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bbx_endyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(bbx_endyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, -1, -1));
+        bbx_endyear.getAccessibleContext().setAccessibleName("2024\n2025\n2026\n2027\n2028");
+
+        bbx_endmonth.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bbx_endmonth.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(bbx_endmonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
+        bbx_endmonth.getAccessibleContext().setAccessibleName("JAN\nFEB\nMAR\nAPR\nMAY\nJUN\nJUL\nAUG\nSEP\nOCT\nNOV\nDEC");
+
+        bbx_startyear.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        bbx_startyear.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(bbx_startyear, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, -1, -1));
+        bbx_startyear.getAccessibleContext().setAccessibleName("2024\n2025\n2026\n2027\n2028");
+
+        btn_View.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btn_View.setText("VIEW");
+        btn_View.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ViewActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 210, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,31 +141,31 @@ public class managerViewSales_Date extends javax.swing.JFrame {
                 "Date", "Start Time", "End Time", "Venue", "Remark"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        table_sales.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 620, -1));
-
-        spn_start.setToolTipText("00:00\n01:00\n02:00\n03:00\n04:00\n05:00\n06:00\n07:00\n08:00\n09:00\n10:00\n11:00\n12:00\n13:00\n14:00\n15:00\n16:00\n17:00\n18:00\n19:00\n20:00\n21:00\n22:00\n23:00");
-        getContentPane().add(spn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
-
-        jLabel2.setText("Starts from");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
-
-        spn_end.setToolTipText("00:00\n01:00\n02:00\n03:00\n04:00\n05:00\n06:00\n07:00\n08:00\n09:00\n10:00\n11:00\n12:00\n13:00\n14:00\n15:00\n16:00\n17:00\n18:00\n19:00\n20:00\n21:00\n22:00\n23:00");
-        getContentPane().add(spn_end, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
-
-        jLabel3.setText("Ends at");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
-
-        btn_View.setText("View");
-        getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, -1, -1));
+        getContentPane().add(table_sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 800, 400));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
+        lbl_background.setPreferredSize(new java.awt.Dimension(1000, 800));
         getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Starts from");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_ViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ViewActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ViewActionPerformed
+
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        managerHomepage managerHomepage = new managerHomepage();
+        managerHomepage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_backActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,14 +234,25 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> bbx_enday;
+    private javax.swing.JComboBox<String> bbx_endmonth;
+    private javax.swing.JComboBox<String> bbx_endyear;
+    private javax.swing.JComboBox<String> bbx_startday;
+    private javax.swing.JComboBox<String> bbx_startmonth;
+    private javax.swing.JComboBox<String> bbx_startyear;
     private javax.swing.JButton btn_View;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton btn_back;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_background;
-    private javax.swing.JSpinner spn_end;
-    private javax.swing.JSpinner spn_start;
+    private javax.swing.JLabel lbl_end;
+    private javax.swing.JLabel lbl_start;
+    private javax.swing.JLabel lbl_title;
+    private javax.swing.JLabel lbl_viewBy;
+    private javax.swing.JRadioButton rbtn_Weekly;
+    private javax.swing.JRadioButton rbtn_daily;
+    private javax.swing.JRadioButton rbtn_monthly;
+    private javax.swing.JRadioButton rbtn_yearly;
+    private javax.swing.JScrollPane table_sales;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,24 +26,55 @@ public class managerViewSales_Time extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        btn_back = new javax.swing.JButton();
+        lbl_title = new javax.swing.JLabel();
+        lbl_start = new javax.swing.JLabel();
+        lbl_end = new javax.swing.JLabel();
+        spn_starthour = new javax.swing.JSpinner();
+        spn_endhour = new javax.swing.JSpinner();
+        spn_startmin = new javax.swing.JSpinner();
+        spn_endmin = new javax.swing.JSpinner();
+        table_sales = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        spn_start = new javax.swing.JSpinner();
-        jLabel2 = new javax.swing.JLabel();
-        spn_end = new javax.swing.JSpinner();
-        jLabel3 = new javax.swing.JLabel();
         btn_View = new javax.swing.JButton();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("View Sales by Time");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
+        btn_back.setText("BACK");
+        btn_back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_backActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_title.setText("View Sales by Time");
+        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(329, 40, -1, -1));
+
+        lbl_start.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_start.setText("STARTS FROM");
+        getContentPane().add(lbl_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+
+        lbl_end.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_end.setText("ENDS AT");
+        getContentPane().add(lbl_end, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+
+        spn_starthour.setToolTipText("00:00\n01:00\n02:00\n03:00\n04:00\n05:00\n06:00\n07:00\n08:00\n09:00\n10:00\n11:00\n12:00\n13:00\n14:00\n15:00\n16:00\n17:00\n18:00\n19:00\n20:00\n21:00\n22:00\n23:00");
+        getContentPane().add(spn_starthour, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
+
+        spn_endhour.setToolTipText("00:00\n01:00\n02:00\n03:00\n04:00\n05:00\n06:00\n07:00\n08:00\n09:00\n10:00\n11:00\n12:00\n13:00\n14:00\n15:00\n16:00\n17:00\n18:00\n19:00\n20:00\n21:00\n22:00\n23:00");
+        getContentPane().add(spn_endhour, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
+
+        spn_startmin.setToolTipText("00:00\n01:00\n02:00\n03:00\n04:00\n05:00\n06:00\n07:00\n08:00\n09:00\n10:00\n11:00\n12:00\n13:00\n14:00\n15:00\n16:00\n17:00\n18:00\n19:00\n20:00\n21:00\n22:00\n23:00");
+        getContentPane().add(spn_startmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
+
+        spn_endmin.setToolTipText("00:00\n01:00\n02:00\n03:00\n04:00\n05:00\n06:00\n07:00\n08:00\n09:00\n10:00\n11:00\n12:00\n13:00\n14:00\n15:00\n16:00\n17:00\n18:00\n19:00\n20:00\n21:00\n22:00\n23:00");
+        getContentPane().add(spn_endmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 170, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,31 +87,26 @@ public class managerViewSales_Time extends javax.swing.JFrame {
                 "Date", "Start Time", "End Time", "Venue", "Remark"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        table_sales.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 620, -1));
-
-        spn_start.setToolTipText("00:00\n01:00\n02:00\n03:00\n04:00\n05:00\n06:00\n07:00\n08:00\n09:00\n10:00\n11:00\n12:00\n13:00\n14:00\n15:00\n16:00\n17:00\n18:00\n19:00\n20:00\n21:00\n22:00\n23:00");
-        getContentPane().add(spn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
-
-        jLabel2.setText("Starts from");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
-
-        spn_end.setToolTipText("00:00\n01:00\n02:00\n03:00\n04:00\n05:00\n06:00\n07:00\n08:00\n09:00\n10:00\n11:00\n12:00\n13:00\n14:00\n15:00\n16:00\n17:00\n18:00\n19:00\n20:00\n21:00\n22:00\n23:00");
-        getContentPane().add(spn_end, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
-
-        jLabel3.setText("Ends at");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
+        getContentPane().add(table_sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 800, 400));
 
         btn_View.setText("View");
-        getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, -1, -1));
+        getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 180, -1, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
+        lbl_background.setPreferredSize(new java.awt.Dimension(1000, 800));
         getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
+        managerHomepage managerHomepage = new managerHomepage();
+        managerHomepage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_backActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,13 +176,16 @@ public class managerViewSales_Time extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_View;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton btn_back;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_background;
-    private javax.swing.JSpinner spn_end;
-    private javax.swing.JSpinner spn_start;
+    private javax.swing.JLabel lbl_end;
+    private javax.swing.JLabel lbl_start;
+    private javax.swing.JLabel lbl_title;
+    private javax.swing.JSpinner spn_endhour;
+    private javax.swing.JSpinner spn_endmin;
+    private javax.swing.JSpinner spn_starthour;
+    private javax.swing.JSpinner spn_startmin;
+    private javax.swing.JScrollPane table_sales;
     // End of variables declaration//GEN-END:variables
 }
