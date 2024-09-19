@@ -5,5 +5,5 @@ Banquet Hall/HALL 1/RM 200/13 Sep 2024/8 a.m - 10 a.m./2 hours/Booked/testtest
 =======
 Auditorium/HALL 1/RM 600/23 May 2024/10am - 12pm/2 hours/Booked/DJ
 Auditorium/HALL 2/RM 600/12 Sep 2024/8am - 10am/2 hours/Booked/Test
-Banquet Hall/HALL 1/RM 200/13 Sep 2024/8am - 10am/2 hours/Available/Remarks
+Banquet Hall/HALL 1/RM 200/13 Sep 2024/8am - 10am/2 hours/Booked/Test HH
 >>>>>>> origin/master

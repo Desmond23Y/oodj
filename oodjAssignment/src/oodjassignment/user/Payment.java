@@ -27,7 +27,7 @@ public class Payment extends javax.swing.JFrame {
 
     
     private void autofillUserData() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/oodjassignment/database/Booking.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/oodjassignment/database/Pending.txt"))) {
             String line;
             
             // Read the first line from the file

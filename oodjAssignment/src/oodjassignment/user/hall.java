@@ -334,8 +334,8 @@ public class hall extends javax.swing.JFrame {
 
         // Check if a row is selected
         if (selectedRow != -1) {
-            model.setValueAt("Booked", selectedRow, 6); // Update status to 'Booked'
-            model.setValueAt(remark.getText(), selectedRow, 7); // Update remark
+            model.setValueAt("Pending Payment", selectedRow, 6); 
+            model.setValueAt(remark.getText(), selectedRow, 7); 
 
             // Get the Customer ID from cookie.txt
             String customerId = getCustomerIdFromCookie();
@@ -345,7 +345,7 @@ public class hall extends javax.swing.JFrame {
             String bookingId = generateBookingID(nextID);
 
             // Save booking data to the Booking.txt file
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/Booking.txt", true))) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/Pending.txt", true))) {
                 String rec = bookingId + "/" + customerId + "/" +
                              model.getValueAt(selectedRow, 0).toString() + "/" +
                              model.getValueAt(selectedRow, 1).toString() + "/" +
@@ -361,7 +361,7 @@ public class hall extends javax.swing.JFrame {
             }
 
             // Now update the Schedule.txt file
-            String scheduleFilePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
+            String scheduleFilePath = "src\\\\oodjassignment\\\\database\\\\Pending.txt";
             List<String> scheduleLines = new ArrayList<>();
 
             // Read all lines from Schedule.txt into a list
