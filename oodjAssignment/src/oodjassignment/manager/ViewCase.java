@@ -7,6 +7,10 @@ import java.io.IOException;
 
 public class ViewCase {
     private String caseId;
+
+    public String getCaseId() {
+        return caseId;
+    }
     private String customerId;
     private String hallTypeValue;
     private String hallNoValue;

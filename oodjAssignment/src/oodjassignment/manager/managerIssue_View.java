@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.*;
 
-
 public class managerIssue_View extends javax.swing.JFrame {
     
     public managerIssue_View() {
@@ -29,9 +28,6 @@ public class managerIssue_View extends javax.swing.JFrame {
         pnl_ID = new javax.swing.JPanel();
         lbl_enterCaseID = new javax.swing.JLabel();
         txt_caseID = new javax.swing.JTextField();
-        lbl_or = new javax.swing.JLabel();
-        lbl_selectCaseID = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         lbl_space = new javax.swing.JLabel();
         btn_view = new javax.swing.JButton();
         pnl_case = new javax.swing.JPanel();
@@ -39,15 +35,13 @@ public class managerIssue_View extends javax.swing.JFrame {
         lbl_date = new javax.swing.JLabel();
         lbl_venue = new javax.swing.JLabel();
         lbl_CusID = new javax.swing.JLabel();
-        lbl_cusIssue1 = new javax.swing.JLabel();
         lbl_assignedstaff = new javax.swing.JLabel();
         lbl_description = new javax.swing.JLabel();
         lbl_caseStatus = new javax.swing.JLabel();
-        lbl_showCaseID = new javax.swing.JLabel();
+        lbl_showCaseId = new javax.swing.JLabel();
         lbl_showDate = new javax.swing.JLabel();
         lbl_showVenue = new javax.swing.JLabel();
         lbl_showCustomerID = new javax.swing.JLabel();
-        lbl_showCustomerIssue = new javax.swing.JLabel();
         lbl_showStaff = new javax.swing.JLabel();
         lbl_showDescription = new javax.swing.JLabel();
         lbl_showCaseStatus = new javax.swing.JLabel();
@@ -90,20 +84,10 @@ public class managerIssue_View extends javax.swing.JFrame {
         pnl_ID.add(lbl_enterCaseID);
 
         txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        txt_caseID.setPreferredSize(new java.awt.Dimension(100, 23));
         pnl_ID.add(txt_caseID);
 
-        lbl_or.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
-        lbl_or.setText("     /     ");
-        pnl_ID.add(lbl_or);
-
-        lbl_selectCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
-        lbl_selectCaseID.setText("SELECT CASE ID");
-        pnl_ID.add(lbl_selectCaseID);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pnl_ID.add(jComboBox1);
-
-        lbl_space.setText("                                        ");
+        lbl_space.setText("                                                                                                                   ");
         pnl_ID.add(lbl_space);
 
         btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -136,10 +120,6 @@ public class managerIssue_View extends javax.swing.JFrame {
         lbl_CusID.setText("Customer ID:");
         pnl_case.add(lbl_CusID, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, -1));
 
-        lbl_cusIssue1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        lbl_cusIssue1.setText("Customer Issue:");
-        pnl_case.add(lbl_cusIssue1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, -1, -1));
-
         lbl_assignedstaff.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         lbl_assignedstaff.setText("Assigned Staff:");
         pnl_case.add(lbl_assignedstaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
@@ -152,8 +132,8 @@ public class managerIssue_View extends javax.swing.JFrame {
         lbl_caseStatus.setText("Case Status:");
         pnl_case.add(lbl_caseStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, -1, -1));
 
-        lbl_showCaseID.setText("Case ID");
-        pnl_case.add(lbl_showCaseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
+        lbl_showCaseId.setText("Case ID");
+        pnl_case.add(lbl_showCaseId, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, -1, -1));
 
         lbl_showDate.setText("Date");
         pnl_case.add(lbl_showDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
@@ -163,9 +143,6 @@ public class managerIssue_View extends javax.swing.JFrame {
 
         lbl_showCustomerID.setText("Cus ID");
         pnl_case.add(lbl_showCustomerID, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, -1, -1));
-
-        lbl_showCustomerIssue.setText("Customer Issue");
-        pnl_case.add(lbl_showCustomerIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, -1, -1));
 
         lbl_showStaff.setText("Staff");
         pnl_case.add(lbl_showStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, -1, -1));
@@ -238,6 +215,7 @@ public class managerIssue_View extends javax.swing.JFrame {
 
         ViewCase viewCase = new ViewCase(caseId);
         if (viewCase.loadCaseData()) {
+            lbl_showCaseId.setText(viewCase.getCaseId());
             lbl_showCustomerID.setText(viewCase.getCustomerId());
             lbl_showVenue.setText(viewCase.getHallNoValue());
             lbl_showDate.setText(viewCase.getDateValue());
@@ -271,10 +249,9 @@ public class managerIssue_View extends javax.swing.JFrame {
     
     // COMPONENTS
     private void clear_lbl(){
-        lbl_showCaseID.setText("");
+        lbl_showCaseId.setText("");
         lbl_showCaseStatus.setText("");
         lbl_showCustomerID.setText("");
-        lbl_showCustomerIssue.setText("");
         lbl_showDate.setText("");
         lbl_showDescription.setText("");
         lbl_showStaff.setText("");
@@ -306,22 +283,17 @@ public class managerIssue_View extends javax.swing.JFrame {
     private javax.swing.JButton btn_updateStatus;
     private javax.swing.JButton btn_view;
     private javax.swing.JLabel cbx_ID;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel lbl_CusID;
     private javax.swing.JLabel lbl_assignedstaff;
     private javax.swing.JLabel lbl_case;
     private javax.swing.JLabel lbl_caseID;
     private javax.swing.JLabel lbl_caseStatus;
-    private javax.swing.JLabel lbl_cusIssue1;
     private javax.swing.JLabel lbl_date;
     private javax.swing.JLabel lbl_description;
     private javax.swing.JLabel lbl_enterCaseID;
-    private javax.swing.JLabel lbl_or;
-    private javax.swing.JLabel lbl_selectCaseID;
-    private javax.swing.JLabel lbl_showCaseID;
+    private javax.swing.JLabel lbl_showCaseId;
     private javax.swing.JLabel lbl_showCaseStatus;
     private javax.swing.JLabel lbl_showCustomerID;
-    private javax.swing.JLabel lbl_showCustomerIssue;
     private javax.swing.JLabel lbl_showDate;
     private javax.swing.JLabel lbl_showDescription;
     private javax.swing.JLabel lbl_showStaff;
