@@ -334,8 +334,8 @@ public class hall extends javax.swing.JFrame {
 
         // Check if a row is selected
         if (selectedRow != -1) {
-            model.setValueAt("Pending Payment", selectedRow, 6); 
-            model.setValueAt(remark.getText(), selectedRow, 7); 
+            model.setValueAt("Pending", selectedRow, 6); // Update status to 'Pending'
+            model.setValueAt(remark.getText(), selectedRow, 7); // Update remark
 
             // Get the Customer ID from cookie.txt
             String customerId = getCustomerIdFromCookie();
@@ -344,24 +344,29 @@ public class hall extends javax.swing.JFrame {
             int nextID = getNextBookingID();
             String bookingId = generateBookingID(nextID);
 
+            // Prepare the booking record (same format for both files)
+            String record = bookingId + "/" + customerId + "/" +
+                            model.getValueAt(selectedRow, 0).toString() + "/" + // Hall Name
+                            model.getValueAt(selectedRow, 1).toString() + "/" + // Date
+                            model.getValueAt(selectedRow, 2).toString() + "/" + // Time Slot
+                            model.getValueAt(selectedRow, 3).toString() + "/" + // Event Type
+                            model.getValueAt(selectedRow, 4).toString() + "/" + // Price
+                            model.getValueAt(selectedRow, 5).toString() + "/" + // Hall Capacity
+                            model.getValueAt(selectedRow, 6).toString() + "/" + // Status (Pending)
+                            model.getValueAt(selectedRow, 7).toString();        // Remark
+
             // Save booking data to the Booking.txt file
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/Pending.txt", true))) {
-                String rec = bookingId + "/" + customerId + "/" +
-                             model.getValueAt(selectedRow, 0).toString() + "/" +
-                             model.getValueAt(selectedRow, 1).toString() + "/" +
-                             model.getValueAt(selectedRow, 2).toString() + "/" +
-                             model.getValueAt(selectedRow, 3).toString() + "/" +
-                             model.getValueAt(selectedRow, 4).toString() + "/" +
-                             model.getValueAt(selectedRow, 5).toString() + "/" +
-                             model.getValueAt(selectedRow, 6).toString() + "/" +
-                             model.getValueAt(selectedRow, 7).toString();
-                bw.write(rec + "\n");
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/Booking.txt", true))) {
+                bw.write(record + "\n");
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(this, "Something went wrong while saving booking data.");
             }
 
+            // Save the same data to Pending.txt with "Pending" status
+            saveToFile("src/oodjassignment/database/Pending.txt", record);
+
             // Now update the Schedule.txt file
-            String scheduleFilePath = "src\\\\oodjassignment\\\\database\\\\Pending.txt";
+            String scheduleFilePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
             List<String> scheduleLines = new ArrayList<>();
 
             // Read all lines from Schedule.txt into a list
@@ -374,14 +379,14 @@ public class hall extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Something went wrong while reading schedule data.");
             }
 
-            // Find and update the corresponding line in scheduleLines
+            // Find and update the corresponding line in scheduleLines with "Pending" status
             String updatedRecord = model.getValueAt(selectedRow, 0).toString() + "/" +
                                    model.getValueAt(selectedRow, 1).toString() + "/" +
                                    model.getValueAt(selectedRow, 2).toString() + "/" +
                                    model.getValueAt(selectedRow, 3).toString() + "/" +
                                    model.getValueAt(selectedRow, 4).toString() + "/" +
                                    model.getValueAt(selectedRow, 5).toString() + "/" +
-                                   "Booked" + "/" + // Update status
+                                   "Pending" + "/" + // Update status to 'Pending'
                                    remark.getText(); // Update remark
 
             // Replace the corresponding line in the list
@@ -404,6 +409,14 @@ public class hall extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PayActionPerformed
 
+    
+    private void saveToFile(String filepath, String record) {
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(filepath, true))) {
+        bw.write(record + "\n");
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(this, "Something went wrong while saving to " + filepath);
+    }
+    }
     /**
      * @param args the command line arguments
      */

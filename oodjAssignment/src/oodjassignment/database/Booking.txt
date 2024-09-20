@@ -1,4 +1,1 @@
-HB0001/U0001/Auditorium/HALL 1/RM 600/23 May 2024/10am - 12pm/2 hours/Booked/DJ
-HB0002/U0001/Auditorium/HALL 2/RM 600/12 Sep 2024/8am - 10am/2 hours/Booked/Test
-HB0003/U0001/Auditorium/HALL 1/RM 600/23 May 2024/10am - 12pm/2 hours/Booked/DJ
-HB0004/U0001/Auditorium/HALL 2/RM 600/24 Dec 2024/4pm - 6pm/2 hours/Booked/Test
+HB0001/U0001/Banquet Hall/HALL 1/RM 200/13 Sep 2024/8am - 10am/2 hours/Booked/HH
