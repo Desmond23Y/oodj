@@ -231,7 +231,7 @@ public class feedback extends javax.swing.JFrame {
     String caseId = generateID(nextID);
 
     // Prepare the feedback data to save
-    String feedbackData = caseId + "," + customerId + "," + hallTypeValue + "," + hallNoValue + "," + dateValue + "," + feedbackText;
+    String feedbackData = caseId + "," + customerId + "," + hallTypeValue + "," + hallNoValue + "," + dateValue + "," + feedbackText + ", No" + ", No";
 
     // Save the feedback data to feedback.txt
     String filePath = "src/oodjassignment/database/feedback.txt";
