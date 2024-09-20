@@ -166,7 +166,7 @@ public class Payment extends javax.swing.JFrame {
             generateReceipt(type.getText(), hall.getText(), Price.getText());
 
             new homepage().setVisible(true);
-            dispose();
+            dispose(); 
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error saving payment data.");
             e.printStackTrace();
