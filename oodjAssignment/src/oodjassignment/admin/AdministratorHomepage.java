@@ -76,11 +76,11 @@ public class AdministratorHomepage extends javax.swing.JFrame {
         title1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         title1.setForeground(new java.awt.Color(255, 255, 255));
         title1.setText("Welcome Back");
-        getContentPane().add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, -1, -1));
+        getContentPane().add(title1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, -1));
 
-        welcomeMessage.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        welcomeMessage.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         welcomeMessage.setForeground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(welcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 250, 40));
+        getContentPane().add(welcomeMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 250, 50));
 
         title.setBackground(new java.awt.Color(255, 255, 255));
         title.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N

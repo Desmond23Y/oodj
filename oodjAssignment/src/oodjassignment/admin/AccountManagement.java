@@ -13,7 +13,7 @@ import javax.swing.table.TableRowSorter;
 public class AccountManagement extends javax.swing.JFrame {
 
     DataLoader dataLoader = new DataLoader();
-    private BaseManagement baseManagement;
+    private final BaseManagement baseManagement;
 
     public AccountManagement() {
         initComponents();
@@ -41,18 +41,13 @@ public class AccountManagement extends javax.swing.JFrame {
 
     private javax.swing.JTable getSelectedTable() {
         int selectedIndex = jTabbedPane1.getSelectedIndex();
-        switch (selectedIndex) {
-            case 0:
-                return tbUser;
-            case 1:
-                return tbScheduler;
-            case 2:
-                return tbAdministrator;
-            case 3:
-                return tbManager;
-            default:
-                return null;
-        }
+        return switch (selectedIndex) {
+            case 0 -> tbUser;
+            case 1 -> tbScheduler;
+            case 2 -> tbAdministrator;
+            case 3 -> tbManager;
+            default -> null;
+        };
     }
 
     private void clearTextFields() {
