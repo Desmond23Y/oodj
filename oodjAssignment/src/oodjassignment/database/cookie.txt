@@ -1,1 +1,1 @@
-M0001,Eve,0123456789,Eve@mail.com,123,MANAGER
+U0001,Hong Hao,0147889155,HongHao@mail.com,@Password1,ACTIVE,USER
