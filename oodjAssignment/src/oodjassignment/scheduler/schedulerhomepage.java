@@ -139,7 +139,7 @@ public class schedulerhomepage extends javax.swing.JFrame {
 
     private void notificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notificationActionPerformed
         setVisible(false);
-        new Admin_message().setVisible(true);
+        new Task().setVisible(true);
     }//GEN-LAST:event_notificationActionPerformed
 
     /**
