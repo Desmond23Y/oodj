@@ -38,9 +38,7 @@ public class schedulerhomepage extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(800, 600));
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
@@ -76,7 +74,7 @@ public class schedulerhomepage extends javax.swing.JFrame {
         });
 
         notification.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        notification.setText("Admin Message");
+        notification.setText("Task");
         notification.setPreferredSize(new java.awt.Dimension(213, 26));
         notification.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
