@@ -27,6 +27,30 @@ public class Loginpage extends javax.swing.JFrame {
         createanaccount.setText("<html><u>Create An Account</u></html>");
         forgotpassowrd.setText("<html><u>Forgot Password?</u></html>");
     }
+    
+
+    private void login() {
+        String userType = (String) logintype.getSelectedItem();
+        String usernameText = username.getText();  // Assuming this is the ID input
+        String passwordText = password.getText();
+
+        String fileName = "";
+        switch (userType) {
+            case "ADMINISTRATOR" ->
+                fileName = "src/oodjassignment/database/Administrator.txt";
+            case "USER" ->
+                fileName = "src/oodjassignment/database/User.txt";
+            case "SCHEDULER" ->
+                fileName = "src/oodjassignment/database/Scheduler.txt";
+            case "MANAGER" ->
+                fileName = "src/oodjassignment/database/Manager.txt";
+            default -> {
+                JOptionPane.showMessageDialog(this, "Please select a valid user type!");
+                return;
+            }
+        }
+        authenticateUser(fileName, usernameText, passwordText, userType);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,6 +136,11 @@ public class Loginpage extends javax.swing.JFrame {
                 passwordMouseClicked(evt);
             }
         });
+        password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordActionPerformed(evt);
+            }
+        });
         getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, 378, 30));
 
         logintype.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
@@ -170,26 +199,7 @@ public class Loginpage extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameFocusLost
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
-        String userType = (String) logintype.getSelectedItem();
-        String usernameText = username.getText();  // Assuming this is the ID input
-        String passwordText = password.getText();
-
-        String fileName = "";
-        switch (userType) {
-            case "ADMINISTRATOR" ->
-                fileName = "src/oodjassignment/database/Administrator.txt";
-            case "USER" ->
-                fileName = "src/oodjassignment/database/User.txt";
-            case "SCHEDULER" ->
-                fileName = "src/oodjassignment/database/Scheduler.txt";
-            case "MANAGER" ->
-                fileName = "src/oodjassignment/database/Manager.txt";
-            default -> {
-                JOptionPane.showMessageDialog(this, "Please select a valid user type!");
-                return;
-            }
-        }
-        authenticateUser(fileName, usernameText, passwordText, userType);
+        login();
     }
 
     private void authenticateUser(String filename, String id, String password, String userType) {
@@ -308,7 +318,7 @@ public class Loginpage extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameActionPerformed
 
     private void forgotpassowrdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotpassowrdMouseClicked
-        new AdministratorHomepage().setVisible(true);
+        new ForgotPassword().setVisible(true);
         dispose();
     }//GEN-LAST:event_forgotpassowrdMouseClicked
 
@@ -324,6 +334,10 @@ public class Loginpage extends javax.swing.JFrame {
     private void passwordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordMouseClicked
         password.setText("");
     }//GEN-LAST:event_passwordMouseClicked
+
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+        login();
+    }//GEN-LAST:event_passwordActionPerformed
 
     /**
      * @param args the command line arguments

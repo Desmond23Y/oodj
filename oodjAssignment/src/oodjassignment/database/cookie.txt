@@ -1,1 +1,1 @@
-U0001,Hong Hao,0147889155,HongHao@mail.com,@Password1,ACTIVE,USER
+S0001,Ooi Hong,0123456789,Ooihong@mail.com,@Password1,SCHEDULER
