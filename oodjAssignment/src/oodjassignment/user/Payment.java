@@ -82,23 +82,23 @@ public class Payment extends javax.swing.JFrame {
         title.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         title.setForeground(new java.awt.Color(255, 255, 255));
         title.setText("Payment");
-        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
+        getContentPane().add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Hall Type:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 100, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 250, 100, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Hall:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Confirm Price:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, -1, -1));
-        getContentPane().add(cfPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 180, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, -1, -1));
+        getContentPane().add(cfPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, 180, 30));
 
         pay.setBackground(new java.awt.Color(0, 137, 248));
         pay.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -109,7 +109,7 @@ public class Payment extends javax.swing.JFrame {
                 payActionPerformed(evt);
             }
         });
-        getContentPane().add(pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, 80, 30));
+        getContentPane().add(pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 570, 80, 30));
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
         logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
@@ -118,30 +118,30 @@ public class Payment extends javax.swing.JFrame {
                 logoutActionPerformed(evt);
             }
         });
-        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 10, 60, 40));
+        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 20, 60, 40));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Price:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
-        getContentPane().add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 380, 180, 30));
-        getContentPane().add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 180, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, -1, -1));
+        getContentPane().add(Price, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 180, 30));
+        getContentPane().add(type, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 180, 30));
 
         hall.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hallActionPerformed(evt);
             }
         });
-        getContentPane().add(hall, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 180, 30));
+        getContentPane().add(hall, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 330, 180, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Customer ID:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, -1, -1));
-        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 180, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
+        getContentPane().add(id, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 180, 180, 30));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
