@@ -324,73 +324,23 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-        if(start_date.getText().equals("")||end_date.getText().equals("")||duration.getText().equals("")||review.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please Enter All Data !");
-        }else{
-
-            DefaultTableModel model = (DefaultTableModel) maintenance.getModel();
-            String[] record = {(String) halltype.getSelectedItem() , (String) hall_no.getSelectedItem(), start_date.getText(), end_date.getText(), duration.getText(),review.getText()};
-            model.addRow(record);
-            BufferedWriter bw;
-            try {
-                bw = new BufferedWriter(new FileWriter("src\\\\oodjassignment\\\\database\\\\Schedule_maintenance.txt",true));
-                String rec = (String) halltype.getSelectedItem() +"/"+ (String) hall_no.getSelectedItem() +"/"+ start_date.getText() +"/"+ end_date.getText() +"/"+ time.getText() +"/" + duration.getText() +"/"+ review.getText();
-                bw.write(rec+"\n");
-                bw.close();
-            } catch (IOException ex){
-                JOptionPane.showMessageDialog(this,"Something Wrong");
-            }
-        }
+        MTable t1 = new MTable();
+        t1.addScheduleRecord(halltype, hall_no, start_date, end_date, time, duration, review, maintenance);
     }//GEN-LAST:event_AddActionPerformed
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
-        DefaultTableModel model = (DefaultTableModel) maintenance.getModel();
-        halltype.setSelectedItem(model.getValueAt(maintenance.getSelectedRow(), 0).toString());
-        hall_no.setSelectedItem(model.getValueAt(maintenance.getSelectedRow(), 1).toString());
-        start_date.setText(model.getValueAt(maintenance.getSelectedRow(), 2).toString());
-        end_date.setText(model.getValueAt(maintenance.getSelectedRow(), 3).toString());
-        time.setText(model.getValueAt(maintenance.getSelectedRow(), 4).toString());
-        duration.setText(model.getValueAt(maintenance.getSelectedRow(), 5).toString());
-        review.setText(model.getValueAt(maintenance.getSelectedRow(), 6).toString());
+        MTable t2 = new MTable();
+        t2.EditSelectedRowData(halltype, hall_no, start_date, end_date, time, duration, review, maintenance);
     }//GEN-LAST:event_EditActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-        DefaultTableModel model = (DefaultTableModel) maintenance.getModel();
-        int tablelist = model.getRowCount();
-        model.setValueAt((String) halltype.getSelectedItem(), maintenance.getSelectedRow(), 0);
-        model.setValueAt((String) hall_no.getSelectedItem(), maintenance.getSelectedRow(), 1);
-        model.setValueAt(start_date.getText(), maintenance.getSelectedRow(), 2);
-        model.setValueAt(end_date.getText(), maintenance.getSelectedRow(), 3);
-        model.setValueAt(time.getText(), maintenance.getSelectedRow(), 4);
-        model.setValueAt(duration.getText(), maintenance.getSelectedRow(), 5);
-        model.setValueAt(review.getText(), maintenance.getSelectedRow(), 6);
-
-        try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule_maintenance.txt"));
-            for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString();
-                bw.write(rec+"\n");
-            }
-            bw.close();
-        } catch (IOException ex){
-            JOptionPane.showMessageDialog(this,"Something Wrong");
-        }
+        MTable m1 = new MTable();
+        m1.updateScheduleRecord(halltype, hall_no, start_date, end_date, time, duration, review, maintenance);
     }//GEN-LAST:event_SaveActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-        DefaultTableModel model = (DefaultTableModel) maintenance.getModel();
-        model.removeRow(maintenance.getSelectedRow());
-        int tablelist = model.getRowCount();
-        try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule_maintenance.txt"));
-            for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString();
-                bw.write(rec+"\n");
-            }
-            bw.close();
-        } catch (IOException ex){
-            JOptionPane.showMessageDialog(this,"Something Wrong");
-        }
+        MTable m2 = new MTable();
+        m2.removeScheduleRecord(maintenance);
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed

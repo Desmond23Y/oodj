@@ -122,7 +122,7 @@ public class Loginpage extends javax.swing.JFrame {
 
         password.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         password.setForeground(new java.awt.Color(204, 204, 204));
-        password.setText("Please Enter Password Here");
+        password.setText("Password");
         password.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 passwordFocusGained(evt);
@@ -183,7 +183,7 @@ public class Loginpage extends javax.swing.JFrame {
 
     private void usernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusGained
         // TODO add your handling code here:
-        if (username.getText().equals("Please Enter Username Here")) {
+        if (username.getText().equals("Enter Your UserID Here")) {
             username.setText("");
             username.setForeground(newColor(0, 118, 221));
         }
@@ -192,7 +192,7 @@ public class Loginpage extends javax.swing.JFrame {
     private void usernameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameFocusLost
         // TODO add your handling code here:
         if (username.getText().equals("")) {
-            username.setText("Please Enter Username Here");
+            username.setText("Enter Your UserID Here");
             username.setForeground(newColor(0, 118, 221));
 
         }
@@ -298,7 +298,7 @@ public class Loginpage extends javax.swing.JFrame {
 
     private void passwordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusGained
         // TODO add your handling code here:
-        if (password.getText().equals("Please Enter Password Here")) {
+        if (password.getText().equals("Password")) {
             password.setText("");
             password.setForeground(newColor(0, 118, 221));
         }
@@ -307,7 +307,7 @@ public class Loginpage extends javax.swing.JFrame {
     private void passwordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordFocusLost
         // TODO add your handling code here:
         if (password.getText().equals("")) {
-            password.setText("Please Enter Password Here");
+            password.setText("Password");
             password.setForeground(newColor(0, 118, 221));
 
         }

@@ -6,10 +6,8 @@ package oodjassignment.scheduler;
 
 import java.awt.Color;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -121,9 +119,9 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         Aschedule.setSelectionBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(Aschedule);
         if (Aschedule.getColumnModel().getColumnCount() > 0) {
-            Aschedule.getColumnModel().getColumn(0).setMinWidth(90);
-            Aschedule.getColumnModel().getColumn(0).setPreferredWidth(90);
-            Aschedule.getColumnModel().getColumn(0).setMaxWidth(90);
+            Aschedule.getColumnModel().getColumn(0).setMinWidth(100);
+            Aschedule.getColumnModel().getColumn(0).setPreferredWidth(100);
+            Aschedule.getColumnModel().getColumn(0).setMaxWidth(100);
             Aschedule.getColumnModel().getColumn(1).setMinWidth(85);
             Aschedule.getColumnModel().getColumn(1).setPreferredWidth(85);
             Aschedule.getColumnModel().getColumn(1).setMaxWidth(85);
@@ -431,50 +429,18 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        halltype.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
-        hall_no.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 1).toString());
-        Price.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
-        Date.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString());
-        time.setText(model.getValueAt(Aschedule.getSelectedRow(), 4).toString());
-        duration.setText(model.getValueAt(Aschedule.getSelectedRow(), 5).toString());
-        status.setSelectedItem(model.getValueAt(Aschedule.getSelectedRow(), 6).toString());
-        Remarks.setText(model.getValueAt(Aschedule.getSelectedRow(), 7).toString());
+        ATable t1 = new ATable();
+        t1.editSchedule(model, halltype, hall_no, Price, Date, time, duration, status, Remarks, Aschedule);
     }//GEN-LAST:event_EditActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-        if(Remarks.getText().equals("")||Date.getText().equals("")||Price.getText().equals("")||time.getText().equals("")||duration.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Please Enter All Data !");
-        }else{
-        
-        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        String[] record = {(String) halltype.getSelectedItem() , (String) hall_no.getSelectedItem(), Price.getText(), Date.getText(), time.getText(), duration.getText(),(String) status.getSelectedItem(), Remarks.getText()};
-        model.addRow(record);
-        BufferedWriter bw;
-        try {
-            bw = new BufferedWriter(new FileWriter("src\\\\oodjassignment\\\\database\\\\Schedule.txt",true));
-            String rec = (String) halltype.getSelectedItem() +"/"+ (String) hall_no.getSelectedItem() +"/"+ Price.getText() +"/"+ Date.getText() +"/"+ time.getText() +"/"+ duration.getText() +"/"+ (String) status.getSelectedItem() +"/"+ Remarks.getText();
-            bw.write(rec+"\n");
-            bw.close();
-        } catch (IOException ex){
-            JOptionPane.showMessageDialog(this,"Something Wrong");
-                    }
-        }
+        ATable t2 = new ATable();
+        t2.addSchedule(Remarks, Date, Price, time, duration, halltype, hall_no, status, Aschedule);
     }//GEN-LAST:event_AddActionPerformed
 
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteActionPerformed
-        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        model.removeRow(Aschedule.getSelectedRow());
-        int tablelist = model.getRowCount();
-        try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule.txt"));
-            for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString()+"/"+model.getValueAt(i, 7).toString();
-                bw.write(rec+"\n");
-            }  
-            bw.close(); 
-        } catch (IOException ex){
-            JOptionPane.showMessageDialog(this,"Something Wrong");
-        }
+        ATable tableHelper = new ATable();
+        tableHelper.deleteSchedule(Aschedule);
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ResetActionPerformed
@@ -483,27 +449,8 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     }//GEN-LAST:event_ResetActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        int tablelist = model.getRowCount();
-        model.setValueAt((String) halltype.getSelectedItem(), Aschedule.getSelectedRow(), 0);
-        model.setValueAt((String) hall_no.getSelectedItem(), Aschedule.getSelectedRow(), 1);
-        model.setValueAt(Price.getText(), Aschedule.getSelectedRow(), 2);
-        model.setValueAt(Date.getText(), Aschedule.getSelectedRow(), 3);
-        model.setValueAt(time.getText(), Aschedule.getSelectedRow(), 4);
-        model.setValueAt(duration.getText(), Aschedule.getSelectedRow(), 5);
-        model.setValueAt((String)status.getSelectedItem(), Aschedule.getSelectedRow(), 6);
-        model.setValueAt(Remarks.getText(), Aschedule.getSelectedRow(), 7);
-        
-        try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\Schedule.txt"));
-            for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString()+"/"+model.getValueAt(i, 7).toString();
-                bw.write(rec+"\n"); 
-            }  
-            bw.close(); 
-        } catch (IOException ex){
-            JOptionPane.showMessageDialog(this,"Something Wrong");
-        }
+        ATable t3 = new ATable();
+        t3.updateSchedule(Aschedule, halltype, hall_no, Price, Date, time, duration, status, Remarks);
     }//GEN-LAST:event_SaveActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
