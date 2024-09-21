@@ -1,1 +1,1 @@
-S0001,Ooi Hong,0123456789,Ooihong@mail.com,@Password1,SCHEDULER
+A0001,Desmond,0123456789,des@mail.com,P@ssw0rd,ADMINISTRATOR

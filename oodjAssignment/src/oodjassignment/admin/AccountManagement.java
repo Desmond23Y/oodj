@@ -42,11 +42,16 @@ public class AccountManagement extends javax.swing.JFrame {
     private javax.swing.JTable getSelectedTable() {
         int selectedIndex = jTabbedPane1.getSelectedIndex();
         return switch (selectedIndex) {
-            case 0 -> tbUser;
-            case 1 -> tbScheduler;
-            case 2 -> tbAdministrator;
-            case 3 -> tbManager;
-            default -> null;
+            case 0 ->
+                tbUser;
+            case 1 ->
+                tbScheduler;
+            case 2 ->
+                tbAdministrator;
+            case 3 ->
+                tbManager;
+            default ->
+                null;
         };
     }
 
@@ -458,6 +463,7 @@ public class AccountManagement extends javax.swing.JFrame {
                 }
                 baseManagement.createAccount(selectedTable, data);
                 clearTextFields();
+                JOptionPane.showMessageDialog(this, "Account created successfully.");
             }
         } else {
             JOptionPane.showMessageDialog(this, "Please fill in all fields.");
@@ -478,7 +484,7 @@ public class AccountManagement extends javax.swing.JFrame {
     private void btSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSearchActionPerformed
         javax.swing.JTable selectedTable = getSelectedTable();
         if (selectedTable != null) {
-            String status = cbStatus.getSelectedItem() != null ? cbStatus.getSelectedItem().toString(): "";
+            String status = cbStatus.getSelectedItem() != null ? cbStatus.getSelectedItem().toString() : "";
             String[] fieldValues = {
                 tfId.getText(),
                 tfName.getText(),
@@ -559,6 +565,7 @@ public class AccountManagement extends javax.swing.JFrame {
 
                 baseManagement.updateAccount(selectedTable, selectedRow, data);
                 clearTextFields();
+                JOptionPane.showMessageDialog(this, "Account updated successfully.");
             }
         } else {
             JOptionPane.showMessageDialog(this, "Please fill in all fields.");
@@ -573,8 +580,12 @@ public class AccountManagement extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Please select a row to delete.");
                 return;
             }
-            baseManagement.deleteAccount(selectedTable, selectedRow); // Pass the table and row
-            clearTextFields();
+            int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this account?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
+            if (confirm == JOptionPane.YES_OPTION) {
+                baseManagement.deleteAccount(selectedTable, selectedRow);
+                clearTextFields();
+                JOptionPane.showMessageDialog(this, "Account deleted successfully."); // Success message
+            }
         }
     }//GEN-LAST:event_btDeleteActionPerformed
 
