@@ -31,9 +31,6 @@ public class managerIssue_Response extends javax.swing.JFrame {
         pnl_ID = new javax.swing.JPanel();
         lbl_enterCaseID = new javax.swing.JLabel();
         txt_caseID = new javax.swing.JTextField();
-        lbl_or = new javax.swing.JLabel();
-        lbl_selectCaseID = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         lbl_space = new javax.swing.JLabel();
         btn_view = new javax.swing.JButton();
         btn_update = new javax.swing.JButton();
@@ -48,13 +45,15 @@ public class managerIssue_Response extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btn_back.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
         btn_back.setText("BACK");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_backActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -64,27 +63,18 @@ public class managerIssue_Response extends javax.swing.JFrame {
         pnl_ID.setBackground(new java.awt.Color(255, 255, 255));
 
         lbl_enterCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
-        lbl_enterCaseID.setText("ENTER CASE ID");
+        lbl_enterCaseID.setText("CASE ID");
         pnl_ID.add(lbl_enterCaseID);
 
-        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        txt_caseID.setMinimumSize(new java.awt.Dimension(100, 29));
+        txt_caseID.setPreferredSize(new java.awt.Dimension(100, 29));
         pnl_ID.add(txt_caseID);
 
-        lbl_or.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
-        lbl_or.setText("     /     ");
-        pnl_ID.add(lbl_or);
-
-        lbl_selectCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
-        lbl_selectCaseID.setText("SELECT CASE ID");
-        pnl_ID.add(lbl_selectCaseID);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        pnl_ID.add(jComboBox1);
-
-        lbl_space.setText("                                        ");
+        lbl_space.setText("                                                                                                                                  ");
         pnl_ID.add(lbl_space);
 
-        btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         btn_view.setText("VIEW");
         btn_view.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +85,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
 
         getContentPane().add(pnl_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 700, -1));
 
-        btn_update.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btn_update.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         btn_update.setText("UPDATE");
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,13 +101,13 @@ public class managerIssue_Response extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Case ID", "Date", "Responder", "Subject", "Description"
+                "Case ID", "Date", "Hall Type", "Hall Number", "Assgin Staff", "null", "Title 7", "Title 8"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -190,15 +180,12 @@ public class managerIssue_Response extends javax.swing.JFrame {
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_update;
     private javax.swing.JButton btn_view;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_enterCaseID;
-    private javax.swing.JLabel lbl_or;
-    private javax.swing.JLabel lbl_selectCaseID;
     private javax.swing.JLabel lbl_space;
     private javax.swing.JLabel lbl_title;
     private javax.swing.JPanel pnl_ID;
