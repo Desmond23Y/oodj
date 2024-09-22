@@ -33,19 +33,19 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         rbtn_auditorium = new javax.swing.JRadioButton();
         rbtn_banquetHall = new javax.swing.JRadioButton();
         rbtn_meetingRoom = new javax.swing.JRadioButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         btn_View = new javax.swing.JButton();
-        lbl_venueCode = new javax.swing.JLabel();
-        jSpinner1 = new javax.swing.JSpinner();
-        lbl_venueCode1 = new javax.swing.JLabel();
+        lbl_sales = new javax.swing.JLabel();
+        lbl_venueNumber = new javax.swing.JLabel();
+        cbx_venueNumber = new javax.swing.JComboBox<>();
+        spnl_showSales = new javax.swing.JScrollPane();
+        tbl_showSales = new javax.swing.JTable();
         lbl_background = new javax.swing.JLabel();
-        lbl_background1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btn_back.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
         btn_back.setText("BACK");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
@@ -62,55 +62,63 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel2.setText("VENUE TYPE");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
 
         buttonGroup1.add(rbtn_auditorium);
+        rbtn_auditorium.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         rbtn_auditorium.setText("Auditorium");
-        getContentPane().add(rbtn_auditorium, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, -1, -1));
+        getContentPane().add(rbtn_auditorium, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
 
         buttonGroup1.add(rbtn_banquetHall);
+        rbtn_banquetHall.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         rbtn_banquetHall.setText("Banquet Hall");
-        getContentPane().add(rbtn_banquetHall, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 130, -1, -1));
+        rbtn_banquetHall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtn_banquetHallActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rbtn_banquetHall, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
 
         buttonGroup1.add(rbtn_meetingRoom);
+        rbtn_meetingRoom.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         rbtn_meetingRoom.setText("Meeting Room");
-        getContentPane().add(rbtn_meetingRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 130, -1, -1));
+        getContentPane().add(rbtn_meetingRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        btn_View.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        btn_View.setText("View");
+        getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 350, -1, -1));
+
+        lbl_sales.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        lbl_sales.setText("SALES");
+        getContentPane().add(lbl_sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
+
+        lbl_venueNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        lbl_venueNumber.setText("VENUE NUMBER");
+        getContentPane().add(lbl_venueNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+
+        cbx_venueNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        cbx_venueNumber.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(cbx_venueNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
+
+        tbl_showSales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Date", "Start Time", "End Time", "Venue", "Remark"
+                "Date", "Customer ID", "Hall Type", "Hall ID", "Time", "Duration", "Price", "Status", "Remark"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        spnl_showSales.setViewportView(tbl_showSales);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 320, 800, 400));
-
-        btn_View.setText("View");
-        getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 200, -1, -1));
-
-        lbl_venueCode.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        lbl_venueCode.setText("SALES");
-        getContentPane().add(lbl_venueCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
-        getContentPane().add(jSpinner1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 190, -1));
-
-        lbl_venueCode1.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        lbl_venueCode1.setText("AVAILABLE VENUE");
-        getContentPane().add(lbl_venueCode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
+        getContentPane().add(spnl_showSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 800, 400));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
         lbl_background.setPreferredSize(new java.awt.Dimension(1000, 800));
         getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        lbl_background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        lbl_background1.setText("jLabel4");
-        getContentPane().add(lbl_background1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -120,6 +128,10 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         managerHomepage.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_backActionPerformed
+
+    private void rbtn_banquetHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_banquetHallActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtn_banquetHallActionPerformed
 
     /**
      * @param args the command line arguments
@@ -415,17 +427,16 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     private javax.swing.JButton btn_View;
     private javax.swing.JButton btn_back;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbx_venueNumber;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_background;
-    private javax.swing.JLabel lbl_background1;
+    private javax.swing.JLabel lbl_sales;
     private javax.swing.JLabel lbl_title;
-    private javax.swing.JLabel lbl_venueCode;
-    private javax.swing.JLabel lbl_venueCode1;
+    private javax.swing.JLabel lbl_venueNumber;
     private javax.swing.JRadioButton rbtn_auditorium;
     private javax.swing.JRadioButton rbtn_banquetHall;
     private javax.swing.JRadioButton rbtn_meetingRoom;
+    private javax.swing.JScrollPane spnl_showSales;
+    private javax.swing.JTable tbl_showSales;
     // End of variables declaration//GEN-END:variables
 }

@@ -39,6 +39,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         cbx_year = new javax.swing.JComboBox<>();
         cbx_monday = new javax.swing.JComboBox<>();
         btn_view = new javax.swing.JButton();
+        lbl_sales = new javax.swing.JLabel();
         spnl_showSales = new javax.swing.JScrollPane();
         tbl_showSales = new javax.swing.JTable();
         lbl_background = new javax.swing.JLabel();
@@ -127,7 +128,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
 
         lbl_selectMonday.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         lbl_selectMonday.setText("SELECT THE DATE OF THE MONDAY OF THE WEEK");
-        getContentPane().add(lbl_selectMonday, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
+        getContentPane().add(lbl_selectMonday, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
 
         cbx_day.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         cbx_day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -151,7 +152,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
                 cbx_mondayActionPerformed(evt);
             }
         });
-        getContentPane().add(cbx_monday, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 300, -1, -1));
+        getContentPane().add(cbx_monday, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 290, -1, -1));
 
         btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         btn_view.setText("VIEW");
@@ -160,7 +161,11 @@ public class managerViewSales_Date extends javax.swing.JFrame {
                 btn_viewActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 300, -1, -1));
+        getContentPane().add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 350, -1, -1));
+
+        lbl_sales.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        lbl_sales.setText("SALES");
+        getContentPane().add(lbl_sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
 
         tbl_showSales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -175,7 +180,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         ));
         spnl_showSales.setViewportView(tbl_showSales);
 
-        getContentPane().add(spnl_showSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 800, 400));
+        getContentPane().add(spnl_showSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 800, 400));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
@@ -375,6 +380,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_background1;
+    private javax.swing.JLabel lbl_sales;
     private javax.swing.JLabel lbl_selectDay;
     private javax.swing.JLabel lbl_selectMonday;
     private javax.swing.JLabel lbl_selectMonth;
