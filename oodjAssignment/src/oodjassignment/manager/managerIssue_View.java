@@ -4,11 +4,16 @@ package oodjassignment.manager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class managerIssue_View extends javax.swing.JFrame {
     
@@ -22,6 +27,7 @@ public class managerIssue_View extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         btn_back = new javax.swing.JButton();
         lbl_title = new javax.swing.JLabel();
         lbl_case = new javax.swing.JLabel();
@@ -182,18 +188,22 @@ public class managerIssue_View extends javax.swing.JFrame {
         });
         pnl_case.add(btn_updateStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
 
+        buttonGroup1.add(rbtn_cancelled);
         rbtn_cancelled.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         rbtn_cancelled.setText("Cancelled");
         pnl_case.add(rbtn_cancelled, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, -1, -1));
 
+        buttonGroup1.add(rbtn_closed);
         rbtn_closed.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         rbtn_closed.setText("Closed");
         pnl_case.add(rbtn_closed, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, -1, -1));
 
+        buttonGroup1.add(rbtn_done);
         rbtn_done.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         rbtn_done.setText("Done");
         pnl_case.add(rbtn_done, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, -1, -1));
 
+        buttonGroup1.add(rbtn_inPrograss);
         rbtn_inPrograss.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         rbtn_inPrograss.setText("In prograss");
         pnl_case.add(rbtn_inPrograss, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, -1));
@@ -235,7 +245,9 @@ public class managerIssue_View extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_confirmStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmStatusActionPerformed
-        // TODO add your handling code here:
+        updateStatus();
+        updateStatusLabel();
+        
     }//GEN-LAST:event_btn_confirmStatusActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
@@ -245,28 +257,126 @@ public class managerIssue_View extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
-        // TODO add your handling code here:
+        String caseID = txt_caseID.getText();
+        String[] data = FeedbackReader.readcaseStaffNStatus(caseID);
+        if (data != null) {
+            writeCase(data);
+            displayData(data);
+        }
+        else {
+            lbl_showCaseId.setText("Unable to find case");
+        }
     }//GEN-LAST:event_btn_viewActionPerformed
 
-    
-    // MAIN
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new managerIssue_View().setVisible(true);
+    // UPDATE STATUS -----------------------------------------------------------
+    private void updateStatus() {
+        String caseId = lbl_showCaseId.getText();
+        String newStatus = "";
+
+        if (rbtn_cancelled.isSelected()) {
+            newStatus = "Cancelled";
+        } else if (rbtn_done.isSelected()) {
+            newStatus = "Done";
+        } else if (rbtn_closed.isSelected()) {
+            newStatus = "Closed";
+        } else if (rbtn_inPrograss.isSelected()) {
+            newStatus = "In Progress";
+        }
+
+        String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
+        List<String> fileContent = new ArrayList<>();
+        boolean statusUpdated = false;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data[0].equals(caseId)) {
+                    data[7] = newStatus; // Update the 8th data (index 7)
+                    line = String.join(",", data);
+                    statusUpdated = true;
+                }
+                fileContent.add(line);
             }
-        });
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (String line : fileContent) {
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        if (statusUpdated) {
+            JOptionPane.showMessageDialog(this, "Status updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Case ID not found.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
-    // COMPONENTS
+    private void updateStatusLabel() {
+        String caseId = lbl_showCaseId.getText();
+        String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data[0].equals(caseId)) {
+                    lbl_showCaseStatus.setText(data[7]); // Set the label to the 8th data (index 7)
+                    break;
+                }
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    // DATA --------------------------------------------------------------------
+    private void displayData(String[] data) {
+        lbl_showCaseId.setText(data[0]);
+        lbl_showCustomerID.setText(data[1]);
+        lbl_showHallType.setText(data[2]);
+        lbl_showHallNumber.setText(data[3]);
+        lbl_showDate.setText(data[4]);
+        lbl_showDescription.setText(data[5]);
+        lbl_showStaff.setText(data[6]);
+        lbl_showCaseStatus.setText(data[7]);
+        btn_updateStatus.setVisible(true);
+    };
+    
+    public static void writeCase(String[] data) {
+    if (data.length < 8) {
+        JOptionPane.showMessageDialog(null, "Insufficient data provided.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
+    String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+        String feedbackData = String.join(",", data);
+        bw.write(feedbackData);
+        bw.newLine();
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(null, "Error saving feedback. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+} 
+   
+    // COMPONENTS --------------------------------------------------------------
     private void clear_lbl(){
         lbl_showCaseId.setText("");
-        lbl_showCaseStatus.setText("");
-        lbl_showCustomerID.setText("");
         lbl_showDate.setText("");
-        lbl_showDescription.setText("");
+        lbl_showHallType.setText("");  
+        lbl_showHallNumber.setText("");  
+        lbl_showCustomerID.setText("");
         lbl_showStaff.setText("");
-        lbl_showHallType.setText("");   
+        lbl_showDescription.setText("");
+        lbl_showCaseStatus.setText("");
+        btn_updateStatus.setVisible(false);
     }
     
     private void hide_changeStatus(){
@@ -286,13 +396,23 @@ public class managerIssue_View extends javax.swing.JFrame {
         rbtn_done.setVisible(true);
         rbtn_inPrograss.setVisible(true);
     }
-
+    
+    // MAIN --------------------------------------------------------------------
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new managerIssue_View().setVisible(true);
+            }
+        });
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_confirmStatus;
     private javax.swing.JButton btn_updateStatus;
     private javax.swing.JButton btn_view;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel lbl_CusID;
     private javax.swing.JLabel lbl_assignedstaff;
     private javax.swing.JLabel lbl_background;
