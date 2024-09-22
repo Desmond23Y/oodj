@@ -23,7 +23,9 @@ public class managerHomepage extends javax.swing.JFrame {
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setSize(new java.awt.Dimension(1000, 800));
+        setMinimumSize(new java.awt.Dimension(1200, 800));
+        setPreferredSize(new java.awt.Dimension(1200, 800));
+        setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
@@ -105,7 +107,8 @@ public class managerHomepage extends javax.swing.JFrame {
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
-        lbl_background.setPreferredSize(new java.awt.Dimension(1000, 800));
+        lbl_background.setMinimumSize(new java.awt.Dimension(1200, 800));
+        lbl_background.setPreferredSize(new java.awt.Dimension(1200, 800));
         getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
