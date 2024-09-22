@@ -257,6 +257,7 @@ public class managerIssue_View extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
+        clear_lbl();
         String caseID = txt_caseID.getText();
         String[] data = FeedbackReader.readcaseStaffNStatus(caseID);
         if (data != null) {
