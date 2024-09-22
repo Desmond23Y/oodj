@@ -45,8 +45,7 @@ public class GenerateDatecbx {
         }
         return days;
     }
-
-
+    
     private String[] generateMonths() {
         return new String[]{"Month", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     }
