@@ -64,7 +64,6 @@ public class managerIssue_View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Segoe UI Black", 0, 10)); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1200, 800));
         setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -93,7 +92,7 @@ public class managerIssue_View extends javax.swing.JFrame {
         lbl_enterCaseID.setText("CASE ID");
         pnl_ID.add(lbl_enterCaseID);
 
-        txt_caseID.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txt_caseID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txt_caseID.setMinimumSize(new java.awt.Dimension(100, 29));
         txt_caseID.setPreferredSize(new java.awt.Dimension(100, 29));
         pnl_ID.add(txt_caseID);
@@ -194,7 +193,12 @@ public class managerIssue_View extends javax.swing.JFrame {
         buttonGroup1.add(rbtn_cancelled);
         rbtn_cancelled.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         rbtn_cancelled.setText("Cancelled");
-        pnl_case.add(rbtn_cancelled, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, 20));
+        rbtn_cancelled.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtn_cancelledActionPerformed(evt);
+            }
+        });
+        pnl_case.add(rbtn_cancelled, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 460, -1, -1));
 
         buttonGroup1.add(rbtn_closed);
         rbtn_closed.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
@@ -204,12 +208,17 @@ public class managerIssue_View extends javax.swing.JFrame {
                 rbtn_closedActionPerformed(evt);
             }
         });
-        pnl_case.add(rbtn_closed, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, -1, 20));
+        pnl_case.add(rbtn_closed, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, -1, -1));
 
         buttonGroup1.add(rbtn_done);
         rbtn_done.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         rbtn_done.setText("Done");
-        pnl_case.add(rbtn_done, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, -1, 20));
+        rbtn_done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtn_doneActionPerformed(evt);
+            }
+        });
+        pnl_case.add(rbtn_done, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, -1, -1));
 
         buttonGroup1.add(rbtn_inPrograss);
         rbtn_inPrograss.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
@@ -281,6 +290,14 @@ public class managerIssue_View extends javax.swing.JFrame {
     private void rbtn_closedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_closedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtn_closedActionPerformed
+
+    private void rbtn_cancelledActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_cancelledActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtn_cancelledActionPerformed
+
+    private void rbtn_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_doneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtn_doneActionPerformed
 
     // UPDATE STATUS -----------------------------------------------------------
     private void updateStatus() {

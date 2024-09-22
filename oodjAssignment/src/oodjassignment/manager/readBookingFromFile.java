@@ -7,17 +7,18 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReadBooking {
+public class readBookingFromFile {
     private List<Booking> bookings;
 
     // Constructor
-    public ReadBooking(String filePath) {
+    public readBookingFromFile(String filePath) {
         bookings = new ArrayList<>();
         readBookingsFromFile(filePath);
     }
 
     // Method to read bookings from file
-    private void readBookingsFromFile(String filePath) {
+    public List<Booking> readBookingsFromFile(String filePath) {
+        List<Booking> bookings = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -28,6 +29,7 @@ public class ReadBooking {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return bookings;
     }
 
     // Method to get bookings

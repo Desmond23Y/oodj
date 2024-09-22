@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.io.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.stream.Collectors;
 
 public class managerViewSales_Date extends javax.swing.JFrame {
-    private BookingManager bookingManager = new BookingManager();
     
     public managerViewSales_Date() {
         initComponents();
@@ -43,11 +43,11 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         lbl_sales = new javax.swing.JLabel();
         spnl_showSales = new javax.swing.JScrollPane();
         tbl_showSales = new javax.swing.JTable();
+        lbl_responseNoBooking = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 800));
-        setPreferredSize(new java.awt.Dimension(1200, 800));
         setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -193,6 +193,9 @@ public class managerViewSales_Date extends javax.swing.JFrame {
 
         getContentPane().add(spnl_showSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 900, 280));
 
+        lbl_responseNoBooking.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        getContentPane().add(lbl_responseNoBooking, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 690, -1, -1));
+
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
         lbl_background.setMinimumSize(new java.awt.Dimension(1200, 800));
@@ -203,13 +206,27 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
-        boolean valid_filled = areAllComboBoxesSelected();
-        if (valid_filled){
-            record_date();
-            showFilteredBookings();
+        clearTable(tbl_showSales); 
+
+        List<String> filterValues = record_date();
+        String filterType = "all";
+
+        if (rbtn_daily.isSelected()) {
+            filterType = "daily";
+        } else if (rbtn_monthly.isSelected()) {
+            filterType = "monthly";
+        } else if (rbtn_yearly.isSelected()) {
+            filterType = "yearly";
         }
-        else {
-            JOptionPane.showMessageDialog(null, "Please select all required information.", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        List<Booking> bookings = readBookingsFromFile("src/oodjassignment/database/Booking.txt");
+        List<Booking> filteredBookings = filterBookings(bookings, filterType, filterValues);
+
+        if (filteredBookings.isEmpty()) {
+            lbl_responseNoBooking.setText("NO BOOKING ON THIS DURATION");
+        } else {
+            lbl_responseNoBooking.setText("");
+            displayBookingsInTable(filteredBookings, tbl_showSales);
         }
     }//GEN-LAST:event_btn_viewActionPerformed
 
@@ -220,10 +237,12 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void rbtn_yearlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_yearlyActionPerformed
+        resetComboBoxes();
+        clearTable(tbl_showSales);
         initial_cbxAllVisibility(false);
         inital_selectYearlyVisibility();
         btn_view.setVisible(true);
-        ////////
+        resetComboBoxes();
     }//GEN-LAST:event_rbtn_yearlyActionPerformed
 
     private void cbx_mondayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_mondayActionPerformed
@@ -231,35 +250,90 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     }//GEN-LAST:event_cbx_mondayActionPerformed
 
     private void rbtn_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_allActionPerformed
+        resetComboBoxes();
+        clearTable(tbl_showSales);
         initial_cbxAllVisibility(false);
         btn_view.setVisible(true);
+        resetComboBoxes();
     }//GEN-LAST:event_rbtn_allActionPerformed
 
     private void rbtn_monthlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_monthlyActionPerformed
+        resetComboBoxes();
+        clearTable(tbl_showSales);
         initial_cbxAllVisibility(false);
         initial_selectMonthlyVisibility();
         btn_view.setVisible(true);
+        resetComboBoxes();
     }//GEN-LAST:event_rbtn_monthlyActionPerformed
 
     private void rbtn_dailyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_dailyActionPerformed
+        resetComboBoxes();
+        clearTable(tbl_showSales);
         initial_cbxAllVisibility(false);
         initial_selectDailyVisibility(true);
         btn_view.setVisible(true);
+        resetComboBoxes();
     }//GEN-LAST:event_rbtn_dailyActionPerformed
 
     private void rbtn_weeklyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_weeklyActionPerformed
+        resetComboBoxes();
+        clearTable(tbl_showSales);
         initial_cbxAllVisibility(false);
         initial_selectWeeklyVisibility1();
         btn_view.setVisible(true);
+        resetComboBoxes();
     }//GEN-LAST:event_rbtn_weeklyActionPerformed
 
      // GET DATA ----------------------------------------------------------------
+    public List<Booking> readBookingsFromFile(String filePath) {
+        List<Booking> bookings = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split("/");
+                Booking booking = new Booking(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
+                bookings.add(booking);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bookings;
+    }
     
-    private void showFilteredBookings() {
-        List<String> dateList = record_date();
-        BookingManager bookingManager = new BookingManager();
-        List<Booking> filteredBookings = bookingManager.filterBookings(dateList);
-        bookingManager.displayBookings(filteredBookings, tbl_showSales);
+    public List<Booking> filterBookings(List<Booking> bookings, String filterType, List<String> filterValues) {
+        return bookings.stream().filter(booking -> {
+            switch (filterType) {
+                case "daily":
+                    return booking.getDate().equals(String.join(" ", filterValues));
+                case "monthly":
+                    return booking.getDate().contains(filterValues.get(0) + " " + filterValues.get(1));
+                case "yearly":
+                    return booking.getDate().endsWith(filterValues.get(0));
+                case "all":
+                    return true;
+                default:
+                    return false;
+            }
+        }).collect(Collectors.toList());
+    }
+    
+    public void displayBookingsInTable(List<Booking> bookings, JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0); // Clear existing rows
+
+        for (Booking booking : bookings) {
+            model.addRow(new Object[]{
+                booking.getDate(),
+                booking.getCustomerID(),
+                booking.getHallType(),
+                booking.getHallID(),
+                booking.getTime(),
+                booking.getDuration(),
+                booking.getPrice(),
+                booking.getStatus(),
+                booking.getRemark()
+            });
+        }
     }
 
     // VALIDIVITY --------------------------------------------------------------
@@ -325,6 +399,19 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     }
     
     // CONTROL OF COMPONENT ----------------------------------------------------
+    public void resetComboBoxes() {
+        cbx_day.setSelectedIndex(0);
+        cbx_month.setSelectedIndex(0);
+        cbx_year.setSelectedIndex(0);
+        cbx_monday.setSelectedIndex(0);
+    }
+    
+    public void clearTable(JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0); // Clear existing rows
+    }
+
+    
     private void initial_cbxAllVisibility(boolean tf){
         lbl_selectDay.setVisible(tf);
         lbl_selectMonth.setVisible(tf);
@@ -383,6 +470,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbx_month;
     private javax.swing.JComboBox<String> cbx_year;
     private javax.swing.JLabel lbl_background;
+    private javax.swing.JLabel lbl_responseNoBooking;
     private javax.swing.JLabel lbl_sales;
     private javax.swing.JLabel lbl_selectDay;
     private javax.swing.JLabel lbl_selectMonday;
