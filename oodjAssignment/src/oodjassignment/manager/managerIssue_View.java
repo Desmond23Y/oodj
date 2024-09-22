@@ -64,7 +64,6 @@ public class managerIssue_View extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setFont(new java.awt.Font("Segoe UI Black", 0, 10)); // NOI18N
-        setMinimumSize(new java.awt.Dimension(1200, 800));
         setPreferredSize(new java.awt.Dimension(1200, 800));
         setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,30 +78,31 @@ public class managerIssue_View extends javax.swing.JFrame {
         });
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_title.setText("View Customer Issue");
-        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 40, -1, -1));
+        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(354, 40, -1, -1));
 
-        lbl_case.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_case.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         lbl_case.setText("CASE");
         getContentPane().add(lbl_case, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
 
         pnl_ID.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbl_enterCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_enterCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_enterCaseID.setText("CASE ID");
         pnl_ID.add(lbl_enterCaseID);
 
-        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        txt_caseID.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txt_caseID.setMinimumSize(new java.awt.Dimension(100, 29));
         txt_caseID.setPreferredSize(new java.awt.Dimension(100, 29));
         pnl_ID.add(txt_caseID);
 
-        lbl_space.setText("                                                                                                                                  ");
+        lbl_space.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lbl_space.setText("                                                                                           ");
         pnl_ID.add(lbl_space);
 
-        btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         btn_view.setText("VIEW");
         btn_view.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,129 +111,136 @@ public class managerIssue_View extends javax.swing.JFrame {
         });
         pnl_ID.add(btn_view);
 
-        getContentPane().add(pnl_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 700, -1));
+        getContentPane().add(pnl_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 900, -1));
 
         pnl_case.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_case.setMinimumSize(new java.awt.Dimension(738, 560));
+        pnl_case.setPreferredSize(new java.awt.Dimension(738, 560));
         pnl_case.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_caseID.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        lbl_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_caseID.setText("Case ID");
         pnl_case.add(lbl_caseID, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
 
-        lbl_date.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        lbl_date.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_date.setText("Date");
-        pnl_case.add(lbl_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+        pnl_case.add(lbl_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
-        lblhallType.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        lblhallType.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lblhallType.setText("Hall Type");
-        pnl_case.add(lblhallType, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
+        pnl_case.add(lblhallType, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
-        lbl_hallNumber.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        lbl_hallNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_hallNumber.setText("Hall Number");
-        pnl_case.add(lbl_hallNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        pnl_case.add(lbl_hallNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
-        lbl_CusID.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        lbl_CusID.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_CusID.setText("Customer ID");
-        pnl_case.add(lbl_CusID, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+        pnl_case.add(lbl_CusID, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
 
-        lbl_assignedstaff.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        lbl_assignedstaff.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_assignedstaff.setText("Assigned Staff");
-        pnl_case.add(lbl_assignedstaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        pnl_case.add(lbl_assignedstaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
-        lbl_description.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        lbl_description.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_description.setText("Description");
-        pnl_case.add(lbl_description, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        pnl_case.add(lbl_description, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, -1, -1));
 
-        lbl_caseStatus.setFont(new java.awt.Font("Segoe UI Black", 1, 16)); // NOI18N
+        lbl_caseStatus.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_caseStatus.setText("Case Status");
-        pnl_case.add(lbl_caseStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
+        pnl_case.add(lbl_caseStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
 
-        lbl_showCaseId.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_showCaseId.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_showCaseId.setText("Case ID");
-        pnl_case.add(lbl_showCaseId, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 40, -1, -1));
+        pnl_case.add(lbl_showCaseId, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, -1, -1));
 
-        lbl_showDate.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_showDate.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_showDate.setText("Date");
-        pnl_case.add(lbl_showDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
+        pnl_case.add(lbl_showDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, -1, -1));
 
-        lbl_showHallType.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_showHallType.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_showHallType.setText("Hall Type");
-        pnl_case.add(lbl_showHallType, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
+        pnl_case.add(lbl_showHallType, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
 
-        lbl_showHallNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_showHallNumber.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_showHallNumber.setText("Hall Number");
-        pnl_case.add(lbl_showHallNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
+        pnl_case.add(lbl_showHallNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, -1, -1));
 
-        lbl_showCustomerID.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_showCustomerID.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_showCustomerID.setText("Cus ID");
-        pnl_case.add(lbl_showCustomerID, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, -1, -1));
+        pnl_case.add(lbl_showCustomerID, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
 
-        lbl_showStaff.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_showStaff.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_showStaff.setText("Staff");
-        pnl_case.add(lbl_showStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, -1));
+        pnl_case.add(lbl_showStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, -1, -1));
 
-        lbl_showDescription.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_showDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_showDescription.setText("Desription");
-        pnl_case.add(lbl_showDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 480, 60));
+        pnl_case.add(lbl_showDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 480, 60));
 
-        lbl_showCaseStatus.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_showCaseStatus.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_showCaseStatus.setText("Case Status");
-        pnl_case.add(lbl_showCaseStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, -1, -1));
+        pnl_case.add(lbl_showCaseStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, -1, -1));
 
-        btn_updateStatus.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btn_updateStatus.setText("Update Status");
+        btn_updateStatus.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        btn_updateStatus.setText("UPDATE STATUS");
         btn_updateStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_updateStatusActionPerformed(evt);
             }
         });
-        pnl_case.add(btn_updateStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
+        pnl_case.add(btn_updateStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 370, -1, -1));
 
         buttonGroup1.add(rbtn_cancelled);
-        rbtn_cancelled.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        rbtn_cancelled.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         rbtn_cancelled.setText("Cancelled");
-        pnl_case.add(rbtn_cancelled, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 350, -1, -1));
+        pnl_case.add(rbtn_cancelled, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, 20));
 
         buttonGroup1.add(rbtn_closed);
-        rbtn_closed.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        rbtn_closed.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         rbtn_closed.setText("Closed");
-        pnl_case.add(rbtn_closed, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 330, -1, -1));
+        rbtn_closed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtn_closedActionPerformed(evt);
+            }
+        });
+        pnl_case.add(rbtn_closed, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 420, -1, 20));
 
         buttonGroup1.add(rbtn_done);
-        rbtn_done.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        rbtn_done.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         rbtn_done.setText("Done");
-        pnl_case.add(rbtn_done, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, -1, -1));
+        pnl_case.add(rbtn_done, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, -1, 20));
 
         buttonGroup1.add(rbtn_inPrograss);
-        rbtn_inPrograss.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        rbtn_inPrograss.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         rbtn_inPrograss.setText("In prograss");
-        pnl_case.add(rbtn_inPrograss, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, -1));
+        pnl_case.add(rbtn_inPrograss, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 370, -1, -1));
 
-        btn_cancel.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btn_cancel.setText("Cancel");
+        btn_cancel.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        btn_cancel.setText("CANCEL");
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelActionPerformed(evt);
             }
         });
-        pnl_case.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
+        pnl_case.add(btn_cancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, -1, -1));
 
-        btn_confirmStatus.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btn_confirmStatus.setText("Confirm");
+        btn_confirmStatus.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        btn_confirmStatus.setText("CONFIRM");
         btn_confirmStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_confirmStatusActionPerformed(evt);
             }
         });
-        pnl_case.add(btn_confirmStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, -1, -1));
+        pnl_case.add(btn_confirmStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 370, -1, -1));
 
-        getContentPane().add(pnl_case, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 700, 430));
+        getContentPane().add(pnl_case, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 900, 560));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
         lbl_background.setMinimumSize(new java.awt.Dimension(1200, 800));
         lbl_background.setPreferredSize(new java.awt.Dimension(1200, 800));
-        getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 820));
+        getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -270,6 +277,10 @@ public class managerIssue_View extends javax.swing.JFrame {
             lbl_showCaseId.setText("Unable to find case");
         }
     }//GEN-LAST:event_btn_viewActionPerformed
+
+    private void rbtn_closedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_closedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtn_closedActionPerformed
 
     // UPDATE STATUS -----------------------------------------------------------
     private void updateStatus() {

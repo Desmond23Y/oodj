@@ -57,26 +57,29 @@ public class managerIssue_Response extends javax.swing.JFrame {
         });
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_title.setText("Response to Customer Issue");
-        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
+        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 40, -1, -1));
 
         pnl_ID.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_ID.setMinimumSize(new java.awt.Dimension(900, 45));
+        pnl_ID.setPreferredSize(new java.awt.Dimension(900, 45));
 
-        lbl_enterCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_enterCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_enterCaseID.setText("CASE ID");
         pnl_ID.add(lbl_enterCaseID);
 
-        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         txt_caseID.setMinimumSize(new java.awt.Dimension(100, 29));
         txt_caseID.setPreferredSize(new java.awt.Dimension(100, 29));
         pnl_ID.add(txt_caseID);
 
-        lbl_space.setText("                                                                                                                                  ");
+        lbl_space.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lbl_space.setText("                                                                                           ");
         pnl_ID.add(lbl_space);
 
-        btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         btn_view.setText("VIEW");
         btn_view.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +88,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
         });
         pnl_ID.add(btn_view);
 
-        getContentPane().add(pnl_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 700, -1));
+        getContentPane().add(pnl_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 900, -1));
 
         btn_update.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         btn_update.setText("UPDATE");
@@ -94,12 +97,14 @@ public class managerIssue_Response extends javax.swing.JFrame {
                 btn_updateActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 600, -1, -1));
+        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel1.setText("NEW MESSAGE");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, -1, -1));
         getContentPane().add(txt_newMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, 540, 90));
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(900, 402));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,14 +114,16 @@ public class managerIssue_Response extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Case ID", "Date", "Hall Type", "Hall Number", "Assgin Staff", "null", "Title 7", "Title 8"
+                "Case ID", "Date", "Hall Type", "Hall Number", "Customer ID", "Description", "Case Status", "Assigned Staff"
             }
         ));
+        jTable1.setMinimumSize(new java.awt.Dimension(900, 80));
+        jTable1.setPreferredSize(new java.awt.Dimension(900, 80));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 700, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, 230));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel2.setText("HISTORY");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
 

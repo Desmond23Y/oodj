@@ -47,69 +47,77 @@ public class managerHomepage extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(lbl_title)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 40, -1, -1));
 
-        btn_date.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btn_date.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
         btn_date.setText("Date");
+        btn_date.setMinimumSize(new java.awt.Dimension(404, 45));
+        btn_date.setPreferredSize(new java.awt.Dimension(404, 45));
         btn_date.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_dateActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, -1, -1));
+        getContentPane().add(btn_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 310, -1, -1));
 
-        btn_viewCaseChangeStatus.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btn_viewCaseChangeStatus.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
         btn_viewCaseChangeStatus.setText("View Case & Change Status");
         btn_viewCaseChangeStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_viewCaseChangeStatusActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_viewCaseChangeStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, -1, -1));
+        getContentPane().add(btn_viewCaseChangeStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(698, 310, -1, -1));
 
-        btn_assignStaff.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btn_assignStaff.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
         btn_assignStaff.setText("Assign Staff to Fix Issues");
+        btn_assignStaff.setMinimumSize(new java.awt.Dimension(404, 45));
+        btn_assignStaff.setPreferredSize(new java.awt.Dimension(404, 45));
         btn_assignStaff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_assignStaffActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_assignStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, -1, -1));
+        getContentPane().add(btn_assignStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(698, 370, -1, -1));
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jButton4.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
         jButton4.setText("Reply Customer Issues");
+        jButton4.setMinimumSize(new java.awt.Dimension(404, 45));
+        jButton4.setPreferredSize(new java.awt.Dimension(404, 45));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(698, 430, -1, -1));
 
-        lbl_viewSales.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        lbl_viewSales.setText("View Sales by");
-        getContentPane().add(lbl_viewSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
+        lbl_viewSales.setFont(new java.awt.Font("Segoe UI Black", 0, 40)); // NOI18N
+        lbl_viewSales.setText("View Sales By");
+        getContentPane().add(lbl_viewSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 240, -1, -1));
 
-        lbl_cusIssue.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        lbl_cusIssue.setText("Customer Issue");
-        getContentPane().add(lbl_cusIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 240, -1, -1));
+        lbl_cusIssue.setFont(new java.awt.Font("Segoe UI Black", 0, 40)); // NOI18N
+        lbl_cusIssue.setText("Customer Issues");
+        getContentPane().add(lbl_cusIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 240, -1, -1));
 
-        btn_venue.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btn_venue.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
         btn_venue.setText("Venue");
+        btn_venue.setMinimumSize(new java.awt.Dimension(404, 45));
+        btn_venue.setPreferredSize(new java.awt.Dimension(404, 45));
         btn_venue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_venueActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_venue, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
+        getContentPane().add(btn_venue, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 370, -1, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
         lbl_background.setMinimumSize(new java.awt.Dimension(1200, 800));
         lbl_background.setPreferredSize(new java.awt.Dimension(1200, 800));
-        getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

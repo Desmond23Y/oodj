@@ -57,50 +57,50 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         });
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_title.setText("View Sales by Venue");
-        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(319, 40, -1, -1));
+        getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 40, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel2.setText("VENUE TYPE");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
 
         buttonGroup1.add(rbtn_auditorium);
-        rbtn_auditorium.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        rbtn_auditorium.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         rbtn_auditorium.setText("Auditorium");
-        getContentPane().add(rbtn_auditorium, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+        getContentPane().add(rbtn_auditorium, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, -1, -1));
 
         buttonGroup1.add(rbtn_banquetHall);
-        rbtn_banquetHall.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        rbtn_banquetHall.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         rbtn_banquetHall.setText("Banquet Hall");
         rbtn_banquetHall.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbtn_banquetHallActionPerformed(evt);
             }
         });
-        getContentPane().add(rbtn_banquetHall, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
+        getContentPane().add(rbtn_banquetHall, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, -1, -1));
 
         buttonGroup1.add(rbtn_meetingRoom);
-        rbtn_meetingRoom.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        rbtn_meetingRoom.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         rbtn_meetingRoom.setText("Meeting Room");
-        getContentPane().add(rbtn_meetingRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, -1, -1));
+        getContentPane().add(rbtn_meetingRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
 
         btn_View.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         btn_View.setText("View");
-        getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 350, -1, -1));
+        getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 350, -1, -1));
 
         lbl_sales.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         lbl_sales.setText("SALES");
-        getContentPane().add(lbl_sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
+        getContentPane().add(lbl_sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
 
-        lbl_venueNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        lbl_venueNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_venueNumber.setText("VENUE NUMBER");
-        getContentPane().add(lbl_venueNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+        getContentPane().add(lbl_venueNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
 
-        cbx_venueNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        cbx_venueNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         cbx_venueNumber.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cbx_venueNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, -1, -1));
+        getContentPane().add(cbx_venueNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
 
         tbl_showSales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,9 +113,11 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
                 "Date", "Customer ID", "Hall Type", "Hall ID", "Time", "Duration", "Price", "Status", "Remark"
             }
         ));
+        tbl_showSales.setMinimumSize(new java.awt.Dimension(900, 280));
+        tbl_showSales.setPreferredSize(new java.awt.Dimension(900, 280));
         spnl_showSales.setViewportView(tbl_showSales);
 
-        getContentPane().add(spnl_showSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 800, 400));
+        getContentPane().add(spnl_showSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 900, 280));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");

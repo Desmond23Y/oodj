@@ -46,26 +46,29 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
         });
         getContentPane().add(btn_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lbl_title.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
         lbl_title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_title.setText("Assign Stuff to Customer Issue");
+        lbl_title.setText("Assign Staff to Customer Issue");
         getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(225, 40, -1, -1));
 
         pnl_ID.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_ID.setMinimumSize(new java.awt.Dimension(900, 39));
+        pnl_ID.setPreferredSize(new java.awt.Dimension(900, 39));
 
-        lbl_enterCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_enterCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_enterCaseID.setText("CASE ID");
         pnl_ID.add(lbl_enterCaseID);
 
-        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         txt_caseID.setMinimumSize(new java.awt.Dimension(100, 29));
         txt_caseID.setPreferredSize(new java.awt.Dimension(100, 29));
         pnl_ID.add(txt_caseID);
 
-        lbl_space.setText("                                                                                                                                                           ");
+        lbl_space.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lbl_space.setText("                                                                                                         ");
         pnl_ID.add(lbl_space);
 
-        getContentPane().add(pnl_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 700, -1));
+        getContentPane().add(pnl_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 900, -1));
 
         btn_update.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         btn_update.setText("UPDATE");
@@ -74,16 +77,17 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
                 btn_updateActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 380, -1, -1));
+        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 280, -1, -1));
 
-        lbl_showStaff.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        lbl_showStaff.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         lbl_showStaff.setText("CHOOSE STAFF");
-        getContentPane().add(lbl_showStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
+        getContentPane().add(lbl_showStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
 
-        cbx_availableStaff.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        cbx_availableStaff.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         cbx_availableStaff.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbx_availableStaff.setPreferredSize(new java.awt.Dimension(700, 25));
-        getContentPane().add(cbx_availableStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 700, -1));
+        cbx_availableStaff.setMinimumSize(new java.awt.Dimension(900, 25));
+        cbx_availableStaff.setPreferredSize(new java.awt.Dimension(900, 25));
+        getContentPane().add(cbx_availableStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 900, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
