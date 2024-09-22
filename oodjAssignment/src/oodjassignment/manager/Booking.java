@@ -1,4 +1,3 @@
-
 package oodjassignment.manager;
 
 public class Booking {
@@ -11,10 +10,10 @@ public class Booking {
     private String time;
     private String duration;
     private String status;
-    private String remarks;
+    private String initials;
 
     // Constructor
-    public Booking(String bookingID, String userID, String venue, String hall, String price, String date, String time, String duration, String status, String remarks) {
+    public Booking(String bookingID, String userID, String venue, String hall, String price, String date, String time, String duration, String status, String initials) {
         this.bookingID = bookingID;
         this.userID = userID;
         this.venue = venue;
@@ -24,9 +23,18 @@ public class Booking {
         this.time = time;
         this.duration = duration;
         this.status = status;
-        this.remarks = remarks;
+        this.initials = initials;
     }
 
-    // Getters and Setters
-    // (Include getters and setters for all fields)
+    // Getters
+    public String getBookingID() { return bookingID; }
+    public String getUserID() { return userID; }
+    public String getVenue() { return venue; }
+    public String getHall() { return hall; }
+    public String getPrice() { return price; }
+    public String getDate() { return date; }
+    public String getTime() { return time; }
+    public String getDuration() { return duration; }
+    public String getStatus() { return status; }
+    public String getInitials() { return initials; }
 }

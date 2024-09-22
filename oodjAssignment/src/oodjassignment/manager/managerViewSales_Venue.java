@@ -26,12 +26,13 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         btn_back = new javax.swing.JButton();
         lbl_title = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
+        rbtn_auditorium = new javax.swing.JRadioButton();
+        rbtn_banquetHall = new javax.swing.JRadioButton();
+        rbtn_meetingRoom = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btn_View = new javax.swing.JButton();
@@ -39,11 +40,13 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         lbl_venueCode1 = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
+        lbl_background1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(1000, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btn_back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
         btn_back.setText("BACK");
         btn_back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,14 +64,17 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         jLabel2.setText("VENUE TYPE");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
-        jCheckBox1.setText("Auditorium");
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, -1, -1));
+        buttonGroup1.add(rbtn_auditorium);
+        rbtn_auditorium.setText("Auditorium");
+        getContentPane().add(rbtn_auditorium, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, -1, -1));
 
-        jCheckBox2.setText("Meeting Room");
-        getContentPane().add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 150, -1, -1));
+        buttonGroup1.add(rbtn_banquetHall);
+        rbtn_banquetHall.setText("Banquet Hall");
+        getContentPane().add(rbtn_banquetHall, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 130, -1, -1));
 
-        jCheckBox3.setText("Banquet Hall");
-        getContentPane().add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
+        buttonGroup1.add(rbtn_meetingRoom);
+        rbtn_meetingRoom.setText("Meeting Room");
+        getContentPane().add(rbtn_meetingRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 130, -1, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,6 +107,10 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         lbl_background.setText("jLabel4");
         lbl_background.setPreferredSize(new java.awt.Dimension(1000, 800));
         getContentPane().add(lbl_background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        lbl_background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
+        lbl_background1.setText("jLabel4");
+        getContentPane().add(lbl_background1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -404,16 +414,18 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_View;
     private javax.swing.JButton btn_back;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_background;
+    private javax.swing.JLabel lbl_background1;
     private javax.swing.JLabel lbl_title;
     private javax.swing.JLabel lbl_venueCode;
     private javax.swing.JLabel lbl_venueCode1;
+    private javax.swing.JRadioButton rbtn_auditorium;
+    private javax.swing.JRadioButton rbtn_banquetHall;
+    private javax.swing.JRadioButton rbtn_meetingRoom;
     // End of variables declaration//GEN-END:variables
 }

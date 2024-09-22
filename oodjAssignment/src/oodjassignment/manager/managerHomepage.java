@@ -19,7 +19,6 @@ public class managerHomepage extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         lbl_viewSales = new javax.swing.JLabel();
         lbl_cusIssue = new javax.swing.JLabel();
-        btn_time = new javax.swing.JButton();
         btn_venue = new javax.swing.JButton();
         lbl_background = new javax.swing.JLabel();
 
@@ -95,15 +94,6 @@ public class managerHomepage extends javax.swing.JFrame {
         lbl_cusIssue.setText("Customer Issue");
         getContentPane().add(lbl_cusIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 240, -1, -1));
 
-        btn_time.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btn_time.setText("Time");
-        btn_time.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_timeActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_time, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, -1, -1));
-
         btn_venue.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btn_venue.setText("Venue");
         btn_venue.addActionListener(new java.awt.event.ActionListener() {
@@ -132,12 +122,6 @@ public class managerHomepage extends javax.swing.JFrame {
         managerIssue_AssignStaff.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_assignStaffActionPerformed
-
-    private void btn_timeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_timeActionPerformed
-        managerViewSales_Time managerViewSales_Time = new managerViewSales_Time();
-        managerViewSales_Time.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btn_timeActionPerformed
 
     private void btn_venueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_venueActionPerformed
         managerViewSales_Venue managerViewSales_Venue = new managerViewSales_Venue();
@@ -196,7 +180,6 @@ public class managerHomepage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_assignStaff;
     private javax.swing.JButton btn_date;
-    private javax.swing.JButton btn_time;
     private javax.swing.JButton btn_venue;
     private javax.swing.JButton btn_viewCaseChangeStatus;
     private javax.swing.JButton jButton4;
