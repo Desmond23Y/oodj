@@ -78,9 +78,10 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
         lbl_showStaff.setText("CHOOSE STAFF");
         getContentPane().add(lbl_showStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
 
+        cbx_availableStaff.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         cbx_availableStaff.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbx_availableStaff.setPreferredSize(new java.awt.Dimension(700, 80));
-        getContentPane().add(cbx_availableStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 700, 30));
+        cbx_availableStaff.setPreferredSize(new java.awt.Dimension(700, 25));
+        getContentPane().add(cbx_availableStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 700, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
