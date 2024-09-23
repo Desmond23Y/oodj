@@ -43,7 +43,6 @@ public class managerIssue_Response extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 800));
-        setPreferredSize(new java.awt.Dimension(1200, 800));
         setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -108,13 +107,13 @@ public class managerIssue_Response extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Case ID", "Date", "Hall Type", "Hall Number", "Customer ID", "Description", "Case Status", "Assigned Staff"
+                "Case ID", "Date", "Hall Type", "Hall Number", "Customer ID", "Description", "Case Status", "Assigned Staff", "Staff Remarks"
             }
         ));
         jTable1.setMinimumSize(new java.awt.Dimension(900, 80));
