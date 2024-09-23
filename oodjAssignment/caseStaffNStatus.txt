@@ -1,8 +1,0 @@
-Case ID: C0001
-Customer ID: U0003
-Hall Type: Banquet Hall
-Hall Number: HALL 1
-Date: 2024-09-19
-Feedback: Dirty floor
-Assigned Staff: No
-Status: No
