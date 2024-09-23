@@ -150,7 +150,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         Remarks.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Remarks.setForeground(new java.awt.Color(153, 153, 153));
         Remarks.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Remarks.setText("Remarks");
+        Remarks.setText("-");
         Remarks.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 RemarksFocusGained(evt);
@@ -425,7 +425,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void RemarksFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RemarksFocusGained
-       if(Remarks.getText().equals("Remarks"))
+       if(Remarks.getText().equals("-"))
         {
             Remarks.setText("");
             Remarks.setForeground(newColor(0,118,221));
@@ -435,7 +435,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     private void RemarksFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RemarksFocusLost
         if(Remarks.getText().equals(""))
         {
-            Remarks.setText("Remarks");
+            Remarks.setText("-");
             Remarks.setForeground(newColor(0,118,221));
 
         }
