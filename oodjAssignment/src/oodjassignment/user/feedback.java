@@ -4,13 +4,9 @@
  */
 package oodjassignment.user;
 
+import java.awt.event.ActionEvent;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
@@ -20,47 +16,24 @@ import javax.swing.JOptionPane;
  */
 public class feedback extends javax.swing.JFrame {
 
-    /**
-     * Creates new form feedback
-     */
+    private final Feedb feedb;
+    
     public feedback() {
+        feedb = new Feedb();
         initComponents();
         // Set the hallType ComboBox to include the desired items
-        hallType.setModel(new DefaultComboBoxModel<>(new String[] {"Auditorium", "Banquet Hall", "Meeting Room"}));
-        
+        hallType.setModel(new DefaultComboBoxModel<>(new String[]{"Auditorium", "Banquet Hall", "Meeting Room"}));
+
         // Set default items in hall ComboBox when the form initializes
-        hall.setModel(new DefaultComboBoxModel<>(new String[] {"HALL 1", "HALL 2", "HALL 3"}));
-        
+        hall.setModel(new DefaultComboBoxModel<>(new String[]{"HALL 1", "HALL 2", "HALL 3"}));
+
         autofillId();
         id.setEditable(false);
-        
+
         setRealTimeDate();
         date.setEditable(false);
     }
     
-    public String generateID(int ID) 
-    {
-    return String.format("C%04d", ID);
-    }
-    
-    public int getNextID() {
-    int nextID = 1;  // Start with 1 if file is empty
-    String filePath = "src/oodjassignment/database/feedback.txt";
-    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-        String lastLine = "", currentLine;
-        while ((currentLine = br.readLine()) != null) {
-            lastLine = currentLine;  // Keep reading until the last line
-        }
-        if (!lastLine.isEmpty()) {
-            String[] fields = lastLine.split(",");  // Split the last line by commas
-            String lastID = fields[0].substring(1); // Remove the 'C' from the case ID
-            nextID = Integer.parseInt(lastID) + 1;  // Increment the ID
-        }
-    } catch (IOException e) {
-        e.printStackTrace();  // Handle any IO errors
-    }
-    return nextID;  // Return the next ID
-}
 
 
     @SuppressWarnings("unchecked")
@@ -169,49 +142,20 @@ public class feedback extends javax.swing.JFrame {
 
     
     private void autofillId() {
-    String filePath = "src/oodjassignment/database/cookie.txt";  // Path to your cookie file
-    String userId = null;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line = br.readLine(); // Read the first line from the file
-            if (line != null) {
-                String[] parts = line.split(","); // Split the line by commas
-                if (parts.length >= 1) {
-                    userId = parts[0]; // Extract the User ID (assuming it's the first element)
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();  // Print error stack trace if any exception occurs
-        }
-
+        String userId = feedb.getUserIdFromCookie();   
         if (userId != null) {
-            id.setText(userId);  // Autofill the ID JTextField with the user ID
+            id.setText(userId);
         }
     }
     
     private void setRealTimeDate() {
-        LocalDate currentDate = LocalDate.now();  // Get the current date
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formattedDate = currentDate.format(formatter); 
+        String formattedDate = feedb.getCurrentDate();
         date.setText(formattedDate);  
     }
         
     private void hallTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hallTypeActionPerformed
-    String selectedHallType = hallType.getSelectedItem().toString();
-
-    // Switch to update the hall ComboBox based on the hall type selection
-    switch (selectedHallType) {
-        case "Auditorium":
-        case "Banquet Hall":
-            hall.setModel(new DefaultComboBoxModel<>(new String[] {"HALL 1", "HALL 2", "HALL 3"}));
-            break;
-        case "Meeting Room":
-            hall.setModel(new DefaultComboBoxModel<>(new String[] {"ROOM 1", "ROOM 2", "ROOM 3"}));
-            break;
-        default:
-            hall.setModel(new DefaultComboBoxModel<>(new String[] {}));  // Empty if no match
-            break;
-    }
+        String selectedHallType = hallType.getSelectedItem().toString();
+        hall.setModel(feedb.getHallsForType(selectedHallType));
     }//GEN-LAST:event_hallTypeActionPerformed
 
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
@@ -219,36 +163,27 @@ public class feedback extends javax.swing.JFrame {
     }//GEN-LAST:event_idActionPerformed
 
     private void sendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendActionPerformed
-        // Get all the necessary data from the JTextFields and JComboBoxes
-    String customerId = id.getText();
-    String hallTypeValue = hallType.getSelectedItem().toString();
-    String hallNoValue = hall.getSelectedItem().toString();
-    String dateValue = date.getText();
-    String feedbackText = feedback.getText();
-    
-    // Generate a new Case ID
-    int nextID = getNextID();
-    String caseId = generateID(nextID);
+            String customerId = id.getText();
+            String hallTypeValue = hallType.getSelectedItem().toString();
+            String hallNoValue = hall.getSelectedItem().toString();
+            String dateValue = date.getText();
+            String feedbackText = feedback.getText();
 
-    // Prepare the feedback data to save
-    String feedbackData = caseId + "," + customerId + "," + hallTypeValue + "," + hallNoValue + "," + dateValue + "," + feedbackText + ", No" + ", No";
+            // Generate a new Case ID
+            int nextID = feedb.getNextID();
+            String caseId = feedb.generateID(nextID);
 
-    // Save the feedback data to feedback.txt
-    String filePath = "src/oodjassignment/database/feedback.txt";
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true))) {
-        bw.write(feedbackData);
-        bw.newLine();  // Move to the next line for future data
-    } catch (IOException e) {
-        e.printStackTrace();  // Handle any errors
-        JOptionPane.showMessageDialog(this, "Error saving feedback. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    
-    // Show a success message after saving
-    JOptionPane.showMessageDialog(this, "Feedback submitted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-    new
-    feedback().setVisible(true);
-    dispose();
+            // Prepare the feedback data to save
+            String feedbackData = caseId + "," + customerId + "," + hallTypeValue + "," + hallNoValue + "," + dateValue + "," + feedbackText + ", No, No";
+
+            // Save the feedback data using Feedb class
+            feedb.saveFeedback(feedbackData);
+
+            // Show success message
+            JOptionPane.showMessageDialog(this, "Feedback submitted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            new feedback().setVisible(true);
+            dispose();
     }//GEN-LAST:event_sendActionPerformed
 
     /**

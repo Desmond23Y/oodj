@@ -4,12 +4,9 @@
  */
 package oodjassignment;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -18,10 +15,10 @@ import javax.swing.JOptionPane;
  */
 public class Registerpage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Registerpage
-     */
+   private final Register register;
+   
     public Registerpage() {
+        register = new Register();
         initComponents();
     }
 
@@ -45,7 +42,7 @@ public class Registerpage extends javax.swing.JFrame {
         password_field = new javax.swing.JPasswordField();
         showpassword = new javax.swing.JCheckBox();
         register_button = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        logout = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,31 +51,31 @@ public class Registerpage extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Register Form");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 60, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Username");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Phone number");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Email");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 350, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Password");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, -1, -1));
-        getContentPane().add(email_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 360, 170, 30));
-        getContentPane().add(username_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 170, 30));
-        getContentPane().add(phone_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 280, 170, 30));
-        getContentPane().add(password_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 170, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 430, -1, -1));
+        getContentPane().add(email_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 170, 30));
+        getContentPane().add(username_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 170, 30));
+        getContentPane().add(phone_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 170, 30));
+        getContentPane().add(password_field, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, 170, 30));
 
         showpassword.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         showpassword.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,7 +85,7 @@ public class Registerpage extends javax.swing.JFrame {
                 showpasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 480, -1, -1));
+        getContentPane().add(showpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 470, -1, -1));
 
         register_button.setBackground(new java.awt.Color(0, 137, 248));
         register_button.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -99,64 +96,37 @@ public class Registerpage extends javax.swing.JFrame {
                 register_buttonActionPerformed(evt);
             }
         });
-        getContentPane().add(register_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 560, 100, 40));
+        getContentPane().add(register_button, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 540, 100, 40));
 
-        jButton1.setBackground(new java.awt.Color(0, 137, 248));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 50, 40));
+        logout.setBackground(new java.awt.Color(0, 137, 248));
+        logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
+        logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(logout, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 10, 50, 40));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 800));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public String generateID(int ID) 
-    {
-    return String.format("U%04d", ID);
-    }
-    
-    public int getNextID() {
-    int nextID = 1;
-    try (BufferedReader br = new BufferedReader(new FileReader("src/oodjassignment/database/User.txt"))) {
-        String lastLine = "", currentLine;
-        while ((currentLine = br.readLine()) != null) {
-            lastLine = currentLine;
-        }
-        if (!lastLine.isEmpty()) {
-            String[] fields = lastLine.split(",");
-            String lastID = fields[0].substring(1);  // Get the numeric part of the ID
-            nextID = Integer.parseInt(lastID) + 1;   // Increment the ID
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-    return nextID;
-}
-
     
     private void register_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_register_buttonActionPerformed
-       try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/User.txt", true))) {
-        if (!username_field.getText().isEmpty() 
-            && !phone_field.getText().isEmpty() 
-            && !email_field.getText().isEmpty() 
-            && !password_field.getText().isEmpty()) {
-            
-            String ID = generateID(getNextID());
-            
-            String rec = ID + "," + username_field.getText() + "," + phone_field.getText() + "," +
-                         email_field.getText() + "," + password_field.getText();
-            bw.write(rec + "\n");
-            JOptionPane.showMessageDialog(this, "Register Succesfully!!");
+        String username = username_field.getText();
+        String phone = phone_field.getText();
+        String email = email_field.getText();
+        String password = new String(password_field.getPassword());
+
+        boolean success = register.registerUser(username, phone, email, password);
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Register Successfully!!");
             setVisible(false);
-            new Loginpage().setVisible(true);
+            new Loginpage().setVisible(true); 
         } else {
             JOptionPane.showMessageDialog(this, "Please fill in all fields.");
         }
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
-        ex.printStackTrace();
-    }       
     }//GEN-LAST:event_register_buttonActionPerformed
 
     private void showpasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showpasswordActionPerformed
@@ -169,6 +139,12 @@ public class Registerpage extends javax.swing.JFrame {
             password_field.setEchoChar('*');
         }
     }//GEN-LAST:event_showpasswordActionPerformed
+
+    private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
+        new
+        Loginpage().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_logoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,12 +184,12 @@ public class Registerpage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JTextField email_field;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton logout;
     private javax.swing.JPasswordField password_field;
     private javax.swing.JTextField phone_field;
     private javax.swing.JButton register_button;

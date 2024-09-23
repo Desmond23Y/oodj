@@ -4,14 +4,7 @@
  */
 package oodjassignment.user;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,35 +14,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class bookingdetails extends javax.swing.JFrame {
 
+    private final Bookdetails bookdetails = new Bookdetails();
+    
     public bookingdetails() {
         initComponents();
-        String filePath = "src\\\\oodjassignment\\\\database\\\\Booking.txt";
-        File file = new File(filePath);
+        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+        bookdetails.loadBookings(model);
 
-        try {
-            // Create a BufferedReader to read the file
-            BufferedReader br = new BufferedReader(new FileReader(file));
-
-            // Get the table model from the JTable
-            DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-
-            // Clear existing rows in the table model to prevent duplication
-            model.setRowCount(0);
-
-            // Read each line from the file and add it to the table model
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] dataRow = line.split("/"); // Adjust the delimiter if necessary
-                model.addRow(dataRow);
-            }
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
-}
-        
-    booking.setEditable(false);
-    customer.setEditable(false);; 
-    type.setEditable(false);;
-    no.setEditable(false);; 
+        // Disable editing on text fields
+        bkid.setEditable(false);
+        customer.setEditable(false);
+        type.setEditable(false);
+        no.setEditable(false);
     }
 
     /**
@@ -63,7 +39,7 @@ public class bookingdetails extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        booking = new javax.swing.JTextField();
+        bkid = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         logout = new javax.swing.JButton();
         select = new javax.swing.JButton();
@@ -92,7 +68,7 @@ public class bookingdetails extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Request for cancel");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
-        getContentPane().add(booking, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 140, 30));
+        getContentPane().add(bkid, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 140, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -191,53 +167,17 @@ public class bookingdetails extends javax.swing.JFrame {
     }//GEN-LAST:event_reason_fieldActionPerformed
 
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
-    DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-    booking.setText(model.getValueAt(Aschedule.getSelectedRow(), 0).toString());
-    customer.setText(model.getValueAt(Aschedule.getSelectedRow(), 1).toString()); 
-    type.setText(model.getValueAt(Aschedule.getSelectedRow(), 2).toString());
-    no.setText(model.getValueAt(Aschedule.getSelectedRow(), 3).toString()); 
+    bookdetails.select(Aschedule, bkid, customer, type, no);
     }//GEN-LAST:event_selectActionPerformed
 
     private void requestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestActionPerformed
-        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        int selectedRow = Aschedule.getSelectedRow(); // Get the selected row
-
-        // Check if a row is selected
+        int selectedRow = Aschedule.getSelectedRow();
         if (selectedRow != -1) {
-            // Update table model with cancellation request
-            model.setValueAt("Request for cancel", selectedRow, 8);
-            model.setValueAt(reason_field.getText(), selectedRow, 9);
+            String reason = reason_field.getText();
+            DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+            bookdetails.updateBookingRequest(model, selectedRow, reason);
 
-            // Read data from booking.txt and modify the selected row
-            List<String> lines = new ArrayList<>();
-            try (BufferedReader br = new BufferedReader(new FileReader("src/oodjassignment/database/Booking.txt"))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    // Modify the line if it matches the selected row's unique identifier
-                    String[] columns = line.split("/"); // Assumes '/' as delimiter
-                    if (columns[0].equals(model.getValueAt(selectedRow, 0).toString())) {
-                        // Update status and remark for the selected row
-                        columns[8] = "Request for cancel";
-                        columns[9] = reason_field.getText();
-                        line = String.join("/", columns);
-                    }
-                    lines.add(line);
-                }
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, "Something went wrong while reading booking data.");
-                return;
-            }
-
-            // Write updated data back to booking.txt
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/Booking.txt"))) {
-                for (String line : lines) {
-                    bw.write(line + "\n");
-                }
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, "Something went wrong while saving booking data.");
-            }
-
-            // Navigate to the payment page
+            JOptionPane.showMessageDialog(this, "Cancellation requested.");
             new bookingdetails().setVisible(true);
             this.dispose();
         } else {
@@ -283,7 +223,7 @@ public class bookingdetails extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Aschedule;
     private javax.swing.JLabel background;
-    private javax.swing.JTextField booking;
+    private javax.swing.JTextField bkid;
     private javax.swing.JTextField customer;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class hall extends javax.swing.JFrame {
 
-    private Hallbooking generateID = new Hallbooking();
+    private Hallbooking hallbooking = new Hallbooking();
     private Hallbooking loadSchedule = new Hallbooking(); 
     private Hallbooking selectfield = new Hallbooking();
     
@@ -246,11 +246,11 @@ public class hall extends javax.swing.JFrame {
     if (selectedRow != -1) {
         try {
             // Generate a new booking ID
-            int nextID = generateID.getNextBookingID(); 
-            String bookingId = generateID.generateBookingID(nextID);
+            int nextID = hallbooking.getNextBookingID(); 
+            String bookingId = hallbooking.generateBookingID(nextID);
 
             // Prepare the booking record
-            String customerId = generateID.getCustomerID();
+            String customerId = hallbooking.getCustomerID();
             String remarks = remark.getText().trim();
 
             // Validate remarks
@@ -259,13 +259,13 @@ public class hall extends javax.swing.JFrame {
                 return;
             }
 
-            String record = generateID.prepareBookingRecord(model, selectedRow, bookingId, customerId, remarks);
+            String record = hallbooking.prepareBookingRecord(model, selectedRow, bookingId, customerId, remarks);
 
             // Save the booking record
-            generateID.saveBooking(record);
+            hallbooking.saveBooking(record);
 
             // Update the schedule file with the new "Pending" status
-            generateID.updateScheduleFile(Aschedule, selectedRow, remarks);
+            hallbooking.updateScheduleFile(Aschedule, selectedRow, remarks);
 
             // Display a confirmation message
             JOptionPane.showMessageDialog(this, "Booking confirmed! Booking ID: " + bookingId);
