@@ -327,6 +327,7 @@ public class managerIssue_View extends javax.swing.JFrame {
                     line = String.join(",", data);
                     statusUpdated = true;
                 }
+                line += ",-"; // Add "-" as the 9th data
                 fileContent.add(line);
             }
         } catch (IOException ex) {
@@ -348,6 +349,7 @@ public class managerIssue_View extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Case ID not found.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
     
     private void updateStatusLabel() {
         String caseId = lbl_showCaseId.getText();
