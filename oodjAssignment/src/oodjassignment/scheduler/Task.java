@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,11 +18,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Task extends javax.swing.JFrame {
 
+    private ReadData readData;
     /**
      * Creates new form Admin_message
      */
     public Task() {
         initComponents();
+        readData = new ReadData();
+        readData.loadTasksForUser(Task);
     }
 
     /**
