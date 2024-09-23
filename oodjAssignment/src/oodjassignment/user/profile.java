@@ -176,6 +176,9 @@ public class profile extends javax.swing.JFrame {
                             phone_field.getText(), email_field.getText(),
                 new String(password_field.getPassword()), "ACTIVE");
         userProfile.updateUserProfile();
+        new
+        homepage().setVisible(true);
+        dispose();
     }//GEN-LAST:event_update_buttonActionPerformed
 
     private void password_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_fieldActionPerformed

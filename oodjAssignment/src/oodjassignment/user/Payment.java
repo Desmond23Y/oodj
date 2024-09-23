@@ -14,7 +14,7 @@ public class Payment extends javax.swing.JFrame {
     public Payment() {
         initComponents();
         // Use AutofillData class to autofill user data
-        Autofilldata.autofillUserData(id, type, hall, Price, cfPrice);
+        Pay.autofillUserData(id, type, hall, Price, cfPrice);
         id.setEditable(false);
         type.setEditable(false);
         hall.setEditable(false);
@@ -131,9 +131,9 @@ public class Payment extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Payment successful! Please review your receipt.");
 
             // Call methods from other classes
-            GenerateReceipt.generateReceipt(type.getText(), hall.getText(), Price.getText());
-            Autofilldata.updateBookingAndSchedule(type, hall);
-            Autofilldata.updatePendingFile(type, hall);
+            Pay.generateReceipt(type.getText(), hall.getText(), Price.getText());
+            Pay.updateBookingAndSchedule(type, hall);
+            Pay.updatePendingFile(type, hall);
 
             new homepage().setVisible(true);
             dispose();

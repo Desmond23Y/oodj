@@ -21,9 +21,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class hall extends javax.swing.JFrame {
 
-    private GenerateID generateID = new GenerateID();
-    private AutofillHall loadSchedule = new AutofillHall(); 
-    private AutofillHall selectfield = new AutofillHall();
+    private Hallbooking generateID = new Hallbooking();
+    private Hallbooking loadSchedule = new Hallbooking(); 
+    private Hallbooking selectfield = new Hallbooking();
     
     public hall() {
     initComponents();
@@ -95,6 +95,7 @@ public class hall extends javax.swing.JFrame {
         getContentPane().add(Pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 730, 190, 30));
 
         logout_button.setBackground(new java.awt.Color(0, 137, 248));
+        logout_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
         logout_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logout_buttonActionPerformed(evt);
@@ -197,6 +198,8 @@ public class hall extends javax.swing.JFrame {
             }
         });
         getContentPane().add(select, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 750, 80, 30));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
 
         pack();
@@ -249,7 +252,7 @@ public class hall extends javax.swing.JFrame {
             String bookingId = generateID.generateBookingID(nextID);
 
             // Prepare the booking record
-            String customerId = AutofillHall.getCustomerID();
+            String customerId = Hallbooking.getCustomerID();
             String record = bookingId + "/" + customerId + "/" +
                     model.getValueAt(selectedRow, 0).toString() + "/" + // Hall Type
                     model.getValueAt(selectedRow, 1).toString() + "/" + // Hall Number
@@ -262,12 +265,15 @@ public class hall extends javax.swing.JFrame {
 
             // Save the booking record
             generateID.saveBooking(record, "src/oodjassignment/database/Booking.txt");
-
+            generateID.saveBooking(record, "src/oodjassignment/database/Pending.txt");
             // Update the schedule file with the new "Pending" status
             generateID.updateScheduleFile(Aschedule, selectedRow);
 
             // Display a confirmation message
             JOptionPane.showMessageDialog(this, "Booking confirmed! Booking ID: " + bookingId);
+            new
+            Payment().setVisible(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(this, "Please select a schedule first.", "Error", JOptionPane.ERROR_MESSAGE);
         }

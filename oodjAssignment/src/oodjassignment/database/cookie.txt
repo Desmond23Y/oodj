@@ -1,1 +1,1 @@
-M0002,Sam,0187878555,SamGod@mail.com,123,MANAGER
+U0001,Hong Hao,01110727318,honghao@gmail.com,@Password1,ACTIVE,Unknown

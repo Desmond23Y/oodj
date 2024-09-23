@@ -50,27 +50,68 @@ public class UserProfile {
     }
 
     public void updateUserProfile() {
-        String filePath = "src/oodjassignment/database/User.txt";
-        File inputFile = new File(filePath);
+        String userFilePath = "src/oodjassignment/database/User.txt";
+        String cookieFilePath = "src/oodjassignment/database/cookie.txt";
+        File userFile = new File(userFilePath);
+        File cookieFile = new File(cookieFilePath);
+
         StringBuilder fileContent = new StringBuilder();
+        StringBuilder cookieContent = new StringBuilder();
         boolean isUpdated = false;
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(userFile))) {
             String currentLine;
             while ((currentLine = reader.readLine()) != null) {
                 String[] details = currentLine.split(",");
-                if (details[0].equals(id)) {
+                if (details[0].equals(id)) {  // Assuming details[0] is the user ID
+                // Trim and uppercase the ID to prevent extra spaces or case issues
+                String firstLetter = id.trim().substring(0, 1).toUpperCase();
+                System.out.println("First letter of ID: " + firstLetter);
+                String role = "";
+
+            // Assign role based on the starting letter of the ID
+                    switch (firstLetter) {
+                        case "U":
+                            role = "User";
+                            break;
+                        case "S":
+                            role = "Scheduler";
+                            break;
+                        case "M":
+                            role = "Manager";
+                            break;
+                        case "A":
+                            role = "Admin";
+                            break;
+                        default:
+                            role = "Unknown";  // Fallback if the first letter doesn't match
+                    }
+
+                    // Update the record (no need to modify role in User.txt, but add to cookie)
                     String updatedRecord = String.join(",", id, username, phone, email, password, "ACTIVE");
                     fileContent.append(updatedRecord).append(System.lineSeparator());
+
+                    // Append to cookie with the role
+                    String updatedCookieRecord = String.join(",", id, username, phone, email, password, "ACTIVE", role);
+                    cookieContent.append(updatedCookieRecord).append(System.lineSeparator());
+
                     isUpdated = true;
                 } else {
                     fileContent.append(currentLine).append(System.lineSeparator());
                 }
             }
+
             if (isUpdated) {
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile))) {
+                // Write updated content to User.txt
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(userFile))) {
                     writer.write(fileContent.toString());
                 }
+
+                // Write the same updated data with role to cookie.txt
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(cookieFile))) {
+                    writer.write(cookieContent.toString());
+                }
+
                 JOptionPane.showMessageDialog(null, "Update Successfully!!");
             } else {
                 JOptionPane.showMessageDialog(null, "User ID not found.");

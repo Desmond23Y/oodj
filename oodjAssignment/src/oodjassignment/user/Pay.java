@@ -4,17 +4,25 @@
  */
 package oodjassignment.user;
 
-import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-public class Autofilldata {
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author User
+ */
+public class Pay {
     
-    public static void autofillUserData(JTextField id, JTextField type, JTextField hall, JTextField price, JTextField cfPrice) {
+        public static void autofillUserData(JTextField id, JTextField type, JTextField hall, JTextField price, JTextField cfPrice) {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/oodjassignment/database/Pending.txt"))) {
             String line;
 
@@ -42,7 +50,7 @@ public class Autofilldata {
         public static void updateBookingAndSchedule(JTextField type, JTextField hall) {
             String[] filePaths = {
                 "src/oodjassignment/database/Booking.txt",
-                "src/oodjassignment/database/Schedule.txt"
+                "src/oodjassignment/database/Schedule.txt",
             };
 
             for (String filePath : filePaths) {
@@ -121,4 +129,22 @@ public class Autofilldata {
                 JOptionPane.showMessageDialog(null, "Error writing to Pending.txt");
             }
         }
-}    
+        
+        public static void generateReceipt(String hallType, String hall, String price) {
+        // Get the current date and time
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+
+        // Create receipt details
+        String receipt = "----------- Receipt -----------\n" +
+                         "Date: " + dtf.format(now) + "\n" +
+                         "Hall Type: " + hallType + "\n" +
+                         "Hall: " + hall + "\n" +
+                         "Price: " + price + "\n" +
+                         "-------------------\n" +
+                         "Thank you for your payment!";
+
+        // Display the receipt in a dialog box
+        JOptionPane.showMessageDialog(null, receipt, "Payment Receipt", JOptionPane.INFORMATION_MESSAGE);
+    }
+}
