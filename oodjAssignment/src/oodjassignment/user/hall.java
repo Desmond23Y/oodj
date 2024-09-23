@@ -21,89 +21,20 @@ import javax.swing.table.DefaultTableModel;
  */
 public class hall extends javax.swing.JFrame {
 
+    private GenerateID generateID = new GenerateID();
+    private AutofillHall loadSchedule = new AutofillHall(); 
+    private AutofillHall selectfield = new AutofillHall();
+    
     public hall() {
-        initComponents();
-        loadSchedule();
+    initComponents();
+    loadSchedule.loadSchedule(Aschedule);
+    type.setEditable(false);
+    no.setEditable(false);
+    price.setEditable(false);
+    date.setEditable(false);
+    time.setEditable(false);
+    duration.setEditable(false);
     }
-
-    // Load the schedule from the file and display it in the table
-    private void loadSchedule() {
-        String filePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
-        File file = new File(filePath);
-
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            // Get the table model from the JTable
-            DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-
-            // Clear existing rows in the table model to prevent duplication
-            model.setRowCount(0);
-
-            // Read each line from the file and add it to the table model
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] dataRow = line.split("/"); // Adjust the delimiter if necessary
-                model.addRow(dataRow);
-            }
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
-        }
-    }
-
-    // Method to generate a booking ID
-    public String generateBookingID(int nextID) {
-        return "HB" + String.format("%04d", nextID);
-    }
-    
-    public int getNextBookingID() {
-    int nextID = 1; // Default starting ID
-    String filePath = "src/oodjassignment/database/Booking.txt"; // Path to your booking file
-
-    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-        String lastLine = "", currentLine;
-        
-        // Read the file line by line to get the last one
-        while ((currentLine = br.readLine()) != null) {
-            lastLine = currentLine.trim(); // Remove any leading/trailing whitespace
-        }
-
-        // Process the last line to get the last booking ID
-        if (!lastLine.isEmpty()) {
-            String[] fields = lastLine.split("/"); // Assuming the data is delimited by "/"
-            String lastID = fields[0]; // First field is the booking ID, e.g., "HB0001"
-            
-            if (lastID.startsWith("HB")) { // Ensure the ID has the expected "HB" prefix
-                String numericPart = lastID.substring(2);  // Get the numeric part after "HB"
-                nextID = Integer.parseInt(numericPart) + 1;   // Increment the numeric part
-            }
-        }
-    } catch (IOException | NumberFormatException e) {
-        // Handle exceptions (file not found, invalid format, etc.)
-        e.printStackTrace();
-    }
-    
-    return nextID; // Return the next available ID
-    }
-
-    // Get the customer ID from cookie file
-    private String getCustomerIdFromCookie() {
-        String filePath = "src/oodjassignment/database/cookie.txt";  // Path to your cookie file
-        String userId = null;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line = br.readLine(); // Read the first line from the file
-            if (line != null) {
-                String[] parts = line.split(","); // Split the line by commas
-                if (parts.length >= 1) {
-                    userId = parts[0]; // Extract the User ID (assuming it's the first element)
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();  // Print error stack trace if any exception occurs
-        }
-        return userId;
-    }
-
-
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -164,7 +95,6 @@ public class hall extends javax.swing.JFrame {
         getContentPane().add(Pay, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 730, 190, 30));
 
         logout_button.setBackground(new java.awt.Color(0, 137, 248));
-        logout_button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
         logout_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logout_buttonActionPerformed(evt);
@@ -267,8 +197,6 @@ public class hall extends javax.swing.JFrame {
             }
         });
         getContentPane().add(select, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 750, 80, 30));
-
-        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 800));
 
         pack();
@@ -305,118 +233,46 @@ public class hall extends javax.swing.JFrame {
     }//GEN-LAST:event_durationActionPerformed
 
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
-        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        int selectedRow = Aschedule.getSelectedRow();
-
-        if (selectedRow != -1) {
-            String status = model.getValueAt(selectedRow, 6).toString(); 
-
-            
-            if (status.equalsIgnoreCase("Available")) {
-                // If available, proceed with setting the text fields
-                type.setText(model.getValueAt(selectedRow, 0).toString());
-                no.setText(model.getValueAt(selectedRow, 1).toString());
-                price.setText(model.getValueAt(selectedRow, 2).toString());
-                date.setText(model.getValueAt(selectedRow, 3).toString());
-                time.setText(model.getValueAt(selectedRow, 4).toString());
-                duration.setText(model.getValueAt(selectedRow, 5).toString());
-            } else {
-                JOptionPane.showMessageDialog(null, "This schedule is not available for selection.", "Warning", JOptionPane.WARNING_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a schedule first.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+       selectfield.autofillFields(Aschedule, type, no, price, date, time, duration, remark);
     }//GEN-LAST:event_selectActionPerformed
 
     private void PayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayActionPerformed
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        int selectedRow = Aschedule.getSelectedRow(); // Get the selected row
+        int selectedRow = Aschedule.getSelectedRow(); // Get the selected row from the schedule table
 
-        // Check if a row is selected
         if (selectedRow != -1) {
-            model.setValueAt("Pending", selectedRow, 6); // Update status to 'Pending'
-            model.setValueAt(remark.getText(), selectedRow, 7); // Update remark
+            // Update the selected row's status in the table to "Pending"
+            generateID.updateSchedule(Aschedule, selectedRow);
 
-            // Get the Customer ID from cookie.txt
-            String customerId = getCustomerIdFromCookie();
+            // Generate a new booking ID
+            int nextID = generateID.getNextBookingID();
+            String bookingId = generateID.generateBookingID(nextID);
 
-            // Generate a new Booking ID
-            int nextID = getNextBookingID();
-            String bookingId = generateBookingID(nextID);
-
-            // Prepare the booking record (same format for both files)
+            // Prepare the booking record
+            String customerId = AutofillHall.getCustomerID();
             String record = bookingId + "/" + customerId + "/" +
-                            model.getValueAt(selectedRow, 0).toString() + "/" + // Hall Name
-                            model.getValueAt(selectedRow, 1).toString() + "/" + // Date
-                            model.getValueAt(selectedRow, 2).toString() + "/" + // Time Slot
-                            model.getValueAt(selectedRow, 3).toString() + "/" + // Event Type
-                            model.getValueAt(selectedRow, 4).toString() + "/" + // Price
-                            model.getValueAt(selectedRow, 5).toString() + "/" + // Hall Capacity
-                            model.getValueAt(selectedRow, 6).toString() + "/" + // Status (Pending)
-                            model.getValueAt(selectedRow, 7).toString();        // Remark
+                    model.getValueAt(selectedRow, 0).toString() + "/" + // Hall Type
+                    model.getValueAt(selectedRow, 1).toString() + "/" + // Hall Number
+                    model.getValueAt(selectedRow, 2).toString() + "/" + // Price
+                    model.getValueAt(selectedRow, 3).toString() + "/" + // Date
+                    model.getValueAt(selectedRow, 4).toString() + "/" + // Time
+                    model.getValueAt(selectedRow, 5).toString() + "/" + // Duration
+                    "Pending" + "/" + // Status
+                    model.getValueAt(selectedRow, 7).toString(); // Remarks
 
-            // Save booking data to the Booking.txt file
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/Booking.txt", true))) {
-                bw.write(record + "\n");
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, "Something went wrong while saving booking data.");
-            }
+            // Save the booking record
+            generateID.saveBooking(record, "src/oodjassignment/database/Booking.txt");
 
-            // Save the same data to Pending.txt with "Pending" status
-            saveToFile("src/oodjassignment/database/Pending.txt", record);
+            // Update the schedule file with the new "Pending" status
+            generateID.updateScheduleFile(Aschedule, selectedRow);
 
-            // Now update the Schedule.txt file
-            String scheduleFilePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
-            List<String> scheduleLines = new ArrayList<>();
-
-            // Read all lines from Schedule.txt into a list
-            try (BufferedReader br = new BufferedReader(new FileReader(scheduleFilePath))) {
-                String line;
-                while ((line = br.readLine()) != null) {
-                    scheduleLines.add(line);
-                }
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, "Something went wrong while reading schedule data.");
-            }
-
-            // Find and update the corresponding line in scheduleLines with "Pending" status
-            String updatedRecord = model.getValueAt(selectedRow, 0).toString() + "/" +
-                                   model.getValueAt(selectedRow, 1).toString() + "/" +
-                                   model.getValueAt(selectedRow, 2).toString() + "/" +
-                                   model.getValueAt(selectedRow, 3).toString() + "/" +
-                                   model.getValueAt(selectedRow, 4).toString() + "/" +
-                                   model.getValueAt(selectedRow, 5).toString() + "/" +
-                                   "Pending" + "/" + // Update status to 'Pending'
-                                   remark.getText(); // Update remark
-
-            // Replace the corresponding line in the list
-            scheduleLines.set(selectedRow, updatedRecord);
-
-            // Write the updated scheduleLines back to Schedule.txt
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(scheduleFilePath))) {
-                for (String scheduleLine : scheduleLines) {
-                    bw.write(scheduleLine + "\n");
-                }
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, "Something went wrong while saving schedule data.");
-            }
-
-            // Navigate to the payment page
-            new Payment().setVisible(true);
-            this.dispose();
+            // Display a confirmation message
+            JOptionPane.showMessageDialog(this, "Booking confirmed! Booking ID: " + bookingId);
         } else {
-            JOptionPane.showMessageDialog(this, "Please select a row to proceed with payment.");
+            JOptionPane.showMessageDialog(this, "Please select a schedule first.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_PayActionPerformed
 
-    
-    private void saveToFile(String filepath, String record) {
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter(filepath, true))) {
-        bw.write(record + "\n");
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(this, "Something went wrong while saving to " + filepath);
-    }
-    }
     /**
      * @param args the command line arguments
      */
