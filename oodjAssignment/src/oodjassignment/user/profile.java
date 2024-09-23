@@ -14,11 +14,26 @@ import java.io.File;
 import java.io.FileWriter;
 
 public class profile extends javax.swing.JFrame {
-
+    private UserProfile userProfile;
 
     public profile() {
         initComponents();
-        autofillUserData();
+        userProfile = UserProfile.autofillUserData();
+        if (userProfile != null) {
+            populateFields();
+        }
+    }
+    
+    private void populateFields() {
+        id_field.setText(userProfile.getId());
+        username_field.setText(userProfile.getUsername());
+        phone_field.setText(userProfile.getPhone());
+        email_field.setText(userProfile.getEmail());
+        password_field.setText(userProfile.getPassword());
+        acc_status.setText(userProfile.getAccountStatus());
+        
+        id_field.setEditable(false);
+        acc_status.setEditable(false);
     }
     
 
@@ -157,101 +172,17 @@ public class profile extends javax.swing.JFrame {
 
     
     private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
-    String filePath = "src/oodjassignment/database/User.txt";
-    File inputFile = new File(filePath);
-
-    try (
-        BufferedReader reader = new BufferedReader(new FileReader(inputFile))
-    ) {
-        StringBuilder fileContent = new StringBuilder();
-        String currentLine;
-        boolean isUpdated = false;
-
-        // Read the file content and update if necessary
-        while ((currentLine = reader.readLine()) != null) {
-            String[] details = currentLine.split(",");
-
-            if (details[0].equals(id_field.getText())) { // Compare with locked ID field
-                // Ensure all required fields are filled before updating
-                if (!username_field.getText().isEmpty() 
-                    && !phone_field.getText().isEmpty() 
-                    && !email_field.getText().isEmpty() 
-                    && !password_field.getText().isEmpty()) {
-
-                    // Create the updated record
-                    String updatedRecord = details[0] + "," + username_field.getText() + "," +
-                                           phone_field.getText() + "," + email_field.getText() + "," +
-                                           password_field.getText() + ",ACTIVE";
-
-                    // Append the updated record to the file content
-                    fileContent.append(updatedRecord).append(System.lineSeparator());
-                    isUpdated = true;
-                } else {
-                    JOptionPane.showMessageDialog(this, "Please fill in all fields.");
-                    return;
-                }
-            } else {
-                // Append the existing record to the file content
-                fileContent.append(currentLine).append(System.lineSeparator());
-            }
-        }
-
-        // If update was successful, write the new content back to the file
-        if (isUpdated) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(inputFile))) {
-                writer.write(fileContent.toString());
-            }
-            JOptionPane.showMessageDialog(this, "Update Successfully!!");
-            setVisible(false);
-            new profile().setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "User ID not found.");
-        }
-
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
-        ex.printStackTrace();
-    }
+        userProfile = new UserProfile(id_field.getText(), username_field.getText(),
+                            phone_field.getText(), email_field.getText(),
+                new String(password_field.getPassword()), "ACTIVE");
+        userProfile.updateUserProfile();
     }//GEN-LAST:event_update_buttonActionPerformed
 
     private void password_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_fieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_password_fieldActionPerformed
 
-    private void autofillUserData() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("src/oodjassignment/database/cookie.txt"))) {
-            String line;
-            
-            // Read the first line from the file
-            if ((line = reader.readLine()) != null) {
-                // Split the line to extract user data
-                String[] userData = line.split(",");
-
-                // Check if the file has the correct format
-                if (userData.length == 7) {
-                    // Auto-fill the text fields with user data
-                    id_field.setText(userData[0]);
-                    username_field.setText(userData[1]);
-                    phone_field.setText(userData[2]);
-                    email_field.setText(userData[3]);
-                    password_field.setText(userData[4]);
-                    acc_status.setText(userData[5]);
-                    
-
-                    // Lock the User ID field to prevent editing
-                    id_field.setEditable(false);
-                    acc_status.setEditable(false);
-                }
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error loading user data.");
-        }
-    }
-
     
-
     public static void main(String args[]) {
             java.awt.EventQueue.invokeLater(() -> {
             new profile().setVisible(true);  // Open the JFrame
