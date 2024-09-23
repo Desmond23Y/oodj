@@ -104,31 +104,47 @@ public class Hallbooking {
             duration.setText(model.getValueAt(selectedRow, 5).toString());
             remark.setText(model.getValueAt(selectedRow, 7).toString()); 
         } else {
-            JOptionPane.showMessageDialog(null, "Booked", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Not Available", "Error", JOptionPane.ERROR_MESSAGE);
         }
     } else {
         JOptionPane.showMessageDialog(null, "Please select a schedule first.", "Error", JOptionPane.ERROR_MESSAGE);
     }
-        }
+}
 
-    // Save the booking to a file
-    public void saveBooking(String record, String filePath) {
+    
+        public String prepareBookingRecord(DefaultTableModel model, int selectedRow, String bookingId, String customerId, String remarks) {
+        return bookingId + "/" + customerId + "/" +
+                model.getValueAt(selectedRow, 0).toString() + "/" + // Hall Type
+                model.getValueAt(selectedRow, 1).toString() + "/" + // Hall Number
+                model.getValueAt(selectedRow, 2).toString() + "/" + // Price
+                model.getValueAt(selectedRow, 3).toString() + "/" + // Date
+                model.getValueAt(selectedRow, 4).toString() + "/" + // Time
+                model.getValueAt(selectedRow, 5).toString() + "/" + // Duration
+                "Pending" + "/" + // Status
+                remarks;
+    }
+
+    // Method to save the booking record to files
+    public void saveBooking(String record) {
+        try {
+            // Save to Booking.txt
+            saveToFile(record, "src/oodjassignment/database/Booking.txt");
+            // Save to Pending.txt
+            saveToFile(record, "src/oodjassignment/database/Pending.txt");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Something went wrong while saving the booking record.");
+        }
+    }
+    
+    private void saveToFile(String record, String filePath) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true))) {
             bw.write(record + "\n");
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Something went wrong while saving booking data.");
         }
     }
 
     // Update the schedule status to "Pending"
-    public void updateSchedule(javax.swing.JTable Aschedule, int selectedRow) {
-        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        model.setValueAt("Pending", selectedRow, 6); // Update status to 'Pending'
-    }
-
-    // Update the schedule file
-    public void updateScheduleFile(javax.swing.JTable Aschedule, int selectedRow) {
-        String scheduleFilePath = "src\\\\oodjassignment\\\\database\\\\Schedule.txt";
+    public void updateScheduleFile(javax.swing.JTable Aschedule, int selectedRow, String remarks) {
+        String scheduleFilePath = "src/oodjassignment/database/Schedule.txt";
         List<String> scheduleLines = new ArrayList<>();
 
         // Read all lines from Schedule.txt into a list
@@ -141,7 +157,7 @@ public class Hallbooking {
             JOptionPane.showMessageDialog(null, "Something went wrong while reading schedule data.");
         }
 
-        // Find and update the corresponding line in scheduleLines with "Pending" status
+        // Create updated record with "Pending" status
         String updatedRecord = Aschedule.getValueAt(selectedRow, 0).toString() + "/" +
                 Aschedule.getValueAt(selectedRow, 1).toString() + "/" +
                 Aschedule.getValueAt(selectedRow, 2).toString() + "/" +
@@ -149,7 +165,7 @@ public class Hallbooking {
                 Aschedule.getValueAt(selectedRow, 4).toString() + "/" +
                 Aschedule.getValueAt(selectedRow, 5).toString() + "/" +
                 "Pending" + "/" +
-                Aschedule.getValueAt(selectedRow, 7).toString(); // Updated line
+                remarks; // Remarks
 
         // Replace the corresponding line in the scheduleLines list
         scheduleLines.set(selectedRow, updatedRecord);

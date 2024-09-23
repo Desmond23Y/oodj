@@ -240,43 +240,46 @@ public class hall extends javax.swing.JFrame {
     }//GEN-LAST:event_selectActionPerformed
 
     private void PayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PayActionPerformed
-        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        int selectedRow = Aschedule.getSelectedRow(); // Get the selected row from the schedule table
+    DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+    int selectedRow = Aschedule.getSelectedRow(); // Get the selected row from the schedule table
 
-        if (selectedRow != -1) {
-            // Update the selected row's status in the table to "Pending"
-            generateID.updateSchedule(Aschedule, selectedRow);
-
+    if (selectedRow != -1) {
+        try {
             // Generate a new booking ID
-            int nextID = generateID.getNextBookingID();
+            int nextID = generateID.getNextBookingID(); 
             String bookingId = generateID.generateBookingID(nextID);
 
             // Prepare the booking record
-            String customerId = Hallbooking.getCustomerID();
-            String record = bookingId + "/" + customerId + "/" +
-                    model.getValueAt(selectedRow, 0).toString() + "/" + // Hall Type
-                    model.getValueAt(selectedRow, 1).toString() + "/" + // Hall Number
-                    model.getValueAt(selectedRow, 2).toString() + "/" + // Price
-                    model.getValueAt(selectedRow, 3).toString() + "/" + // Date
-                    model.getValueAt(selectedRow, 4).toString() + "/" + // Time
-                    model.getValueAt(selectedRow, 5).toString() + "/" + // Duration
-                    "Pending" + "/" + // Status
-                    model.getValueAt(selectedRow, 7).toString(); // Remarks
+            String customerId = generateID.getCustomerID();
+            String remarks = remark.getText().trim();
+
+            // Validate remarks
+            if (remarks.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Remarks cannot be empty.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            String record = generateID.prepareBookingRecord(model, selectedRow, bookingId, customerId, remarks);
 
             // Save the booking record
-            generateID.saveBooking(record, "src/oodjassignment/database/Booking.txt");
-            generateID.saveBooking(record, "src/oodjassignment/database/Pending.txt");
+            generateID.saveBooking(record);
+
             // Update the schedule file with the new "Pending" status
-            generateID.updateScheduleFile(Aschedule, selectedRow);
+            generateID.updateScheduleFile(Aschedule, selectedRow, remarks);
 
             // Display a confirmation message
             JOptionPane.showMessageDialog(this, "Booking confirmed! Booking ID: " + bookingId);
-            new
-            Payment().setVisible(true);
+            new Payment().setVisible(true);
             dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a schedule first.", "Error", JOptionPane.ERROR_MESSAGE);
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "An unexpected error occurred: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); // Print stack trace for debugging
         }
+        // Print stack trace for debugging
+        
+    } else {
+        JOptionPane.showMessageDialog(this, "Please select a schedule first.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_PayActionPerformed
 
     /**

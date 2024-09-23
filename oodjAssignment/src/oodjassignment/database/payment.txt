@@ -1,4 +1,5 @@
 Hall Type: Auditorium, Hall: HALL 1, Price: RM 600
-Hall Type: , Hall: , Price: 
 Hall Type: Banquet Hall, Hall: HALL 1, Price: RM 200
 Hall Type: Banquet Hall, Hall: HALL 1, Price: RM 200
+
+Hall Type: Auditorium, Hall: HALL 2, Price: RM 600

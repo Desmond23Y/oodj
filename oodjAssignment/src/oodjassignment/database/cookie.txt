@@ -1,1 +1,1 @@
-U0001,Hong Hao,01110727318,honghao@gmail.com,@Password1,ACTIVE,Unknown
+U0001,Hong Hao,01110727318,honghao0727@gmail.com,@Password1,ACTIVE,USER

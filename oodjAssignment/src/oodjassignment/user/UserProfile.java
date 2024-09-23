@@ -65,34 +65,13 @@ public class UserProfile {
                 String[] details = currentLine.split(",");
                 if (details[0].equals(id)) {  // Assuming details[0] is the user ID
                 // Trim and uppercase the ID to prevent extra spaces or case issues
-                String firstLetter = id.trim().substring(0, 1).toUpperCase();
-                System.out.println("First letter of ID: " + firstLetter);
-                String role = "";
-
-            // Assign role based on the starting letter of the ID
-                    switch (firstLetter) {
-                        case "U":
-                            role = "User";
-                            break;
-                        case "S":
-                            role = "Scheduler";
-                            break;
-                        case "M":
-                            role = "Manager";
-                            break;
-                        case "A":
-                            role = "Admin";
-                            break;
-                        default:
-                            role = "Unknown";  // Fallback if the first letter doesn't match
-                    }
 
                     // Update the record (no need to modify role in User.txt, but add to cookie)
                     String updatedRecord = String.join(",", id, username, phone, email, password, "ACTIVE");
                     fileContent.append(updatedRecord).append(System.lineSeparator());
 
                     // Append to cookie with the role
-                    String updatedCookieRecord = String.join(",", id, username, phone, email, password, "ACTIVE", role);
+                    String updatedCookieRecord = String.join(",", id, username, phone, email, password, "ACTIVE");
                     cookieContent.append(updatedCookieRecord).append(System.lineSeparator());
 
                     isUpdated = true;
