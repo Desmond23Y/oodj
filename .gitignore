@@ -89,4 +89,5 @@ nb-configuration.xml
 ##############################
 *.log
 oodjAssignment/nbproject/private/private.xml
+oodjAssignment/nbproject/private/private.properties
 *.xml
