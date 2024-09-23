@@ -107,7 +107,7 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
         review.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         review.setForeground(new java.awt.Color(153, 153, 153));
         review.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        review.setText("Review");
+        review.setText("-");
         review.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 reviewFocusGained(evt);
@@ -361,7 +361,7 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
     }//GEN-LAST:event_ResetActionPerformed
 
     private void reviewFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_reviewFocusGained
-               if(review.getText().equals("Review"))
+               if(review.getText().equals("-"))
         {
             review.setText("");
             review.setForeground(newColor(0,118,221));
@@ -371,7 +371,7 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
     private void reviewFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_reviewFocusLost
         if(review.getText().equals(""))
         {
-            review.setText("Review");
+            review.setText("-");
             review.setForeground(newColor(0,118,221));
 
         }

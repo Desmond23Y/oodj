@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Acer
  */
-public class ATable {
+public class ATable extends ScheduleManager {
     
     
     public void editSchedule(DefaultTableModel model, JComboBox<String> halltype, JComboBox<String> hall_no, JTextField Price, JTextField Date, JTextField time, JTextField duration, JComboBox<String> status, JTextField Remarks, JTable Aschedule) {
@@ -80,21 +80,7 @@ public class ATable {
     }
 
     // Method to validate date format
-    private boolean isValidDate(String dateStr) {
-        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
-        sdf.setLenient(false); // Set lenient to false to strictly parse the date
-        try {
-            sdf.parse(dateStr);
-            return true; // Date format is valid
-        } catch (ParseException e) {
-            return false; // Invalid date format
-        }
-    }
 
-    // Method to check if a string is numeric
-    private boolean isNumeric(String str) {
-        return str.matches("\\d+"); // Matches one or more digits
-    }
     
     public void deleteSchedule(JTable Aschedule) {
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
