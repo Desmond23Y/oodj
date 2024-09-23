@@ -87,6 +87,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         duration = new javax.swing.JTextField();
         hallsno = new javax.swing.JLabel();
         hall_no = new javax.swing.JComboBox<>();
+        HM = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -398,6 +399,19 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 280, 600));
 
+        HM.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        HM.setForeground(new java.awt.Color(102, 102, 102));
+        HM.setText("Hall Maintenance");
+        HM.setMaximumSize(new java.awt.Dimension(155, 39));
+        HM.setMinimumSize(new java.awt.Dimension(155, 39));
+        HM.setPreferredSize(new java.awt.Dimension(155, 39));
+        HM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HMActionPerformed(evt);
+            }
+        });
+        jPanel1.add(HM, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 150, 40));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         background.setText("jLabel1");
         background.setMaximumSize(new java.awt.Dimension(1200, 1000));
@@ -497,6 +511,11 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
         calculatePrice();
     }//GEN-LAST:event_durationActionPerformed
 
+    private void HMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HMActionPerformed
+        setVisible(false);
+        new Hall_maintenance_schedule().setVisible(true);
+    }//GEN-LAST:event_HMActionPerformed
+
     
      private void calculatePrice() {
         String hallType = (String) halltype.getSelectedItem();
@@ -578,6 +597,7 @@ public class Hall_availability_schedule extends javax.swing.JFrame {
     private javax.swing.JTextField Date;
     private javax.swing.JButton Delete;
     private javax.swing.JButton Edit;
+    private javax.swing.JButton HM;
     private javax.swing.JTextField Price;
     private javax.swing.JTextField Remarks;
     private javax.swing.JButton Reset;

@@ -80,12 +80,11 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
         hall_no = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         maintenance = new javax.swing.JTable();
+        HA = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1200, 1000));
         setMinimumSize(new java.awt.Dimension(1200, 1000));
-        setPreferredSize(new java.awt.Dimension(1200, 1000));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logout.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -309,6 +308,19 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 790, 580));
 
+        HA.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        HA.setForeground(new java.awt.Color(102, 102, 102));
+        HA.setText("Hall Availability");
+        HA.setMaximumSize(new java.awt.Dimension(155, 39));
+        HA.setMinimumSize(new java.awt.Dimension(155, 39));
+        HA.setPreferredSize(new java.awt.Dimension(155, 39));
+        HA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HAActionPerformed(evt);
+            }
+        });
+        getContentPane().add(HA, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 150, 40));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -365,6 +377,11 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_reviewFocusLost
 
+    private void HAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HAActionPerformed
+        setVisible(false);
+        new Hall_availability_schedule().setVisible(true);
+    }//GEN-LAST:event_HAActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -404,6 +421,7 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
     private javax.swing.JButton Add;
     private javax.swing.JButton Delete;
     private javax.swing.JButton Edit;
+    private javax.swing.JButton HA;
     private javax.swing.JButton Reset;
     private javax.swing.JButton Save;
     private javax.swing.JLabel background;

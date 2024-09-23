@@ -56,7 +56,7 @@ public class Task extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Case ID", "Date", "Hall Type", "Hall No", "Issues", "Remarks"
+                "Case ID", "User ID", "Hall Type", "Hall No", "Date", "Issues", "Scheduler ID", "Remarks"
             }
         ));
         jScrollPane1.setViewportView(Task);
@@ -100,7 +100,7 @@ public class Task extends javax.swing.JFrame {
         Remarks.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         Remarks.setForeground(new java.awt.Color(153, 153, 153));
         Remarks.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Remarks.setText("Remarks");
+        Remarks.setText("-");
         Remarks.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 RemarksFocusGained(evt);
@@ -127,18 +127,18 @@ public class Task extends javax.swing.JFrame {
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         DefaultTableModel model = (DefaultTableModel) Task.getModel();
-        Remarks.setText(model.getValueAt(Task.getSelectedRow(), 5).toString());
+        Remarks.setText(model.getValueAt(Task.getSelectedRow(), 7).toString());
     }//GEN-LAST:event_EditActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         DefaultTableModel model = (DefaultTableModel) Task.getModel();
         int tablelist = model.getRowCount();
-        model.setValueAt(Remarks.getText(), Task.getSelectedRow(), 5);
+        model.setValueAt(Remarks.getText(), Task.getSelectedRow(), 7);
 
         try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\adminmessage.txt"));
+            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\caseStaffStatus.txt"));
             for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString();
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString()+"/"+model.getValueAt(i, 7).toString();
                 bw.write(rec+"\n");
             }
             bw.close();
@@ -148,7 +148,7 @@ public class Task extends javax.swing.JFrame {
     }//GEN-LAST:event_SaveActionPerformed
 
     private void RemarksFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RemarksFocusGained
-        if(Remarks.getText().equals("Remarks"))
+        if(Remarks.getText().equals("-"))
         {
             Remarks.setText("");
             Remarks.setForeground(newColor(0,118,221));
@@ -158,7 +158,7 @@ public class Task extends javax.swing.JFrame {
     private void RemarksFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RemarksFocusLost
         if(Remarks.getText().equals(""))
         {
-            Remarks.setText("Remarks");
+            Remarks.setText("-");
             Remarks.setForeground(newColor(0,118,221));
 
         }
