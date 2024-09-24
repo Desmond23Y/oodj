@@ -1,5 +1,10 @@
 package oodjassignment.user;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JTextField;
@@ -30,7 +35,7 @@ public class Pay extends Transaction implements Updatable {
     }
 
     @Override
-    public void updateBookingAndSchedule(JTextField type, JTextField hall) {
+     public void updateBookingAndSchedule(JTextField type, JTextField hall) {
         String[] filePaths = {
             "src/oodjassignment/database/Booking.txt",
             "src/oodjassignment/database/Schedule.txt",
@@ -61,6 +66,31 @@ public class Pay extends Transaction implements Updatable {
             writeFile(filePath, fileContent);
         }
     }
+
+    // Read the content of the file and store it in the fileContent list
+    public void readFile(String filePath, List<String> fileContent) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                fileContent.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Write the content back to the file, ensuring each line ends with a new line
+    public void writeFile(String filePath, List<String> fileContent) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (String line : fileContent) {
+                writer.write(line);
+                writer.newLine(); // Ensure each line is written on a new line
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
 
     @Override
     public void updatePendingFile(JTextField type, JTextField hall) {

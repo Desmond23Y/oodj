@@ -157,15 +157,15 @@ public class bookingdetails extends javax.swing.JFrame {
             Aschedule.getColumnModel().getColumn(6).setMinWidth(95);
             Aschedule.getColumnModel().getColumn(6).setPreferredWidth(95);
             Aschedule.getColumnModel().getColumn(6).setMaxWidth(95);
-            Aschedule.getColumnModel().getColumn(7).setMinWidth(80);
-            Aschedule.getColumnModel().getColumn(7).setPreferredWidth(80);
-            Aschedule.getColumnModel().getColumn(7).setMaxWidth(80);
-            Aschedule.getColumnModel().getColumn(8).setMinWidth(110);
-            Aschedule.getColumnModel().getColumn(8).setPreferredWidth(110);
-            Aschedule.getColumnModel().getColumn(8).setMaxWidth(110);
-            Aschedule.getColumnModel().getColumn(9).setMinWidth(110);
-            Aschedule.getColumnModel().getColumn(9).setPreferredWidth(110);
-            Aschedule.getColumnModel().getColumn(9).setMaxWidth(110);
+            Aschedule.getColumnModel().getColumn(7).setMinWidth(70);
+            Aschedule.getColumnModel().getColumn(7).setPreferredWidth(70);
+            Aschedule.getColumnModel().getColumn(7).setMaxWidth(70);
+            Aschedule.getColumnModel().getColumn(8).setMinWidth(120);
+            Aschedule.getColumnModel().getColumn(8).setPreferredWidth(120);
+            Aschedule.getColumnModel().getColumn(8).setMaxWidth(120);
+            Aschedule.getColumnModel().getColumn(9).setMinWidth(120);
+            Aschedule.getColumnModel().getColumn(9).setPreferredWidth(120);
+            Aschedule.getColumnModel().getColumn(9).setMaxWidth(120);
         }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 880, 600));

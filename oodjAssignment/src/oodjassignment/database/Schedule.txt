@@ -1,7 +1,7 @@
-Auditorium/HALL 1/RM 600/13 Sep 2024/8am - 10am/2 hours/Available/-
+Auditorium/HALL 1/RM 600/13 Sep 2024/8am - 10am/2 hours/Booked/HH birthday
 Auditorium/HALL 2/RM 600/13 Sep 2024/8am - 10am/2 hours/Booked/Booked For Lecturer
-Auditorium/HALL 3/RM 600/13 Sep 2024/8am - 10am/2 hours/Available/-
-Banquet Hall/HALL 1/RM 200/13 Sep 2024/8am - 10am/2 hours/Available/-
+Auditorium/HALL 3/RM 600/13 Sep 2024/8am - 10am/2 hours/Booked/Oh birthday
+Banquet Hall/HALL 1/RM 200/13 Sep 2024/8am - 10am/2 hours/Booked/Jam
 Banquet Hall/HALL 2/RM 200/13 Sep 2024/8am - 10am/2 hours/Available/-
 Banquet Hall/HALL 3/RM 200/13 Sep 2024/8am - 10am/2 hours/Available/-
 Meeting Room/HALL 1/RM 100/13 Sep 2024/8am - 10am/2 hours/Booked/Booked For Group Meeting
