@@ -236,7 +236,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         resetComboBoxes();
         clearTable(tbl_showSales);
         initial_cbxAllVisibility(false);
-        inital_selectYearlyVisibility();
+        initial_selectYearlyVisibility();
         btn_view.setVisible(true);
         resetComboBoxes();
     }//GEN-LAST:event_rbtn_yearlyActionPerformed
@@ -438,7 +438,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         cbx_year.setVisible(true);
     }
     
-    private void inital_selectYearlyVisibility(){
+    private void initial_selectYearlyVisibility(){
         lbl_selectYear.setVisible(true);
         cbx_year.setVisible(true);
     }  
