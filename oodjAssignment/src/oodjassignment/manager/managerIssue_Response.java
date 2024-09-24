@@ -69,7 +69,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
         lbl_enterCaseID.setText("CASE ID");
         pnl_ID.add(lbl_enterCaseID);
 
-        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         txt_caseID.setMinimumSize(new java.awt.Dimension(100, 29));
         txt_caseID.setPreferredSize(new java.awt.Dimension(100, 29));
         pnl_ID.add(txt_caseID);
