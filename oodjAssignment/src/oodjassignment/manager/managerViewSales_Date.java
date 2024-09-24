@@ -34,11 +34,11 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         lbl_selectDay = new javax.swing.JLabel();
         lbl_selectMonth = new javax.swing.JLabel();
         lbl_selectYear = new javax.swing.JLabel();
-        lbl_selectMonday = new javax.swing.JLabel();
+        lbl_selectWeek = new javax.swing.JLabel();
         cbx_day = new javax.swing.JComboBox<>();
         cbx_month = new javax.swing.JComboBox<>();
         cbx_year = new javax.swing.JComboBox<>();
-        cbx_monday = new javax.swing.JComboBox<>();
+        cbx_week = new javax.swing.JComboBox<>();
         btn_view = new javax.swing.JButton();
         lbl_sales = new javax.swing.JLabel();
         spnl_showSales = new javax.swing.JScrollPane();
@@ -132,9 +132,9 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         lbl_selectYear.setText("YEAR");
         getContentPane().add(lbl_selectYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
 
-        lbl_selectMonday.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        lbl_selectMonday.setText("SELECT THE DATE OF THE MONDAY OF THE WEEK");
-        getContentPane().add(lbl_selectMonday, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
+        lbl_selectWeek.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lbl_selectWeek.setText("SELECT THE NUMBER OF WEEK");
+        getContentPane().add(lbl_selectWeek, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
 
         cbx_day.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         cbx_day.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -151,14 +151,14 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         getContentPane().add(cbx_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
         cbx_year.getAccessibleContext().setAccessibleName("2024\n2025\n2026\n2027\n2028");
 
-        cbx_monday.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        cbx_monday.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbx_monday.addActionListener(new java.awt.event.ActionListener() {
+        cbx_week.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        cbx_week.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_week.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbx_mondayActionPerformed(evt);
+                cbx_weekActionPerformed(evt);
             }
         });
-        getContentPane().add(cbx_monday, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 300, -1, -1));
+        getContentPane().add(cbx_week, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 300, -1, -1));
 
         btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         btn_view.setText("VIEW");
@@ -245,9 +245,9 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         resetComboBoxes();
     }//GEN-LAST:event_rbtn_yearlyActionPerformed
 
-    private void cbx_mondayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_mondayActionPerformed
+    private void cbx_weekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_weekActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbx_mondayActionPerformed
+    }//GEN-LAST:event_cbx_weekActionPerformed
 
     private void rbtn_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_allActionPerformed
         resetComboBoxes();
@@ -342,7 +342,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
             return cbx_day.getSelectedIndex() != 0 && cbx_month.getSelectedIndex() != 0 && cbx_year.getSelectedIndex() != 0;
         } 
         else if (rbtn_weekly.isSelected()) {
-            return cbx_year.getSelectedIndex() != 0 && cbx_monday.getSelectedIndex() != 0;
+            return cbx_year.getSelectedIndex() != 0 && cbx_week.getSelectedIndex() != 0;
         } 
         else if (rbtn_monthly.isSelected()) {
             return cbx_year.getSelectedIndex() != 0 && cbx_month.getSelectedIndex() != 0;
@@ -367,7 +367,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
             }
         } 
         else if (rbtn_weekly.isSelected()) {
-            String monday = (String) cbx_monday.getSelectedItem();
+            String monday = (String) cbx_week.getSelectedItem();
             String year = (String) cbx_year.getSelectedItem();
             if (monday != null && year != null) {
                 date_list.add(monday);
@@ -403,7 +403,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         cbx_day.setSelectedIndex(0);
         cbx_month.setSelectedIndex(0);
         cbx_year.setSelectedIndex(0);
-        cbx_monday.setSelectedIndex(0);
+        cbx_week.setSelectedIndex(0);
     }
     
     public void clearTable(JTable table) {
@@ -420,23 +420,23 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         cbx_month.setVisible(tf);
         cbx_year.setVisible(tf);
         
-        lbl_selectMonday.setVisible(tf);
-        cbx_monday.setVisible(tf);
+        lbl_selectWeek.setVisible(tf);
+        cbx_week.setVisible(tf);
         
         btn_view.setVisible(tf);
     }
     
     private void initial_selectDailyVisibility(boolean tf){
         initial_cbxAllVisibility(tf);
-        lbl_selectMonday.setVisible(!tf);
-        cbx_monday.setVisible(!tf);
+        lbl_selectWeek.setVisible(!tf);
+        cbx_week.setVisible(!tf);
     }
     
     private void initial_selectWeeklyVisibility1(){
         lbl_selectYear.setVisible(true);
         cbx_year.setVisible(true);
-        lbl_selectMonday.setVisible(true);
-        cbx_monday.setVisible(true);
+        lbl_selectWeek.setVisible(true);
+        cbx_week.setVisible(true);
     }
     
     private void initial_selectMonthlyVisibility(){
@@ -466,15 +466,15 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     private javax.swing.JButton btn_view;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbx_day;
-    private javax.swing.JComboBox<String> cbx_monday;
     private javax.swing.JComboBox<String> cbx_month;
+    private javax.swing.JComboBox<String> cbx_week;
     private javax.swing.JComboBox<String> cbx_year;
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_responseNoBooking;
     private javax.swing.JLabel lbl_sales;
     private javax.swing.JLabel lbl_selectDay;
-    private javax.swing.JLabel lbl_selectMonday;
     private javax.swing.JLabel lbl_selectMonth;
+    private javax.swing.JLabel lbl_selectWeek;
     private javax.swing.JLabel lbl_selectYear;
     private javax.swing.JLabel lbl_title;
     private javax.swing.JLabel lbl_viewBy;
