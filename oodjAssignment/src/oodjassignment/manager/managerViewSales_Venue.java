@@ -5,6 +5,8 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
 
     public managerViewSales_Venue() {
         initComponents();
+        generate_DateCombobx();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -14,14 +16,14 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         btn_back = new javax.swing.JButton();
         lbl_title = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbl_hallType = new javax.swing.JLabel();
         rbtn_auditorium = new javax.swing.JRadioButton();
         rbtn_banquetHall = new javax.swing.JRadioButton();
         rbtn_meetingRoom = new javax.swing.JRadioButton();
-        btn_View = new javax.swing.JButton();
+        lbl_hallNumber = new javax.swing.JLabel();
+        cbx_hallNumber = new javax.swing.JComboBox<>();
+        btn_view = new javax.swing.JButton();
         lbl_sales = new javax.swing.JLabel();
-        lbl_venueNumber = new javax.swing.JLabel();
-        cbx_venueNumber = new javax.swing.JComboBox<>();
         spnl_showSales = new javax.swing.JScrollPane();
         tbl_showSales = new javax.swing.JTable();
         lbl_background = new javax.swing.JLabel();
@@ -46,9 +48,9 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         lbl_title.setText("View Sales by Venue");
         getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 40, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel2.setText("VENUE TYPE");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
+        lbl_hallType.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lbl_hallType.setText("VENUE TYPE");
+        getContentPane().add(lbl_hallType, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
 
         buttonGroup1.add(rbtn_auditorium);
         rbtn_auditorium.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
@@ -75,21 +77,25 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         rbtn_meetingRoom.setText("Meeting Room");
         getContentPane().add(rbtn_meetingRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
 
-        btn_View.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
-        btn_View.setText("View");
-        getContentPane().add(btn_View, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 350, -1, -1));
+        lbl_hallNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lbl_hallNumber.setText("VENUE NUMBER");
+        getContentPane().add(lbl_hallNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
+
+        cbx_hallNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        cbx_hallNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_hallNumberActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cbx_hallNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
+
+        btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        btn_view.setText("View");
+        getContentPane().add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 350, -1, -1));
 
         lbl_sales.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         lbl_sales.setText("SALES");
         getContentPane().add(lbl_sales, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
-
-        lbl_venueNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        lbl_venueNumber.setText("VENUE NUMBER");
-        getContentPane().add(lbl_venueNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
-
-        cbx_venueNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        cbx_venueNumber.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(cbx_venueNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, -1, -1));
 
         tbl_showSales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,6 +137,18 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtn_auditoriumActionPerformed
 
+    private void cbx_hallNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_hallNumberActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbx_hallNumberActionPerformed
+    
+    
+    // INITIAL -----------------------------------------------------------------
+    private void generate_DateCombobx(){
+        GenerateCBX dateGenerator = new GenerateCBX();
+        dateGenerator.populateComboBox(cbx_hallNumber, "hallNumber");
+    }
+    
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -164,15 +182,15 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_View;
     private javax.swing.JButton btn_back;
+    private javax.swing.JButton btn_view;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cbx_venueNumber;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JComboBox<String> cbx_hallNumber;
     private javax.swing.JLabel lbl_background;
+    private javax.swing.JLabel lbl_hallNumber;
+    private javax.swing.JLabel lbl_hallType;
     private javax.swing.JLabel lbl_sales;
     private javax.swing.JLabel lbl_title;
-    private javax.swing.JLabel lbl_venueNumber;
     private javax.swing.JRadioButton rbtn_auditorium;
     private javax.swing.JRadioButton rbtn_banquetHall;
     private javax.swing.JRadioButton rbtn_meetingRoom;

@@ -386,7 +386,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     
     // GENERATION OF DATE ------------------------------------------------------
     private void generate_DateCombobx(){
-        GenerateDatecbx dateGenerator = new GenerateDatecbx();
+        GenerateCBX dateGenerator = new GenerateCBX();
         dateGenerator.populateComboBox(cbx_day, "day");
         dateGenerator.populateComboBox(cbx_week, "week");
         dateGenerator.populateComboBox(cbx_month, "month");

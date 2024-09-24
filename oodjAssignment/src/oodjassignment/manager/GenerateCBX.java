@@ -12,21 +12,22 @@ import java.util.Arrays;
 import javax.swing.JComboBox;
 import java.util.Calendar;
 
-public class GenerateDatecbx {
+public class GenerateCBX {
 
     public void populateComboBox(JComboBox<String> comboBox, String state) {
-        List<String> items = generateDateArray(state);
+        List<String> items = generateCBXArray(state);
         comboBox.removeAllItems(); // Clear existing items
         for (String item : items) {
             comboBox.addItem(item);
         }
     }
 
-    private List<String> generateDateArray(String state) {
+    private List<String> generateCBXArray(String state) {
         List<String> days = Arrays.asList(generateDays());
         List<String> weeks = Arrays.asList(generateWeeks());
         List<String> months = Arrays.asList(generateMonths());
         List<String> years = Arrays.asList(generateYears());
+        List<String> hallNumbers = Arrays.asList(generateHallNumber());
         if (state.equals("day")) {
             return days;
         } else if (state.equals("week")) {
@@ -35,11 +36,13 @@ public class GenerateDatecbx {
             return months;
         } else if (state.equals("year")) {
             return years;
+        } else if (state.equals("hallNumber")) {
+            return hallNumbers;
         }else {
             return new ArrayList<>(); 
         }
     }
-
+    
     private String[] generateDays() {
         String[] days = new String[32];
         days[0] = "Day"; 
@@ -66,23 +69,7 @@ public class GenerateDatecbx {
         return new String[]{"Year", "2024", "2025", "2026", "2027", "2028"};
     }
     
-    public String[] generateMondays(int year) {
-    List<String> mondaysList = new ArrayList<>();
-    Calendar calendar = Calendar.getInstance();
-    calendar.set(Calendar.YEAR, year);
-    calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-    calendar.set(Calendar.DAY_OF_WEEK_IN_MONTH, 1);
-
-    while (calendar.get(Calendar.YEAR) == year) {
-        mondaysList.add(String.format("%1$td %1$tb %1$tY", calendar));
-        calendar.add(Calendar.WEEK_OF_YEAR, 1);
+    private String[] generateHallNumber() {
+        return new String[]{"Hall Numbers", "Hall 1", "Hall 2", "Hall 3"};
     }
-
-    // Convert the list to an array
-    String[] mondays = new String[mondaysList.size()];
-    mondaysList.toArray(mondays);
-
-    return mondays;
-}
-
 }
