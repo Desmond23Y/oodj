@@ -10,11 +10,14 @@ import java.io.*;
 
 
 public class Payment extends javax.swing.JFrame {
+    
+    private Pay payService;
    
     public Payment() {
         initComponents();
+        payService = new Pay();
         // Use AutofillData class to autofill user data
-        Pay.autofillUserData(id, type, hall, Price, cfPrice);
+        payService.autofillUserData(id, type, hall, Price, cfPrice);
         id.setEditable(false);
         type.setEditable(false);
         hall.setEditable(false);
@@ -124,16 +127,14 @@ public class Payment extends javax.swing.JFrame {
 
     private void payActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payActionPerformed
         String paymentData = "Hall Type: " + type.getText() + ", Hall: " + hall.getText() + ", Price: " + Price.getText();
-
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/oodjassignment/database/payment.txt", true))) {
             writer.write(paymentData);
             writer.newLine();
             JOptionPane.showMessageDialog(null, "Payment successful! Please review your receipt.");
 
-            // Call methods from other classes
-            Pay.generateReceipt(type.getText(), hall.getText(), Price.getText());
-            Pay.updateBookingAndSchedule(type, hall);
-            Pay.updatePendingFile(type, hall);
+            payService.generateReceipt(type.getText(), hall.getText(), Price.getText());
+            payService.updateBookingAndSchedule(type, hall);
+            payService.updatePendingFile(type, hall);
 
             new homepage().setVisible(true);
             dispose();
