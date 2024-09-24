@@ -37,6 +37,18 @@ public class DataHandling {
             return false;
         }
     }
+    
+    private boolean writeData(List<String[]> data, boolean append) {
+        try (FileWriter writer = new FileWriter(filePath, append)) {
+            for (String[] record : data) {
+                writer.write(String.join(",", record) + "\n");
+            }
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     public boolean updateData(int rowIndex, String[] newRecord) {
         List<String[]> data = readData();
@@ -54,17 +66,5 @@ public class DataHandling {
             return writeData(data, false); // Overwrite the file
         }
         return false;
-    }
-
-    private boolean writeData(List<String[]> data, boolean append) {
-        try (FileWriter writer = new FileWriter(filePath, append)) {
-            for (String[] record : data) {
-                writer.write(String.join(",", record) + "\n");
-            }
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
     }
 }

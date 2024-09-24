@@ -141,8 +141,7 @@ public class Registerpage extends javax.swing.JFrame {
     }//GEN-LAST:event_showpasswordActionPerformed
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-        new
-        Loginpage().setVisible(true);
+        new Loginpage().setVisible(true);
         dispose();
     }//GEN-LAST:event_logoutActionPerformed
 
