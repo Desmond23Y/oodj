@@ -342,7 +342,7 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         MTable t2 = new MTable();
-        t2.EditSelectedRowData(halltype, hall_no, start_date, end_date, time, duration, review, maintenance);
+        t2.editSelectedRowData(halltype, hall_no, start_date, end_date, time, duration, review, maintenance);
     }//GEN-LAST:event_EditActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed

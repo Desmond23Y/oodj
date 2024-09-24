@@ -35,12 +35,11 @@ public class schedulerhomepage extends javax.swing.JFrame {
         havailability = new javax.swing.JButton();
         hmaintenance = new javax.swing.JButton();
         notification = new javax.swing.JButton();
+        Request = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1200, 800));
         setMinimumSize(new java.awt.Dimension(1200, 800));
-        setPreferredSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logout.setBackground(new java.awt.Color(0, 137, 248));
@@ -84,20 +83,28 @@ public class schedulerhomepage extends javax.swing.JFrame {
             }
         });
 
+        Request.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        Request.setText("Request For Cancel");
+        Request.setPreferredSize(new java.awt.Dimension(213, 26));
+        Request.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RequestActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout smallbLayout = new javax.swing.GroupLayout(smallb);
         smallb.setLayout(smallbLayout);
         smallbLayout.setHorizontalGroup(
             smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, smallbLayout.createSequentialGroup()
                 .addContainerGap(47, Short.MAX_VALUE)
-                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(smallbLayout.createSequentialGroup()
-                        .addComponent(havailability)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(hmaintenance))
-                    .addGroup(smallbLayout.createSequentialGroup()
-                        .addGap(114, 114, 114)
-                        .addComponent(notification, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(notification, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                    .addComponent(havailability, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(hmaintenance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Request, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39))
         );
         smallbLayout.setVerticalGroup(
@@ -108,7 +115,9 @@ public class schedulerhomepage extends javax.swing.JFrame {
                     .addComponent(havailability, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hmaintenance, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(notification, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(smallbLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(notification, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Request, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(52, Short.MAX_VALUE))
         );
 
@@ -143,6 +152,11 @@ public class schedulerhomepage extends javax.swing.JFrame {
         setVisible(false);
         new Task().setVisible(true);
     }//GEN-LAST:event_notificationActionPerformed
+
+    private void RequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RequestActionPerformed
+       setVisible(false);
+       new Requestcancel().setVisible(true);
+    }//GEN-LAST:event_RequestActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +194,7 @@ public class schedulerhomepage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Request;
     private javax.swing.JLabel background;
     private javax.swing.JButton havailability;
     private javax.swing.JButton hmaintenance;

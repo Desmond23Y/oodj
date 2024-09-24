@@ -1,2 +1,1 @@
-HB0001/U0001/Meeting Room/HALL 1/RM 100/21 Sep 2024/8am - 10am/2 hours/Booked/Remarks
-HB0002/U0001/Auditorium/HALL 2/RM 600/12 Sep 2024/8am - 10am/2 hours/Request for cancel/Unavailable
+HB0002/U0001/Auditorium/HALL 2/RM 600/13 Sep 2024/8am - 10am/2 hours/Decline/Unavailable
