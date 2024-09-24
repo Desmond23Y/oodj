@@ -24,10 +24,13 @@ public class GenerateDatecbx {
 
     private List<String> generateDateArray(String state) {
         List<String> days = Arrays.asList(generateDays());
+        List<String> weeks = Arrays.asList(generateWeeks());
         List<String> months = Arrays.asList(generateMonths());
         List<String> years = Arrays.asList(generateYears());
         if (state.equals("day")) {
             return days;
+        } else if (state.equals("week")) {
+            return weeks;
         } else if (state.equals("month")) {
             return months;
         } else if (state.equals("year")) {
@@ -44,6 +47,15 @@ public class GenerateDatecbx {
             days[i] = String.valueOf(i);
         }
         return days;
+    }
+    
+    private String[] generateWeeks() {
+        String[] weeks = new String[54];
+        weeks[0] = "Week"; 
+        for (int i = 1; i <= 53; i++) {
+            weeks[i] = String.valueOf(i);
+        }
+        return weeks;
     }
     
     private String[] generateMonths() {

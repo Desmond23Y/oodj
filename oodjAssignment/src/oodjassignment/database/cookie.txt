@@ -1,1 +1,1 @@
-S0001,Ooi Hong,0123456789,Ooihong@mail.com,@Password1,SCHEDULER
+M0002,Sam,0187878555,SamGod@mail.com,123,MANAGER

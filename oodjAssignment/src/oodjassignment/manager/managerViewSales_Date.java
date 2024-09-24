@@ -152,7 +152,6 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         cbx_year.getAccessibleContext().setAccessibleName("2024\n2025\n2026\n2027\n2028");
 
         cbx_week.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        cbx_week.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbx_week.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbx_weekActionPerformed(evt);
@@ -365,16 +364,14 @@ public class managerViewSales_Date extends javax.swing.JFrame {
                 date_list.add(month);
                 date_list.add(year);
             }
-        } 
-        else if (rbtn_weekly.isSelected()) {
-            String monday = (String) cbx_week.getSelectedItem();
+        } else if (rbtn_weekly.isSelected()) {
+            String week = (String) cbx_week.getSelectedItem();
             String year = (String) cbx_year.getSelectedItem();
-            if (monday != null && year != null) {
-                date_list.add(monday);
+            if (week != null && year != null) {
+                date_list.add(week);
                 date_list.add(year);
             }
-        }
-        else if (rbtn_monthly.isSelected()) {
+        } else if (rbtn_monthly.isSelected()) {
             String month = (String) cbx_month.getSelectedItem();
             String year = (String) cbx_year.getSelectedItem();
             if (month != null && year != null) {
@@ -394,6 +391,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     private void generate_DateCombobx(){
         GenerateDatecbx dateGenerator = new GenerateDatecbx();
         dateGenerator.populateComboBox(cbx_day, "day");
+        dateGenerator.populateComboBox(cbx_week, "week");
         dateGenerator.populateComboBox(cbx_month, "month");
         dateGenerator.populateComboBox(cbx_year, "year");
     }
@@ -411,7 +409,6 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         model.setRowCount(0); // Clear existing rows
     }
 
-    
     private void initial_cbxAllVisibility(boolean tf){
         lbl_selectDay.setVisible(tf);
         lbl_selectMonth.setVisible(tf);
@@ -419,10 +416,8 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         cbx_day.setVisible(tf);
         cbx_month.setVisible(tf);
         cbx_year.setVisible(tf);
-        
         lbl_selectWeek.setVisible(tf);
         cbx_week.setVisible(tf);
-        
         btn_view.setVisible(tf);
     }
     
