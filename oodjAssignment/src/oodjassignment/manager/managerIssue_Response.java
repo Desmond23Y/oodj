@@ -28,17 +28,17 @@ public class managerIssue_Response extends javax.swing.JFrame {
 
         btn_back = new javax.swing.JButton();
         lbl_title = new javax.swing.JLabel();
-        pnl_ID = new javax.swing.JPanel();
-        lbl_enterCaseID = new javax.swing.JLabel();
-        txt_caseID = new javax.swing.JTextField();
+        pnl_Id = new javax.swing.JPanel();
+        lbl_enterCaseId = new javax.swing.JLabel();
+        txt_caseId = new javax.swing.JTextField();
         lbl_space = new javax.swing.JLabel();
         btn_view = new javax.swing.JButton();
-        btn_update = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        txt_newMessage = new javax.swing.JTextField();
+        lbl_history = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        tbl_history = new javax.swing.JTable();
+        btn_update = new javax.swing.JButton();
+        lbl_newMessage = new javax.swing.JLabel();
+        txt_newMessage = new javax.swing.JTextField();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,22 +61,22 @@ public class managerIssue_Response extends javax.swing.JFrame {
         lbl_title.setText("Response to Customer Issue");
         getContentPane().add(lbl_title, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 40, -1, -1));
 
-        pnl_ID.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_ID.setMinimumSize(new java.awt.Dimension(900, 45));
-        pnl_ID.setPreferredSize(new java.awt.Dimension(900, 45));
+        pnl_Id.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_Id.setMinimumSize(new java.awt.Dimension(900, 45));
+        pnl_Id.setPreferredSize(new java.awt.Dimension(900, 45));
 
-        lbl_enterCaseID.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        lbl_enterCaseID.setText("CASE ID");
-        pnl_ID.add(lbl_enterCaseID);
+        lbl_enterCaseId.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lbl_enterCaseId.setText("CASE ID");
+        pnl_Id.add(lbl_enterCaseId);
 
-        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        txt_caseID.setMinimumSize(new java.awt.Dimension(100, 29));
-        txt_caseID.setPreferredSize(new java.awt.Dimension(100, 29));
-        pnl_ID.add(txt_caseID);
+        txt_caseId.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        txt_caseId.setMinimumSize(new java.awt.Dimension(100, 29));
+        txt_caseId.setPreferredSize(new java.awt.Dimension(100, 29));
+        pnl_Id.add(txt_caseId);
 
         lbl_space.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_space.setText("                                                                                           ");
-        pnl_ID.add(lbl_space);
+        pnl_Id.add(lbl_space);
 
         btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         btn_view.setText("VIEW");
@@ -85,27 +85,17 @@ public class managerIssue_Response extends javax.swing.JFrame {
                 btn_viewActionPerformed(evt);
             }
         });
-        pnl_ID.add(btn_view);
+        pnl_Id.add(btn_view);
 
-        getContentPane().add(pnl_ID, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 900, -1));
+        getContentPane().add(pnl_Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, 900, -1));
 
-        btn_update.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
-        btn_update.setText("UPDATE");
-        btn_update.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_updateActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        jLabel1.setText("NEW MESSAGE");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, -1, -1));
-        getContentPane().add(txt_newMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, 540, 90));
+        lbl_history.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        lbl_history.setText("HISTORY");
+        getContentPane().add(lbl_history, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(900, 402));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_history.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -116,15 +106,25 @@ public class managerIssue_Response extends javax.swing.JFrame {
                 "Case ID", "Date", "Hall Type", "Hall Number", "Customer ID", "Description", "Case Status", "Assigned Staff", "Staff Remarks"
             }
         ));
-        jTable1.setMinimumSize(new java.awt.Dimension(900, 80));
-        jTable1.setPreferredSize(new java.awt.Dimension(900, 80));
-        jScrollPane1.setViewportView(jTable1);
+        tbl_history.setMinimumSize(new java.awt.Dimension(900, 80));
+        tbl_history.setPreferredSize(new java.awt.Dimension(900, 80));
+        jScrollPane1.setViewportView(tbl_history);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, 230));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
-        jLabel2.setText("HISTORY");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
+        btn_update.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        btn_update.setText("UPDATE");
+        btn_update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_updateActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_update, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, -1, -1));
+
+        lbl_newMessage.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        lbl_newMessage.setText("NEW MESSAGE");
+        getContentPane().add(lbl_newMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, -1, -1));
+        getContentPane().add(txt_newMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, 540, 90));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
@@ -189,16 +189,16 @@ public class managerIssue_Response extends javax.swing.JFrame {
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_update;
     private javax.swing.JButton btn_view;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_background;
-    private javax.swing.JLabel lbl_enterCaseID;
+    private javax.swing.JLabel lbl_enterCaseId;
+    private javax.swing.JLabel lbl_history;
+    private javax.swing.JLabel lbl_newMessage;
     private javax.swing.JLabel lbl_space;
     private javax.swing.JLabel lbl_title;
-    private javax.swing.JPanel pnl_ID;
-    private javax.swing.JTextField txt_caseID;
+    private javax.swing.JPanel pnl_Id;
+    private javax.swing.JTable tbl_history;
+    private javax.swing.JTextField txt_caseId;
     private javax.swing.JTextField txt_newMessage;
     // End of variables declaration//GEN-END:variables
 }
