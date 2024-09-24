@@ -1,4 +1,2 @@
-HB0002/U0001/Auditorium/HALL 2/RM 600/13 Sep 2024/8am - 10am/2 hours/Decline/Unavailable
-HB0003/U0001/Auditorium/HALL 1/RM 600/13 Sep 2024/8am - 10am/2 hours/Booked/HH birthday
-HB0004/U0001/Auditorium/HALL 3/RM 600/13 Sep 2024/8am - 10am/2 hours/Request for cancel/Wrong date
+HB0004/U0001/Auditorium/HALL 3/RM 600/13 Sep 2024/8am - 10am/2 hours/Approve/Wrong date
 HB0005/U0001/Banquet Hall/HALL 1/RM 200/13 Sep 2024/8am - 10am/2 hours/Booked/Jam

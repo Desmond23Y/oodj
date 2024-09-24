@@ -144,54 +144,63 @@ public class Requestcancel extends javax.swing.JFrame {
     }//GEN-LAST:event_statusActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-        int selectedRow = Aschedule.getSelectedRow(); // 获取当前选中的行
+    DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+int selectedRow = Aschedule.getSelectedRow(); // 获取当前选中的行
 
-        if (selectedRow == -1) {
-            JOptionPane.showMessageDialog(this, "Please select a row to update.");
-            return;
+if (selectedRow == -1) {
+    JOptionPane.showMessageDialog(this, "Please select a row to update.");
+    return;
+}
+
+// 先读取表格中被选中的状态
+Object selectedStatus = model.getValueAt(selectedRow, 8); // 第九列是 status
+if (!"Request for cancel".equals(selectedStatus)) {
+    JOptionPane.showMessageDialog(this, "Selected row does not contain 'Request for cancel' status.");
+    return;
+}
+
+// 获取 JComboBox 中选择的新状态
+String newStatus = (String) status.getSelectedItem(); // 获取选择的状态
+
+try {
+    File file = new File("src/oodjassignment/database/Booking.txt");
+    BufferedReader br = new BufferedReader(new FileReader(file));
+
+    // 用 StringBuilder 来存储修改后的文件内容
+    StringBuilder fileContent = new StringBuilder();
+    String line;
+
+    // 循环读取文件中的每一行
+    while ((line = br.readLine()) != null) {
+        // 判断这一行是否是要修改的行，即是否是 Request for cancel
+        String[] bookingData = line.split("/"); // 假设数据是通过 / 分隔的
+        if (bookingData.length == 10 && bookingData[8].equals("Request for cancel")) {
+            // 将 JTable 中的所有数据写回，包括新的状态
+            line = model.getValueAt(selectedRow, 0).toString() + "/" + // Field 1
+                   model.getValueAt(selectedRow, 1).toString() + "/" + // Field 2
+                   model.getValueAt(selectedRow, 2).toString() + "/" + // Field 3
+                   model.getValueAt(selectedRow, 3).toString() + "/" + // Field 4
+                   model.getValueAt(selectedRow, 4).toString() + "/" + // Field 5
+                   model.getValueAt(selectedRow, 5).toString() + "/" + // Field 6
+                   model.getValueAt(selectedRow, 6).toString() + "/" + // Field 7
+                   model.getValueAt(selectedRow, 7).toString() + "/" + // Field 8
+                   newStatus + "/" + // 新状态
+                   model.getValueAt(selectedRow, 9).toString();  // 保留其他备注信息作为第十个字段
         }
+        fileContent.append(line).append("\n"); // 将每一行添加到 StringBuilder
+    }
+    br.close();
 
-        // 更新 JTable 中的状态列
-        model.setValueAt(status.getSelectedItem(), selectedRow, 8);
+    // 将修改后的内容重新写回原始文件
+    BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+    bw.write(fileContent.toString()); // 写回整个文件内容
+    bw.close();
 
-        try {
-            // 首先将所有文件内容读入到List中
-            List<String> fileLines = new ArrayList<>();
-            BufferedReader br = new BufferedReader(new FileReader("src/oodjassignment/database/Booking.txt"));
-            String line;
+    JOptionPane.showMessageDialog(this, "Status updated successfully.");
 
-            while ((line = br.readLine()) != null) {
-                fileLines.add(line);
-            }
-            br.close();
-
-            // 获取选中的行数据
-            String updatedRecord = model.getValueAt(selectedRow, 0).toString() + "/" +
-                                   model.getValueAt(selectedRow, 1).toString() + "/" +
-                                   model.getValueAt(selectedRow, 2).toString() + "/" +
-                                   model.getValueAt(selectedRow, 3).toString() + "/" +
-                                   model.getValueAt(selectedRow, 4).toString() + "/" +
-                                   model.getValueAt(selectedRow, 5).toString() + "/" +
-                                   model.getValueAt(selectedRow, 6).toString() + "/" +
-                                   model.getValueAt(selectedRow, 7).toString() + "/" +
-                                   model.getValueAt(selectedRow, 8).toString();
-
-            // 现在我们找到对应的行并更新
-            fileLines.set(selectedRow, updatedRecord);
-
-            // 重新写回文件，只更新选择行的内容
-            BufferedWriter bw = new BufferedWriter(new FileWriter("src/oodjassignment/database/Booking.txt"));
-            for (String fileLine : fileLines) {
-                bw.write(fileLine + "\n");
-            }
-            bw.close();
-
-            JOptionPane.showMessageDialog(this, "Status updated successfully.");
-
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
-            }
+} catch (IOException ex) {
+    JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
+}
 
     }//GEN-LAST:event_SaveActionPerformed
 
