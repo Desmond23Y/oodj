@@ -286,9 +286,9 @@ public class Hall_maintenance_schedule extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(maintenance);
         if (maintenance.getColumnModel().getColumnCount() > 0) {
-            maintenance.getColumnModel().getColumn(0).setMinWidth(85);
-            maintenance.getColumnModel().getColumn(0).setPreferredWidth(85);
-            maintenance.getColumnModel().getColumn(0).setMaxWidth(85);
+            maintenance.getColumnModel().getColumn(0).setMinWidth(100);
+            maintenance.getColumnModel().getColumn(0).setPreferredWidth(100);
+            maintenance.getColumnModel().getColumn(0).setMaxWidth(100);
             maintenance.getColumnModel().getColumn(1).setMinWidth(85);
             maintenance.getColumnModel().getColumn(1).setPreferredWidth(85);
             maintenance.getColumnModel().getColumn(1).setMaxWidth(85);

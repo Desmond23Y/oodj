@@ -1,5 +1,34 @@
-Auditorium/HALL 2/RM 600/12 Sep 2024/8am - 10am/2 hours/Booked/HIhi
-Banquet Hall/HALL 1/RM 200/13 Sep 2024/8am - 10am/2 hours/Available/Test2
-Meeting Room/HALL 1/RM 100/21 Sep 2024/8am - 10am/2 hours/Booked/Remarks
-Banquet Hall/HALL 1/RM 200/23 May 2022/10am - 12pm/2 hours/Available/testing444
-Meeting Room/HALL 1/RM 150/23 May 2022/10am - 1pm/3 hours/Available/testing
+Auditorium/HALL 1/RM 600/13 Sep 2024/8am - 10am/2 hours/Available/-
+Auditorium/HALL 2/RM 600/13 Sep 2024/8am - 10am/2 hours/Booked/Booked For Lecturer
+Auditorium/HALL 3/RM 600/13 Sep 2024/8am - 10am/2 hours/Available/-
+Banquet Hall/HALL 1/RM 200/13 Sep 2024/8am - 10am/2 hours/Available/-
+Banquet Hall/HALL 2/RM 200/13 Sep 2024/8am - 10am/2 hours/Available/-
+Banquet Hall/HALL 3/RM 200/13 Sep 2024/8am - 10am/2 hours/Available/-
+Meeting Room/HALL 1/RM 100/13 Sep 2024/8am - 10am/2 hours/Booked/Booked For Group Meeting
+Meeting Room/HALL 2/RM 100/13 Sep 2024/8am - 10am/2 hours/Available/-
+Meeting Room/HALL 3/RM 100/13 Sep 2024/8am - 10am/2 hours/Available/-
+Auditorium/HALL 2/RM 600/13 Sep 2024/11am - 1pm/2 hours/Available/-
+Auditorium/HALL 3/RM 600/13 Sep 2024/11am - 1pm/2 hours/Available/-
+Banquet Hall/HALL 1/RM 200/13 Sep 2024/11am - 1pm/2 hours/Available/-
+Banquet Hall/HALL 2/RM 200/13 Sep 2024/11am - 1pm/2 hours/Available/-
+Banquet Hall/HALL 3/RM 200/13 Sep 2024/11am - 1pm/2 hours/Available/-
+Meeting Room/HALL 1/RM 100/13 Sep 2024/11am - 1pm/2 hours/Available/-
+Meeting Room/HALL 3/RM 100/13 Sep 2024/11am - 1pm/2 hours/Available/-
+Auditorium/HALL 1/RM 300/13 Sep 2024/2pm - 3pm/1 hours/Available/-
+Auditorium/HALL 2/RM 300/13 Sep 2024/2pm - 3pm/1 hours/Available/-
+Auditorium/HALL 3/RM 300/13 Sep 2024/2pm - 3pm/1 hours/Available/-
+Banquet Hall/HALL 1/RM 100/13 Sep 2024/2pm - 3pm/1 hours/Available/-
+Banquet Hall/HALL 2/RM 100/13 Sep 2024/2pm - 3pm/1 hours/Available/-
+Banquet Hall/HALL 3/RM 100/13 Sep 2024/2pm - 3pm/1 hours/Available/-
+Meeting Room/HALL 1/RM 50/13 Sep 2024/2pm - 3pm/1 hours/Available/-
+Meeting Room/HALL 2/RM 50/13 Sep 2024/2pm - 3pm/1 hours/Available/-
+Meeting Room/HALL 3/RM 50/13 Sep 2024/2pm - 3pm/1 hours/Available/-
+Auditorium/HALL 1/RM 600/13 Sep 2024/4pm - 6pm/2 hours/Available/-
+Auditorium/HALL 2/RM 600/13 Sep 2024/4pm - 6pm/2 hours/Available/-
+Auditorium/HALL 3/RM 600/13 Sep 2024/4pm - 6pm/2 hours/Available/-
+Banquet Hall/HALL 1/RM 200/13 Sep 2024/4pm - 6pm/2 hours/Available/-
+Banquet Hall/HALL 2/RM 200/13 Sep 2024/4pm - 6pm/2 hours/Available/-
+Banquet Hall/HALL 3/RM 200/13 Sep 2024/4pm - 6pm/2 hours/Available/-
+Meeting Room/HALL 1/RM 100/13 Sep 2024/4pm - 6pm/2 hours/Available/-
+Meeting Room/HALL 2/RM 100/13 Sep 2024/4pm - 6pm/2 hours/Available/-
+Meeting Room/HALL 3/RM 100/13 Sep 2024/4pm - 6pm/2 hours/Available/-
