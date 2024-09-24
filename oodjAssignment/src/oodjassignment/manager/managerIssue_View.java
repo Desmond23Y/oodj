@@ -292,7 +292,7 @@ public class managerIssue_View extends javax.swing.JFrame {
         if (data != null) {
             writeCase(data);
             displayData(data);
-            btn_responses.setVisible(false);
+            btn_responses.setVisible(true);
         }
         else {
             lbl_showCaseId.setText("Unable to find case");
@@ -312,7 +312,9 @@ public class managerIssue_View extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtn_doneActionPerformed
 
     private void btn_responsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_responsesActionPerformed
-        // TODO add your handling code here:
+        managerIssue_Response managerIssue_Response = new managerIssue_Response();
+        managerIssue_Response.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_responsesActionPerformed
 
     // UPDATE STATUS -----------------------------------------------------------
