@@ -91,3 +91,4 @@ nb-configuration.xml
 oodjAssignment/nbproject/private/private.xml
 oodjAssignment/nbproject/private/private.properties
 *.xml
+*.properties
