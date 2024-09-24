@@ -21,6 +21,7 @@ public class managerIssue_View extends javax.swing.JFrame {
         initComponents();
         clear_lbl();
         hide_changeStatus();
+        btn_responses.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -60,6 +61,7 @@ public class managerIssue_View extends javax.swing.JFrame {
         rbtn_inPrograss = new javax.swing.JRadioButton();
         btn_cancel = new javax.swing.JButton();
         btn_confirmStatus = new javax.swing.JButton();
+        btn_responses = new javax.swing.JButton();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -243,6 +245,15 @@ public class managerIssue_View extends javax.swing.JFrame {
         });
         pnl_case.add(btn_confirmStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 370, -1, -1));
 
+        btn_responses.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        btn_responses.setText("RESPONSES");
+        btn_responses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_responsesActionPerformed(evt);
+            }
+        });
+        pnl_case.add(btn_responses, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 500, -1, -1));
+
         getContentPane().add(pnl_case, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 900, 560));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
@@ -281,6 +292,7 @@ public class managerIssue_View extends javax.swing.JFrame {
         if (data != null) {
             writeCase(data);
             displayData(data);
+            btn_responses.setVisible(false);
         }
         else {
             lbl_showCaseId.setText("Unable to find case");
@@ -298,6 +310,10 @@ public class managerIssue_View extends javax.swing.JFrame {
     private void rbtn_doneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_doneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtn_doneActionPerformed
+
+    private void btn_responsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_responsesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_responsesActionPerformed
 
     // UPDATE STATUS -----------------------------------------------------------
     private void updateStatus() {
@@ -443,6 +459,7 @@ public class managerIssue_View extends javax.swing.JFrame {
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_confirmStatus;
+    private javax.swing.JButton btn_responses;
     private javax.swing.JButton btn_updateStatus;
     private javax.swing.JButton btn_view;
     private javax.swing.ButtonGroup buttonGroup1;
