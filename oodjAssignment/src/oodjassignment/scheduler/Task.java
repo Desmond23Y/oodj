@@ -56,12 +56,38 @@ public class Task extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Case ID", "User ID", "Hall Type", "Hall No", "Date", "Issues", "Scheduler ID", "Remarks"
+                "Case ID", "User ID", "Hall Type", "Hall No", "Date", "Issues", "Scheduler ID", "Status", "Remarks"
             }
         ));
         jScrollPane1.setViewportView(Task);
+        if (Task.getColumnModel().getColumnCount() > 0) {
+            Task.getColumnModel().getColumn(0).setMinWidth(85);
+            Task.getColumnModel().getColumn(0).setPreferredWidth(85);
+            Task.getColumnModel().getColumn(0).setMaxWidth(85);
+            Task.getColumnModel().getColumn(1).setMinWidth(85);
+            Task.getColumnModel().getColumn(1).setPreferredWidth(85);
+            Task.getColumnModel().getColumn(1).setMaxWidth(85);
+            Task.getColumnModel().getColumn(2).setMinWidth(100);
+            Task.getColumnModel().getColumn(2).setPreferredWidth(100);
+            Task.getColumnModel().getColumn(2).setMaxWidth(100);
+            Task.getColumnModel().getColumn(3).setMinWidth(85);
+            Task.getColumnModel().getColumn(3).setPreferredWidth(85);
+            Task.getColumnModel().getColumn(3).setMaxWidth(85);
+            Task.getColumnModel().getColumn(4).setMinWidth(95);
+            Task.getColumnModel().getColumn(4).setPreferredWidth(95);
+            Task.getColumnModel().getColumn(4).setMaxWidth(95);
+            Task.getColumnModel().getColumn(5).setMinWidth(100);
+            Task.getColumnModel().getColumn(5).setPreferredWidth(100);
+            Task.getColumnModel().getColumn(5).setMaxWidth(100);
+            Task.getColumnModel().getColumn(6).setMinWidth(85);
+            Task.getColumnModel().getColumn(6).setPreferredWidth(85);
+            Task.getColumnModel().getColumn(6).setMaxWidth(85);
+            Task.getColumnModel().getColumn(7).setMinWidth(100);
+            Task.getColumnModel().getColumn(7).setPreferredWidth(100);
+            Task.getColumnModel().getColumn(7).setMaxWidth(100);
+        }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 120, 700, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 120, 950, -1));
 
         logout.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         logout.setForeground(new java.awt.Color(102, 102, 102));
