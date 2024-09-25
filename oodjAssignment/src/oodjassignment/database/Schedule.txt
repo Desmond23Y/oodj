@@ -16,7 +16,7 @@ Meeting Room/HALL 1/RM 100/13 Sep 2024/11am - 1pm/2 hours/Booked/Company meeting
 Meeting Room/HALL 3/RM 100/13 Sep 2024/11am - 1pm/2 hours/Available/-
 Auditorium/HALL 1/RM 1200/13 Sep 2024/2pm - 6pm/4 hours/Available/-
 Auditorium/HALL 2/RM 1200/13 Sep 2024/2pm - 6pm/4 hours/Booked/Hh birthday
-Auditorium/HALL 3/RM 1200/13 Sep 2024/2pm - 6pm/4 hours/Available/-
+Auditorium/HALL 3/RM 1200/13 Sep 2024/2pm - 5pm/3 hours/Available/-
 Banquet Hall/HALL 2/RM 400/13 Sep 2024/2pm - 6pm/4 hours/Booked/Gathering
 Banquet Hall/HALL 3/RM 400/13 Sep 2024/2pm - 6pm/4 hours/Available/-
 Meeting Room/HALL 1/RM 150/13 Sep 2024/2pm - 5pm/3 hours/Available/-
