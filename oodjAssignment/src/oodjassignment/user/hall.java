@@ -114,6 +114,11 @@ public class hall extends javax.swing.JFrame {
         ));
         Aschedule.setSelectionBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(Aschedule);
+        if (Aschedule.getColumnModel().getColumnCount() > 0) {
+            Aschedule.getColumnModel().getColumn(7).setMinWidth(150);
+            Aschedule.getColumnModel().getColumn(7).setPreferredWidth(150);
+            Aschedule.getColumnModel().getColumn(7).setMaxWidth(150);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 880, 600));
 

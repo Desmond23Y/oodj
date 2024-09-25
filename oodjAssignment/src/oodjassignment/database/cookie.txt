@@ -1,1 +1,1 @@
-A0001,Desmond,0112233445,des@mail.com,P@ssw0rd,ADMINISTRATOR
+U0010,Kimberly,0112333300,666@mail.com,P@ssword1,ACTIVE,USER
