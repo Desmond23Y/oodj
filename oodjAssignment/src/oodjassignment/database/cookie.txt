@@ -1,1 +1,1 @@
-U0001,Hong Hao,01110727318,honghao0727@gmail.com,@Password1,ACTIVE,USER
+A0001,Desmond,0112233445,des@mail.com,P@ssw0rd,ADMINISTRATOR
