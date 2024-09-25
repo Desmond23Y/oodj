@@ -62,6 +62,7 @@ public class Requestcancel extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1200, 800));
         setMinimumSize(new java.awt.Dimension(1200, 800));
+        setPreferredSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logout.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -86,6 +87,38 @@ public class Requestcancel extends javax.swing.JFrame {
         ));
         Aschedule.setSelectionBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setViewportView(Aschedule);
+        if (Aschedule.getColumnModel().getColumnCount() > 0) {
+            Aschedule.getColumnModel().getColumn(0).setMinWidth(100);
+            Aschedule.getColumnModel().getColumn(0).setPreferredWidth(100);
+            Aschedule.getColumnModel().getColumn(0).setMaxWidth(100);
+            Aschedule.getColumnModel().getColumn(1).setMinWidth(100);
+            Aschedule.getColumnModel().getColumn(1).setPreferredWidth(100);
+            Aschedule.getColumnModel().getColumn(1).setMaxWidth(100);
+            Aschedule.getColumnModel().getColumn(2).setMinWidth(120);
+            Aschedule.getColumnModel().getColumn(2).setPreferredWidth(120);
+            Aschedule.getColumnModel().getColumn(2).setMaxWidth(120);
+            Aschedule.getColumnModel().getColumn(3).setMinWidth(95);
+            Aschedule.getColumnModel().getColumn(3).setPreferredWidth(95);
+            Aschedule.getColumnModel().getColumn(3).setMaxWidth(95);
+            Aschedule.getColumnModel().getColumn(4).setMinWidth(95);
+            Aschedule.getColumnModel().getColumn(4).setPreferredWidth(95);
+            Aschedule.getColumnModel().getColumn(4).setMaxWidth(95);
+            Aschedule.getColumnModel().getColumn(5).setMinWidth(100);
+            Aschedule.getColumnModel().getColumn(5).setPreferredWidth(100);
+            Aschedule.getColumnModel().getColumn(5).setMaxWidth(100);
+            Aschedule.getColumnModel().getColumn(6).setMinWidth(100);
+            Aschedule.getColumnModel().getColumn(6).setPreferredWidth(100);
+            Aschedule.getColumnModel().getColumn(6).setMaxWidth(100);
+            Aschedule.getColumnModel().getColumn(7).setMinWidth(100);
+            Aschedule.getColumnModel().getColumn(7).setPreferredWidth(100);
+            Aschedule.getColumnModel().getColumn(7).setMaxWidth(100);
+            Aschedule.getColumnModel().getColumn(8).setMinWidth(150);
+            Aschedule.getColumnModel().getColumn(8).setPreferredWidth(150);
+            Aschedule.getColumnModel().getColumn(8).setMaxWidth(150);
+            Aschedule.getColumnModel().getColumn(9).setMinWidth(179);
+            Aschedule.getColumnModel().getColumn(9).setPreferredWidth(179);
+            Aschedule.getColumnModel().getColumn(9).setMaxWidth(179);
+        }
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1140, 600));
 
