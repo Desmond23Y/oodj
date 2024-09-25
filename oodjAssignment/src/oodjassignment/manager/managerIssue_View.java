@@ -1,17 +1,12 @@
 
 package oodjassignment.manager;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.*;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -370,23 +365,7 @@ public class managerIssue_View extends javax.swing.JFrame {
     }
 
     
-    private void updateStatusLabel() {
-        String caseId = lbl_showCaseId.getText();
-        String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                if (data[0].equals(caseId)) {
-                    lbl_showCaseStatus.setText(data[7]); // Set the label to the 8th data (index 7)
-                    break;
-                }
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
+    
     
     // DATA --------------------------------------------------------------------
     private void displayData(String[] data) {
@@ -402,23 +381,23 @@ public class managerIssue_View extends javax.swing.JFrame {
     };
     
     public static void writeCase(String[] data) {
-    if (data.length < 8) {
-        JOptionPane.showMessageDialog(null, "Insufficient data provided.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    
-    String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
-    try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
-        String feedbackData = String.join(",", data);
-        bw.write(feedbackData);
-        bw.newLine();
-    } catch (IOException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error saving feedback. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
-    }
-} 
+        if (data.length < 8) {
+            JOptionPane.showMessageDialog(null, "Insufficient data provided.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+            String feedbackData = String.join(",", data);
+            bw.write(feedbackData);
+            bw.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error saving feedback. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } 
    
-    // COMPONENTS --------------------------------------------------------------
+    // CONTROLS ----------------------------------------------------------------
     private void clear_lbl(){
         lbl_showCaseId.setText("");
         lbl_showDate.setText("");
@@ -447,6 +426,24 @@ public class managerIssue_View extends javax.swing.JFrame {
         rbtn_closed.setVisible(true);
         rbtn_done.setVisible(true);
         rbtn_inPrograss.setVisible(true);
+    }
+    
+    private void updateStatusLabel() {
+        String caseId = lbl_showCaseId.getText();
+        String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data[0].equals(caseId)) {
+                    lbl_showCaseStatus.setText(data[7]); // Set the label to the 8th data (index 7)
+                    break;
+                }
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
     
     // MAIN --------------------------------------------------------------------

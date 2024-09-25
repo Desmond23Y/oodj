@@ -6,7 +6,6 @@ import javax.swing.table.DefaultTableModel;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class managerIssue_Response extends javax.swing.JFrame {
     String feedbackFilePath;
@@ -187,6 +186,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
         return filteredResponses;
     }
 
+    // DISPLAY -------------------------------------------------------------
     public void displayHistoryInTable(List<Response> responses, JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // Clear existing rows
@@ -219,7 +219,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
                 String caseId = line.split(",")[0];
                 if (!responseList.contains(caseId)) {
                     responseWriter.write(caseId + ",No\n");
-                    System.out.println("Writing to Responses.txt: " + caseId + ",No"); // Debug statement
+                    System.out.println("Writing to Responses.txt: " + caseId + ",No"); 
                 }
             }
         } catch (IOException e) {

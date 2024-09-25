@@ -2,8 +2,6 @@
 package oodjassignment.manager;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -164,7 +162,6 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        // Populate the combo box
         cbx_availableStaff.removeAllItems();
         for (String staff : staffList) {
             cbx_availableStaff.addItem(staff);
@@ -172,7 +169,6 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
     }
     
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -195,8 +191,6 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new managerIssue_AssignStaff().setVisible(true);

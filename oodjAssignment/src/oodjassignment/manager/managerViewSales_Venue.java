@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class managerViewSales_Venue extends javax.swing.JFrame {
@@ -15,6 +16,8 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     public managerViewSales_Venue() {
         initComponents();
         generate_DateCombobx();
+        DefaultTableModel model = (DefaultTableModel) tbl_showSales.getModel();
+        model.setRowCount(0); 
         
     }
 
@@ -144,15 +147,15 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void rbtn_banquetHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_banquetHallActionPerformed
-        // TODO add your handling code here:
+        clearTable(tbl_showSales);
     }//GEN-LAST:event_rbtn_banquetHallActionPerformed
 
     private void rbtn_auditoriumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_auditoriumActionPerformed
-        // TODO add your handling code here:
+        clearTable(tbl_showSales);
     }//GEN-LAST:event_rbtn_auditoriumActionPerformed
 
     private void cbx_hallNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_hallNumberActionPerformed
-        // TODO add your handling code here:
+        clearTable(tbl_showSales);
     }//GEN-LAST:event_cbx_hallNumberActionPerformed
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
@@ -220,16 +223,23 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     // DISPLAY -----------------------------------------------------------------
     private void displayBookings(List<Booking> bookings) {
         DefaultTableModel model = (DefaultTableModel) tbl_showSales.getModel();
-        model.setRowCount(0); // Clear existing data
+        model.setRowCount(0); 
         for (Booking booking : bookings) {
-            model.addRow(new Object[]{booking.getBookingID(), booking.getCustomerID(), booking.getHallType(), booking.getHallID(), booking.getPrice(), booking.getDate(), booking.getTime(), booking.getDuration(), booking.getStatus(), booking.getRemark()});
+            model.addRow(new Object[]{booking.getBookingID(), booking.getCustomerID()
+                    , booking.getHallType(), booking.getHallID(), booking.getPrice(), booking.getDate()
+                    , booking.getTime(), booking.getDuration(), booking.getStatus(), booking.getRemark()});
         }
 }
     
-    // INITIAL -----------------------------------------------------------------
+    // INITIAL AND CONTROLS -----------------------------------------------------
     private void generate_DateCombobx(){
         GenerateCBX dateGenerator = new GenerateCBX();
         dateGenerator.populateComboBox(cbx_hallNumber, "hallNumber");
+    }
+    
+    public void clearTable(JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0); 
     }
     
     // MAIN --------------------------------------------------------------------

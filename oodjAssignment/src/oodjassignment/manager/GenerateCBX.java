@@ -1,16 +1,10 @@
 
 package oodjassignment.manager;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
-import java.io.*;
-import javax.swing.table.DefaultTableModel;
 import java.util.Arrays;
 import javax.swing.JComboBox;
-import java.util.Calendar;
 
 public class GenerateCBX {
 
@@ -28,18 +22,12 @@ public class GenerateCBX {
         List<String> months = Arrays.asList(generateMonths());
         List<String> years = Arrays.asList(generateYears());
         List<String> hallNumbers = Arrays.asList(generateHallNumber());
-        if (state.equals("day")) {
-            return days;
-        } else if (state.equals("week")) {
-            return weeks;
-        } else if (state.equals("month")) {
-            return months;
-        } else if (state.equals("year")) {
-            return years;
-        } else if (state.equals("hallNumber")) {
-            return hallNumbers;
-        }else {
-            return new ArrayList<>(); 
+        if (state.equals("day")) { return days; } 
+        else if (state.equals("week")) { return weeks; } 
+        else if (state.equals("month")) { return months; } 
+        else if (state.equals("year")) { return years; } 
+        else if (state.equals("hallNumber")) { return hallNumbers; }
+        else { return new ArrayList<>();  
         }
     }
     

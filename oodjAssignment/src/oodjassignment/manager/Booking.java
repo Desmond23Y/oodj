@@ -1,3 +1,4 @@
+
 package oodjassignment.manager;
 
 public class Booking {
@@ -12,7 +13,7 @@ public class Booking {
     private String status;
     private String remark;
 
-    // Constructor
+    // CONSTRUCTOR -------------------------------------------------------------
     public Booking(String bookingID, String customerID, String hallType, String hallID, String price, String date, String time, String duration, String status, String remark) {
         this.bookingID = bookingID;
         this.customerID = customerID;
@@ -26,7 +27,7 @@ public class Booking {
         this.remark = remark;
     }
 
-    // Getters
+    // GETTERS -----------------------------------------------------------------
     public String getBookingID() { return bookingID; }
     public String getCustomerID() { return customerID; }
     public String getHallType() { return hallType; }

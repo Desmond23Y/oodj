@@ -2,8 +2,6 @@
 package oodjassignment.manager;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.*;
@@ -203,7 +201,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
         clearTable(tbl_showSales); 
-
+        
         List<String> filterValues = record_date();
         String filterType = "all";
 
@@ -280,7 +278,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         resetComboBoxes();
     }//GEN-LAST:event_rbtn_weeklyActionPerformed
 
-     // GET DATA ----------------------------------------------------------------
+    // GET DATA ----------------------------------------------------------------
     public List<Booking> readBookingsFromFile(String filePath) {
         List<Booking> bookings = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -331,24 +329,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
             });
         }
     }
-
-    // VALIDIVITY --------------------------------------------------------------
-    private boolean areAllComboBoxesSelected() {
-        if (rbtn_daily.isSelected()) {
-            return cbx_day.getSelectedIndex() != 0 && cbx_month.getSelectedIndex() != 0 && cbx_year.getSelectedIndex() != 0;
-        } 
-        else if (rbtn_weekly.isSelected()) {
-            return cbx_year.getSelectedIndex() != 0 && cbx_week.getSelectedIndex() != 0;
-        } 
-        else if (rbtn_monthly.isSelected()) {
-            return cbx_year.getSelectedIndex() != 0 && cbx_month.getSelectedIndex() != 0;
-        } 
-        else if (rbtn_yearly.isSelected()) {
-            return cbx_year.getSelectedIndex() != 0;
-        }
-        return false;
-    }
-
+    
     private List<String> record_date() {
         List<String> date_list = new ArrayList<>();
 
@@ -381,7 +362,24 @@ public class managerViewSales_Date extends javax.swing.JFrame {
                 date_list.add(year);
             }
         }
-    return date_list;
+        return date_list;
+    }
+
+    // VALIDIVITY --------------------------------------------------------------
+    private boolean areAllComboBoxesSelected() {
+        if (rbtn_daily.isSelected()) {
+            return cbx_day.getSelectedIndex() != 0 && cbx_month.getSelectedIndex() != 0 && cbx_year.getSelectedIndex() != 0;
+        } 
+        else if (rbtn_weekly.isSelected()) {
+            return cbx_year.getSelectedIndex() != 0 && cbx_week.getSelectedIndex() != 0;
+        } 
+        else if (rbtn_monthly.isSelected()) {
+            return cbx_year.getSelectedIndex() != 0 && cbx_month.getSelectedIndex() != 0;
+        } 
+        else if (rbtn_yearly.isSelected()) {
+            return cbx_year.getSelectedIndex() != 0;
+        }
+        return false;
     }
     
     // GENERATION OF DATE ------------------------------------------------------
@@ -393,19 +391,20 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         dateGenerator.populateComboBox(cbx_year, "year");
     }
     
-    // CONTROL OF COMPONENT ----------------------------------------------------
+    // CONTROLS ----------------------------------------------------------------
+    public void clearTable(JTable table) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0); 
+    }
+    
     public void resetComboBoxes() {
         cbx_day.setSelectedIndex(0);
         cbx_month.setSelectedIndex(0);
         cbx_year.setSelectedIndex(0);
         cbx_week.setSelectedIndex(0);
+        clearTable(tbl_showSales);
     }
     
-    public void clearTable(JTable table) {
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setRowCount(0); // Clear existing rows
-    }
-
     private void initial_cbxAllVisibility(boolean tf){
         lbl_selectDay.setVisible(tf);
         lbl_selectMonth.setVisible(tf);
@@ -416,12 +415,14 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         lbl_selectWeek.setVisible(tf);
         cbx_week.setVisible(tf);
         btn_view.setVisible(tf);
+        clearTable(tbl_showSales);
     }
     
     private void initial_selectDailyVisibility(boolean tf){
         initial_cbxAllVisibility(tf);
         lbl_selectWeek.setVisible(!tf);
         cbx_week.setVisible(!tf);
+        clearTable(tbl_showSales);
     }
     
     private void initial_selectWeeklyVisibility1(){
@@ -429,6 +430,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         cbx_year.setVisible(true);
         lbl_selectWeek.setVisible(true);
         cbx_week.setVisible(true);
+        clearTable(tbl_showSales);
     }
     
     private void initial_selectMonthlyVisibility(){
@@ -436,11 +438,13 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         lbl_selectYear.setVisible(true);
         cbx_month.setVisible(true);
         cbx_year.setVisible(true);
+        clearTable(tbl_showSales);
     }
     
     private void initial_selectYearlyVisibility(){
         lbl_selectYear.setVisible(true);
         cbx_year.setVisible(true);
+        clearTable(tbl_showSales);
     }  
     
     // main --------------------------------------------------------------------

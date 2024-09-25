@@ -37,18 +37,11 @@ public class ReadCase {
     }
 
     public String getCustomerId() { return customerId; }
-
     public String getHallTypeValue() { return hallTypeValue; }
-
     public String getHallNoValue() { return hallNoValue; }
-
     public String getDateValue() { return dateValue; }
-
     public String getFeedbackText() { return feedbackText; }
-    
     public String getCaseId() { return caseId; }
-    
     public String getResponse() { return Response; }
-    
     public ReadCase(String caseId) { this.caseId = caseId; }
 }
