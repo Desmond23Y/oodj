@@ -70,6 +70,6 @@ public class GenerateCBX {
     }
     
     private String[] generateHallNumber() {
-        return new String[]{"Hall Numbers", "Hall 1", "Hall 2", "Hall 3"};
+        return new String[]{"Hall Numbers", "HALL 1", "HALL 2", "HALL 3"};
     }
 }

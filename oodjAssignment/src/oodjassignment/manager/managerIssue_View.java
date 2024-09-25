@@ -177,6 +177,7 @@ public class managerIssue_View extends javax.swing.JFrame {
 
         lbl_showDescription.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lbl_showDescription.setText("Desription");
+        lbl_showDescription.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         pnl_case.add(lbl_showDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 480, 60));
 
         lbl_showCaseStatus.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N

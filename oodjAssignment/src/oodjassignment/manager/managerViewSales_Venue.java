@@ -1,6 +1,15 @@
 
 package oodjassignment.manager;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class managerViewSales_Venue extends javax.swing.JFrame {
 
     public managerViewSales_Venue() {
@@ -91,6 +100,11 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
 
         btn_view.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
         btn_view.setText("View");
+        btn_view.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_viewActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_view, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 350, -1, -1));
 
         lbl_sales.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
@@ -140,7 +154,77 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     private void cbx_hallNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_hallNumberActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbx_hallNumberActionPerformed
+
+    private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
+        String hallType = getSelectedHallType();
+    if (hallType.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please select a Hall Type.");
+        return;
+    }
+
+    String hallNumber = getSelectedHallNumber();
+    if (hallNumber.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please select a Hall Number.");
+        return;
+    }
+
+    List<Booking> bookings = readBookingsFromFile("src/oodjassignment/database/Booking.txt");
+    List<Booking> filteredBookings = filterBookings(bookings, hallType, hallNumber);
+    displayBookings(filteredBookings);
+    }//GEN-LAST:event_btn_viewActionPerformed
     
+    // GET ---------------------------------------------------------------------
+    private String getSelectedHallType() {
+        if (rbtn_auditorium.isSelected()) {
+            return "Auditorium";
+        } else if (rbtn_banquetHall.isSelected()) {
+            return "Banquet Hall";
+        } else if (rbtn_meetingRoom.isSelected()) {
+            return "Meeting Room";
+        } else {
+            return "";
+        }
+    }
+
+    private String getSelectedHallNumber() {
+        String hallNumber = cbx_hallNumber.getSelectedItem().toString();
+        if (hallNumber.equals("Hall Numbers")) {
+            return "";
+        } else {
+            return hallNumber;
+        }
+    }
+    
+    // READ --------------------------------------------------------------------
+    private List<Booking> readBookingsFromFile(String filePath) {
+        List<Booking> bookings = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split("/");
+                Booking booking = new Booking(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
+                bookings.add(booking);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bookings;
+    }
+
+    private List<Booking> filterBookings(List<Booking> bookings, String hallType, String hallNumber) {
+        return bookings.stream()
+                .filter(b -> b.getHallType().equals(hallType) && b.getHallID().equals(hallNumber))
+                .collect(Collectors.toList());
+    }
+    
+    // DISPLAY -----------------------------------------------------------------
+    private void displayBookings(List<Booking> bookings) {
+        DefaultTableModel model = (DefaultTableModel) tbl_showSales.getModel();
+        model.setRowCount(0); // Clear existing data
+        for (Booking booking : bookings) {
+            model.addRow(new Object[]{booking.getBookingID(), booking.getCustomerID(), booking.getHallType(), booking.getHallID(), booking.getPrice(), booking.getDate(), booking.getTime(), booking.getDuration(), booking.getStatus(), booking.getRemark()});
+        }
+}
     
     // INITIAL -----------------------------------------------------------------
     private void generate_DateCombobx(){
@@ -148,7 +232,7 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         dateGenerator.populateComboBox(cbx_hallNumber, "hallNumber");
     }
     
-    
+    // MAIN --------------------------------------------------------------------
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -6,31 +6,14 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ReadCase {
-    private String caseId;
-
-    public String getCaseId() {
-        return caseId;
-    }
-    
-    private String Response;
-
-    public String getResponse() {
-        return Response;
-    }
-
-    public void setResponse(String Response) {
-        this.Response = Response;
-    }
-       
     private String customerId;
     private String hallTypeValue;
     private String hallNoValue;
     private String dateValue;
     private String feedbackText;
-
-    public ReadCase(String caseId) {
-        this.caseId = caseId;
-    }
+    
+    private String caseId;
+    private String Response;
 
     public boolean loadCaseData() {
         String filePath = "src/oodjassignment/database/feedback.txt";
@@ -53,23 +36,19 @@ public class ReadCase {
         return false;
     }
 
-    public String getCustomerId() {
-        return customerId;
-    }
+    public String getCustomerId() { return customerId; }
 
-    public String getHallTypeValue() {
-        return hallTypeValue;
-    }
+    public String getHallTypeValue() { return hallTypeValue; }
 
-    public String getHallNoValue() {
-        return hallNoValue;
-    }
+    public String getHallNoValue() { return hallNoValue; }
 
-    public String getDateValue() {
-        return dateValue;
-    }
+    public String getDateValue() { return dateValue; }
 
-    public String getFeedbackText() {
-        return feedbackText;
-    }
+    public String getFeedbackText() { return feedbackText; }
+    
+    public String getCaseId() { return caseId; }
+    
+    public String getResponse() { return Response; }
+    
+    public ReadCase(String caseId) { this.caseId = caseId; }
 }

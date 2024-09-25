@@ -7,11 +7,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class readBookingFromFile {
+public class ReadBooking {
     private List<Booking> bookings;
 
     // Constructor
-    public readBookingFromFile(String filePath) {
+    public ReadBooking(String filePath) {
         bookings = new ArrayList<>();
         readBookingsFromFile(filePath);
     }
