@@ -39,20 +39,19 @@ public class Register {
     }
 
     // Method to register a new user and write the details to the file
-    public boolean registerUser(String username, String phone, String email, String password) {
+    public String registerUser(String username, String phone, String email, String password) {
         if (username.isEmpty() || phone.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            return false;
+            return null; // Return null if registration fails
         }
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH, true))) {
             String ID = generateID(getNextID());
             String record = ID + "," + username + "," + phone + "," + email + "," + password + ",ACTIVE";
             bw.write(record + "\n");
+            return ID; // Return the generated user ID on successful registration
         } catch (IOException ex) {
             ex.printStackTrace();
-            return false;
+            return null; // Return null in case of an exception
         }
-
-        return true;
     }
 }

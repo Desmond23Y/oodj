@@ -5,8 +5,6 @@
 package oodjassignment;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 /**
@@ -119,9 +117,9 @@ public class Registerpage extends javax.swing.JFrame {
         String email = email_field.getText();
         String password = new String(password_field.getPassword());
 
-        boolean success = register.registerUser(username, phone, email, password);
-        if (success) {
-            JOptionPane.showMessageDialog(this, "Register Successfully!!");
+        String userID = register.registerUser(username, phone, email, password);
+        if (userID != null) {
+            JOptionPane.showMessageDialog(this, "Register Successfully! Your User ID is: " + userID);
             setVisible(false);
             new Loginpage().setVisible(true); 
         } else {
