@@ -16,9 +16,7 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     public managerViewSales_Venue() {
         initComponents();
         generate_DateCombobx();
-        DefaultTableModel model = (DefaultTableModel) tbl_showSales.getModel();
-        model.setRowCount(0); 
-        
+        clearTable(tbl_showSales);
     }
 
     @SuppressWarnings("unchecked")
@@ -205,7 +203,8 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split("/");
-                Booking booking = new Booking(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
+                Booking booking = new Booking(data[0], data[1], data[2], data[3]
+                        , data[4], data[5], data[6], data[7], data[8], data[9]);
                 bookings.add(booking);
             }
         } catch (IOException e) {
@@ -229,7 +228,7 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
                     , booking.getHallType(), booking.getHallID(), booking.getPrice(), booking.getDate()
                     , booking.getTime(), booking.getDuration(), booking.getStatus(), booking.getRemark()});
         }
-}
+    }
     
     // INITIAL AND CONTROLS -----------------------------------------------------
     private void generate_DateCombobx(){
@@ -244,7 +243,6 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     
     // MAIN --------------------------------------------------------------------
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -267,7 +265,6 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         }
         //</editor-fold>
         
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new managerViewSales_Venue().setVisible(true);
