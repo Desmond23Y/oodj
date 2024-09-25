@@ -71,7 +71,7 @@ public class UserProfile {
                     fileContent.append(updatedRecord).append(System.lineSeparator());
 
                     // Append to cookie with the role
-                    String updatedCookieRecord = String.join(",", id, username, phone, email, password, "ACTIVE");
+                    String updatedCookieRecord = String.join(",", id, username, phone, email, password, "ACTIVE", "USER");
                     cookieContent.append(updatedCookieRecord).append(System.lineSeparator());
 
                     isUpdated = true;
