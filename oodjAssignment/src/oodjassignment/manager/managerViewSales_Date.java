@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.io.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.stream.Collectors;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.WeekFields;
+import java.util.Locale;
+import java.util.Arrays;
 
 public class managerViewSales_Date extends javax.swing.JFrame {
     
@@ -211,11 +216,13 @@ public class managerViewSales_Date extends javax.swing.JFrame {
             filterType = "monthly";
         } else if (rbtn_yearly.isSelected()) {
             filterType = "yearly";
+        } else if (rbtn_weekly.isSelected()) {
+            filterType = "weekly";
+            filterValues = Arrays.asList(cbx_year.getSelectedItem().toString(), cbx_week.getSelectedItem().toString());
         }
 
         List<Booking> bookings = readBookingsFromFile("src/oodjassignment/database/Booking.txt");
         List<Booking> filteredBookings = filterBookings(bookings, filterType, filterValues);
-
         if (filteredBookings.isEmpty()) {
             lbl_responseNoBooking.setText("NO BOOKING ON THIS DURATION");
         } else {
@@ -303,6 +310,8 @@ public class managerViewSales_Date extends javax.swing.JFrame {
                     return booking.getDate().contains(filterValues.get(0) + " " + filterValues.get(1));
                 case "yearly":
                     return booking.getDate().endsWith(filterValues.get(0));
+                case "weekly":
+                    return isDateInWeek(booking.getDate(), filterValues.get(0), filterValues.get(1));
                 case "all":
                     return true;
                 default:
@@ -310,6 +319,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
             }
         }).collect(Collectors.toList());
     }
+
     
     public void displayBookingsInTable(List<Booking> bookings, JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -380,6 +390,19 @@ public class managerViewSales_Date extends javax.swing.JFrame {
             return cbx_year.getSelectedIndex() != 0;
         }
         return false;
+    }
+    
+    public boolean isDateInWeek(String dateStr, String yearStr, String weekStr) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
+        LocalDate date = LocalDate.parse(dateStr, formatter);
+        int year = Integer.parseInt(yearStr);
+        int week = Integer.parseInt(weekStr);
+
+        WeekFields weekFields = WeekFields.of(Locale.getDefault());
+        int dateWeek = date.get(weekFields.weekOfWeekBasedYear());
+        int dateYear = date.getYear();
+
+        return dateYear == year && dateWeek == week;
     }
     
     // GENERATION OF DATE ------------------------------------------------------
