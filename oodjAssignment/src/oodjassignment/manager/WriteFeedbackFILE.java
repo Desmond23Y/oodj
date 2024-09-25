@@ -4,7 +4,7 @@ package oodjassignment.manager;
 import java.io.*;
 import java.util.*;
 
-public class FeedbackManager {
+public class WriteFeedbackFILE {
     private static final String FILE_PATH = "src/oodjassignment/database/feedback.txt";
 
     public static Feedback findFeedbackByCaseId(String caseId) throws IOException {

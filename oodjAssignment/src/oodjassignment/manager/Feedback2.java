@@ -3,7 +3,7 @@ package oodjassignment.manager;
 
 import javax.swing.JLabel;
 
-public class managerIssueView {
+public class Feedback2 {
     private JLabel lbl_showCaseId;
     private JLabel lbl_showCaseStatus;
     private JLabel lbl_showCustomerID;
@@ -13,7 +13,7 @@ public class managerIssueView {
     private JLabel lbl_showHallType;
     private JLabel lbl_showStaff;
 
-    public managerIssueView(JLabel lbl_showCaseId, JLabel lbl_showCaseStatus, JLabel lbl_showCustomerID, JLabel lbl_showDate, JLabel lbl_showDescription, JLabel lbl_showHallNumber, JLabel lbl_showHallType, JLabel lbl_showStaff) {
+    public Feedback2(JLabel lbl_showCaseId, JLabel lbl_showCaseStatus, JLabel lbl_showCustomerID, JLabel lbl_showDate, JLabel lbl_showDescription, JLabel lbl_showHallNumber, JLabel lbl_showHallType, JLabel lbl_showStaff) {
         this.lbl_showCaseId = lbl_showCaseId;
         this.lbl_showCaseStatus = lbl_showCaseStatus;
         this.lbl_showCustomerID = lbl_showCustomerID;

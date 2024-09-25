@@ -16,7 +16,7 @@ public class managerHomepage extends javax.swing.JFrame {
         btn_date = new javax.swing.JButton();
         btn_viewCaseChangeStatus = new javax.swing.JButton();
         btn_assignStaff = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btn_replyCustomerIssue = new javax.swing.JButton();
         lbl_viewSales = new javax.swing.JLabel();
         lbl_cusIssue = new javax.swing.JLabel();
         btn_venue = new javax.swing.JButton();
@@ -24,7 +24,6 @@ public class managerHomepage extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 800));
-        setPreferredSize(new java.awt.Dimension(1200, 800));
         setSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -83,16 +82,16 @@ public class managerHomepage extends javax.swing.JFrame {
         });
         getContentPane().add(btn_assignStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(698, 370, -1, -1));
 
-        jButton4.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
-        jButton4.setText("Reply Customer Issues");
-        jButton4.setMinimumSize(new java.awt.Dimension(404, 45));
-        jButton4.setPreferredSize(new java.awt.Dimension(404, 45));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btn_replyCustomerIssue.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
+        btn_replyCustomerIssue.setText("Reply Customer Issues");
+        btn_replyCustomerIssue.setMinimumSize(new java.awt.Dimension(404, 45));
+        btn_replyCustomerIssue.setPreferredSize(new java.awt.Dimension(404, 45));
+        btn_replyCustomerIssue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btn_replyCustomerIssueActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(698, 430, -1, -1));
+        getContentPane().add(btn_replyCustomerIssue, new org.netbeans.lib.awtextra.AbsoluteConstraints(698, 430, -1, -1));
 
         lbl_viewSales.setFont(new java.awt.Font("Segoe UI Black", 0, 40)); // NOI18N
         lbl_viewSales.setText("View Sales By");
@@ -146,15 +145,12 @@ public class managerHomepage extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btn_dateActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btn_replyCustomerIssueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_replyCustomerIssueActionPerformed
         managerIssue_Response managerIssue_Response = new managerIssue_Response();
         managerIssue_Response.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btn_replyCustomerIssueActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -191,9 +187,9 @@ public class managerHomepage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_assignStaff;
     private javax.swing.JButton btn_date;
+    private javax.swing.JButton btn_replyCustomerIssue;
     private javax.swing.JButton btn_venue;
     private javax.swing.JButton btn_viewCaseChangeStatus;
-    private javax.swing.JButton jButton4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_cusIssue;

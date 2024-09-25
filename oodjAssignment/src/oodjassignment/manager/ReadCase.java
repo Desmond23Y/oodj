@@ -5,19 +5,30 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class ViewCase {
+public class ReadCase {
     private String caseId;
 
     public String getCaseId() {
         return caseId;
     }
+    
+    private String Response;
+
+    public String getResponse() {
+        return Response;
+    }
+
+    public void setResponse(String Response) {
+        this.Response = Response;
+    }
+       
     private String customerId;
     private String hallTypeValue;
     private String hallNoValue;
     private String dateValue;
     private String feedbackText;
 
-    public ViewCase(String caseId) {
+    public ReadCase(String caseId) {
         this.caseId = caseId;
     }
 

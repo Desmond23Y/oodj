@@ -95,7 +95,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lbl_enterCaseID">
+        <Component class="javax.swing.JLabel" name="lbl_enterCaseId">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="24" style="0"/>
@@ -103,7 +103,7 @@
             <Property name="text" type="java.lang.String" value="CASE ID"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_caseID">
+        <Component class="javax.swing.JTextField" name="txt_caseId">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
