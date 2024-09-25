@@ -2,9 +2,9 @@ HB0001/U0001/Auditorium/HALL 1/RM 600/13 Sep 2024/8am - 10am/2 hours/Booked/Hh b
 HB0002/U0001/Auditorium/HALL 2/RM 600/13 Sep 2024/11am - 1pm/2 hours/Booked/Hh birthday
 HB0003/U0001/Auditorium/HALL 2/RM 1200/13 Sep 2024/2pm - 6pm/4 hours/Booked/Hh birthday
 HB0004/U0003/Meeting Room/HALL 1/RM 100/13 Sep 2024/8am - 10am/2 hours/Booked/Company meeting
-HB0005/U0003/Meeting Room/HALL 1/RM 100/13 Sep 2024/11am - 1pm/2 hours/Booked/Company meeting
+HB0005/U0003/Meeting Room/HALL 1/RM 100/13 Sep 2024/11am - 1pm/2 hours/Request for cancel/Meeting cancelled
 HB0006/U0003/Banquet Hall/HALL 2/RM 400/13 Sep 2024/2pm - 6pm/4 hours/Booked/Gathering
 HB0007/U0008/Meeting Room/HALL 2/RM 100/13 Sep 2024/8am - 10am/2 hours/Booked/Presentation
-HB0008/U0008/Meeting Room/HALL 2/RM 150/13 Sep 2024/2pm - 5pm/3 hours/Booked/Assignment discussion
+HB0008/U0008/Meeting Room/HALL 2/RM 150/13 Sep 2024/2pm - 5pm/3 hours/Request for cancel/Member absent
 HB0009/U0010/Meeting Room/HALL 3/RM 100/15 Sep 2024/4pm - 6pm/2 hours/Booked/Assignment discussion
 HB0010/U0010/Meeting Room/HALL 2/RM 150/3 Oct 2024/10am - 1pm/3 hours/Booked/Final discussion
