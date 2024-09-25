@@ -42,72 +42,44 @@ public class ViewBooking {
     }
 
     public static void showDataFromFile(String filePath, DefaultTableModel upcomingModel, DefaultTableModel pastModel) {
-    // Date format: 23 May 2024
-    DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH);
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH);
+        LocalDateTime now = LocalDateTime.now();
 
-    // Time format for parsing: 10:00 AM
-    DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH);
-
-    // Current date and time
-    LocalDateTime now = LocalDateTime.now();
-
-    try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] data = line.split("/");
-
-            // Debugging: Print out the raw data
-            System.out.println("Raw Data: " + String.join(" | ", data));
-
-            // Check if status is "Booked" before processing
-            String status = data[8].trim();
-            if (!"Booked".equalsIgnoreCase(status)) {
-                continue; // Skip if status is not "Booked"
-            }
-
-            String bookingDate = data[5];
-            String bookingTime = data[6];
-
-            try {
-                // Extract start time from the time range
-                String startTime = bookingTime.split(" - ")[0].trim().toLowerCase();
-
-                // Normalize time format to 12-hour clock
-                String normalizedTime = startTime.replaceAll("([0-9]{1,2})(am|pm)", "$1:00 $2").toUpperCase();
-
-                // Debugging: Print out the time being parsed
-                System.out.println("Time to parse: " + normalizedTime);
-
-                // Parse the time string into LocalTime
-                LocalTime startLocalTime = LocalTime.parse(normalizedTime, timeFormatter);
-
-                // Convert LocalTime to LocalDateTime for comparison
-                LocalDateTime bookingDateTime = LocalDateTime.of(
-                        LocalDate.parse(bookingDate, dateFormatter),
-                        startLocalTime
-                );
-
-                // Create a new array excluding the "Status" column
-                String[] displayData = new String[9];
-                System.arraycopy(data, 0, displayData, 0, 8);  // Copy everything except the status column
-                displayData[8] = data[9];
-                // Compare the booking date and time with the current date and time
-                if (bookingDateTime.isAfter(now)) {
-                    // Future booking, add to upcoming bookings table
-                    upcomingModel.addRow(displayData);
-                } else {
-                    // Past booking, add to past bookings table
-                    pastModel.addRow(displayData);
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split("/");
+                String status = data[8].trim();
+                if (!"Booked".equalsIgnoreCase(status)) {
+                    continue;
                 }
-            } catch (DateTimeParseException e) {
-                System.err.println("Error parsing date/time for booking: " + data[0] + " Time: " + bookingTime);
-                e.printStackTrace();
+                String bookingDate = data[5];
+                String bookingTime = data[6];
+                try {
+                    String startTime = bookingTime.split(" - ")[0].trim().toLowerCase();
+                    String normalizedTime = startTime.replaceAll("([0-9]{1,2})(am|pm)", "$1:00 $2").toUpperCase();
+                    LocalTime startLocalTime = LocalTime.parse(normalizedTime, timeFormatter);
+                    LocalDateTime bookingDateTime = LocalDateTime.of(
+                            LocalDate.parse(bookingDate, dateFormatter),
+                            startLocalTime
+                    );
+                    String[] displayData = new String[9];
+                    System.arraycopy(data, 0, displayData, 0, 8);
+                    displayData[8] = data[9];
+                    if (bookingDateTime.isAfter(now)) {
+                        upcomingModel.addRow(displayData);
+                    } else {
+                        pastModel.addRow(displayData);
+                    }
+                } catch (DateTimeParseException e) {
+                    e.printStackTrace();
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
     }
-}
 
     
     public static void applyFilter(TableRowSorter<DefaultTableModel> upcomingRowSorter, TableRowSorter<DefaultTableModel> pastRowSorter, String searchText, int columnIndex) {

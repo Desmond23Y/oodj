@@ -1,1 +1,1 @@
-U0010,Kimberly,0112333300,666@mail.com,P@ssword1,ACTIVE,USER
+S0001,Ooi Hong,0123456789,Ooihong@mail.com,@Password1,SCHEDULER
