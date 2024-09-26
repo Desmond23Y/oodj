@@ -5,7 +5,10 @@
 package oodjassignment.scheduler;
 
 import java.awt.Color;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
@@ -19,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class Task extends javax.swing.JFrame {
 
     private ReadData readData;
+
     /**
      * Creates new form Admin_message
      */
@@ -158,34 +162,65 @@ public class Task extends javax.swing.JFrame {
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         DefaultTableModel model = (DefaultTableModel) Task.getModel();
-        int tablelist = model.getRowCount();
-        model.setValueAt(Remarks.getText(), Task.getSelectedRow(), 8);
+        int selectedRow = Task.getSelectedRow(); // Get the currently selected row
+
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a row to update.");
+            return;
+        }
+        String caseID = (String) model.getValueAt(selectedRow, 0); // Assuming Case ID is in column 0
+        String newRemarks = Remarks.getText(); // Get the new remarks from the text field
+        model.setValueAt(newRemarks, selectedRow, 8); // Update the remarks in the table (assuming remarks are in column 8)
 
         try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\caseStaffNStatus.txt"));
-            for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString()+"/"+model.getValueAt(i, 7).toString()+"/"+model.getValueAt(i, 8).toString();
-                bw.write(rec+"\n");
+            // Define the file path
+            File file = new File("src\\\\oodjassignment\\\\database\\\\caseStaffNStatus.txt");
+
+            // Read the current file content
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            StringBuilder fileContent = new StringBuilder();
+            String line;
+
+            // Loop through each line in the file
+            while ((line = br.readLine()) != null) {
+                String[] fields = line.split(","); // Assuming fields are separated by commas
+
+                if (fields[0].equals(caseID)) { // If the Case ID matches
+                    // Update the last field with the new remarks
+                    fields[8] = newRemarks; // Update the remarks field
+
+                    // Rebuild the updated line
+                    String updatedLine = String.join(",", fields);
+                    fileContent.append(updatedLine).append("\n"); // Append the updated line to the file content
+                } else {
+                    // Keep the other lines unchanged
+                    fileContent.append(line).append("\n");
+                }
             }
+            br.close();
+
+            // Write the modified content back to the file
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            bw.write(fileContent.toString());
             bw.close();
-        } catch (IOException ex){
-            JOptionPane.showMessageDialog(this,"Something Wrong");
+
+            JOptionPane.showMessageDialog(this, "Remarks updated successfully.");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
         }
     }//GEN-LAST:event_SaveActionPerformed
 
     private void RemarksFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RemarksFocusGained
-        if(Remarks.getText().equals("-"))
-        {
+        if (Remarks.getText().equals("-")) {
             Remarks.setText("");
-            Remarks.setForeground(newColor(0,118,221));
+            Remarks.setForeground(newColor(0, 118, 221));
         }
     }//GEN-LAST:event_RemarksFocusGained
 
     private void RemarksFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_RemarksFocusLost
-        if(Remarks.getText().equals(""))
-        {
+        if (Remarks.getText().equals("")) {
             Remarks.setText("-");
-            Remarks.setForeground(newColor(0,118,221));
+            Remarks.setForeground(newColor(0, 118, 221));
 
         }
     }//GEN-LAST:event_RemarksFocusLost
