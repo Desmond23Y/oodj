@@ -168,7 +168,7 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 if (parts.length > 0 && !existingCaseIds.contains(parts[0])) {
-                    newEntries.add(line + "-");
+                    newEntries.add(line + ",-");
                 }
             }
         } catch (IOException e) {

@@ -234,7 +234,6 @@ public class managerIssue_Response extends javax.swing.JFrame {
                 String caseId = line.split(",")[0];
                 if (!responseList.contains(caseId)) {
                     responseWriter.write(caseId + ",No\n");
-                    System.out.println("Writing to Responses.txt: " + caseId + ",No"); 
                 }
             }
         } catch (IOException e) {
