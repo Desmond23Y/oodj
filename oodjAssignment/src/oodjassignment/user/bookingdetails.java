@@ -4,7 +4,6 @@
  */
 package oodjassignment.user;
 
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 public class bookingdetails extends javax.swing.JFrame {
 
     private final Bookdetails bookdetails = new Bookdetails();
-    
+
     public bookingdetails() {
         initComponents();
         DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
@@ -189,9 +188,8 @@ public class bookingdetails extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutActionPerformed
-       new 
-       homepage().setVisible(true);
-       dispose();
+        new homepage().setVisible(true);
+        dispose();
     }//GEN-LAST:event_logoutActionPerformed
 
     private void reason_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reason_fieldActionPerformed
@@ -199,27 +197,41 @@ public class bookingdetails extends javax.swing.JFrame {
     }//GEN-LAST:event_reason_fieldActionPerformed
 
     private void selectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectActionPerformed
-    bookdetails.select(Aschedule, bkid, customer, type, no);
+        bookdetails.select(Aschedule, bkid, customer, type, no);
     }//GEN-LAST:event_selectActionPerformed
 
     private void requestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestActionPerformed
         int selectedRow = Aschedule.getSelectedRow();
         if (selectedRow != -1) {
-            String reason = reason_field.getText();
-            DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-            bookdetails.updateBookingRequest(model, selectedRow, reason);
+            // Get the user ID from cookie.txt
+            String userID = bookdetails.getCustomerID(); // Assuming getCustomerID() gets the ID from cookie.txt
 
-            JOptionPane.showMessageDialog(this, "Cancellation requested.");
-            new bookingdetails().setVisible(true);
-            this.dispose();
+            // Get the user ID from the selected row
+            DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+            String selectedUserID = model.getValueAt(selectedRow, 1).toString(); // Assuming the user ID is in column 1
+
+            // Check if the user IDs match
+            if (userID.equals(selectedUserID)) {
+                // Proceed with the cancellation request
+                String reason = reason_field.getText();
+                bookdetails.updateBookingRequest(model, selectedRow, reason);
+
+                JOptionPane.showMessageDialog(this, "Cancellation requested.");
+                new bookingdetails().setVisible(true);  // Refresh the page
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "You can only request cancellation for your own bookings.");
+            }
         } else {
-            JOptionPane.showMessageDialog(this, "Please select a row to request for cancel");
+            JOptionPane.showMessageDialog(this, "Please select a row to request cancellation.");
         }
     }//GEN-LAST:event_requestActionPerformed
 
     /**
      * @param args the command line arguments
      */
+    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -231,16 +243,28 @@ public class bookingdetails extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(bookingdetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(bookingdetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(bookingdetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(bookingdetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(bookingdetails.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(bookingdetails.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(bookingdetails.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(bookingdetails.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
