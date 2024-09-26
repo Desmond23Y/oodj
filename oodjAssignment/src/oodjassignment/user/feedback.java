@@ -174,7 +174,7 @@ public class feedback extends javax.swing.JFrame {
             String caseId = feedb.generateID(nextID);
 
             // Prepare the feedback data to save
-            String feedbackData = caseId + "," + customerId + "," + hallTypeValue + "," + hallNoValue + "," + dateValue + "," + feedbackText + ", No, No";
+            String feedbackData = caseId + "," + customerId + "," + hallTypeValue + "," + hallNoValue + "," + dateValue + "," + feedbackText + ",No,No";
 
             // Save the feedback data using Feedb class
             feedb.saveFeedback(feedbackData);
