@@ -4,3 +4,4 @@ C0003,U0001,Auditorium,HALL 1,2024-09-26,Floor dirty,No,No
 C0004,U0010,Meeting Room,ROOM 1,2024-09-26,Aircond malfunction,No,No
 C0005,U0010,Auditorium,HALL 1,2024-09-26,Projector malfunction,No,No
 C0006,U0003,Banquet Hall,HALL 1,2024-09-26,Hall smelly,No,No
+C0007,U0012,Auditorium,HALL 1,2024-09-27,Aircond broken,No,No

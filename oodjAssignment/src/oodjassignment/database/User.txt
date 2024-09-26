@@ -7,3 +7,4 @@ U0006,Nur Aisha,0172837465,nuraisha@mail.com,Nu123$ha,ACTIVE
 U0008,Eson,0126666666,666@mail.com,P@ssword,ACTIVE
 U0010,Kimberly,0112333300,666@mail.com,P@ssword1,ACTIVE
 U0011,Mona,01119233782,mona@gmail.com,Mona123,ACTIVE
+U0012,Ling,01110599818,ling0901@gmail.com,password1,ACTIVE
