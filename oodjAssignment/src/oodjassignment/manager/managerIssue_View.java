@@ -17,6 +17,7 @@ public class managerIssue_View extends javax.swing.JFrame {
         clear_lbl();
         hide_changeStatus();
         btn_responses.setVisible(false);
+        generateCBX();
     }
 
     @SuppressWarnings("unchecked")
@@ -29,7 +30,7 @@ public class managerIssue_View extends javax.swing.JFrame {
         lbl_case = new javax.swing.JLabel();
         pnl_ID = new javax.swing.JPanel();
         lbl_enterCaseId = new javax.swing.JLabel();
-        txt_caseId = new javax.swing.JTextField();
+        cbx_caseId = new javax.swing.JComboBox<>();
         lbl_space = new javax.swing.JLabel();
         btn_view = new javax.swing.JButton();
         pnl_case = new javax.swing.JPanel();
@@ -89,10 +90,8 @@ public class managerIssue_View extends javax.swing.JFrame {
         lbl_enterCaseId.setText("CASE ID");
         pnl_ID.add(lbl_enterCaseId);
 
-        txt_caseId.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txt_caseId.setMinimumSize(new java.awt.Dimension(100, 29));
-        txt_caseId.setPreferredSize(new java.awt.Dimension(100, 29));
-        pnl_ID.add(txt_caseId);
+        cbx_caseId.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        pnl_ID.add(cbx_caseId);
 
         lbl_space.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_space.setText("                                                                                           ");
@@ -283,7 +282,7 @@ public class managerIssue_View extends javax.swing.JFrame {
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
         clear_lbl();
-        String caseID = txt_caseId.getText();
+        String caseID = cbx_caseId.getSelectedItem().toString();
         String[] data = ReadFeedback.readcaseStaffNStatus(caseID);
         if (data != null) {
             writeCase(data);
@@ -292,6 +291,7 @@ public class managerIssue_View extends javax.swing.JFrame {
         }
         else {
             lbl_showCaseId.setText("Unable to find case");
+            btn_responses.setVisible(false);
         }
     }//GEN-LAST:event_btn_viewActionPerformed
 
@@ -364,9 +364,6 @@ public class managerIssue_View extends javax.swing.JFrame {
         }
     }
 
-    
-    
-    
     // DATA --------------------------------------------------------------------
     private void displayData(String[] data) {
         lbl_showCaseId.setText(data[0]);
@@ -437,13 +434,18 @@ public class managerIssue_View extends javax.swing.JFrame {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 if (data[0].equals(caseId)) {
-                    lbl_showCaseStatus.setText(data[7]); // Set the label to the 8th data (index 7)
+                    lbl_showCaseStatus.setText(data[7]);
                     break;
                 }
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+    
+    private void generateCBX(){
+        GenerateCBX generateCBX = new GenerateCBX();
+        generateCBX.populateComboBox(cbx_caseId, "caseId");
     }
     
     // MAIN --------------------------------------------------------------------
@@ -463,6 +465,7 @@ public class managerIssue_View extends javax.swing.JFrame {
     private javax.swing.JButton btn_updateStatus;
     private javax.swing.JButton btn_view;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbx_caseId;
     private javax.swing.JLabel lbl_CusID;
     private javax.swing.JLabel lbl_assignedstaff;
     private javax.swing.JLabel lbl_background;
@@ -490,6 +493,5 @@ public class managerIssue_View extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbtn_closed;
     private javax.swing.JRadioButton rbtn_done;
     private javax.swing.JRadioButton rbtn_inPrograss;
-    private javax.swing.JTextField txt_caseId;
     // End of variables declaration//GEN-END:variables
 }

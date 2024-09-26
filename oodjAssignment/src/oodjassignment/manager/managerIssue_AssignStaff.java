@@ -11,6 +11,7 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
     public managerIssue_AssignStaff() {
         initComponents();
         loadStaffData();
+        generateCBX();
     }
 
     @SuppressWarnings("unchecked")
@@ -21,7 +22,7 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
         lbl_title = new javax.swing.JLabel();
         pnl_ID = new javax.swing.JPanel();
         lbl_enterCaseID = new javax.swing.JLabel();
-        txt_caseID = new javax.swing.JTextField();
+        cbx_caseId = new javax.swing.JComboBox<>();
         lbl_space = new javax.swing.JLabel();
         btn_update = new javax.swing.JButton();
         lbl_showStaff = new javax.swing.JLabel();
@@ -56,10 +57,8 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
         lbl_enterCaseID.setText("CASE ID");
         pnl_ID.add(lbl_enterCaseID);
 
-        txt_caseID.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        txt_caseID.setMinimumSize(new java.awt.Dimension(100, 29));
-        txt_caseID.setPreferredSize(new java.awt.Dimension(100, 29));
-        pnl_ID.add(txt_caseID);
+        cbx_caseId.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        pnl_ID.add(cbx_caseId);
 
         lbl_space.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_space.setText("                                                                                                         ");
@@ -107,7 +106,7 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
 
     // UPDATE STAFF ------------------------------------------------------------
     private void updateCaseStaffStatus() {
-        String caseID = txt_caseID.getText();
+        String caseID = cbx_caseId.getSelectedItem().toString();
         String selectedStaff = (String) cbx_availableStaff.getSelectedItem();
         if (selectedStaff != null) {
             String staffID = selectedStaff.split(" - ")[0];
@@ -168,6 +167,12 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
         }
     }
     
+    private void generateCBX(){
+        GenerateCBX generateCBX = new GenerateCBX();
+        generateCBX.populateComboBox(cbx_caseId, "caseId");
+    }
+    
+    // MAIN --------------------------------------------------------------------
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -202,12 +207,12 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_update;
     private javax.swing.JComboBox<String> cbx_availableStaff;
+    private javax.swing.JComboBox<String> cbx_caseId;
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_enterCaseID;
     private javax.swing.JLabel lbl_showStaff;
     private javax.swing.JLabel lbl_space;
     private javax.swing.JLabel lbl_title;
     private javax.swing.JPanel pnl_ID;
-    private javax.swing.JTextField txt_caseID;
     // End of variables declaration//GEN-END:variables
 }

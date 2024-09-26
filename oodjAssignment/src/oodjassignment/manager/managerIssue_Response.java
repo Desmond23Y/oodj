@@ -16,6 +16,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
         feedbackFilePath = "src/oodjassignment/database/feedback.txt";
         responsesFilePath = "src/oodjassignment/database/Responses.txt";
         initializeData();
+        generateCBX();
     }
 
     @SuppressWarnings("unchecked")
@@ -26,7 +27,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
         lbl_title = new javax.swing.JLabel();
         pnl_Id = new javax.swing.JPanel();
         lbl_enterCaseId = new javax.swing.JLabel();
-        txt_caseId = new javax.swing.JTextField();
+        cbx_caseId = new javax.swing.JComboBox<>();
         lbl_space = new javax.swing.JLabel();
         btn_view = new javax.swing.JButton();
         lbl_history = new javax.swing.JLabel();
@@ -65,10 +66,8 @@ public class managerIssue_Response extends javax.swing.JFrame {
         lbl_enterCaseId.setText("CASE ID");
         pnl_Id.add(lbl_enterCaseId);
 
-        txt_caseId.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        txt_caseId.setMinimumSize(new java.awt.Dimension(100, 29));
-        txt_caseId.setPreferredSize(new java.awt.Dimension(100, 29));
-        pnl_Id.add(txt_caseId);
+        cbx_caseId.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        pnl_Id.add(cbx_caseId);
 
         lbl_space.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         lbl_space.setText("                                                                                           ");
@@ -143,7 +142,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
         clearTable(tbl_history); 
-        String enteredCaseId = txt_caseId.getText();
+        String enteredCaseId = cbx_caseId.getSelectedItem().toString();
 
         if (enteredCaseId == null || enteredCaseId.isEmpty()) {
             JOptionPane.showMessageDialog(null, "ENTER A CASE ID TO CHECK", "Error", JOptionPane.ERROR_MESSAGE);
@@ -232,6 +231,11 @@ public class managerIssue_Response extends javax.swing.JFrame {
         model.setRowCount(0); // Clear existing rows
     }
     
+    private void generateCBX(){
+        GenerateCBX generateCBX = new GenerateCBX();
+        generateCBX.populateComboBox(cbx_caseId, "caseId");
+    }
+    
     // MAIN --------------------------------------------------------------------
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -267,6 +271,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_update;
     private javax.swing.JButton btn_view;
+    private javax.swing.JComboBox<String> cbx_caseId;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_enterCaseId;
@@ -276,7 +281,6 @@ public class managerIssue_Response extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_title;
     private javax.swing.JPanel pnl_Id;
     private javax.swing.JTable tbl_history;
-    private javax.swing.JTextField txt_caseId;
     private javax.swing.JTextField txt_newMessage;
     // End of variables declaration//GEN-END:variables
 }

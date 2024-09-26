@@ -1,10 +1,13 @@
 
 package oodjassignment.manager;
 
+import java.util.List;
+
 public class managerHomepage extends javax.swing.JFrame {
 
     public managerHomepage() {
         initComponents();
+        initialCaseIdTXT();
     }
 
     @SuppressWarnings("unchecked")
@@ -150,6 +153,15 @@ public class managerHomepage extends javax.swing.JFrame {
         managerIssue_Response.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_replyCustomerIssueActionPerformed
+    // INITAL FILES ------------------------------------------------------------
+    private void initialCaseIdTXT(){
+        ReadCase readCase = new ReadCase("someCaseId");
+        List<String> caseIds = readCase.readCaseIds();
+        List<String> existingCaseIds = readCase.readExistingCaseIds();
+
+        WriteCase writeCase = new WriteCase();
+        writeCase.writeCaseIds(caseIds, existingCaseIds);
+    }
     
     // MAIN --------------------------------------------------------------------
     public static void main(String args[]) {

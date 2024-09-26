@@ -4,6 +4,8 @@ package oodjassignment.manager;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReadCase {
     private String customerId;
@@ -34,6 +36,35 @@ public class ReadCase {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public List<String> readCaseIds() {
+        List<String> caseIds = new ArrayList<>();
+        String filePath = "src/oodjassignment/database/feedback.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] fields = line.split(",");
+                caseIds.add(fields[0]); // Assuming CaseId is the first field
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return caseIds;
+    }
+
+    public List<String> readExistingCaseIds() {
+        List<String> existingCaseIds = new ArrayList<>();
+        String filePath = "src/oodjassignment/database/CaseId.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                existingCaseIds.add(line.trim());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return existingCaseIds;
     }
 
     public String getCustomerId() { return customerId; }

@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JComboBox;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class GenerateCBX {
 
@@ -22,13 +25,15 @@ public class GenerateCBX {
         List<String> months = Arrays.asList(generateMonths());
         List<String> years = Arrays.asList(generateYears());
         List<String> hallNumbers = Arrays.asList(generateHallNumber());
+        List<String> caseIds = generateCaseIds("src/oodjassignment/database/CaseId.txt");
+        
         if (state.equals("day")) { return days; } 
         else if (state.equals("week")) { return weeks; } 
         else if (state.equals("month")) { return months; } 
         else if (state.equals("year")) { return years; } 
         else if (state.equals("hallNumber")) { return hallNumbers; }
-        else { return new ArrayList<>();  
-        }
+        else if (state.equals("caseId")) { return caseIds; }
+        else { return new ArrayList<>(); }
     }
     
     private String[] generateDays() {
@@ -59,5 +64,19 @@ public class GenerateCBX {
     
     private String[] generateHallNumber() {
         return new String[]{"Hall Numbers", "HALL 1", "HALL 2", "HALL 3"};
+    }
+
+    private List<String> generateCaseIds(String filePath) {
+        List<String> caseIds = new ArrayList<>();
+        caseIds.add("CaseId"); // Add a default item
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                caseIds.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return caseIds;
     }
 }
