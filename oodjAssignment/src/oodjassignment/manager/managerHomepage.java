@@ -2,6 +2,7 @@
 package oodjassignment.manager;
 
 import java.util.List;
+import oodjassignment.Loginpage;
 
 public class managerHomepage extends javax.swing.JFrame {
 
@@ -16,6 +17,7 @@ public class managerHomepage extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lbl_title = new javax.swing.JLabel();
+        btn_logOut = new javax.swing.JButton();
         btn_date = new javax.swing.JButton();
         btn_viewCaseChangeStatus = new javax.swing.JButton();
         btn_assignStaff = new javax.swing.JButton();
@@ -53,6 +55,16 @@ public class managerHomepage extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 40, -1, -1));
+
+        btn_logOut.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        btn_logOut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/logout.png"))); // NOI18N
+        btn_logOut.setText("LOG OUT");
+        btn_logOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logOutActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_logOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 740, -1, -1));
 
         btn_date.setFont(new java.awt.Font("Segoe UI Black", 0, 28)); // NOI18N
         btn_date.setText("Date");
@@ -149,10 +161,16 @@ public class managerHomepage extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_dateActionPerformed
 
     private void btn_replyCustomerIssueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_replyCustomerIssueActionPerformed
-        managerIssue_Response managerIssue_Response = new managerIssue_Response();
-        managerIssue_Response.setVisible(true);
+        Loginpage Loginpage = new Loginpage();
+        Loginpage.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_replyCustomerIssueActionPerformed
+
+    private void btn_logOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logOutActionPerformed
+        Loginpage Loginpage = new Loginpage();
+        Loginpage.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_logOutActionPerformed
     // INITAL FILES ------------------------------------------------------------
     private void initialCaseIdTXT(){
         ReadCase readCase = new ReadCase("someCaseId");
@@ -197,6 +215,7 @@ public class managerHomepage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_assignStaff;
     private javax.swing.JButton btn_date;
+    private javax.swing.JButton btn_logOut;
     private javax.swing.JButton btn_replyCustomerIssue;
     private javax.swing.JButton btn_venue;
     private javax.swing.JButton btn_viewCaseChangeStatus;

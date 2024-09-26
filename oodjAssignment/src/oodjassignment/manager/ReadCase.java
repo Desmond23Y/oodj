@@ -17,27 +17,6 @@ public class ReadCase {
     private String caseId;
     private String Response;
 
-    public boolean loadCaseData() {
-        String filePath = "src/oodjassignment/database/feedback.txt";
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] fields = line.split(",");
-                if (fields[0].equals(caseId)) {
-                    this.customerId = fields[1];
-                    this.hallTypeValue = fields[2];
-                    this.hallNoValue = fields[3];
-                    this.dateValue = fields[4];
-                    this.feedbackText = fields[5];
-                    return true;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
     public List<String> readCaseIds() {
         List<String> caseIds = new ArrayList<>();
         String filePath = "src/oodjassignment/database/feedback.txt";
@@ -65,6 +44,37 @@ public class ReadCase {
             e.printStackTrace();
         }
         return existingCaseIds;
+    }
+    
+    public List<String[]> readCaseStaffStatus() {
+        List<String[]> caseStaffStatus = new ArrayList<>();
+        String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] fields = line.split(",");
+                caseStaffStatus.add(fields);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+        return caseStaffStatus;
+    }
+    
+    public List<String> readStaffData() {
+        List<String> staffList = new ArrayList<>();
+        String filePath = "src/oodjassignment/database/Scheduler.txt";
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] data = line.split(",");
+                String staffInfo = data[0] + " - " + data[1]; // Format: S0001 - Ooi Hong
+                staffList.add(staffInfo);
+            }
+        } catch (IOException ex) {
+            System.err.println("Error reading file: " + ex.getMessage());
+        }
+        return staffList;
     }
 
     public String getCustomerId() { return customerId; }

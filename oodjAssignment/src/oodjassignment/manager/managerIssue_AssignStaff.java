@@ -57,7 +57,7 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
         lbl_enterCaseID.setText("CASE ID");
         pnl_ID.add(lbl_enterCaseID);
 
-        cbx_caseId.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        cbx_caseId.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         pnl_ID.add(cbx_caseId);
 
         lbl_space.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
@@ -110,56 +110,35 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
         String selectedStaff = (String) cbx_availableStaff.getSelectedItem();
         if (selectedStaff != null) {
             String staffID = selectedStaff.split(" - ")[0];
-            String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
-            List<String> fileContent = new ArrayList<>();
+            ReadCase readCase = new ReadCase(caseID);
+            List<String[]> fileContent = readCase.readCaseStaffStatus();
+            boolean caseIDFound = false;
 
-            try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-                String line;
-                boolean caseIDFound = false;
-
-                while ((line = br.readLine()) != null) {
-                    String[] parts = line.split(",");
-                    if (parts.length >= 7 && parts[0].equals(caseID)) {
-                        parts[6] = staffID;
-                        caseIDFound = true;
-                    }
-                    fileContent.add(String.join(",", parts));
+            for (String[] parts : fileContent) {
+                if (parts.length >= 7 && parts[0].equals(caseID)) {
+                    parts[6] = staffID;
+                    caseIDFound = true;
                 }
+            }
 
-                if (caseIDFound) {
-                    try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
-                        for (String contentLine : fileContent) {
-                            bw.write(contentLine);
-                            bw.newLine();
-                        }
-                    }
-                    JOptionPane.showMessageDialog(this, "Data successfully updated.");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Case ID not found.");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (caseIDFound) {
+                WriteCase writeCase = new WriteCase();
+                String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
+                writeCase.writeUpdatedCaseStaffStatus(fileContent, filePath);
+                JOptionPane.showMessageDialog(this, "Data successfully updated.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Case ID not found.");
             }
         } else {
             JOptionPane.showMessageDialog(this, "No staff selected.");
         }
     }
+
     
     // INITIAL -----------------------------------------------------------------
     private void loadStaffData() {
-        String filePath = "src/oodjassignment/database/Scheduler.txt";
-        List<String> staffList = new ArrayList<>();
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                String staffInfo = data[0] + " - " + data[1]; // Format: S0001 - Ooi Hong
-                staffList.add(staffInfo);
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+        ReadCase readCase = new ReadCase(null);
+        List<String> staffList = readCase.readStaffData();
 
         cbx_availableStaff.removeAllItems();
         for (String staff : staffList) {

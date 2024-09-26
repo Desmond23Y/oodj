@@ -66,7 +66,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
         lbl_enterCaseId.setText("CASE ID");
         pnl_Id.add(lbl_enterCaseId);
 
-        cbx_caseId.setFont(new java.awt.Font("Segoe UI Black", 0, 16)); // NOI18N
+        cbx_caseId.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         pnl_Id.add(cbx_caseId);
 
         lbl_space.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N

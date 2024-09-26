@@ -21,4 +21,15 @@ public class WriteCase {
             e.printStackTrace();
         }
     }
+
+    public void writeUpdatedCaseStaffStatus(List<String[]> fileContent, String filePath) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+            for (String[] parts : fileContent) {
+                bw.write(String.join(",", parts));
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Error writing file: " + e.getMessage());
+        }
+    }
 }
