@@ -1,16 +1,12 @@
 Auditorium/HALL 1/RM 600/13 Sep 2024/8am - 10am/2 hours/Booked/Hh birthday
 Auditorium/HALL 2/RM 600/13 Sep 2024/8am - 10am/2 hours/Available/-
-Auditorium/HALL 3/RM 600/13 Sep 2024/8am - 10am/2 hours/Available/-
 Banquet Hall/HALL 1/RM 200/13 Sep 2024/8am - 10am/2 hours/Available/-
-Banquet Hall/HALL 2/RM 200/13 Sep 2024/8am - 10am/2 hours/Available/-
 Banquet Hall/HALL 3/RM 200/13 Sep 2024/8am - 10am/2 hours/Available/-
 Meeting Room/HALL 1/RM 100/13 Sep 2024/8am - 10am/2 hours/Booked/Company meeting
 Meeting Room/HALL 2/RM 100/13 Sep 2024/8am - 10am/2 hours/Booked/Presentation
 Meeting Room/HALL 3/RM 100/13 Sep 2024/8am - 10am/2 hours/Available/-
 Auditorium/HALL 2/RM 600/13 Sep 2024/11am - 1pm/2 hours/Booked/Hh birthday
 Auditorium/HALL 3/RM 600/13 Sep 2024/11am - 1pm/2 hours/Available/-
-Banquet Hall/HALL 1/RM 200/13 Sep 2024/11am - 1pm/2 hours/Available/-
-Banquet Hall/HALL 2/RM 200/13 Sep 2024/11am - 1pm/2 hours/Available/-
 Banquet Hall/HALL 3/RM 200/13 Sep 2024/11am - 1pm/2 hours/Available/-
 Meeting Room/HALL 1/RM 100/13 Sep 2024/11am - 1pm/2 hours/Booked/Company meeting
 Meeting Room/HALL 3/RM 100/13 Sep 2024/11am - 1pm/2 hours/Available/-
@@ -24,7 +20,6 @@ Meeting Room/HALL 2/RM 150/13 Sep 2024/2pm - 5pm/3 hours/Booked/Assignment discu
 Meeting Room/HALL 3/RM 150/13 Sep 2024/2pm - 5pm/3 hours/Available/-
 Banquet Hall/HALL 1/RM 200/14 Sep 2024/4pm - 6pm/2 hours/Available/-
 Banquet Hall/HALL 1/RM 200/15 Sep 2024/4pm - 6pm/2 hours/Available/-
-Banquet Hall/HALL 3/RM 200/15 Sep 2024/4pm - 6pm/2 hours/Available/-
 Meeting Room/HALL 1/RM 100/14 Sep 2024/4pm - 6pm/2 hours/Available/-
 Meeting Room/HALL 2/RM 100/14 Sep 2024/4pm - 6pm/2 hours/Available/-
 Meeting Room/HALL 3/RM 100/15 Sep 2024/4pm - 6pm/2 hours/Booked/Assignment discussion

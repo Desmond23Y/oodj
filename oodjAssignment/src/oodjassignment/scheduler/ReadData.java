@@ -46,14 +46,16 @@ public class ReadData {
             while ((line = reader.readLine()) != null) {
                 // Assuming tasks are stored as: C0001,U0003,Banquet Hall,HALL 1,2024-09-19,Dirty floor,S0001,In Progress
                 String[] taskData = line.split(","); 
-                if (taskData[6].equals(loginID)) { // Check if the 7th position matches the login ID
-                    // If the task ID matches the login ID, add the task to the JTable
-                model.addRow(new Object[]{taskData[0], taskData[1], taskData[2], taskData[3], taskData[4], taskData[5], taskData[6], taskData[7], taskData[8]});                    // For example: Banquet Hall, HALL 1, 2024-09-19, Dirty floor, In Progress
-                }
+                if (taskData.length >= 9 && taskData[6].equals(loginID)) { 
+                // 如果taskData数组有足够的长度并且第7项与登录ID匹配，则添加到表格
+                model.addRow(new Object[]{
+                    taskData[0], taskData[1], taskData[2], taskData[3], taskData[4], taskData[5], taskData[6], taskData[7], taskData[8]
+                });
             }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+        reader.close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
     }
 }
