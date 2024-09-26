@@ -12,6 +12,7 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
         initComponents();
         loadStaffData();
         generateCBX();
+        processFiles();
     }
 
     @SuppressWarnings("unchecked")
@@ -131,6 +132,59 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(this, "No staff selected.");
+        }
+    }
+    
+    public void processFiles() {
+        String feedbackFile = "src/oodjassignment/database/feedback.txt";
+        String caseStaffFile = "src/oodjassignment/database/caseStaffNStatus.txt";
+
+        List<String> existingCaseIds = readExistingCaseIds(caseStaffFile);
+        List<String> newEntries = readFeedbackFile(feedbackFile, existingCaseIds);
+
+        writeNewEntries(caseStaffFile, newEntries);
+    }
+
+    private List<String> readExistingCaseIds(String caseStaffFile) {
+        List<String> caseIds = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(caseStaffFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length > 0) {
+                    caseIds.add(parts[0]);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return caseIds;
+    }
+
+    private List<String> readFeedbackFile(String feedbackFile, List<String> existingCaseIds) {
+        List<String> newEntries = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(feedbackFile))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length > 0 && !existingCaseIds.contains(parts[0])) {
+                    newEntries.add(line + "-");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return newEntries;
+    }
+
+    private void writeNewEntries(String caseStaffFile, List<String> newEntries) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(caseStaffFile, true))) {
+            for (String entry : newEntries) {
+                bw.write(entry);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
