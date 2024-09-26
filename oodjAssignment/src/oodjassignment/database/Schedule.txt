@@ -24,7 +24,6 @@ Meeting Room/HALL 1/RM 100/14 Sep 2024/4pm - 6pm/2 hours/Available/-
 Meeting Room/HALL 2/RM 100/14 Sep 2024/4pm - 6pm/2 hours/Available/-
 Meeting Room/HALL 3/RM 100/15 Sep 2024/4pm - 6pm/2 hours/Booked/Assignment discussion
 Auditorium/HALL 1/RM 600/14 Sep 2024/8am - 10am/2 hours/Available/-
-Auditorium/HALL 2/RM 600/15 Sep 2024/11am - 2pm/3 hours/Available/-
 Auditorium/HALL 1/RM 600/15 Sep 2024/4pm - 6pm/2 hours/Available/-
 Auditorium/HALL 2/RM 600/1 Oct 2024/4pm - 6pm/2 hours/Available/-
 Banquet Hall/HALL 3/RM 200/1 Oct 2024/4pm - 6pm/2 hours/Available/-
@@ -32,3 +31,4 @@ Meeting Room/HALL 2/RM 100/1 Oct 2024/4pm - 6pm/2 hours/Available/-
 Auditorium/HALL 2/RM 1500/3 Oct 2024/8am - 1pm/5 hours/Available/-
 Banquet Hall/HALL 2/RM 500/3 Oct 2024/10am - 1pm/3 hours/Available/-
 Meeting Room/HALL 2/RM 150/3 Oct 2024/10am - 1pm/3 hours/Booked/Final discussion
+Auditorium/HALL 1/RM 600/13 Oct 2024/8am - 10am/2 hours/Available/-

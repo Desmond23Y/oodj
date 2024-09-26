@@ -153,18 +153,18 @@ public class Task extends javax.swing.JFrame {
 
     private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         DefaultTableModel model = (DefaultTableModel) Task.getModel();
-        Remarks.setText(model.getValueAt(Task.getSelectedRow(), 7).toString());
+        Remarks.setText(model.getValueAt(Task.getSelectedRow(), 8).toString());
     }//GEN-LAST:event_EditActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         DefaultTableModel model = (DefaultTableModel) Task.getModel();
         int tablelist = model.getRowCount();
-        model.setValueAt(Remarks.getText(), Task.getSelectedRow(), 7);
+        model.setValueAt(Remarks.getText(), Task.getSelectedRow(), 8);
 
         try {
-            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\caseStaffStatus.txt"));
+            BufferedWriter bw = new BufferedWriter (new FileWriter ("src\\\\oodjassignment\\\\database\\\\caseStaffNStatus.txt"));
             for (int i=0 ; i<tablelist ; i++){
-                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString()+"/"+model.getValueAt(i, 7).toString();
+                String rec = model.getValueAt(i, 0).toString()+"/"+model.getValueAt(i, 1).toString()+"/"+model.getValueAt(i, 2).toString()+"/"+model.getValueAt(i, 3).toString()+"/"+model.getValueAt(i, 4).toString()+"/"+model.getValueAt(i, 5).toString()+"/"+model.getValueAt(i, 6).toString()+"/"+model.getValueAt(i, 7).toString()+"/"+model.getValueAt(i, 8).toString();
                 bw.write(rec+"\n");
             }
             bw.close();
