@@ -1,3 +1,5 @@
 S0002,Eason,0123335566,Eason@mail.com,Password!2
 S0003,Kenny Low,012323232,test@mail.com,&Kenny555
 S0004,David,01777777777,test@mail.com,D@123456
+S0001,Ooi Hong,0125566775,OoiHongApu@mail.com,P@ssw0rd
+S0005,Jacob,0123456796,jacob@mail.com,@passw0rD

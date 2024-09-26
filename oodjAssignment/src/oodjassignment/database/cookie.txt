@@ -1,1 +1,1 @@
-M0002,Sam,0187878555,SamGod@mail.com,123,MANAGER
+A0001,Desmond,0112233445,des@mail.com,@Passw0rd,ADMINISTRATOR
