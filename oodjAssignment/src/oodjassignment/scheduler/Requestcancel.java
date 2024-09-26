@@ -21,26 +21,24 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Requestcancel extends javax.swing.JFrame {
 
-    
     public Requestcancel() {
         initComponents();
         loadBookingData();
     }
 
     private void loadBookingData() {
-    DefaultTableModel model = (DefaultTableModel) Aschedule.getModel(); // Aschedule is your JTable
-    Request request = new Request("src\\\\oodjassignment\\\\database\\\\Booking.txt");
-    
-    try {
-        // Load only records with "Request for cancel"
-        request.readFileToTable(model);
-        System.out.println("Booking data loaded successfully."); // Debugging: confirm successful load
-    } catch (Exception ex) {
-        System.out.println("Error loading booking data: " + ex.getMessage());
+        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel(); // Aschedule is your JTable
+        Request request = new Request("src\\\\oodjassignment\\\\database\\\\Booking.txt");
+
+        try {
+            // Load only records with "Request for cancel"
+            request.readFileToTable(model);
+            System.out.println("Booking data loaded successfully."); // Debugging: confirm successful load
+        } catch (Exception ex) {
+            System.out.println("Error loading booking data: " + ex.getMessage());
+        }
     }
-}
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -173,68 +171,60 @@ public class Requestcancel extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutActionPerformed
 
     private void statusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusActionPerformed
-        
+
     }//GEN-LAST:event_statusActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
-    DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
-int selectedRow = Aschedule.getSelectedRow(); // 获取当前选中的行
+        DefaultTableModel model = (DefaultTableModel) Aschedule.getModel();
+        int selectedRow = Aschedule.getSelectedRow(); // 获取当前选中的行
 
-if (selectedRow == -1) {
-    JOptionPane.showMessageDialog(this, "Please select a row to update.");
-    return;
-}
-
-// 先读取表格中被选中的状态
-Object selectedStatus = model.getValueAt(selectedRow, 8); // 第九列是 status
-if (!"Request for cancel".equals(selectedStatus)) {
-    JOptionPane.showMessageDialog(this, "Selected row does not contain 'Request for cancel' status.");
-    return;
-}
-
-// 获取 JComboBox 中选择的新状态
-String newStatus = (String) status.getSelectedItem(); // 获取选择的状态
-
-try {
-    File file = new File("src/oodjassignment/database/Booking.txt");
-    BufferedReader br = new BufferedReader(new FileReader(file));
-
-    // 用 StringBuilder 来存储修改后的文件内容
-    StringBuilder fileContent = new StringBuilder();
-    String line;
-
-    // 循环读取文件中的每一行
-    while ((line = br.readLine()) != null) {
-        // 判断这一行是否是要修改的行，即是否是 Request for cancel
-        String[] bookingData = line.split("/"); // 假设数据是通过 / 分隔的
-        if (bookingData.length == 10 && bookingData[8].equals("Request for cancel")) {
-            // 将 JTable 中的所有数据写回，包括新的状态
-            line = model.getValueAt(selectedRow, 0).toString() + "/" + // Field 1
-                   model.getValueAt(selectedRow, 1).toString() + "/" + // Field 2
-                   model.getValueAt(selectedRow, 2).toString() + "/" + // Field 3
-                   model.getValueAt(selectedRow, 3).toString() + "/" + // Field 4
-                   model.getValueAt(selectedRow, 4).toString() + "/" + // Field 5
-                   model.getValueAt(selectedRow, 5).toString() + "/" + // Field 6
-                   model.getValueAt(selectedRow, 6).toString() + "/" + // Field 7
-                   model.getValueAt(selectedRow, 7).toString() + "/" + // Field 8
-                   newStatus + "/" + // 新状态
-                   model.getValueAt(selectedRow, 9).toString();  // 保留其他备注信息作为第十个字段
+        if (selectedRow == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a row to update.");
+            return;
         }
-        fileContent.append(line).append("\n"); // 将每一行添加到 StringBuilder
-    }
-    br.close();
 
-    // 将修改后的内容重新写回原始文件
-    BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-    bw.write(fileContent.toString()); // 写回整个文件内容
-    bw.close();
+// 获取表格中的 Booking ID 和新状态
+        String bookingID = (String) model.getValueAt(selectedRow, 0); // 获取Booking ID (第0列)
+        String newStatus = (String) status.getSelectedItem(); // 获取新的状态
+        model.setValueAt(newStatus, selectedRow, 8); // 更新表格中的状态 (第8列)
 
-    JOptionPane.showMessageDialog(this, "Status updated successfully.");
+// 进行文件更新
+        try {
+            // 定义文件路径
+            File file = new File("src/oodjassignment/database/Booking.txt");
 
-} catch (IOException ex) {
-    JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
-}
+            // 读取现有文件内容
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            StringBuilder fileContent = new StringBuilder();
+            String line;
 
+            // 循环读取文件中的每一行
+            while ((line = br.readLine()) != null) {
+                String[] fields = line.split("/"); // 假设字段是用 "/" 分割的
+
+                if (fields[0].equals(bookingID)) { // 如果Booking ID匹配
+                    // 更新第九个字段为新状态
+                    fields[8] = newStatus; // 更新状态字段
+
+                    // 将更新后的字段重新拼接成一行
+                    String updatedLine = String.join("/", fields);
+                    fileContent.append(updatedLine).append("\n"); // 将更新后的行写入
+                } else {
+                    // 将其他行保持原样
+                    fileContent.append(line).append("\n");
+                }
+            }
+            br.close();
+
+            // 将修改后的内容写回文件
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            bw.write(fileContent.toString());
+            bw.close();
+
+            JOptionPane.showMessageDialog(this, "Status updated successfully.");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Something went wrong: " + ex.getMessage());
+        }
     }//GEN-LAST:event_SaveActionPerformed
 
     private void HAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HAActionPerformed
