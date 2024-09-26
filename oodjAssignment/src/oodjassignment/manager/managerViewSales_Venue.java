@@ -17,6 +17,7 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         initComponents();
         generate_DateCombobx();
         clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -86,6 +87,11 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         buttonGroup1.add(rbtn_meetingRoom);
         rbtn_meetingRoom.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         rbtn_meetingRoom.setText("Meeting Room");
+        rbtn_meetingRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtn_meetingRoomActionPerformed(evt);
+            }
+        });
         getContentPane().add(rbtn_meetingRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, -1, -1));
 
         lbl_hallNumber.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
@@ -151,33 +157,47 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
 
     private void rbtn_banquetHallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_banquetHallActionPerformed
         clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
     }//GEN-LAST:event_rbtn_banquetHallActionPerformed
 
     private void rbtn_auditoriumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_auditoriumActionPerformed
         clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
     }//GEN-LAST:event_rbtn_auditoriumActionPerformed
 
     private void cbx_hallNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_hallNumberActionPerformed
         clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
     }//GEN-LAST:event_cbx_hallNumberActionPerformed
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
         String hallType = getSelectedHallType();
-    if (hallType.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Please select a Hall Type.");
-        return;
-    }
+        if (hallType.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please select a Hall Type.");
+            return;
+        }
 
-    String hallNumber = getSelectedHallNumber();
-    if (hallNumber.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Please select a Hall Number.");
-        return;
-    }
+        String hallNumber = getSelectedHallNumber();
+        if (hallNumber.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please select a Hall Number.");
+            return;
+        }
 
-    List<Booking> bookings = readBookingsFromFile("src/oodjassignment/database/Booking.txt");
-    List<Booking> filteredBookings = filterBookings(bookings, hallType, hallNumber);
-    displayBookings(filteredBookings);
+        List<Booking> bookings = readBookingsFromFile("src/oodjassignment/database/Booking.txt");
+        List<Booking> filteredBookings = filterBookings(bookings, hallType, hallNumber);
+
+        if (filteredBookings.isEmpty()) {
+            lbl_responseNoBooking.setVisible(true);
+        } else {
+            lbl_responseNoBooking.setVisible(false);
+            displayBookings(filteredBookings);
+        }
     }//GEN-LAST:event_btn_viewActionPerformed
+
+    private void rbtn_meetingRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_meetingRoomActionPerformed
+        clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
+    }//GEN-LAST:event_rbtn_meetingRoomActionPerformed
     
     // GET ---------------------------------------------------------------------
     private String getSelectedHallType() {
@@ -208,8 +228,7 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split("/");
-                Booking booking = new Booking(data[0], data[1], data[2], data[3]
-                        , data[4], data[5], data[6], data[7], data[8], data[9]);
+                Booking booking = new Booking(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
                 bookings.add(booking);
             }
         } catch (IOException e) {
@@ -227,11 +246,11 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     // DISPLAY -----------------------------------------------------------------
     private void displayBookings(List<Booking> bookings) {
         DefaultTableModel model = (DefaultTableModel) tbl_showSales.getModel();
-        model.setRowCount(0); 
+        model.setRowCount(0);
         for (Booking booking : bookings) {
-            model.addRow(new Object[]{booking.getBookingID(), booking.getCustomerID()
-                    , booking.getHallType(), booking.getHallID(), booking.getPrice(), booking.getDate()
-                    , booking.getTime(), booking.getDuration(), booking.getStatus(), booking.getRemark()});
+            model.addRow(new Object[]{booking.getBookingID(), booking.getCustomerID(), booking.getHallType(),
+                    booking.getHallID(), booking.getPrice(), booking.getDate(), booking.getTime(),
+                    booking.getDuration(), booking.getStatus(), booking.getRemark()});
         }
     }
     

@@ -19,6 +19,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         initComponents();
         initial_cbxAllVisibility(false);
         generate_DateCombobx();
+        lbl_responseNoBooking.setVisible(false);
     }
     
     @SuppressWarnings("unchecked")
@@ -140,14 +141,29 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         getContentPane().add(lbl_selectWeek, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
 
         cbx_day.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        cbx_day.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_dayActionPerformed(evt);
+            }
+        });
         getContentPane().add(cbx_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, -1, -1));
         cbx_day.getAccessibleContext().setAccessibleName("1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31");
 
         cbx_month.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        cbx_month.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_monthActionPerformed(evt);
+            }
+        });
         getContentPane().add(cbx_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
         cbx_month.getAccessibleContext().setAccessibleName("JAN\nFEB\nMAR\nAPR\nMAY\nJUN\nJUL\nAUG\nSEP\nOCT\nNOV\nDEC");
 
         cbx_year.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
+        cbx_year.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbx_yearActionPerformed(evt);
+            }
+        });
         getContentPane().add(cbx_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, -1, -1));
         cbx_year.getAccessibleContext().setAccessibleName("2024\n2025\n2026\n2027\n2028");
 
@@ -225,9 +241,9 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         List<Booking> bookings = readBookingsFromFile("src/oodjassignment/database/Booking.txt");
         List<Booking> filteredBookings = filterBookings(bookings, filterType, filterValues);
         if (filteredBookings.isEmpty()) {
-            lbl_responseNoBooking.setText("NO BOOKING ON THIS DURATION");
+            lbl_responseNoBooking.setVisible(true);
         } else {
-            lbl_responseNoBooking.setText("");
+            lbl_responseNoBooking.setVisible(false);
             displayBookingsInTable(filteredBookings, tbl_showSales);
         }
     }//GEN-LAST:event_btn_viewActionPerformed
@@ -241,6 +257,8 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     private void rbtn_yearlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_yearlyActionPerformed
         resetComboBoxes();
         clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
+        lbl_responseNoBooking.setVisible(false);
         initial_cbxAllVisibility(false);
         initial_selectYearlyVisibility();
         btn_view.setVisible(true);
@@ -248,12 +266,14 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     }//GEN-LAST:event_rbtn_yearlyActionPerformed
 
     private void cbx_weekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_weekActionPerformed
-        // TODO add your handling code here:
+        clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
     }//GEN-LAST:event_cbx_weekActionPerformed
 
     private void rbtn_allActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_allActionPerformed
         resetComboBoxes();
         clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
         initial_cbxAllVisibility(false);
         btn_view.setVisible(true);
         resetComboBoxes();
@@ -262,6 +282,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     private void rbtn_monthlyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_monthlyActionPerformed
         resetComboBoxes();
         clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
         initial_cbxAllVisibility(false);
         initial_selectMonthlyVisibility();
         btn_view.setVisible(true);
@@ -271,6 +292,8 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     private void rbtn_dailyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_dailyActionPerformed
         resetComboBoxes();
         clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
+        lbl_responseNoBooking.setVisible(false);
         initial_cbxAllVisibility(false);
         initial_selectDailyVisibility(true);
         btn_view.setVisible(true);
@@ -285,6 +308,21 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         btn_view.setVisible(true);
         resetComboBoxes();
     }//GEN-LAST:event_rbtn_weeklyActionPerformed
+
+    private void cbx_yearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_yearActionPerformed
+        clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
+    }//GEN-LAST:event_cbx_yearActionPerformed
+
+    private void cbx_monthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_monthActionPerformed
+        clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
+    }//GEN-LAST:event_cbx_monthActionPerformed
+
+    private void cbx_dayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbx_dayActionPerformed
+        clearTable(tbl_showSales);
+        lbl_responseNoBooking.setVisible(false);
+    }//GEN-LAST:event_cbx_dayActionPerformed
 
     // GET DATA ----------------------------------------------------------------
     public List<Booking> readBookingsFromFile(String filePath) {
