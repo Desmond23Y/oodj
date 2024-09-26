@@ -193,6 +193,7 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         getContentPane().add(spnl_showSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 900, 280));
 
         lbl_responseNoBooking.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        lbl_responseNoBooking.setText("NO BOOKING IN THIS DURATION");
         getContentPane().add(lbl_responseNoBooking, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 690, -1, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N

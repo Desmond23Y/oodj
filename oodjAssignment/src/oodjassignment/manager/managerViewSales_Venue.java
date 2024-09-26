@@ -36,6 +36,7 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         lbl_sales = new javax.swing.JLabel();
         spnl_showSales = new javax.swing.JScrollPane();
         tbl_showSales = new javax.swing.JTable();
+        lbl_responseNoBooking = new javax.swing.JLabel();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -128,6 +129,10 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
         spnl_showSales.setViewportView(tbl_showSales);
 
         getContentPane().add(spnl_showSales, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 900, 280));
+
+        lbl_responseNoBooking.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        lbl_responseNoBooking.setText("NO BOOKING IN THIS DURATION");
+        getContentPane().add(lbl_responseNoBooking, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 690, -1, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
@@ -280,6 +285,7 @@ public class managerViewSales_Venue extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_hallNumber;
     private javax.swing.JLabel lbl_hallType;
+    private javax.swing.JLabel lbl_responseNoBooking;
     private javax.swing.JLabel lbl_sales;
     private javax.swing.JLabel lbl_title;
     private javax.swing.JRadioButton rbtn_auditorium;
