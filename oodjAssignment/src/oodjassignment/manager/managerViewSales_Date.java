@@ -222,8 +222,8 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
-        clearTable(tbl_showSales); 
-        
+        clearTable(tbl_showSales);
+
         List<String> filterValues = record_date();
         String filterType = "all";
 
@@ -235,7 +235,15 @@ public class managerViewSales_Date extends javax.swing.JFrame {
             filterType = "yearly";
         } else if (rbtn_weekly.isSelected()) {
             filterType = "weekly";
-            filterValues = Arrays.asList(cbx_year.getSelectedItem().toString(), cbx_week.getSelectedItem().toString());
+            String selectedYear = cbx_year.getSelectedItem().toString();
+            String selectedWeek = cbx_week.getSelectedItem().toString();
+            if (isValidYearAndWeek(selectedYear, selectedWeek)) {
+                filterValues = Arrays.asList(selectedYear, selectedWeek);
+            } else {
+                // Handle invalid selection
+                lbl_responseNoBooking.setVisible(true);
+                return;
+            }
         }
 
         List<Booking> bookings = readBookingsFromFile("src/oodjassignment/database/Booking.txt");
@@ -245,6 +253,16 @@ public class managerViewSales_Date extends javax.swing.JFrame {
         } else {
             lbl_responseNoBooking.setVisible(false);
             displayBookingsInTable(filteredBookings, tbl_showSales);
+        }
+    }
+
+    private boolean isValidYearAndWeek(String year, String week) {
+        try {
+            int y = Integer.parseInt(year);
+            int w = Integer.parseInt(week);
+            return y >= 2024 && y <= 2028 && w >= 1 && w <= 53;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }//GEN-LAST:event_btn_viewActionPerformed
 
@@ -363,7 +381,6 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     public void displayBookingsInTable(List<Booking> bookings, JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // Clear existing rows
-
         for (Booking booking : bookings) {
             model.addRow(new Object[]{
                 booking.getDate(),
@@ -381,7 +398,6 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     
     private List<String> record_date() {
         List<String> date_list = new ArrayList<>();
-
         if (rbtn_daily.isSelected()) {
             String day = (String) cbx_day.getSelectedItem();
             String month = (String) cbx_month.getSelectedItem();
@@ -418,31 +434,25 @@ public class managerViewSales_Date extends javax.swing.JFrame {
     private boolean areAllComboBoxesSelected() {
         if (rbtn_daily.isSelected()) {
             return cbx_day.getSelectedIndex() != 0 && cbx_month.getSelectedIndex() != 0 && cbx_year.getSelectedIndex() != 0;
-        } 
-        else if (rbtn_weekly.isSelected()) {
+        } else if (rbtn_weekly.isSelected()) {
             return cbx_year.getSelectedIndex() != 0 && cbx_week.getSelectedIndex() != 0;
-        } 
-        else if (rbtn_monthly.isSelected()) {
+        } else if (rbtn_monthly.isSelected()) {
             return cbx_year.getSelectedIndex() != 0 && cbx_month.getSelectedIndex() != 0;
-        } 
-        else if (rbtn_yearly.isSelected()) {
+        } else if (rbtn_yearly.isSelected()) {
             return cbx_year.getSelectedIndex() != 0;
         }
         return false;
     }
     
-    public boolean isDateInWeek(String dateStr, String yearStr, String weekStr) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
-        LocalDate date = LocalDate.parse(dateStr, formatter);
-        int year = Integer.parseInt(yearStr);
-        int week = Integer.parseInt(weekStr);
-
+    private boolean isDateInWeek(String dateStr, String yearStr, String weekStr) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMM yyyy");
+        LocalDate localDate = LocalDate.parse(dateStr, formatter);
         WeekFields weekFields = WeekFields.of(Locale.getDefault());
-        int dateWeek = date.get(weekFields.weekOfWeekBasedYear());
-        int dateYear = date.getYear();
-
-        return dateYear == year && dateWeek == week;
+        int weekOfYear = localDate.get(weekFields.weekOfWeekBasedYear());
+        int yearOfDate = localDate.getYear();
+        return yearOfDate == Integer.parseInt(yearStr) && weekOfYear == Integer.parseInt(weekStr);
     }
+
     
     // GENERATION OF DATE ------------------------------------------------------
     private void generate_DateCombobx(){

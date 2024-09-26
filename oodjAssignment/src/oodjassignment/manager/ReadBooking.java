@@ -10,13 +10,11 @@ import java.util.List;
 public class ReadBooking {
     private List<Booking> bookings;
 
-    // Constructor
     public ReadBooking(String filePath) {
         bookings = new ArrayList<>();
         readBookingsFromFile(filePath);
     }
 
-    // Method to read bookings from file
     public List<Booking> readBookingsFromFile(String filePath) {
         List<Booking> bookings = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -29,11 +27,6 @@ public class ReadBooking {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return bookings;
-    }
-
-    // Method to get bookings
-    public List<Booking> getBookings() {
         return bookings;
     }
 }

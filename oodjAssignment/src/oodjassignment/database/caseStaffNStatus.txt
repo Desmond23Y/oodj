@@ -1,1 +1,1 @@
-C0001,U0003,Banquet Hall,HALL 1,2024-09-19,Dirty floor,S0002,Done,-
+C0001,U0003,Banquet Hall,HALL 1,2024-09-19,Dirty floor,S0002,Closed,-,-,-
