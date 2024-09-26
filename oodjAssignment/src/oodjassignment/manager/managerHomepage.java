@@ -161,8 +161,8 @@ public class managerHomepage extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_dateActionPerformed
 
     private void btn_replyCustomerIssueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_replyCustomerIssueActionPerformed
-        Loginpage Loginpage = new Loginpage();
-        Loginpage.setVisible(true);
+        managerIssue_Response managerIssue_Response = new managerIssue_Response();
+        managerIssue_Response.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_replyCustomerIssueActionPerformed
 

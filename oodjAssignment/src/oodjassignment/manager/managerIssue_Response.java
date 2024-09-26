@@ -131,7 +131,23 @@ public class managerIssue_Response extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-        // TODO add your handling code here:
+        String caseId = (String) cbx_caseId.getSelectedItem();
+        String newMessage = txt_newMessage.getText();
+        WriteResponses writer = new WriteResponses("src/oodjassignment/database/Responses.txt");
+        writer.updateResponse(caseId, newMessage);
+        String enteredCaseId = cbx_caseId.getSelectedItem().toString();
+        
+        if (enteredCaseId == null || enteredCaseId.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "ENTER A CASE ID TO CHECK", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            List<Response> filteredResponses = findResponsesByCaseId(enteredCaseId);
+            if (filteredResponses.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "CASE ID UNAVAILABLE", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                displayHistoryInTable(filteredResponses, tbl_history);
+                JOptionPane.showMessageDialog(null, "Update successful!");
+            }
+        }
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
@@ -188,7 +204,7 @@ public class managerIssue_Response extends javax.swing.JFrame {
     // DISPLAY -------------------------------------------------------------
     public void displayHistoryInTable(List<Response> responses, JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setRowCount(0); // Clear existing rows
+        model.setRowCount(0);
 
         for (Response response : responses) {
             model.addRow(new Object[]{
