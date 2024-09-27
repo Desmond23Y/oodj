@@ -9,6 +9,7 @@ public class managerHomepage extends javax.swing.JFrame {
     public managerHomepage() {
         initComponents();
         initialCaseIdTXT();
+        initialcaseStaffNStatusTXT();
     }
 
     @SuppressWarnings("unchecked")
@@ -179,6 +180,11 @@ public class managerHomepage extends javax.swing.JFrame {
 
         WriteCase writeCase = new WriteCase();
         writeCase.writeCaseIds(caseIds, existingCaseIds);
+    }
+    
+    private void initialcaseStaffNStatusTXT(){
+        WriteCase writecase = new WriteCase();
+        writecase.writeUpdatedCaseNStaffStatus();
     }
     
     // MAIN --------------------------------------------------------------------

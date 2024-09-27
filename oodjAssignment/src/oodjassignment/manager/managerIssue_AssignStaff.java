@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class managerIssue_AssignStaff extends javax.swing.JFrame {
+    String caseStaffNStatusfilePath = "src/oodjassignment/database/caseStaffNStatus.txt";
 
     public managerIssue_AssignStaff() {
         initComponents();
         loadStaffData();
         generateCBX();
-        processFiles();
     }
 
     @SuppressWarnings("unchecked")
@@ -27,7 +27,7 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
         lbl_space = new javax.swing.JLabel();
         btn_update = new javax.swing.JButton();
         lbl_showStaff = new javax.swing.JLabel();
-        cbx_availableStaff = new javax.swing.JComboBox<>();
+        cbx_staff = new javax.swing.JComboBox<>();
         lbl_background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -80,11 +80,11 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
         lbl_showStaff.setText("CHOOSE STAFF");
         getContentPane().add(lbl_showStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, -1, -1));
 
-        cbx_availableStaff.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        cbx_availableStaff.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbx_availableStaff.setMinimumSize(new java.awt.Dimension(900, 45));
-        cbx_availableStaff.setPreferredSize(new java.awt.Dimension(900, 45));
-        getContentPane().add(cbx_availableStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 900, -1));
+        cbx_staff.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cbx_staff.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbx_staff.setMinimumSize(new java.awt.Dimension(900, 45));
+        cbx_staff.setPreferredSize(new java.awt.Dimension(900, 45));
+        getContentPane().add(cbx_staff, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 900, -1));
 
         lbl_background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/oodjassignment/picture/blue.jpg"))); // NOI18N
         lbl_background.setText("jLabel4");
@@ -96,7 +96,7 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-        updateCaseStaffStatus();
+        updateStaff();
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
@@ -106,26 +106,28 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     // UPDATE STAFF ------------------------------------------------------------
-    private void updateCaseStaffStatus() {
-        String caseID = cbx_caseId.getSelectedItem().toString();
-        String selectedStaff = (String) cbx_availableStaff.getSelectedItem();
-        if (selectedStaff != null) {
-            String staffID = selectedStaff.split(" - ")[0];
+    private void updateStaff() {
+        String caseID = getSelectedCaseId();
+        String staffID = getSelectedStaffId();
+
+        if (staffID != null) {
             ReadCase readCase = new ReadCase(caseID);
             List<String[]> fileContent = readCase.readCaseStaffStatus();
             boolean caseIDFound = false;
 
-            for (String[] parts : fileContent) {
+            for (int i = 0; i < fileContent.size(); i++) {
+                String[] parts = fileContent.get(i);
                 if (parts.length >= 7 && parts[0].equals(caseID)) {
-                    parts[6] = staffID;
+                    parts[6] = staffID; 
+                    fileContent.set(i, parts); 
                     caseIDFound = true;
+                    break; 
                 }
             }
 
             if (caseIDFound) {
                 WriteCase writeCase = new WriteCase();
-                String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
-                writeCase.writeUpdatedCaseStaffStatus(fileContent, filePath);
+                writeCase.updateStaff(fileContent);
                 JOptionPane.showMessageDialog(this, "Data successfully updated.");
             } else {
                 JOptionPane.showMessageDialog(this, "Case ID not found.");
@@ -134,75 +136,30 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No staff selected.");
         }
     }
-    
-    public void processFiles() {
-        String feedbackFile = "src/oodjassignment/database/feedback.txt";
-        String caseStaffFile = "src/oodjassignment/database/caseStaffNStatus.txt";
 
-        List<String> existingCaseIds = readExistingCaseIds(caseStaffFile);
-        List<String> newEntries = readFeedbackFile(feedbackFile, existingCaseIds);
-
-        writeNewEntries(caseStaffFile, newEntries);
-    }
-
-    private List<String> readExistingCaseIds(String caseStaffFile) {
-        List<String> caseIds = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(caseStaffFile))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length > 0) {
-                    caseIds.add(parts[0]);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return caseIds;
-    }
-
-    private List<String> readFeedbackFile(String feedbackFile, List<String> existingCaseIds) {
-        List<String> newEntries = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(feedbackFile))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length > 0 && !existingCaseIds.contains(parts[0])) {
-                    newEntries.add(line + ",-");
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return newEntries;
-    }
-
-    private void writeNewEntries(String caseStaffFile, List<String> newEntries) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(caseStaffFile, true))) {
-            for (String entry : newEntries) {
-                bw.write(entry);
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    
     // INITIAL -----------------------------------------------------------------
     private void loadStaffData() {
         ReadCase readCase = new ReadCase(null);
         List<String> staffList = readCase.readStaffData();
 
-        cbx_availableStaff.removeAllItems();
+        cbx_staff.removeAllItems();
         for (String staff : staffList) {
-            cbx_availableStaff.addItem(staff);
+            cbx_staff.addItem(staff);
         }
     }
     
     private void generateCBX(){
         GenerateCBX generateCBX = new GenerateCBX();
         generateCBX.populateComboBox(cbx_caseId, "caseId");
+    }
+    
+    private String getSelectedStaffId() {
+        String selectedStaff = (String) cbx_staff.getSelectedItem();
+        return selectedStaff.split(" - ")[0]; // Extracts "S0001" from "S0001 - Eason"
+    }
+
+    private String getSelectedCaseId() {
+        return (String) cbx_caseId.getSelectedItem();
     }
     
     // MAIN --------------------------------------------------------------------
@@ -239,8 +196,8 @@ public class managerIssue_AssignStaff extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_back;
     private javax.swing.JButton btn_update;
-    private javax.swing.JComboBox<String> cbx_availableStaff;
     private javax.swing.JComboBox<String> cbx_caseId;
+    private javax.swing.JComboBox<String> cbx_staff;
     private javax.swing.JLabel lbl_background;
     private javax.swing.JLabel lbl_enterCaseID;
     private javax.swing.JLabel lbl_showStaff;

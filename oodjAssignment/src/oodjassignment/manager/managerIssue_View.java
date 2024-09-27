@@ -2,15 +2,14 @@
 package oodjassignment.manager;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.List;
 
 public class managerIssue_View extends javax.swing.JFrame {
+    String caseStaffNStatusfilePath = "src/oodjassignment/database/caseStaffNStatus.txt";
+    
     
     public managerIssue_View() {
         initComponents();
@@ -269,9 +268,8 @@ public class managerIssue_View extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_confirmStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_confirmStatusActionPerformed
-        updateStatus();
+        updateStatus1();
         updateStatusLabel();
-        
     }//GEN-LAST:event_btn_confirmStatusActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
@@ -282,17 +280,17 @@ public class managerIssue_View extends javax.swing.JFrame {
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
         clear_lbl();
-        String caseID = cbx_caseId.getSelectedItem().toString();
-        String[] data = ReadFeedback.readcaseStaffNStatus(caseID);
-        if (data != null) {
-            writeCase(data);
-            displayData(data);
+        String selectedCaseId = cbx_caseId.getSelectedItem().toString();
+        caseStaffNStatus caseData = readCaseData(caseStaffNStatusfilePath, selectedCaseId);
+        if (caseData != null) {
+            displayData(caseData);
+            updateStatusLabel();
             btn_responses.setVisible(true);
-        }
-        else {
-            lbl_showCaseId.setText("Unable to find case");
+        } else {
             btn_responses.setVisible(false);
+            JOptionPane.showMessageDialog(null, "No matching case ID found.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
     }//GEN-LAST:event_btn_viewActionPerformed
 
     private void rbtn_closedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtn_closedActionPerformed
@@ -314,7 +312,7 @@ public class managerIssue_View extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_responsesActionPerformed
 
     // UPDATE STATUS -----------------------------------------------------------
-    private void updateStatus() {
+    private void updateStatus1() {
         String caseId = lbl_showCaseId.getText();
         String newStatus = "";
 
@@ -327,73 +325,67 @@ public class managerIssue_View extends javax.swing.JFrame {
         } else if (rbtn_inPrograss.isSelected()) {
             newStatus = "In Progress";
         }
+        
+        updateStatus(caseId, newStatus);
+    }
+    
+    private void updateStatus(String caseId, String status) {
+        if (status != null) {
+            ReadCase readCase = new ReadCase(status);
+            List<String[]> fileContent = readCase.readCaseStaffStatus();
+            boolean caseIDFound = false;
 
-        String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
-        List<String> fileContent = new ArrayList<>();
-        boolean statusUpdated = false;
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] data = line.split(",");
-                if (data[0].equals(caseId)) {
-                    data[7] = newStatus; // Update the 8th data (index 7)
-                    line = String.join(",", data);
-                    statusUpdated = true;
+            for (int i = 0; i < fileContent.size(); i++) {
+                String[] parts = fileContent.get(i);
+                if (parts.length >= 7 && parts[0].equals(caseId)) {
+                    parts[7] = status; 
+                    fileContent.set(i, parts); 
+                    caseIDFound = true;
+                    break; 
                 }
-                line += ",-"; // Add "-" as the 9th data
-                fileContent.add(line);
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-            for (String line : fileContent) {
-                writer.write(line);
-                writer.newLine();
+            if (caseIDFound) {
+                WriteCase writeCase = new WriteCase();
+                writeCase.updateStaff(fileContent);
+                JOptionPane.showMessageDialog(this, "Status successfully updated.");
+            } else {
+                JOptionPane.showMessageDialog(this, "No status selected.");
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        if (statusUpdated) {
-            JOptionPane.showMessageDialog(this, "Status updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this, "Case ID not found.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No status selected.");
         }
     }
-
-    // DATA --------------------------------------------------------------------
-    private void displayData(String[] data) {
-        lbl_showCaseId.setText(data[0]);
-        lbl_showCustomerID.setText(data[1]);
-        lbl_showHallType.setText(data[2]);
-        lbl_showHallNumber.setText(data[3]);
-        lbl_showDate.setText(data[4]);
-        lbl_showDescription.setText(data[5]);
-        lbl_showStaff.setText(data[6]);
-        lbl_showCaseStatus.setText(data[7]);
-        btn_updateStatus.setVisible(true);
-    };
     
-    public static void writeCase(String[] data) {
-        if (data.length < 8) {
-            JOptionPane.showMessageDialog(null, "Insufficient data provided.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        String filePath = "src/oodjassignment/database/caseStaffNStatus.txt";
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
-            String feedbackData = String.join(",", data);
-            bw.write(feedbackData);
-            bw.newLine();
+    private caseStaffNStatus readCaseData(String filePath, String caseId) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data[0].equals(caseId)) {
+                    return new caseStaffNStatus(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error saving feedback. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    } 
-   
+        return null;
+    }
+
+
+    // DATA --------------------------------------------------------------------
+    private void displayData(caseStaffNStatus data) {
+        lbl_showCaseId.setText(data.getCaseId());
+        lbl_showCustomerID.setText(data.getCusId());
+        lbl_showHallType.setText(data.getHallType());
+        lbl_showHallNumber.setText(data.getHallNumber());
+        lbl_showDate.setText(data.getDate());
+        lbl_showDescription.setText(data.getDescription());
+        lbl_showStaff.setText(data.getStaffId());
+        lbl_showCaseStatus.setText(data.getStatus());
+        btn_updateStatus.setVisible(true);
+    }
+       
     // CONTROLS ----------------------------------------------------------------
     private void clear_lbl(){
         lbl_showCaseId.setText("");

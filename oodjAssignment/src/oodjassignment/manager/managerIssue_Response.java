@@ -9,14 +9,13 @@ import java.util.List;
 
 public class managerIssue_Response extends javax.swing.JFrame {
     String feedbackFilePath;
-    String responsesFilePath;
+    String caseStaffNStatusFilePath;
     
     public managerIssue_Response() {
         initComponents();
-        feedbackFilePath = "src/oodjassignment/database/feedback.txt";
-        responsesFilePath = "src/oodjassignment/database/Responses.txt";
-        initializeData();
+        caseStaffNStatusFilePath = "src/oodjassignment/database/caseStaffNStatus.txt";
         generateCBX();
+        clearTable(tbl_history);
     }
 
     @SuppressWarnings("unchecked")
@@ -92,13 +91,13 @@ public class managerIssue_Response extends javax.swing.JFrame {
 
         tbl_history.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Case ID", "Response"
+                "Case ID", "Response by Manager", "Response by Staff"
             }
         ));
         tbl_history.setMinimumSize(new java.awt.Dimension(900, 80));
@@ -131,23 +130,11 @@ public class managerIssue_Response extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
-        String caseId = (String) cbx_caseId.getSelectedItem();
+        String selectedCaseId = (String) cbx_caseId.getSelectedItem();
         String newMessage = txt_newMessage.getText();
-        WriteResponses writer = new WriteResponses("src/oodjassignment/database/Responses.txt");
-        writer.updateResponse(caseId, newMessage);
-        String enteredCaseId = cbx_caseId.getSelectedItem().toString();
-        
-        if (enteredCaseId == null || enteredCaseId.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "ENTER A CASE ID TO CHECK", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            List<Response> filteredResponses = findResponsesByCaseId(enteredCaseId);
-            if (filteredResponses.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "CASE ID UNAVAILABLE", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                displayHistoryInTable(filteredResponses, tbl_history);
-                JOptionPane.showMessageDialog(null, "Update successful!");
-            }
-        }
+        updateMessageInFile(selectedCaseId, newMessage);
+        btn_viewActionPerformed(evt);
+        JOptionPane.showMessageDialog(this, "New message updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btn_backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_backActionPerformed
@@ -157,90 +144,56 @@ public class managerIssue_Response extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_backActionPerformed
 
     private void btn_viewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_viewActionPerformed
-        clearTable(tbl_history); 
-        String enteredCaseId = cbx_caseId.getSelectedItem().toString();
-
-        if (enteredCaseId == null || enteredCaseId.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "ENTER A CASE ID TO CHECK", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            List<Response> filteredResponses = findResponsesByCaseId(enteredCaseId);
-            if (filteredResponses.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "CASE ID UNAVAILABLE", "Error", JOptionPane.ERROR_MESSAGE);
-            } else {
-                displayHistoryInTable(filteredResponses, tbl_history);
-            }
-        }
-    }//GEN-LAST:event_btn_viewActionPerformed
-    
-    // GET DATA ----------------------------------------------------------------
-    public List<Response> readResponsesFromFile(String filePath) {
-        List<Response> responses = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        clearTable(tbl_history);
+        String selectedCaseId = (String) cbx_caseId.getSelectedItem();
+        try (BufferedReader br = new BufferedReader(new FileReader(caseStaffNStatusFilePath))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
-                Response response = new Response(data[0], data[1]);
-                responses.add(response);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return responses;
-    }
-
-    private static final String FILE_PATH = "src/oodjassignment/database/Responses.txt";
-
-    public List<Response> findResponsesByCaseId(String caseId) {
-        List<Response> responses = readResponsesFromFile(FILE_PATH);
-        List<Response> filteredResponses = new ArrayList<>();
-        for (Response response : responses) {
-            if (response.getCaseId().equals(caseId)) {
-                filteredResponses.add(response);
-            }
-        }
-        return filteredResponses;
-    }
-
-    // DISPLAY -------------------------------------------------------------
-    public void displayHistoryInTable(List<Response> responses, JTable table) {
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setRowCount(0);
-
-        for (Response response : responses) {
-            model.addRow(new Object[]{
-                response.getCaseId(),
-                response.getResponse()
-            });
-        }
-    } 
-    
-    // INITIAL -----------------------------------------------------------------
-    private void initializeData() {
-        List<String> responseList = new ArrayList<>();
-        try (BufferedReader responseReader = new BufferedReader(new FileReader(responsesFilePath))) {
-            String line;
-            while ((line = responseReader.readLine()) != null) {
-                String[] parts = line.split(",");
-                responseList.add(parts[0]);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try (BufferedReader feedbackReader = new BufferedReader(new FileReader(feedbackFilePath));
-             BufferedWriter responseWriter = new BufferedWriter(new FileWriter(responsesFilePath, true))) {
-            String line;
-            while ((line = feedbackReader.readLine()) != null) {
-                String caseId = line.split(",")[0];
-                if (!responseList.contains(caseId)) {
-                    responseWriter.write(caseId + ",No\n");
+                if (data[0].equals(selectedCaseId)) {
+                    displayDataInTable(data);
+                    break;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }//GEN-LAST:event_btn_viewActionPerformed
+    
+    // GET DATA ----------------------------------------------------------------
+    public void updateMessageInFile(String caseId, String newMessage) {
+        List<String> fileContent = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(caseStaffNStatusFilePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+                if (data[0].equals(caseId)) {
+                    data[8] = newMessage; // Update the 8th element
+                }
+                fileContent.add(String.join(",", data));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(caseStaffNStatusFilePath))) {
+            for (String line : fileContent) {
+                bw.write(line);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // DISPLAY -------------------------------------------------------------
+    private void displayDataInTable(String[] data) {
+        DefaultTableModel model = (DefaultTableModel) tbl_history.getModel();
+        model.setRowCount(0); // Clear existing data
+        model.addRow(new Object[]{data[0], data[8], data[9]});
     }
     
+    // INITIAL -----------------------------------------------------------------    
     public void clearTable(JTable table) {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
         model.setRowCount(0); // Clear existing rows

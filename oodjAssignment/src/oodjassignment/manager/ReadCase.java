@@ -82,7 +82,5 @@ public class ReadCase {
     public String getHallNoValue() { return hallNoValue; }
     public String getDateValue() { return dateValue; }
     public String getFeedbackText() { return feedbackText; }
-    public String getCaseId() { return caseId; }
-    public String getResponse() { return Response; }
     public ReadCase(String caseId) { this.caseId = caseId; }
 }
