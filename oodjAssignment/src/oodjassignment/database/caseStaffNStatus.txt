@@ -1,6 +1,6 @@
-C0001,U0003,Banquet Hall,HALL 1,2024-09-19,Dirty floor,S0001,Closed,-
+C0001,U0003,Banquet Hall,HALL 1,2024-09-19,Dirty floor,S0001,Closed,-,-
 C0002,U0001,Auditorium,HALL 1,2024-09-26,Aircond malfunction,S0002,No,-
 C0003,U0001,Auditorium,HALL 1,2024-09-26,Floor dirty,S0003,No,-
 C0004,U0010,Meeting Room,ROOM 1,2024-09-26,Aircond malfunction,S0004,No,-
-C0005,U0010,Auditorium,HALL 1,2024-09-26,Projector malfunction,S0001,No,-
+C0005,U0010,Auditorium,HALL 1,2024-09-26,Projector malfunction,S0001,No,I am done
 C0006,U0003,Banquet Hall,HALL 1,2024-09-26,Hall smelly,S0002,No,-
